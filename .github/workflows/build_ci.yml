@@ -8,6 +8,8 @@ on:
 jobs:
   build_android:
     runs-on: ubuntu-latest
+    env:
+      working_directory: ./fitqa_flutter
     steps:
       - uses: actions/checkout@v2
       - name: Setup Flutter
@@ -21,14 +23,20 @@ jobs:
           java-version: '11'
       - name: Install dependencies
         run: flutter pub get
+        working-directory: ${{env.working_directory}}
       - name: Run tests
         run: flutter test
+        working-directory: ${{env.working_directory}}
       - name: Build Android
         run: flutter build apk
+        working-directory: ${{env.working_directory}}
       - run: flutter build appbundle
+        working-directory: ${{env.working_directory}}
 
   build_ios:
     runs-on: macos-latest
+    env:
+      working_directory: ./fitqa_flutter
     steps:
       - uses: actions/checkout@v2
       - name: Setup Flutter
@@ -37,13 +45,18 @@ jobs:
           flutter-version: '2.10.1'
       - name: Install dependencies
         run: flutter pub get
+        working-directory: ${{env.working_directory}}
       - name: Run tests
         run: flutter test
+        working-directory: ${{env.working_directory}}
       - name: Build IOS
         run: flutter build ios --release --no-codesign
+        working-directory: ${{env.working_directory}}
 
   build_web:
     runs-on: ubuntu-latest
+    env:
+      working_directory: ./fitqa_flutter
     steps:
       - uses: actions/checkout@v2
       - name: Setup Flutter
@@ -52,7 +65,10 @@ jobs:
           flutter-version: '2.10.1'
       - name: Install dependencies
         run: flutter pub get
+        working-directory: ${{env.working_directory}}
       - name: Run tests
         run: flutter test
+        working-directory: ${{env.working_directory}}
       - name: Build web
         run: flutter build web
+        working-directory: ${{env.working_directory}}
