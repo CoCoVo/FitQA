@@ -23,15 +23,17 @@ void main() {
       var bottomNavFinder = find.byType(BottomNavigationBar);
       expect(bottomNavFinder, findsOneWidget);
 
-      var bottomNavItemFinder = find.byType(Icon);
-      expect(bottomNavItemFinder, findsNWidgets(4));
+      BottomNavigationBar bottomNav = tester.firstWidget(bottomNavFinder);
+      int tabNum = bottomNav.items.length;
 
-      var randTabIndex = new Random().nextInt(4);
+      var bottomNavItemFinder = find.byType(Icon);
+      expect(bottomNavItemFinder, findsNWidgets(tabNum));
+
+      var randTabIndex = new Random().nextInt(tabNum);
 
       await tester.tap(bottomNavItemFinder.at(randTabIndex));
       await tester.pumpAndSettle();
 
-      BottomNavigationBar bottomNav = tester.firstWidget(bottomNavFinder);
       expect(bottomNav.currentIndex, randTabIndex);
     });
   });
