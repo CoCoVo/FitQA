@@ -34,6 +34,7 @@ void main() {
       await tester.tap(bottomNavItemFinder.at(randTabIndex));
       await tester.pumpAndSettle();
 
+      bottomNav = tester.firstWidget(bottomNavFinder);
       expect(bottomNav.currentIndex, randTabIndex);
     });
   });
