@@ -1,4 +1,4 @@
-# fitqa
+# FitQA
 
 A new Flutter project.
 
