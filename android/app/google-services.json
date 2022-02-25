@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "980187310835",
+    "project_id": "fitqa-6b0d2",
+    "storage_bucket": "fitqa-6b0d2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:980187310835:android:a573042968249012942586",
+        "android_client_info": {
+          "package_name": "com.fitqa.fitqa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "980187310835-42ohg3c99pstoe1p6umgo8avdds1cso7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDXDfSnjgWYmtn5HgO1VC8Xt4Wg1c0QAWc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "980187310835-42ohg3c99pstoe1p6umgo8avdds1cso7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
