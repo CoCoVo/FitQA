@@ -45,7 +45,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return MaterialApp(
+        home: Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
       ),
@@ -53,7 +54,8 @@ class _MyHomePageState extends State<MyHomePage> {
       bottomNavigationBar: BottomNavigationBar(
         items: const [
           BottomNavigationBarItem(label: 'home', icon: Icon(Icons.home)),
-          BottomNavigationBarItem(label: 'notification', icon: Icon(Icons.notifications)),
+          BottomNavigationBarItem(
+              label: 'notification', icon: Icon(Icons.notifications)),
           BottomNavigationBarItem(label: 'trainer', icon: Icon(Icons.groups)),
           BottomNavigationBarItem(label: 'setting', icon: Icon(Icons.settings))
         ],
@@ -63,7 +65,7 @@ class _MyHomePageState extends State<MyHomePage> {
         type: BottomNavigationBarType.fixed,
         onTap: _onNavigationTapped,
       ),
-    );
+    ));
   }
 
   void _onNavigationTapped(int index) {

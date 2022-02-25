@@ -1,0 +1,81 @@
+name: FitQA Build CI
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master, develop]
+
+jobs:
+  build_android:
+    runs-on: ubuntu-latest
+    env:
+      working_directory: ./fitqa_flutter
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '2.10.1'
+      - name: Setup Java
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'zulu'
+          java-version: '11'
+      - name: Install dependencies
+        run: flutter pub get
+        working-directory: ${{env.working_directory}}
+      - name: Run tests
+        run: flutter test
+        working-directory: ${{env.working_directory}}
+      - name: Build Android
+        run: flutter build apk
+        working-directory: ${{env.working_directory}}
+      - run: flutter build appbundle
+        working-directory: ${{env.working_directory}}
+
+  build_ios:
+    if: ${{false}}
+    runs-on: macos-latest
+    env:
+      working_directory: ./fitqa_flutter
+    steps:
+      - uses: actions/checkout@v2
+      - name: Select Xcode version
+        run: sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '2.10.1'
+      - name: Install dependencies
+        run: |
+          flutter pub get
+          cd ./ios
+          pod repo update
+          pod install
+        working-directory: ${{env.working_directory}}
+      - name: Run tests
+        run: flutter test
+        working-directory: ${{env.working_directory}}
+      - name: Build IOS
+        run: flutter build ios --release --no-codesign
+        working-directory: ${{env.working_directory}}
+
+  build_web:
+    runs-on: ubuntu-latest
+    env:
+      working_directory: ./fitqa_flutter
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '2.10.1'
+      - name: Install dependencies
+        run: flutter pub get
+        working-directory: ${{env.working_directory}}
+      - name: Run tests
+        run: flutter test
+        working-directory: ${{env.working_directory}}
+      - name: Build web
+        run: flutter build web
+        working-directory: ${{env.working_directory}}
