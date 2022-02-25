@@ -34,6 +34,7 @@ jobs:
         working-directory: ${{env.working_directory}}
 
   build_ios:
+    if: ${{false}}
     runs-on: macos-latest
     env:
       working_directory: ./fitqa_flutter
