@@ -10,15 +10,59 @@ const String profileImageURL = 'https://cdn.pixabay'
 
 const List<String> traineeTabItems = ['내가 쓴 글', '찜한 트레이너', '갤러리', '이용내역'];
 
-class ScreenSetting extends StatelessWidget {
+class ScreenSetting extends StatefulWidget {
   const ScreenSetting({Key? key}) : super(key: key);
 
   @override
+  _ScreenSettingState createState() => _ScreenSettingState();
+}
+
+class _ScreenSettingState extends State<ScreenSetting>
+    with SingleTickerProviderStateMixin {
+  late TabController _tabController;
+  late ScrollController _scrollController;
+  bool fixedScroll = false;
+
+  @override
+  void initState() {
+    _scrollController = ScrollController();
+    _scrollController.addListener(() {
+      if (fixedScroll) {
+        _scrollController.jumpTo(0);
+      }
+    });
+
+    _tabController = TabController(length: traineeTabItems.length, vsync: this);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    _tabController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return ListView(
-      padding: EdgeInsets.zero,
-      children: <Widget>[buildTop(), buildContent()],
-    );
+    return NestedScrollView(
+        controller: _scrollController,
+        headerSliverBuilder: (context, value) {
+          return [
+            SliverToBoxAdapter(child: buildTop()),
+            SliverToBoxAdapter(child: buildContent()),
+            SliverToBoxAdapter(child: buildTab())
+          ];
+        },
+        body: Container(
+            child: TabBarView(
+                controller: _tabController,
+                children: traineeTabItems
+                    .map((e) => new ListView(
+                          physics: const ClampingScrollPhysics(),
+                          children: [Center(child: Text(e))],
+                        ))
+                    .toList())));
   }
 
   Widget buildTop() {
@@ -48,7 +92,6 @@ class ScreenSetting extends StatelessWidget {
         ),
         const SizedBox(height: 20),
         Divider(height: 1, thickness: 1, color: Colors.grey.shade300),
-        buildTabBar()
       ],
     );
   }
@@ -64,29 +107,15 @@ class ScreenSetting extends StatelessWidget {
         backgroundImage: NetworkImage(profileImageURL),
       );
 
-  Widget buildTabBar() => DefaultTabController(
-      length: 4,
-      initialIndex: 0,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          TabBar(
-              isScrollable: true,
-              indicatorColor: Colors.black,
-              indicatorSize: TabBarIndicatorSize.label,
-              labelColor: Colors.black,
-              unselectedLabelColor: Colors.grey,
-              labelStyle: TextStyle(
-                fontSize: 10,
-                fontWeight: FontWeight.w500,
-              ),
-              tabs: traineeTabItems.map((e) => new Tab(text: e)).toList()),
-          SizedBox(
-              height: 200,
-              child: TabBarView(
-                  children: traineeTabItems
-                      .map((e) => new Center(child: Text(e)))
-                      .toList()))
-        ],
-      ));
+  Widget buildTab() => TabBar(
+      controller: _tabController,
+      indicatorColor: Colors.black,
+      indicatorSize: TabBarIndicatorSize.label,
+      labelColor: Colors.black,
+      unselectedLabelColor: Colors.grey,
+      labelStyle: TextStyle(
+        fontSize: 10,
+        fontWeight: FontWeight.w500,
+      ),
+      tabs: traineeTabItems.map((e) => new Tab(text: e)).toList());
 }
