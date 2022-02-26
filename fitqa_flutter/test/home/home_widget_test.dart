@@ -1,8 +1,8 @@
 import 'dart:math';
 
+import 'package:fitqa/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:fitqa/main.dart';
 
 void main() {
   group('BottomNavigation', () {
@@ -16,8 +16,7 @@ void main() {
       expect(bottomNav.currentIndex, 0);
     });
 
-    testWidgets('tab index should be changed when user taps',
-        (WidgetTester tester) async {
+    testWidgets('tab index should be changed when user taps', (WidgetTester tester) async {
       await tester.pumpWidget(MyHomePage(title: 'test'));
 
       var bottomNavFinder = find.byType(BottomNavigationBar);
@@ -26,12 +25,14 @@ void main() {
       BottomNavigationBar bottomNav = tester.firstWidget(bottomNavFinder);
       int tabNum = bottomNav.items.length;
 
-      var bottomNavItemFinder = find.byType(Icon);
-      expect(bottomNavItemFinder, findsNWidgets(tabNum));
+      var navItemText = ['home', 'notification', 'trainer', 'setting'];
+      for (String t in navItemText) {
+        expect(find.text(t), findsOneWidget);
+      }
 
       var randTabIndex = new Random().nextInt(tabNum);
 
-      await tester.tap(bottomNavItemFinder.at(randTabIndex));
+      await tester.tap(find.text(navItemText.elementAt(randTabIndex)));
       await tester.pumpAndSettle();
 
       bottomNav = tester.firstWidget(bottomNavFinder);
