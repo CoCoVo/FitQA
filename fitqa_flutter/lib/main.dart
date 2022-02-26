@@ -1,3 +1,5 @@
+import 'package:fitqa/theme/color.dart';
+import 'package:fitqa/widget/fitqa_icon.dart';
 import 'package:flutter/material.dart';
 
 import 'screen/screen_home.dart';
@@ -30,10 +32,10 @@ class MyHomePage extends StatefulWidget {
 
   final String title;
   final List<Widget> _screens = [
-    ScreenHome(),
-    ScreenNotification(),
-    ScreenTrainerList(),
-    ScreenSetting()
+    const ScreenHome(),
+    const ScreenNotification(),
+    const ScreenTrainerList(),
+    const ScreenSetting()
   ];
 
   @override
@@ -47,18 +49,27 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return MaterialApp(
         home: Scaffold(
+      backgroundColor: FColors.appBackground,
       appBar: AppBar(
+        backgroundColor: FColors.appBarBackground,
+        elevation: 1,
+        leading: const Padding(
+          padding: EdgeInsets.all(8.0),
+          child: FitqaIcon(),
+        ),
+        titleSpacing: 3,
         title: Text(widget.title),
+        titleTextStyle: TextStyle(color: FColors.textPrimary),
       ),
       body: widget._screens.elementAt(_selectedNavigationIndex),
       bottomNavigationBar: BottomNavigationBar(
         items: const [
           BottomNavigationBarItem(label: 'home', icon: Icon(Icons.home)),
-          BottomNavigationBarItem(
-              label: 'notification', icon: Icon(Icons.notifications)),
+          BottomNavigationBarItem(label: 'notification', icon: Icon(Icons.notifications)),
           BottomNavigationBarItem(label: 'trainer', icon: Icon(Icons.groups)),
           BottomNavigationBarItem(label: 'setting', icon: Icon(Icons.settings))
         ],
+        backgroundColor: FColors.appBarBackground,
         currentIndex: _selectedNavigationIndex,
         showSelectedLabels: false,
         showUnselectedLabels: false,
