@@ -1,3 +1,4 @@
+import 'package:fitqa/widget/my_log_view.dart';
 import 'package:flutter/material.dart';
 
 const double coverHeight = 150.0;
@@ -56,13 +57,14 @@ class _ScreenSettingState extends State<ScreenSetting>
         },
         body: Container(
             child: TabBarView(
-                controller: _tabController,
-                children: traineeTabItems
-                    .map((e) => new ListView(
-                          physics: const ClampingScrollPhysics(),
-                          children: [Center(child: Text(e))],
-                        ))
-                    .toList())));
+          controller: _tabController,
+          children: [
+            Center(child: Text("1")),
+            Center(child: Text("1")),
+            Center(child: Text("1")),
+            MyLogView()
+          ],
+        )));
   }
 
   Widget buildTop() {
