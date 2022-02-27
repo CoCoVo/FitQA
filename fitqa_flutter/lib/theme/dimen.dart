@@ -1,3 +1,3 @@
 class FDimen {
-  static const double defaultTabBarSize = 40;
+  static const double defaultTabBarSize = 60;
 }
