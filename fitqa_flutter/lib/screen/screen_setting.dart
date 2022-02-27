@@ -1,3 +1,4 @@
+import 'package:fitqa/widget/my_favorite_trainer_view.dart';
 import 'package:fitqa/widget/my_log_view.dart';
 import 'package:flutter/material.dart';
 
@@ -60,7 +61,7 @@ class _ScreenSettingState extends State<ScreenSetting>
           controller: _tabController,
           children: [
             Center(child: Text("1")),
-            Center(child: Text("1")),
+            MyFavoriteTrainerView(),
             Center(child: Text("1")),
             MyLogView()
           ],

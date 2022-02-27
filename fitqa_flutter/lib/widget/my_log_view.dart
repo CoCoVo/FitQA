@@ -1,9 +1,8 @@
 import 'package:badges/badges.dart';
+import 'package:fitqa/theme/dimen.dart';
 import 'package:fitqa/widget/my_log_item.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-
-const double topBarSize = 40;
 
 class MyLogView extends StatelessWidget {
   const MyLogView({Key? key}) : super(key: key);
@@ -34,7 +33,7 @@ class MyLogView extends StatelessWidget {
   }
 
   Widget buildTopBar({required int totalExpenditure}) => Container(
-        height: topBarSize,
+        height: FDimen.defaultTabBarSize,
         padding: EdgeInsets.all(10),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
