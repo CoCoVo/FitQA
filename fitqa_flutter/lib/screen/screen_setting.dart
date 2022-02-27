@@ -1,6 +1,7 @@
 import 'package:fitqa/widget/my_favorite_trainer_view.dart';
 import 'package:fitqa/widget/my_gallery_view.dart';
 import 'package:fitqa/widget/my_log_view.dart';
+import 'package:fitqa/widget/my_post_view.dart';
 import 'package:flutter/material.dart';
 
 const double coverHeight = 150.0;
@@ -61,7 +62,7 @@ class _ScreenSettingState extends State<ScreenSetting>
             child: TabBarView(
           controller: _tabController,
           children: [
-            Center(child: Text("1")),
+            MyPostView(),
             MyFavoriteTrainerView(),
             MyGalleryView(),
             MyLogView()
