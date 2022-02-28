@@ -1,5 +1,6 @@
+import 'package:fitqa/screen/screen_request.dart';
 import 'package:fitqa/theme/color.dart';
-import 'package:fitqa/widget/fitqa_icon.dart';
+import 'package:fitqa/widget/fitqa_appbar.dart';
 import 'package:flutter/material.dart';
 
 import 'screen/screen_home.dart';
@@ -50,17 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return MaterialApp(
         home: Scaffold(
       backgroundColor: FColors.appBackground,
-      appBar: AppBar(
-        backgroundColor: FColors.appBarBackground,
-        elevation: 1,
-        leading: const Padding(
-          padding: EdgeInsets.all(8.0),
-          child: FitqaIcon(),
-        ),
-        titleSpacing: 3,
-        title: Text(widget.title),
-        titleTextStyle: TextStyle(color: FColors.textPrimary),
-      ),
+      appBar: FAppbar(widget.title),
       body: widget._screens.elementAt(_selectedNavigationIndex),
       bottomNavigationBar: BottomNavigationBar(
         items: const [
@@ -75,6 +66,12 @@ class _MyHomePageState extends State<MyHomePage> {
         showUnselectedLabels: false,
         type: BottomNavigationBarType.fixed,
         onTap: _onNavigationTapped,
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.add),
+        onPressed: () {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => ScreenRequest()));
+        },
       ),
     ));
   }
