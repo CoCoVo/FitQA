@@ -1,3 +1,4 @@
+import 'package:fitqa/screen/screen_order_complete.dart';
 import 'package:fitqa/theme/color.dart';
 import 'package:fitqa/widget/LabeledCheckbox.dart';
 import 'package:fitqa/widget/filter_chip_bar.dart';
@@ -104,10 +105,8 @@ class _RequestFormState extends State<RequestForm> {
           LabeledCheckbox(label: '게시글 비공개로 하기', onChanged: (v) => {}),
           ElevatedButton(
             onPressed: () {
-              if (_formKey.currentState!.validate()) {
-                ScaffoldMessenger.of(context)
-                    .showSnackBar(const SnackBar(content: Text('processing Data')));
-              }
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => ScreenOrderComplete()));
             },
             child: const Text('결제하고 글쓰기'),
           ),
