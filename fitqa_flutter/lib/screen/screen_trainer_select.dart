@@ -13,7 +13,9 @@ class ScreenTrainerSelect extends StatelessWidget {
             backgroundColor: FColors.appBackground,
             appBar: FAppbar('FitQA'),
             body: Container(
-              child: ListTrainer(),
+              child: ListTrainer(
+                selectable: true,
+              ),
             )));
   }
 }

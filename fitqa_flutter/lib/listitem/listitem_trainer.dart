@@ -3,7 +3,9 @@ import 'package:fitqa/widget/filter_chip_bar.dart';
 import 'package:flutter/material.dart';
 
 class ListItemTrainer extends StatelessWidget {
-  const ListItemTrainer({Key? key}) : super(key: key);
+  const ListItemTrainer({Key? key, this.selectable = false}) : super(key: key);
+
+  final bool selectable;
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +47,7 @@ class ListItemTrainer extends StatelessWidget {
                 Stack(
                   children: [
                     Visibility(
-                        visible: false,
+                        visible: !selectable,
                         child: Row(
                           children: [
                             Expanded(
@@ -64,7 +66,7 @@ class ListItemTrainer extends StatelessWidget {
                           ],
                         )),
                     Visibility(
-                        visible: true,
+                        visible: selectable,
                         child: Row(
                           children: [
                             Expanded(

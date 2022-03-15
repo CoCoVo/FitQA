@@ -5,7 +5,10 @@ import 'package:flutter/material.dart';
 class ListTrainer extends StatelessWidget {
   const ListTrainer({
     Key? key,
+    required this.selectable,
   }) : super(key: key);
+
+  final bool selectable;
 
   @override
   Widget build(BuildContext context) {
@@ -26,10 +29,11 @@ class ListTrainer extends StatelessWidget {
             ],
           ),
         ),
-        ListItemTrainer(),
-        ListItemTrainer(),
-        ListItemTrainer(),
-        ListItemTrainer(),
+        ListItemTrainer(selectable: selectable),
+        ListItemTrainer(selectable: selectable),
+        ListItemTrainer(selectable: selectable),
+        ListItemTrainer(selectable: selectable),
+        ListItemTrainer(selectable: selectable),
       ],
     );
   }
