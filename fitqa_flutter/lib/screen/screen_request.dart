@@ -1,4 +1,5 @@
 import 'package:fitqa/screen/screen_order_complete.dart';
+import 'package:fitqa/screen/screen_trainer_select.dart';
 import 'package:fitqa/theme/color.dart';
 import 'package:fitqa/widget/LabeledCheckbox.dart';
 import 'package:fitqa/widget/filter_chip_bar.dart';
@@ -92,7 +93,10 @@ class _RequestFormState extends State<RequestForm> {
           ),
           FilterChipBar(items: ['#하체', '#등', '#가슴', '#어깨', '#팔']),
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => ScreenTrainerSelect()));
+            },
             child: const Text('트레이너 선택하기'),
           ),
           SizedBox(
