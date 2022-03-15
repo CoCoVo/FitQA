@@ -1,3 +1,4 @@
+import 'package:fitqa/widget/list_trainer.dart';
 import 'package:flutter/material.dart';
 
 class ScreenTrainerList extends StatelessWidget {
@@ -6,9 +7,7 @@ class ScreenTrainerList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Center(
-        child: Text('Trainer List Screen'),
-      ),
+      child: ListTrainer(),
     );
   }
 }

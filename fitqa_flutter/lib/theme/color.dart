@@ -12,5 +12,7 @@ class FColors {
 
   static const Color textPrimary = Color(0xFF272B31);
 
+  static const Color buttonAccent = Color(0xFF1750FF);
+
   static const Color white = Color(0xFFFFFFFF);
 }
