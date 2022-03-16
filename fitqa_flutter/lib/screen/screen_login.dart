@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fitqa/main.dart';
 import 'package:fitqa/theme/color.dart';
 import 'package:fitqa/widget/fitqa_appbar.dart';
 import 'package:fitqa/widget/login_button/apple_login_button.dart';
@@ -20,28 +21,39 @@ class ScreenLogin extends StatelessWidget {
       }
     });
 
-    return MaterialApp(
-        home: Scaffold(
-            backgroundColor: FColors.appBackground,
-            appBar: FAppbar('FitQA'),
-            body: Container(
-                child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.end,
+    return MaterialApp(home: Builder(builder: (context) {
+      return Scaffold(
+          backgroundColor: FColors.appBackground,
+          appBar: FAppbar('FitQA'),
+          body: Container(
+              child: Center(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
               children: [
                 FacebookLoginButton(),
                 GoogleLoginButton(
                   onPressed: () {
-                    signInWithGoogle().then((user) => print(user.user?.displayName));
+                    signInWithGoogle().then((user) => openMainScreen(context));
                   },
                 ),
                 AppleLoginButton(),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    openMainScreen(context);
+                  },
                   child: Text("로그인 없이 둘러보기"),
                 ),
               ],
-            ))));
+            ),
+          )));
+    }));
+  }
+
+  void openMainScreen(context) {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => MyApp()),
+    );
   }
 
   Future<UserCredential> signInWithGoogle() async {

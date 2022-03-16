@@ -1,3 +1,5 @@
+import 'package:firebase_core/firebase_core.dart';
+import 'package:fitqa/screen/screen_login.dart';
 import 'package:fitqa/screen/screen_request.dart';
 import 'package:fitqa/theme/color.dart';
 import 'package:fitqa/widget/fitqa_appbar.dart';
@@ -8,8 +10,11 @@ import 'screen/screen_notification.dart';
 import 'screen/screen_setting.dart';
 import 'screen/screen_trainer_list.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  // runApp(const MyApp());
+  runApp(ScreenLogin());
 }
 
 class MyApp extends StatelessWidget {
