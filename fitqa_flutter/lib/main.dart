@@ -12,7 +12,15 @@ import 'screen/screen_trainer_list.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(
+      options: FirebaseOptions(
+          apiKey: "AIzaSyDurbYv7HNqW4fKJqceFbzP3BAEUk3M9po",
+          authDomain: "fitqa-6b0d2.firebaseapp.com",
+          projectId: "fitqa-6b0d2",
+          storageBucket: "fitqa-6b0d2.appspot.com",
+          messagingSenderId: "980187310835",
+          appId: "1:980187310835:web:c70f006f297a6f39942586",
+          measurementId: "G-47M6G3M7MB"));
   // runApp(const MyApp());
   runApp(ScreenLogin());
 }
