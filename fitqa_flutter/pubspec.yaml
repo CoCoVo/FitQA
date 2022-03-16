@@ -39,6 +39,7 @@ dependencies:
   intl: ^0.17.0
   badges: ^2.0.2
   flutter_svg: ^1.0.3
+  google_sign_in: ^5.2.4
 
 dev_dependencies:
   flutter_test:

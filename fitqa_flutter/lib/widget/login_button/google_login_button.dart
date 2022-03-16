@@ -4,13 +4,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class GoogleLoginButton extends StatelessWidget {
-  const GoogleLoginButton({Key? key, this.text = "Continue with Facebook"}) : super(key: key);
+  GoogleLoginButton({Key? key, this.onPressed, this.text = "Continue with Facebook"})
+      : super(key: key);
 
+  Function()? onPressed;
   final String text;
 
   @override
   Widget build(BuildContext context) {
     return SocialButton(
+      onPressed: onPressed,
       buttonColor: FColors.buttonGoogle,
       textColor: FColors.textGoogle,
       children: [

@@ -4,13 +4,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class AppleLoginButton extends StatelessWidget {
-  const AppleLoginButton({Key? key, this.text = "Continue with Facebook"}) : super(key: key);
+  AppleLoginButton({Key? key, this.onPressed, this.text = "Continue with Facebook"})
+      : super(key: key);
 
+  Function()? onPressed;
   final String text;
 
   @override
   Widget build(BuildContext context) {
     return SocialButton(
+      onPressed: onPressed,
       buttonColor: FColors.buttonApple,
       textColor: FColors.textApple,
       children: [

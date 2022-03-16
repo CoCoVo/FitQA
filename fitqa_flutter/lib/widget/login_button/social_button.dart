@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 
 class SocialButton extends StatelessWidget {
-  const SocialButton({
+  SocialButton({
     Key? key,
     required this.buttonColor,
     required this.textColor,
     required this.children,
+    this.onPressed,
   }) : super(key: key);
 
+  Function()? onPressed;
   final Color buttonColor, textColor;
   final List<Widget> children;
 
@@ -20,7 +22,7 @@ class SocialButton extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
       ),
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: onPressed,
         style: ButtonStyle(
             foregroundColor: MaterialStateProperty.all(textColor),
             backgroundColor: MaterialStateProperty.all(buttonColor)),
