@@ -1,9 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:fitqa/screen/screen_login.dart';
-import 'package:fitqa/screen/screen_request.dart';
+import 'package:fitqa/firebase_options.dart';
 import 'package:fitqa/theme/color.dart';
 import 'package:fitqa/widget/fitqa_appbar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterfire_ui/auth.dart';
 
 import 'screen/screen_home.dart';
 import 'screen/screen_notification.dart';
@@ -13,16 +14,9 @@ import 'screen/screen_trainer_list.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-      options: FirebaseOptions(
-          apiKey: "AIzaSyDurbYv7HNqW4fKJqceFbzP3BAEUk3M9po",
-          authDomain: "fitqa-6b0d2.firebaseapp.com",
-          projectId: "fitqa-6b0d2",
-          storageBucket: "fitqa-6b0d2.appspot.com",
-          messagingSenderId: "980187310835",
-          appId: "1:980187310835:web:c70f006f297a6f39942586",
-          measurementId: "G-47M6G3M7MB"));
-  // runApp(const MyApp());
-  runApp(ScreenLogin());
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -36,8 +30,46 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'FitQA'),
+      home: const AuthGate(),
     );
+  }
+}
+
+class AuthGate extends StatelessWidget {
+  const AuthGate({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder<User?>(
+        stream: FirebaseAuth.instance.authStateChanges(),
+        builder: (context, snapshot) {
+          // User is no signed in
+          if (!snapshot.hasData) {
+            return SignInScreen(
+              showAuthActionSwitch: false,
+              providerConfigs: const [
+                GoogleProviderConfiguration(
+                    clientId:
+                        '980187310835-42ohg3c99pstoe1p6umgo8avdds1cso7.apps.googleusercontent.com')
+              ],
+              footerBuilder: (context, _) {
+                return Padding(
+                  padding: const EdgeInsets.only(top: 16),
+                  child: TextButton(
+                    onPressed: () => {FirebaseAuth.instance.signInAnonymously()},
+                    child: Text("로그인 없이 둘러보기"),
+                  ),
+                );
+              },
+            );
+          }
+
+          User user = snapshot.data!;
+          print(user.isAnonymous);
+          print(user);
+
+          return MyHomePage(title: 'FitQA');
+        });
   }
 }
 
@@ -83,7 +115,8 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.add),
         onPressed: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => ScreenRequest()));
+          FirebaseAuth.instance.signOut();
+          // Navigator.push(context, MaterialPageRoute(builder: (context) => ScreenRequest()));
         },
       ),
     ));
