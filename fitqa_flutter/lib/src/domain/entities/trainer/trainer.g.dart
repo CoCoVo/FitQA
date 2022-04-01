@@ -22,7 +22,9 @@ _$_Trainer _$$_TrainerFromJson(Map<String, dynamic> json) => _$_Trainer(
       feedbackPrices: (json['feedbackPrices'] as List<dynamic>)
           .map((e) => TrainerFeedbackPrice.fromJson(e as Map<String, dynamic>))
           .toList(),
-      interestAreas: json['interestAreas'] as List<dynamic>,
+      interestAreas: (json['interestAreas'] as List<dynamic>)
+          .map((e) => TrainerInterestArea.fromJson(e as Map<String, dynamic>))
+          .toList(),
       sns: (json['sns'] as List<dynamic>)
           .map((e) => TrainerSns.fromJson(e as Map<String, dynamic>))
           .toList(),
