@@ -1,8 +1,8 @@
-import 'package:fitqa/src/presentation/views/screens/screen_home.dart';
-import 'package:fitqa/src/presentation/views/screens/screen_notification'
-    '.dart';
-import 'package:fitqa/src/presentation/views/screens/screen_setting.dart';
-import 'package:fitqa/src/presentation/views/screens/screen_trainer_list.dart';
+import 'package:fitqa/src/presentation/screens/screen_home.dart';
+import 'package:fitqa/src/presentation/screens/screen_mypage.dart';
+import 'package:fitqa/src/presentation/screens/screen_notification.dart';
+import 'package:fitqa/src/presentation/screens/screen_trainer.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -24,7 +24,8 @@ class Home extends ConsumerWidget {
         items: const [
           BottomNavigationBarItem(label: '홈', icon: Icon(FitQaIcon.home)),
           BottomNavigationBarItem(label: '트레이너', icon: Icon(FitQaIcon.trainer)),
-          BottomNavigationBarItem(label: '알림', icon: Icon(FitQaIcon.notification)),
+          BottomNavigationBarItem(
+              label: '알림', icon: Icon(FitQaIcon.notification)),
           BottomNavigationBarItem(label: '마이페이지', icon: Icon(FitQaIcon.myPage))
         ],
         currentIndex: navigation.index,
@@ -40,11 +41,11 @@ class Home extends ConsumerWidget {
       case 0:
         return ScreenHome();
       case 1:
-        return ScreenTrainerList();
+        return ScreenTrainer();
       case 2:
         return ScreenNotification();
       default:
-        return ScreenSetting();
+        return ScreenMyPage();
     }
   }
 }

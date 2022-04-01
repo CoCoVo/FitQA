@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:fitqa/src/presentation/views/home.dart';
+import 'package:fitqa/src/presentation/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 

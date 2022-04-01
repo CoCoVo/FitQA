@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class ScreenTrainerList extends StatelessWidget {
-  const ScreenTrainerList({Key? key}) : super(key: key);
+class ScreenMyPage extends StatelessWidget {
+  const ScreenMyPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       child: Center(
-        child: Text('Trainer List Screen'),
+        child: Text('MyPage Screen'),
       ),
     );
   }

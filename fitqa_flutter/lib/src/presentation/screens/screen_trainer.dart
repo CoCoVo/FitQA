@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class ScreenSetting extends StatelessWidget {
-  const ScreenSetting({Key? key}) : super(key: key);
+class ScreenTrainer extends StatelessWidget {
+  const ScreenTrainer({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       child: Center(
-        child: Text('Setting Screen'),
+        child: Text('Trainer List Screen'),
       ),
     );
   }
