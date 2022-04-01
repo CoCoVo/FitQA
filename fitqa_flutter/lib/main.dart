@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'screen/screen_home.dart';
-import 'screen/screen_notification.dart';
-import 'screen/screen_setting.dart';
-import 'screen/screen_trainer_list.dart';
+import 'src/presentation/views/screens/screen_home.dart';
+import 'src/presentation/views/screens/screen_notification.dart';
+import 'src/presentation/views/screens/screen_setting.dart';
+import 'src/presentation/views/screens/screen_trainer_list.dart';
 
 void main() {
   runApp(const MyApp());
