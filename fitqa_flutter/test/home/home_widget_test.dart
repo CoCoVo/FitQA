@@ -1,13 +1,13 @@
 import 'dart:math';
 
+import 'package:fitqa/src/presentation/views/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:fitqa/main.dart';
 
 void main() {
   group('BottomNavigation', () {
     testWidgets('tab index should start at 0', (WidgetTester tester) async {
-      await tester.pumpWidget(MyHomePage(title: 'test'));
+      await tester.pumpWidget(Home());
 
       var bottomNavFinder = find.byType(BottomNavigationBar);
       expect(bottomNavFinder, findsOneWidget);
@@ -18,7 +18,7 @@ void main() {
 
     testWidgets('tab index should be changed when user taps',
         (WidgetTester tester) async {
-      await tester.pumpWidget(MyHomePage(title: 'test'));
+      await tester.pumpWidget(Home());
 
       var bottomNavFinder = find.byType(BottomNavigationBar);
       expect(bottomNavFinder, findsOneWidget);
