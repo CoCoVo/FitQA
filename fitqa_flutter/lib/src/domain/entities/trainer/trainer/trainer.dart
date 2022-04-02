@@ -1,8 +1,8 @@
-import 'package:fitqa/src/domain/entities/trainer/trainer_career.dart';
-import 'package:fitqa/src/domain/entities/trainer/trainer_feedback_price.dart';
-import 'package:fitqa/src/domain/entities/trainer/trainer_image.dart';
-import 'package:fitqa/src/domain/entities/trainer/trainer_interest.dart';
-import 'package:fitqa/src/domain/entities/trainer/trainer_sns.dart';
+import 'package:fitqa/src/domain/entities/trainer/trainer_career/trainer_career.dart';
+import 'package:fitqa/src/domain/entities/trainer/trainer_feedback_price/trainer_feedback_price.dart';
+import 'package:fitqa/src/domain/entities/trainer/trainer_image/trainer_image.dart';
+import 'package:fitqa/src/domain/entities/trainer/trainer_interest/trainer_interest.dart';
+import 'package:fitqa/src/domain/entities/trainer/trainer_sns/trainer_sns.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'trainer.g.dart';
