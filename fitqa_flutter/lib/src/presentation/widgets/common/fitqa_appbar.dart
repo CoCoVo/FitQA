@@ -8,16 +8,20 @@ class FitqaAppbar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      toolbarHeight: FDimen.defaultTabBarSize,
-      backgroundColor: FColors.white,
-      centerTitle: false,
-      elevation: 0,
-      title: const Text(
-        "Fit QA",
-        style: TextStyle(
-            fontWeight: FontWeight.w700, fontSize: 24, color: FColors.blue),
-      ),
-    );
+        toolbarHeight: FDimen.defaultTabBarSize,
+        backgroundColor: FColors.white,
+        centerTitle: false,
+        elevation: 0,
+        title: RichText(
+          text: TextSpan(
+              text: "Fit ",
+              style: TextStyle(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 24,
+                  color: FColors.blue),
+              children: [
+                TextSpan(text: "QA", style: TextStyle(color: FColors.black))
+              ]),
+        ));
   }
 }
-
