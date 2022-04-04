@@ -1,4 +1,5 @@
 import 'package:fitqa/src/presentation/controller/screen_trainer_controller.dart';
+import 'package:fitqa/src/presentation/widgets/common/fitqa_appbar.dart';
 import 'package:fitqa/src/presentation/widgets/common/multi_select_chip.dart';
 import 'package:fitqa/src/presentation/widgets/trainer/trainer_card_view.dart';
 import 'package:fitqa/src/theme/color.dart';
@@ -16,17 +17,7 @@ class ScreenTrainer extends ConsumerWidget {
       color: FColors.white,
       padding: const EdgeInsets.symmetric(horizontal: 8),
       child: Column(children: [
-        AppBar(
-          toolbarHeight: FDimen.defaultTabBarSize,
-          backgroundColor: FColors.white,
-          centerTitle: false,
-          elevation: 0,
-          title: const Text(
-            "Fit QA",
-            style: TextStyle(
-                fontWeight: FontWeight.w700, fontSize: 24, color: FColors.blue),
-          ),
-        ),
+        FitqaAppbar(),
         Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8),
             child: SizedBox(

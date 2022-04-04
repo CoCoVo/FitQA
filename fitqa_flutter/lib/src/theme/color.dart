@@ -11,6 +11,7 @@ class FColors {
   static const Color grey_1 = Color(0xFFEDF1F7);
   static const Color grey_2 = Color(0xFFE4E9F2);
   static const Color grey_3 = Color(0xFF8F9BB3);
+  static const Color grey_4 = Color(0xFFC4C4C4);
   static const Color red = Color(0xFFF80D38);
 
   static const Color appBarBackground = Color(0xFFFFFFFF);
