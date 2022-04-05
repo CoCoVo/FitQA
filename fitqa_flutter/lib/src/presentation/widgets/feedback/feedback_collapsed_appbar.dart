@@ -1,3 +1,4 @@
+import 'package:fitqa/src/presentation/widgets/feedback/feedback_select_category.dart';
 import 'package:flutter/material.dart';
 
 class FeedbackCollapsedAppbar extends StatelessWidget {
@@ -27,11 +28,9 @@ class FeedbackCollapsedAppbar extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(top: 80),
           child: Container(
-            height: 200,
+            // height: 200,
             child: Card(
-              child: Center(
-                child: Text("asdf"),
-              ),
+              child: FeedbackSelectCategory(),
               margin: EdgeInsets.symmetric(horizontal: 16),
               elevation: 4,
               shape: RoundedRectangleBorder(
