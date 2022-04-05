@@ -1,5 +1,12 @@
 import 'package:fitqa/src/common/fitqa_icon.dart';
 import 'package:fitqa/src/presentation/widgets/trainer/area_small_widget.dart';
+import 'package:fitqa/src/presentation/widgets/trainer/trainer_career_list.dart';
+import 'package:fitqa/src/presentation/widgets/trainer/trainer_career_summary.dart';
+import 'package:fitqa/src/presentation/widgets/trainer/trainer_detail_info.dart';
+import 'package:fitqa/src/presentation/widgets/trainer/trainer_feedback_price_info.dart';
+import 'package:fitqa/src/presentation/widgets/trainer/trainer_introduce.dart';
+import 'package:fitqa/src/presentation/widgets/trainer/trainer_license_list.dart';
+import 'package:fitqa/src/presentation/widgets/trainer/trainer_sns.dart';
 import 'package:fitqa/src/theme/color.dart';
 import 'package:fitqa/src/theme/dimen.dart';
 import 'package:flutter/material.dart';
@@ -76,7 +83,11 @@ class _ScreenTrainerDetailState extends ConsumerState<ScreenTrainerDetail>
                         image: DecorationImage(
                             image: NetworkImage(mockBackgroundImg),
                             fit: BoxFit.fitHeight)),
-                    child: buildDetailHeader())),
+                    child: TrainerDetailInfo(
+                        profileImageUrl: mockTrainerImage_2,
+                        name: "강경원",
+                        style: "보디빌딩",
+                        interestAreas: ["팔", "어깨"]))),
             Positioned(
                 top: FDimen.trainerDetailBackgroundHeight - 40,
                 left: 20,
@@ -84,47 +95,6 @@ class _ScreenTrainerDetailState extends ConsumerState<ScreenTrainerDetail>
                 child: buildFeedbackRequester())
           ],
         ));
-  }
-
-  Widget buildDetailHeader() {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        ClipRRect(
-          borderRadius: BorderRadius.circular(24),
-          child: Image.network(mockTrainerImage_2,
-              fit: BoxFit.cover,
-              height: FDimen.trainerDetailProfileSize,
-              width: FDimen.trainerDetailProfileSize),
-        ),
-        const SizedBox(height: 33),
-        Text("강경원 트레이너",
-            style: const TextStyle(
-                color: FColors.white,
-                fontSize: 30,
-                fontWeight: FontWeight.bold)),
-        const SizedBox(height: 16),
-        Text("보디빌딩",
-            style: const TextStyle(color: FColors.white, fontSize: 14)),
-        const SizedBox(height: 14),
-        Row(
-          children: [
-            AreaSmallWidget("팔",
-                textColor: FColors.white,
-                backgroundColor: FColors.transparent,
-                borderColor: FColors.white),
-            SizedBox(width: 10),
-            AreaSmallWidget(
-              "어깨",
-              textColor: FColors.white,
-              backgroundColor: FColors.transparent,
-              borderColor: FColors.white,
-            )
-          ],
-        )
-      ],
-    );
   }
 
   Widget buildFeedbackRequester() {
@@ -168,211 +138,16 @@ class _ScreenTrainerDetailState extends ConsumerState<ScreenTrainerDetail>
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            buildIntroduce(),
-            buildSns(),
-            buildCareerSummary(),
-            buildCareerDetail(),
-            buildLicense(),
-            buildFeedbackPriceInfo(),
+            TrainerIntroduce(),
+            TrainerSns(),
+            TrainerCareerSummary(),
+            TrainerCareerList(),
+            TrainerLicenseList(),
+            TrainerFeedbackPriceInfo(),
             buildFeedbackListHeader()
           ],
         ),
       ));
-
-  Widget buildIntroduce() => Container(
-        padding: EdgeInsets.symmetric(vertical: 60, horizontal: 35),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(24),
-              child: Image.network(mockTrainerImage_2,
-                  fit: BoxFit.cover,
-                  height: FDimen.trainerDetailIntroduceImageSize,
-                  width: FDimen.trainerDetailIntroduceImageSize),
-            ),
-            SizedBox(height: 22),
-            Text(
-              "안녕하세요~ 트레이너 강경원입니다.",
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 22),
-            Text(
-                "우리가 하는 운동들은 움직임이라는 것을 기반으로 이루어집니다.\n이 움직임을 이해하지 못하면 운동 효율, "
-                "퍼포먼스가 나오지 않으며 부상으로 이루어질 수 있습니다.\n\n올바른 움직임을 가이드로 통증없이 부상없이 "
-                "훨씬 더 큰 효율을 내는 운동을 가르쳐드리겠습니다.",
-                style: TextStyle(fontSize: 16, height: 1.5)),
-          ],
-        ),
-      );
-
-  Widget buildSns() => Container(
-        padding: EdgeInsets.fromLTRB(17, 0, 17, 30),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text("연관링크", style: TextStyle(fontSize: 16)),
-            SizedBox(height: 16),
-            Divider(height: 1, color: FColors.line, thickness: 1),
-            SizedBox(height: 19),
-            Padding(
-              padding: EdgeInsets.only(left: 16),
-              child: Row(
-                children: [
-                  SizedBox(
-                    height: FDimen.trainerDetailSnsSize,
-                    width: FDimen.trainerDetailSnsSize,
-                    child: Icon(FitQaIcon.facebook),
-                  ),
-                  SizedBox(width: 16),
-                  Text("강경원", style: TextStyle(fontSize: 14))
-                ],
-              ),
-            ),
-            SizedBox(height: 14),
-            Padding(
-              padding: EdgeInsets.only(left: 16),
-              child: Row(
-                children: [
-                  SizedBox(
-                    height: FDimen.trainerDetailSnsSize,
-                    width: FDimen.trainerDetailSnsSize,
-                    child: Icon(FitQaIcon.instagram),
-                  ),
-                  SizedBox(width: 16),
-                  Text("dr.kangkyungwon", style: TextStyle(fontSize: 14))
-                ],
-              ),
-            ),
-            SizedBox(height: 14),
-            Padding(
-              padding: EdgeInsets.only(left: 16),
-              child: Row(
-                children: [
-                  SizedBox(
-                    height: FDimen.trainerDetailSnsSize,
-                    width: FDimen.trainerDetailSnsSize,
-                    child: Icon(FitQaIcon.facebook),
-                  ),
-                  SizedBox(width: 16),
-                  Text("강경원", style: TextStyle(fontSize: 14))
-                ],
-              ),
-            ),
-            SizedBox(height: 31),
-            Divider(color: FColors.black, height: 1, thickness: 3),
-          ],
-        ),
-      );
-
-  Widget buildCareerSummary() => Container(
-        padding: EdgeInsets.fromLTRB(17, 0, 17, 24),
-        child: Column(
-          children: [
-            Text(
-              "경력 & 학력/자격면허",
-              style: TextStyle(fontSize: 16, color: FColors.black),
-            ),
-            SizedBox(height: 10),
-            Text("Mr.Korea 클래식 보디빌딩 1위\n선수 전문 트레이너",
-                style:
-                    TextStyle(fontSize: 20, height: 1.2, color: FColors.blue)),
-            SizedBox(height: 40),
-          ],
-        ),
-      );
-
-  Widget buildCareerDetail() => Container(
-        padding: EdgeInsets.fromLTRB(17, 0, 17, 24),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text("경력", style: TextStyle(fontSize: 14)),
-            SizedBox(height: 18),
-            Divider(color: FColors.line, height: 1, thickness: 1),
-            SizedBox(height: 16),
-            Text("1997년 미스터 유니버시티 1위",
-                style: TextStyle(
-                    fontSize: 16, fontWeight: FontWeight.bold, height: 1.5)),
-            Text("1999년 미스터 코리아 우승",
-                style: TextStyle(
-                    fontSize: 16, fontWeight: FontWeight.bold, height: 1.5)),
-            Text("2002년 부산 아시안 게임 보디빌딩(-85kg) 금메달",
-                style: TextStyle(
-                    fontSize: 16, fontWeight: FontWeight.bold, height: 1.5)),
-            Text("2015년 Europa Dallas Pro 212 보디빌딩 - 1위",
-                style: TextStyle(
-                    fontSize: 16, fontWeight: FontWeight.bold, height: 1.5)),
-          ],
-        ),
-      );
-
-  Widget buildLicense() => Container(
-      padding: EdgeInsets.fromLTRB(17, 45, 17, 40),
-      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Text("학력 & 자격면허", style: TextStyle(fontSize: 14)),
-        SizedBox(height: 18),
-        Divider(color: FColors.line, height: 1, thickness: 1),
-        SizedBox(height: 16),
-        Text("건강운동관리사 - 문화체육관광부",
-            style: TextStyle(
-                fontSize: 16, fontWeight: FontWeight.bold, height: 1.5)),
-        Text("생활스포츠지도사 2급 보디빌딩 - 문화체육관광부",
-            style: TextStyle(
-                fontSize: 16, fontWeight: FontWeight.bold, height: 1.5)),
-        Text("Personal Trainer - 대한예방운동협회",
-            style: TextStyle(
-                fontSize: 16, fontWeight: FontWeight.bold, height: 1.5)),
-        Text("Conditioning care Specialist - 대한예방운동협회",
-            style: TextStyle(
-                fontSize: 16, fontWeight: FontWeight.bold, height: 1.5)),
-      ]));
-
-  Widget buildFeedbackPriceInfo() => Container(
-      padding: EdgeInsets.fromLTRB(17, 0, 17, 40),
-      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Text("상담안내", style: TextStyle(fontSize: 14)),
-        SizedBox(height: 18),
-        Divider(color: FColors.line, height: 1, thickness: 1),
-        SizedBox(height: 16),
-        Card(
-          child: Container(
-            height: FDimen.trainerDetailFeedbackPriceInfoSize,
-            alignment: Alignment.center,
-            padding: EdgeInsets.symmetric(horizontal: 8),
-            child: ListTile(
-              title: Text("하체 상담 (스쿼트, 레그프레스 등)",
-                  style: TextStyle(fontSize: 14, color: FColors.black)),
-              subtitle: Text("11,000 원",
-                  style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w700,
-                      color: FColors.black)),
-            ),
-          ),
-        ),
-        SizedBox(height: 16),
-        Card(
-          child: Container(
-            height: FDimen.trainerDetailFeedbackPriceInfoSize,
-            alignment: Alignment.center,
-            padding: EdgeInsets.symmetric(horizontal: 8),
-            child: ListTile(
-              title: Text("어깨 상담 (스쿼트, 레그프레스 등)",
-                  style: TextStyle(fontSize: 14, color: FColors.black)),
-              subtitle: Text(
-                "6,000 원",
-                style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w700,
-                    color: FColors.black),
-              ),
-              contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 6),
-            ),
-          ),
-        ),
-      ]));
 
   Widget buildFeedbackListHeader() => Container(
       padding: EdgeInsets.fromLTRB(17, 0, 17, 10),
@@ -425,7 +200,6 @@ class _ScreenTrainerDetailState extends ConsumerState<ScreenTrainerDetail>
             CustomScrollView(
               physics: BouncingScrollPhysics(),
               shrinkWrap: true,
-
               slivers: [
                 SliverList(
                     delegate: SliverChildBuilderDelegate(
