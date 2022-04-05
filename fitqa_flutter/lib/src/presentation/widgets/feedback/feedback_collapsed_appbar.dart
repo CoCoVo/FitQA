@@ -18,7 +18,7 @@ class FeedbackCollapsedAppbar extends StatelessWidget {
             centerTitle: true,
             elevation: 0.0,
             leading: InkWell(
-              child: Icon(Icons.arrow_back_ios_rounded),
+              child: const Icon(Icons.arrow_back_ios_rounded),
               onTap: () {
                 Navigator.pop(context);
               },
@@ -28,10 +28,9 @@ class FeedbackCollapsedAppbar extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(top: 80),
           child: Container(
-            // height: 200,
             child: Card(
               child: FeedbackSelectCategory(),
-              margin: EdgeInsets.symmetric(horizontal: 16),
+              margin: const EdgeInsets.symmetric(horizontal: 16),
               elevation: 4,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(4)),
