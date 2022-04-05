@@ -1,3 +1,4 @@
+import 'package:fitqa/src/presentation/widgets/feedback/feedback_category_dropdown.dart';
 import 'package:fitqa/src/theme/color.dart';
 import 'package:flutter/material.dart';
 
@@ -25,26 +26,33 @@ class FeedbackSelectCategory extends StatelessWidget {
                   fit: BoxFit.cover,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 16,
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  RichText(
-                    text: TextSpan(
-                        text: "강경원",
-                        style: TextStyle(
-                            fontSize: 18,
-                            color: FColors.black,
-                            fontWeight: FontWeight.bold),
-                        children: [
-                          TextSpan(
-                              text: " 트레이너",
-                              style: TextStyle(fontWeight: FontWeight.normal)),
-                        ]),
-                  ),
-                ],
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    RichText(
+                      text: const TextSpan(
+                          text: "강경원",
+                          style: TextStyle(
+                              fontSize: 18,
+                              color: FColors.black,
+                              fontWeight: FontWeight.bold),
+                          children: [
+                            TextSpan(
+                                text: " 트레이너",
+                                style:
+                                    TextStyle(fontWeight: FontWeight.normal)),
+                          ]),
+                    ),
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    FeedbackCategoryDropdown()
+                  ],
+                ),
               )
             ],
           ),
@@ -54,12 +62,12 @@ class FeedbackSelectCategory extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text(
+                const Text(
                   "결제금액",
                   style: TextStyle(fontSize: 14, color: FColors.black),
                 ),
                 RichText(
-                    text: TextSpan(
+                    text: const TextSpan(
                         text: "11,000",
                         style: TextStyle(
                             fontSize: 24,
