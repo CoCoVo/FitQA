@@ -45,7 +45,10 @@ class FeedbackListViewItem extends StatelessWidget {
                       children: [
                         Visibility(
                           visible: !locked,
-                          child: AreaSmallWidget("비공개"),
+                          child: AreaSmallWidget("비공개",
+                              textColor: FColors.black,
+                              backgroundColor: FColors.white,
+                              borderColor: FColors.black),
                         ),
                         Visibility(
                           visible: !locked,
