@@ -8,7 +8,7 @@ class FitqaAppbar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-        toolbarHeight: FDimen.defaultTabBarSize,
+        toolbarHeight: FDimen.defaultAppbarHeight,
         backgroundColor: FColors.white,
         centerTitle: false,
         elevation: 0,
