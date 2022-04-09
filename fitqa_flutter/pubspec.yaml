@@ -71,6 +71,7 @@ flutter:
   assets:
     - images/lock.svg
     - images/arrow_dropdown.svg
+    - images/video_play.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
