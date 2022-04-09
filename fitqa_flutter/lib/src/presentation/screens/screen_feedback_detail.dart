@@ -21,18 +21,21 @@ class ScreenFeedbackDetail extends StatelessWidget {
         backgroundColor: FColors.white,
         appBar: FitqaAppbarSub(
           title: '목록',
+          onPressed: () => Navigator.pop(context),
         ),
         extendBodyBehindAppBar: true,
-        body: CarouselWithIndicator(
-          height: 300,
-          children: imgList.map((url) {
-            return Image.network(
-              url,
-              fit: BoxFit.fill,
-              width: MediaQuery.of(context).size.width,
-              height: 300,
-            );
-          }).toList(),
-        ));
+        body: ListView(padding: EdgeInsets.zero, children: [
+          CarouselWithIndicator(
+            height: 400,
+            children: imgList.map((url) {
+              return Image.network(
+                url,
+                fit: BoxFit.fill,
+                width: MediaQuery.of(context).size.width,
+                height: 400,
+              );
+            }).toList(),
+          ),
+        ]));
   }
 }
