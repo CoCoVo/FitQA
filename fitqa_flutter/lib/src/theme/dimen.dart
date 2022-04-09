@@ -6,4 +6,5 @@ class FDimen {
   static const double trainerCardImageSize = 140;
 
   static const double defaultAppbarHeight = 56;
+  static const double defaultHorizontalPadding = 16;
 }

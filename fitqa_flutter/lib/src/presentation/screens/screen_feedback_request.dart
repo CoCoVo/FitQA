@@ -42,14 +42,14 @@ class ScreenFeedbackRequest extends StatelessWidget {
                     SizedBox(
                       height: 20,
                     ),
-                    FTextfield(
+                    FTextField(
                       labelText: "제목",
                       hintText: "예시) 벤치할 때 팔꿈치가 아픕니다",
                     ),
                     SizedBox(
                       height: 16,
                     ),
-                    FTextfield(
+                    FTextField(
                       labelText: "내용",
                       maxLines: 10,
                       hintText:

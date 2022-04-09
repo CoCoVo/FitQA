@@ -1,8 +1,8 @@
 import 'package:fitqa/src/theme/color.dart';
 import 'package:flutter/material.dart';
 
-class FTextfield extends StatelessWidget {
-  const FTextfield({Key? key, this.labelText, this.hintText, this.maxLines})
+class FTextField extends StatelessWidget {
+  const FTextField({Key? key, this.labelText, this.hintText, this.maxLines})
       : super(key: key);
 
   final String? labelText;
