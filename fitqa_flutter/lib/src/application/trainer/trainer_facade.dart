@@ -9,6 +9,7 @@ class TrainerFacade {
   TrainerFacade(this.trainerService);
 
   Future<List<Trainer>> getTrainers() {
+    print("Hello facade");
     return trainerService.getTrainers();
   }
 }

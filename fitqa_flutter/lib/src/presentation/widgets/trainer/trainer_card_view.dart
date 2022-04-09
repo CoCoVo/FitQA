@@ -1,5 +1,6 @@
 import 'package:fitqa/src/domain/entities/trainer/trainer/trainer.dart';
 import 'package:fitqa/src/presentation/widgets/trainer/area_small_widget.dart';
+import 'package:fitqa/src/presentation/widgets/trainer/trainer_card_image.dart';
 import 'package:fitqa/src/theme/color.dart';
 import 'package:fitqa/src/theme/dimen.dart';
 import 'package:flutter/material.dart';
@@ -26,9 +27,7 @@ const String mockTrainerImage_3 = 'https://s3-alpha-sig.figma'
 class TrainerCardView extends ConsumerWidget {
   final Trainer data;
 
-  TrainerCardView(this.data) {
-    print(this.data);
-  }
+  const TrainerCardView({Key? key, required this.data}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -56,42 +55,18 @@ class TrainerCardView extends ConsumerWidget {
   }
 
   Widget buildCardImage() {
+    List<Widget> imageWidgets = <Widget>[];
+
+    for (var i = 0; i < FDimen.trainerCardImageCount; i++) {
+      if (data.images.length > i) {
+        imageWidgets.add(TrainerCardImage(imageUrl: data.images[i].imageUrl));
+      } else {
+        imageWidgets.add(Flexible(flex: 1, child: Container()));
+      }
+    }
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: [
-        Flexible(
-          flex: 1,
-          fit: FlexFit.tight,
-          child: CachedNetworkImage(
-              imageUrl: mockTrainerImage_1,
-              placeholder: (context, url) => CircularProgressIndicator(),
-              errorWidget: (context, url, error) => Icon(Icons.error),
-              height: FDimen.trainerCardImageSize,
-              fit: BoxFit.fill),
-        ),
-        Flexible(
-          flex: 1,
-          fit: FlexFit.tight,
-          child: CachedNetworkImage(
-            imageUrl: mockTrainerImage_2,
-            placeholder: (context, url) => CircularProgressIndicator(),
-            errorWidget: (context, url, error) => Icon(Icons.error),
-            height: FDimen.trainerCardImageSize,
-            fit: BoxFit.fill,
-          ),
-        ),
-        Flexible(
-          flex: 1,
-          fit: FlexFit.tight,
-          child: CachedNetworkImage(
-              imageUrl: mockTrainerImage_3,
-              placeholder: (context, url) => CircularProgressIndicator(),
-              errorWidget: (context, url, error) => Icon(Icons.error),
-              height: FDimen.trainerCardImageSize,
-              fit: BoxFit.fill),
-        ),
-      ],
-    );
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: imageWidgets);
   }
 
   Widget buildCardContent() => Padding(

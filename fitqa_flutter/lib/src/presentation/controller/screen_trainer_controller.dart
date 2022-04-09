@@ -1,29 +1,28 @@
-import 'package:dio/dio.dart';
 import 'package:fitqa/src/application/trainer/trainer_facade.dart';
-import 'package:fitqa/src/common/exceptions.dart';
-import 'package:fitqa/src/domain/entities/trainer/trainer/trainer.dart';
+import 'package:fitqa/src/presentation/state/screen_trainer_state.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class TrainerController extends StateNotifier<AsyncValue<List<Trainer>>> {
-  TrainerController(this.trainerFacade) : super(const AsyncValue.loading()) {
-    getTrainers();
+class ScreenTrainerController {
+  ScreenTrainerController({required this.reader});
+
+  final Reader reader;
+
+  Future<void> initState() async {
+    print("initState");
+    refreshTrainerList();
   }
 
-  final TrainerFacade trainerFacade;
+  void dispose() {}
 
-  Future<void> getTrainers() async {
-    try {
-      state = const AsyncValue.loading();
-      final trainers = await trainerFacade.getTrainers();
-      state = AsyncValue.data(trainers);
-    } on DioError catch (error) {
-      throw DataException.fromDioError(error);
-    }
+  Future<void> refreshTrainerList() async {
+    reader(updatedTrainersProvider.notifier).retrieveTrainers();
+  }
+
+  void updateFilter(List<String> filterAreas) {
+    reader(InterestAreasNotifier.provider.notifier).update(filterAreas);
   }
 }
 
-final trainerControllerProvider = StateNotifierProvider.autoDispose<
-    TrainerController, AsyncValue<List<Trainer>>>((ref) {
-  final trainerFacade = ref.watch(trainerFacadeProvider);
-  return TrainerController(trainerFacade);
+final screenTrainerControllerProvider = Provider((ref) {
+  return ScreenTrainerController(reader: ref.read);
 });

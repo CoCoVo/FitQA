@@ -5,6 +5,7 @@ class FDimen {
   static const double trainerCardWidth = 358;
   static const double trainerCardHeight = 264;
   static const double trainerCardImageSize = 140;
+  static const int trainerCardImageCount = 3;
 
   static const double trainerDetailExpandedHeight = 510;
   static const double trainerDetailBackgroundHeight = 400;
@@ -17,4 +18,5 @@ class FDimen {
   static const double trainerDetailSnsSize = 20;
 
   static const double trainerDetailFeedbackPriceInfoSize = 95;
+
 }

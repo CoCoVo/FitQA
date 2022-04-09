@@ -23,6 +23,7 @@ class FitQaRepositoryApi implements FitQaRepository {
 
   @override
   Future<List<Trainer>> getTrainers({CancelToken? cancelToken}) async {
+    print("hello Repository");
     try {
       final response = await reader(clientProvider)
           .get('/trainers', cancelToken: cancelToken);

@@ -1,4 +1,3 @@
-import 'package:fitqa/src/common/fitqa_icon.dart';
 import 'package:fitqa/src/presentation/widgets/trainer/area_small_widget.dart';
 import 'package:fitqa/src/theme/color.dart';
 import 'package:fitqa/src/theme/dimen.dart';
