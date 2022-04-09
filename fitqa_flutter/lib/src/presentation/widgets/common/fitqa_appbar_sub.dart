@@ -19,7 +19,7 @@ class FitqaAppbarSub extends StatelessWidget with PreferredSizeWidget {
         title: Text(title),
         titleSpacing: 0,
         elevation: 0,
-        backgroundColor: FColors.black,
+        backgroundColor: FColors.transparent,
         actions: actions);
   }
 
