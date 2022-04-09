@@ -1,4 +1,4 @@
-import 'package:fitqa/src/presentation/widgets/feedback/feedback_select_category.dart';
+import 'package:fitqa/src/presentation/widgets/feedback/register/feedback_select_category.dart';
 import 'package:flutter/material.dart';
 
 class FeedbackCollapsedAppbar extends StatelessWidget {

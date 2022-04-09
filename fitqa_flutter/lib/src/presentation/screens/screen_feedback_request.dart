@@ -1,7 +1,7 @@
 import 'package:fitqa/src/presentation/widgets/common/bullet_point_text.dart';
 import 'package:fitqa/src/presentation/widgets/common/fitqa_textfield.dart';
 import 'package:fitqa/src/presentation/widgets/common/labeled_checkbox.dart';
-import 'package:fitqa/src/presentation/widgets/feedback/feedback_collapsed_appbar.dart';
+import 'package:fitqa/src/presentation/widgets/feedback/register/feedback_collapsed_appbar.dart';
 import 'package:fitqa/src/theme/color.dart';
 import 'package:flutter/material.dart';
 

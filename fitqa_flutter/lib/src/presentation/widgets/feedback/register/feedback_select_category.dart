@@ -1,4 +1,4 @@
-import 'package:fitqa/src/presentation/widgets/feedback/feedback_category_dropdown.dart';
+import 'package:fitqa/src/presentation/widgets/feedback/register/feedback_category_dropdown.dart';
 import 'package:fitqa/src/theme/color.dart';
 import 'package:flutter/material.dart';
 
