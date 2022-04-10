@@ -1,7 +1,7 @@
 import 'package:fitqa/src/presentation/widgets/common/bullet_point_text.dart';
 import 'package:fitqa/src/presentation/widgets/common/fitqa_textfield.dart';
 import 'package:fitqa/src/presentation/widgets/common/labeled_checkbox.dart';
-import 'package:fitqa/src/presentation/widgets/feedback/feedback_collapsed_appbar.dart';
+import 'package:fitqa/src/presentation/widgets/feedback/register/feedback_collapsed_appbar.dart';
 import 'package:fitqa/src/theme/color.dart';
 import 'package:flutter/material.dart';
 
@@ -42,14 +42,14 @@ class ScreenFeedbackRequest extends StatelessWidget {
                     SizedBox(
                       height: 20,
                     ),
-                    FTextfield(
+                    FTextField(
                       labelText: "제목",
                       hintText: "예시) 벤치할 때 팔꿈치가 아픕니다",
                     ),
                     SizedBox(
                       height: 16,
                     ),
-                    FTextfield(
+                    FTextField(
                       labelText: "내용",
                       maxLines: 10,
                       hintText:

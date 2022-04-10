@@ -30,4 +30,5 @@ class FColors {
   static const Color buttonApple = Color(0xFF000000);
 
   static const Color white = Color(0xFFFFFFFF);
+  static const Color transparent = Colors.transparent;
 }

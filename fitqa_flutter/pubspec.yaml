@@ -40,6 +40,9 @@ dependencies:
   dio: ^4.0.0
   cached_network_image: ^3.2.0
   flutter_svg: ^1.0.3
+  carousel_slider: ^4.0.0
+  video_player: ^2.3.0
+  expandable: ^5.0.1
 
 dev_dependencies:
   flutter_test:
@@ -69,6 +72,9 @@ flutter:
   assets:
     - images/lock.svg
     - images/arrow_dropdown.svg
+    - images/video_play.svg
+    - images/like.svg
+    - images/comment.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

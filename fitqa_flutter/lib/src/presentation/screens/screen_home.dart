@@ -1,6 +1,7 @@
+import 'package:fitqa/src/presentation/screens/screen_feedback_detail.dart';
 import 'package:fitqa/src/presentation/widgets/common/fitqa_appbar.dart';
 import 'package:fitqa/src/presentation/widgets/common/multi_select_chip.dart';
-import 'package:fitqa/src/presentation/widgets/feedback/feedback_listview_item.dart';
+import 'package:fitqa/src/presentation/widgets/feedback/register/feedback_listview_item.dart';
 import 'package:fitqa/src/theme/color.dart';
 import 'package:fitqa/src/theme/dimen.dart';
 import 'package:flutter/material.dart';
@@ -60,7 +61,13 @@ class ScreenHome extends StatelessWidget {
           Expanded(
             child: ListView.separated(
               itemCount: feedbackList.length,
-              itemBuilder: (context, index) => feedbackList[index],
+              itemBuilder: (context, index) => InkWell(
+                child: feedbackList[index],
+                onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => ScreenFeedbackDetail())),
+              ),
               separatorBuilder: (BuildContext context, int index) =>
                   const Divider(),
             ),
