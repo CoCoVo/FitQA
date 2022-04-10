@@ -28,8 +28,8 @@ class TrainerSns extends StatelessWidget {
           const SizedBox(height: 16),
           const Divider(height: 1, color: FColors.line, thickness: 1),
           const SizedBox(height: 19),
-          const Divider(color: FColors.black, height: 1, thickness: 3),
-          ..._buildSnsList(snsMap)
+          ..._buildSnsList(snsMap),
+          const Divider(color: FColors.black, height: 1, thickness: 3)
         ],
       ),
     );
@@ -45,7 +45,7 @@ class TrainerSns extends StatelessWidget {
     snsList.add(const SizedBox(height: 14));
     snsList.add(TrainerSnsItem(
         const Icon(FitQaIcon.facebook), snsMap['YOUTUBE'] ?? ""));
-    snsList.add(const SizedBox(height: 14));
+    snsList.add(const SizedBox(height: 31));
 
     return snsList;
   }
