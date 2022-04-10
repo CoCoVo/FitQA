@@ -39,10 +39,7 @@ class _ScreenTrainerDetailState extends ConsumerState<ScreenTrainerDetail>
       body: CustomScrollView(
         slivers: [
           buildAppBar(),
-          buildContext(),
-          buildFeedbackListTab(),
-          buildFeedbackListDivider(),
-          buildFeedbackListView()
+          buildContext()
         ],
       ),
     );
@@ -150,134 +147,7 @@ class _ScreenTrainerDetailState extends ConsumerState<ScreenTrainerDetail>
             const TrainerCareerSummary(),
             const TrainerCareerList(),
             const TrainerLicenseList(),
-            buildFeedbackListHeader()
           ],
         ),
       ));
-
-  Widget buildFeedbackListHeader() => Container(
-      padding: const EdgeInsets.fromLTRB(17, 0, 17, 10),
-      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: const [
-        Text("답변 내역", style: TextStyle(fontSize: 14)),
-        SizedBox(height: 18),
-        Divider(color: FColors.line, height: 1, thickness: 1),
-      ]));
-
-  Widget buildFeedbackListTab() => SliverPersistentHeader(
-      pinned: true, delegate: FeedbackTabBar(tabController));
-
-  Widget buildFeedbackListDivider() => SliverToBoxAdapter(
-      child: Container(
-          padding: const EdgeInsets.fromLTRB(17, 10, 17, 0),
-          color: FColors.white,
-          child: const Divider(color: FColors.line, height: 1, thickness: 1)));
-
-  Widget buildFeedbackListView() => SliverFillRemaining(
-        hasScrollBody: true,
-        child: TabBarView(
-          controller: tabController,
-          children: [
-            CustomScrollView(
-              physics: const BouncingScrollPhysics(),
-              shrinkWrap: true,
-              slivers: [
-                SliverList(
-                    delegate: SliverChildBuilderDelegate(
-                        (context, index) => Container(
-                              padding: const EdgeInsets.all(16),
-                              child: const Text("Hello 1"),
-                            ),
-                        childCount: 3))
-              ],
-            ),
-            CustomScrollView(
-              physics: const BouncingScrollPhysics(),
-              shrinkWrap: true,
-              slivers: [
-                SliverList(
-                    delegate: SliverChildBuilderDelegate(
-                        (context, index) => Container(
-                              padding: const EdgeInsets.all(16),
-                              child: const Text("Hello 2"),
-                            ),
-                        childCount: 3))
-              ],
-            ),
-            CustomScrollView(
-              physics: const BouncingScrollPhysics(),
-              shrinkWrap: true,
-              slivers: [
-                SliverList(
-                    delegate: SliverChildBuilderDelegate(
-                        (context, index) => Container(
-                              padding: const EdgeInsets.all(16),
-                              child: const Text("Hello 3"),
-                            ),
-                        childCount: 3))
-              ],
-            ),
-          ],
-        ),
-      );
-}
-
-class FeedbackTabBar extends SliverPersistentHeaderDelegate {
-  final TabController tabController;
-
-  const FeedbackTabBar(this.tabController);
-
-  @override
-  Widget build(
-      BuildContext context, double shrinkOffset, bool overlapsContent) {
-    return Container(
-      color: FColors.white,
-      child: TabBar(
-        tabs: [
-          Tab(
-            child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 8),
-              color: Colors.white,
-              child: const Text(
-                "전체보기",
-              ),
-            ),
-          ),
-          Tab(
-            child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 8),
-              color: Colors.white,
-              child: const Text(
-                "답변대기",
-              ),
-            ),
-          ),
-          Tab(
-            child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 8),
-              color: Colors.white,
-              child: const Text(
-                "답변완료",
-              ),
-            ),
-          ),
-        ],
-        controller: tabController,
-        padding: const EdgeInsets.symmetric(horizontal: 16.0),
-        unselectedLabelColor: Colors.grey,
-        labelColor: Colors.black,
-        indicatorColor: Colors.transparent,
-      ),
-    );
-  }
-
-  @override
-  bool shouldRebuild(SliverPersistentHeaderDelegate oldDelegate) {
-    return false;
-  }
-
-  @override
-  double get maxExtent => 48;
-
-  @override
-  double get minExtent => 48;
 }
