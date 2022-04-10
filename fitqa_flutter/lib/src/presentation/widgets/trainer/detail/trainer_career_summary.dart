@@ -7,9 +7,9 @@ class TrainerCareerSummary extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.fromLTRB(17, 0, 17, 24),
+      padding: const EdgeInsets.fromLTRB(17, 0, 17, 24),
       child: Column(
-        children: [
+        children: const [
           Text(
             "경력 & 학력/자격면허",
             style: TextStyle(fontSize: 16, color: FColors.black),
