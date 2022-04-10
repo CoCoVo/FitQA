@@ -1,23 +1,30 @@
+import 'package:fitqa/src/domain/entities/trainer/trainer/trainer.dart';
 import 'package:fitqa/src/presentation/widgets/trainer/feedback_price_info_item.dart';
 import 'package:fitqa/src/theme/color.dart';
-import 'package:fitqa/src/theme/dimen.dart';
 import 'package:flutter/material.dart';
 
 class TrainerFeedbackPriceInfo extends StatelessWidget {
-  const TrainerFeedbackPriceInfo({Key? key}) : super(key: key);
+  const TrainerFeedbackPriceInfo({Key? key, required this.trainer})
+      : super(key: key);
+
+  final Trainer trainer;
 
   @override
   Widget build(BuildContext context) {
+    List<Widget> priceInfoItems = [];
+    trainer.feedbackPrices.forEach((element) {
+      priceInfoItems.add(const SizedBox(height: 16));
+      priceInfoItems.add(FeedbackPriceInfoItem(
+          title: element.interestArea, price: element.price));
+    });
+
     return Container(
         padding: EdgeInsets.fromLTRB(17, 0, 17, 40),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Text("상담안내", style: TextStyle(fontSize: 14)),
-          SizedBox(height: 18),
-          Divider(color: FColors.line, height: 1, thickness: 1),
-          SizedBox(height: 16),
-          FeedbackPriceInfoItem(title: "하체 상담 (스쿼트, 레그프레스 등)", price: 11000),
-          SizedBox(height: 16),
-          FeedbackPriceInfoItem(title: "어깨 상담 (스쿼트, 레그프레스 등)", price: 6000),
+          const Text("상담안내", style: TextStyle(fontSize: 14)),
+          const SizedBox(height: 18),
+          const Divider(color: FColors.line, height: 1, thickness: 1),
+          ...priceInfoItems,
         ]));
   }
 }

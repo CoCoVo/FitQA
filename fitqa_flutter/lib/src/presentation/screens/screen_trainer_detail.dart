@@ -1,5 +1,5 @@
 import 'package:fitqa/src/common/fitqa_icon.dart';
-import 'package:fitqa/src/presentation/widgets/trainer/area_small_widget.dart';
+import 'package:fitqa/src/domain/entities/trainer/trainer/trainer.dart';
 import 'package:fitqa/src/presentation/widgets/trainer/trainer_career_list.dart';
 import 'package:fitqa/src/presentation/widgets/trainer/trainer_career_summary.dart';
 import 'package:fitqa/src/presentation/widgets/trainer/trainer_detail_info.dart';
@@ -12,16 +12,13 @@ import 'package:fitqa/src/theme/dimen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-const String mockBackgroundImg = 'https://s3-alpha-sig.figma'
-    '.com/img/657b/7dac/944c3b3bb5032a2e1708d02eb0362be5?Expires=1649635200&Signature=SIOSvholFBxzhtVDR5BunPjsIabsKlSp4NgFjo9~C-klVGYVh1IS-N2B0xXilNq4Sma5C~W5FylEQizLqzpNQNZWHevbx8jz1zq55zluny6idt19XwTozSBH5ALS4Fc0W05BNUpuAlX1QbpuqkrsrD7Sc~hDUyH3a0f372KABPT44C-D8AO-2n4Pp3qQO6jnGBXBcmXu2KES1CPAnxjo4EAwCQVBbXsxUhY-PKfrNYo8fc62WdmmI-QjCEGJRfMOjJ7Jfing0XfTQwpXGQnwZcKEJqnLTXwMPDBaffcldpbp-vFRc3IvlEaNdbd94iIx~OG6dE7gKwzNnPylAfv2xw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA';
-
-const String mockTrainerImage_2 =
-    'https://s3-alpha-sig.figma.com/img/ac38/00a5/1cb4dbc07970132c01ccc8b55649cc22?Expires=1649635200&Signature=E3ScKCZzktmHyUsEHdyo5mSp3FgNDyiO9coAlhATxbSk5xmc2P5f5TZ4L2QgRdrgsDJcvPNB0WyvtUXUJeQO8iQ8oclyd80oAyrOjePQv5nBmqvcbUcFWpCzw0~KYyzKpKFnzWM8m8dLa9VNd9zwXeDbPyR3rVHzsM41EXJq11akS~aoZiLKi4xIMxg~VmLXUrwY3E4~YryMJFBjgzsoMBJCIShlAa6jP1SJNOuSaOuEuFube9y8j-J32rHrs4peDJ8fvF5biGEjnq1AfNwHPsdq3XmNyZ~PHxLoip7jfth8sSkDQd8V~pULsF6WNkwMgbn9IhNDx1ep5CKQljCUxQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA';
-
 const List<int> feedbackGroup = [0, 1, 2];
 
 class ScreenTrainerDetail extends ConsumerStatefulWidget {
-  const ScreenTrainerDetail({Key? key}) : super(key: key);
+  const ScreenTrainerDetail({Key? key, required this.trainer})
+      : super(key: key);
+
+  final Trainer trainer;
 
   @override
   _ScreenTrainerDetailState createState() => _ScreenTrainerDetailState();
@@ -56,15 +53,26 @@ class _ScreenTrainerDetailState extends ConsumerState<ScreenTrainerDetail>
     return SliverAppBar(
       backgroundColor: FColors.black,
       expandedHeight: FDimen.trainerDetailExpandedHeight,
-      title: Text('목록'),
-      leading: Icon(FitQaIcon.back),
-      actions: [Icon(FitQaIcon.modification)],
+      title: const Text('목록'),
+      leading: InkWell(
+        onTap: () => Navigator.of(context).pop(),
+        child: const Icon(FitQaIcon.back),
+      ),
+      actions: [
+        InkWell(
+          onTap: () => {},
+          child: const Icon(FitQaIcon.modification),
+        )
+      ],
       centerTitle: false,
       flexibleSpace: buildFlexibleSpace(),
     );
   }
 
   Widget buildFlexibleSpace() {
+    String backgroundImageUrl = widget.trainer.images
+        .firstWhere((element) => element.imageType == "BACKGROUND")
+        .imageUrl;
     return FlexibleSpaceBar(
         collapseMode: CollapseMode.pin,
         background: Stack(
@@ -79,15 +87,13 @@ class _ScreenTrainerDetailState extends ConsumerState<ScreenTrainerDetail>
                 child: Container(
                     height: FDimen.trainerDetailBackgroundHeight,
                     padding: EdgeInsets.fromLTRB(15, 60, 0, 0),
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                         image: DecorationImage(
-                            image: NetworkImage(mockBackgroundImg),
+                            image: NetworkImage(backgroundImageUrl),
                             fit: BoxFit.fitHeight)),
                     child: TrainerDetailInfo(
-                        profileImageUrl: mockTrainerImage_2,
-                        name: "강경원",
-                        style: "보디빌딩",
-                        interestAreas: ["팔", "어깨"]))),
+                      trainer: widget.trainer,
+                    ))),
             Positioned(
                 top: FDimen.trainerDetailBackgroundHeight - 40,
                 left: 20,
@@ -138,12 +144,12 @@ class _ScreenTrainerDetailState extends ConsumerState<ScreenTrainerDetail>
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            TrainerIntroduce(),
-            TrainerSns(),
+            TrainerIntroduce(trainer: widget.trainer),
+            TrainerSns(trainer: widget.trainer),
             TrainerCareerSummary(),
             TrainerCareerList(),
             TrainerLicenseList(),
-            TrainerFeedbackPriceInfo(),
+            TrainerFeedbackPriceInfo(trainer: widget.trainer),
             buildFeedbackListHeader()
           ],
         ),
