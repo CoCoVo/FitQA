@@ -6,10 +6,15 @@ class TrainerIntroduce extends StatelessWidget {
   const TrainerIntroduce({Key? key, required this.trainer}) : super(key: key);
 
   final Trainer trainer;
+
   @override
   Widget build(BuildContext context) {
-    final profileImage = trainer.images.firstWhere((element) => element
-        .imageType == "PROFILE").imageUrl;
+    //FIXME(in.heo)
+    // - makes imageType from String to enum
+    final profileImage = trainer.images
+        .firstWhere((element) => element.imageType == "PROFILE")
+        .imageUrl;
+
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 60, horizontal: 35),
       child: Column(
@@ -29,8 +34,7 @@ class TrainerIntroduce extends StatelessWidget {
             style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 22),
-          Text(
-              trainer.introduceContext,
+          Text(trainer.introduceContext,
               style: const TextStyle(fontSize: 16, height: 1.5)),
         ],
       ),

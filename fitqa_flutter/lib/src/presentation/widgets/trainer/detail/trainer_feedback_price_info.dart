@@ -1,5 +1,5 @@
 import 'package:fitqa/src/domain/entities/trainer/trainer/trainer.dart';
-import 'package:fitqa/src/presentation/widgets/trainer/feedback_price_info_item.dart';
+import 'package:fitqa/src/presentation/widgets/trainer/detail/feedback_price_info_item.dart';
 import 'package:fitqa/src/theme/color.dart';
 import 'package:flutter/material.dart';
 
@@ -12,14 +12,16 @@ class TrainerFeedbackPriceInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<Widget> priceInfoItems = [];
-    trainer.feedbackPrices.forEach((element) {
+    for (var element in trainer.feedbackPrices) {
       priceInfoItems.add(const SizedBox(height: 16));
       priceInfoItems.add(FeedbackPriceInfoItem(
           title: element.interestArea, price: element.price));
-    });
+    }
 
     return Container(
-        padding: EdgeInsets.fromLTRB(17, 0, 17, 40),
+        //FIXME(in.heo)
+        // - Think of using padding useful
+        padding: const EdgeInsets.fromLTRB(17, 0, 17, 40),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           const Text("상담안내", style: TextStyle(fontSize: 14)),
           const SizedBox(height: 18),

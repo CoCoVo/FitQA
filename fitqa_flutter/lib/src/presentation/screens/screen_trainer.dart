@@ -1,7 +1,7 @@
 import 'package:fitqa/src/presentation/controller/screen_trainer_controller.dart';
 import 'package:fitqa/src/presentation/widgets/common/fitqa_appbar.dart';
 import 'package:fitqa/src/presentation/widgets/common/multi_select_chip.dart';
-import 'package:fitqa/src/presentation/widgets/trainer/trainer_card_view.dart';
+import 'package:fitqa/src/presentation/widgets/trainer/list/trainer_card_view.dart';
 import 'package:fitqa/src/theme/color.dart';
 import 'package:fitqa/src/theme/dimen.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +17,7 @@ class ScreenTrainer extends ConsumerWidget {
       color: FColors.white,
       padding: const EdgeInsets.symmetric(horizontal: 8),
       child: Column(children: [
-        FitqaAppbar(),
+        const FitqaAppbar(),
         Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8),
             child: SizedBox(
@@ -25,10 +25,10 @@ class ScreenTrainer extends ConsumerWidget {
               child: SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child:
+                      //FIXME(in.heo) Generalize
+                      // - interestAreas
                       MultiSelectChip(const ['전체', '등', '어깨', '팔', '하체', '가슴'],
-                          onSelectionChanged: (selectedList) {
-                    print(selectedList);
-                  })),
+                          onSelectionChanged: (selectedList) {})),
             )),
         trainers.when(
             data: (trainers) {
