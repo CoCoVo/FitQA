@@ -33,14 +33,15 @@ class ScreenHome extends ConsumerWidget {
                 return Expanded(
                   child: ListView.separated(
                     itemCount: feedbacks.length,
-                    itemBuilder: (context, index) => InkWell(
-                      child: FeedbackListViewItem(
-                        feedback: feedbacks[index],
+                    itemBuilder: (context, index) => FeedbackListViewItem(
+                      feedback: feedbacks[index],
+                      onPressed: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ScreenFeedbackDetail(
+                                  feedbackToken: feedbacks[index].feedbackToken,
+                                )),
                       ),
-                      onTap: () => Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => ScreenFeedbackDetail())),
                     ),
                     separatorBuilder: (BuildContext context, int index) =>
                         const Divider(),
