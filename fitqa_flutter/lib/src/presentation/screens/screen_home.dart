@@ -11,37 +11,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class ScreenHome extends ConsumerWidget {
   ScreenHome({Key? key}) : super(key: key);
 
-  // final feedbackList = [
-  //   FeedbackListViewItem(
-  //     locked: false,
-  //     complete: true,
-  //   ),
-  //   FeedbackListViewItem(
-  //     locked: true,
-  //     complete: false,
-  //   ),
-  //   FeedbackListViewItem(
-  //     locked: false,
-  //     complete: false,
-  //   ),
-  //   FeedbackListViewItem(
-  //     locked: true,
-  //     complete: true,
-  //   ),
-  //   FeedbackListViewItem(
-  //     locked: true,
-  //     complete: true,
-  //   ),
-  //   FeedbackListViewItem(
-  //     locked: false,
-  //     complete: false,
-  //   ),
-  //   FeedbackListViewItem(
-  //     locked: false,
-  //     complete: true,
-  //   ),
-  // ];
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final feedbacks = ref.watch(feedbackControllerProvider);
@@ -57,9 +26,7 @@ class ScreenHome extends ConsumerWidget {
                     scrollDirection: Axis.horizontal,
                     child: MultiSelectChip(
                         const ['전체', '등', '어깨', '팔', '하체', '가슴'],
-                        onSelectionChanged: (selectedList) {
-                      print(selectedList);
-                    })),
+                        onSelectionChanged: (selectedList) {})),
               )),
           feedbacks.when(
               data: (feedbacks) {
@@ -87,20 +54,5 @@ class ScreenHome extends ConsumerWidget {
                     child: CircularProgressIndicator(),
                   ))
         ]));
-    //   Expanded(
-    //     child: ListView.separated(
-    //       itemCount: 1,
-    //       itemBuilder: (context, index) => InkWell(
-    //         child: ,
-    //         onTap: () => Navigator.push(
-    //             context,
-    //             MaterialPageRoute(
-    //                 builder: (context) => ScreenFeedbackDetail())),
-    //       ),
-    //       separatorBuilder: (BuildContext context, int index) =>
-    //           const Divider(),
-    //     ),
-    //   ),
-    // ]));
   }
 }
