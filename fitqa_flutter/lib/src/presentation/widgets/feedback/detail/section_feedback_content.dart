@@ -22,7 +22,10 @@ class SectionFeedbackContent extends StatelessWidget {
           SizedBox(
             height: 12,
           ),
-          AreaSmallWidget("등"),
+          AreaSmallWidget("등",
+              textColor: FColors.black,
+              borderColor: FColors.black,
+              backgroundColor: FColors.white),
           SizedBox(
             height: 32,
           ),
