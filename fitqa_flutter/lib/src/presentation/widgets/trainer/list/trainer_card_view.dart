@@ -45,9 +45,14 @@ class TrainerCardView extends ConsumerWidget {
   Widget buildCardImage() {
     List<Widget> imageWidgets = <Widget>[];
 
+    //TODO(in.heo)
+    // - Ordering을 추가해야 할 수도, 어플에서 보여지는 위젯의 순서
+    final galleryImages =
+        data.images.where((element) => element.imageType == "GALLERY").toList();
+
     for (var i = 0; i < FDimen.trainerCardImageCount; i++) {
-      if (data.images.length > i) {
-        imageWidgets.add(TrainerCardImage(imageUrl: data.images[i].imageUrl));
+      if (galleryImages.length > i) {
+        imageWidgets.add(TrainerCardImage(imageUrl: galleryImages[i].imageUrl));
       } else {
         imageWidgets.add(Flexible(flex: 1, child: Container()));
       }
