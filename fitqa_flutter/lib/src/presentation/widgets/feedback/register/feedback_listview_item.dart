@@ -1,15 +1,19 @@
-import 'package:fitqa/src/presentation/widgets/common/small_info_box.dart';
+import 'package:fitqa/src/domain/entities/feedback/feedback.dart' as fq;
 import 'package:fitqa/src/presentation/widgets/common/area_small_widget.dart';
+import 'package:fitqa/src/presentation/widgets/common/small_info_box.dart';
 import 'package:fitqa/src/theme/color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class FeedbackListViewItem extends StatelessWidget {
-  FeedbackListViewItem({Key? key, required this.complete, this.locked = false})
-      : super(key: key);
+  FeedbackListViewItem({
+    Key? key,
+    required this.feedback,
+    this.complete = false,
+  }) : super(key: key);
 
+  fq.Feedback feedback;
   bool complete;
-  bool locked;
 
   @override
   Widget build(BuildContext context) {
@@ -29,9 +33,9 @@ class FeedbackListViewItem extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Visibility(
-                      visible: !locked,
+                      visible: !feedback.locked,
                       child: Text(
-                        "비공개 게시글입니다.",
+                        feedback.title,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(fontSize: 16),
                       ),
@@ -44,20 +48,20 @@ class FeedbackListViewItem extends StatelessWidget {
                     Row(
                       children: [
                         Visibility(
-                          visible: !locked,
+                          visible: !feedback.locked,
                           child: AreaSmallWidget("비공개",
                               textColor: FColors.black,
                               backgroundColor: FColors.white,
                               borderColor: FColors.black),
                         ),
                         Visibility(
-                          visible: !locked,
+                          visible: !feedback.locked,
                           child: SizedBox(
                             width: 6,
                           ),
                         ),
                         Visibility(
-                          visible: !locked,
+                          visible: !feedback.locked,
                           child: Text(
                             "운동조아",
                             style: TextStyle(

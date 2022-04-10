@@ -1,3 +1,4 @@
+import 'package:fitqa/src/presentation/controller/feedback_controller.dart';
 import 'package:fitqa/src/presentation/screens/screen_feedback_detail.dart';
 import 'package:fitqa/src/presentation/widgets/common/fitqa_appbar.dart';
 import 'package:fitqa/src/presentation/widgets/common/multi_select_chip.dart';
@@ -5,43 +6,45 @@ import 'package:fitqa/src/presentation/widgets/feedback/register/feedback_listvi
 import 'package:fitqa/src/theme/color.dart';
 import 'package:fitqa/src/theme/dimen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class ScreenHome extends StatelessWidget {
+class ScreenHome extends ConsumerWidget {
   ScreenHome({Key? key}) : super(key: key);
 
-  final feedbackList = [
-    FeedbackListViewItem(
-      locked: false,
-      complete: true,
-    ),
-    FeedbackListViewItem(
-      locked: true,
-      complete: false,
-    ),
-    FeedbackListViewItem(
-      locked: false,
-      complete: false,
-    ),
-    FeedbackListViewItem(
-      locked: true,
-      complete: true,
-    ),
-    FeedbackListViewItem(
-      locked: true,
-      complete: true,
-    ),
-    FeedbackListViewItem(
-      locked: false,
-      complete: false,
-    ),
-    FeedbackListViewItem(
-      locked: false,
-      complete: true,
-    ),
-  ];
+  // final feedbackList = [
+  //   FeedbackListViewItem(
+  //     locked: false,
+  //     complete: true,
+  //   ),
+  //   FeedbackListViewItem(
+  //     locked: true,
+  //     complete: false,
+  //   ),
+  //   FeedbackListViewItem(
+  //     locked: false,
+  //     complete: false,
+  //   ),
+  //   FeedbackListViewItem(
+  //     locked: true,
+  //     complete: true,
+  //   ),
+  //   FeedbackListViewItem(
+  //     locked: true,
+  //     complete: true,
+  //   ),
+  //   FeedbackListViewItem(
+  //     locked: false,
+  //     complete: false,
+  //   ),
+  //   FeedbackListViewItem(
+  //     locked: false,
+  //     complete: true,
+  //   ),
+  // ];
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final feedbacks = ref.watch(feedbackControllerProvider);
     return Container(
         color: FColors.white,
         child: Column(mainAxisSize: MainAxisSize.min, children: [
@@ -58,20 +61,46 @@ class ScreenHome extends StatelessWidget {
                       print(selectedList);
                     })),
               )),
-          Expanded(
-            child: ListView.separated(
-              itemCount: feedbackList.length,
-              itemBuilder: (context, index) => InkWell(
-                child: feedbackList[index],
-                onTap: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => ScreenFeedbackDetail())),
-              ),
-              separatorBuilder: (BuildContext context, int index) =>
-                  const Divider(),
-            ),
-          ),
+          feedbacks.when(
+              data: (feedbacks) {
+                return Expanded(
+                  child: ListView.separated(
+                    itemCount: feedbacks.length,
+                    itemBuilder: (context, index) => InkWell(
+                      child: FeedbackListViewItem(
+                        feedback: feedbacks[index],
+                      ),
+                      onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ScreenFeedbackDetail())),
+                    ),
+                    separatorBuilder: (BuildContext context, int index) =>
+                        const Divider(),
+                  ),
+                );
+              },
+              error: (error, e) => Center(
+                    child: Text(error.toString()),
+                  ),
+              loading: () => const Center(
+                    child: CircularProgressIndicator(),
+                  ))
         ]));
+    //   Expanded(
+    //     child: ListView.separated(
+    //       itemCount: 1,
+    //       itemBuilder: (context, index) => InkWell(
+    //         child: ,
+    //         onTap: () => Navigator.push(
+    //             context,
+    //             MaterialPageRoute(
+    //                 builder: (context) => ScreenFeedbackDetail())),
+    //       ),
+    //       separatorBuilder: (BuildContext context, int index) =>
+    //           const Divider(),
+    //     ),
+    //   ),
+    // ]));
   }
 }
