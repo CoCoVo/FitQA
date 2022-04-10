@@ -3,7 +3,6 @@ import 'package:fitqa/src/domain/entities/trainer/trainer/trainer.dart';
 import 'package:fitqa/src/presentation/widgets/trainer/detail/trainer_career_list.dart';
 import 'package:fitqa/src/presentation/widgets/trainer/detail/trainer_career_summary.dart';
 import 'package:fitqa/src/presentation/widgets/trainer/detail/trainer_detail_info.dart';
-import 'package:fitqa/src/presentation/widgets/trainer/detail/trainer_feedback_price_info.dart';
 import 'package:fitqa/src/presentation/widgets/trainer/detail/trainer_introduce.dart';
 import 'package:fitqa/src/presentation/widgets/trainer/detail/trainer_license_list.dart';
 import 'package:fitqa/src/presentation/widgets/trainer/detail/trainer_sns.dart';
@@ -59,6 +58,8 @@ class _ScreenTrainerDetailState extends ConsumerState<ScreenTrainerDetail>
         child: const Icon(FitQaIcon.back),
       ),
       actions: [
+        //FIXME(in.heo)
+        // - relocation widget
         InkWell(
           onTap: () => {},
           child: const Icon(FitQaIcon.modification),
@@ -149,7 +150,6 @@ class _ScreenTrainerDetailState extends ConsumerState<ScreenTrainerDetail>
             const TrainerCareerSummary(),
             const TrainerCareerList(),
             const TrainerLicenseList(),
-            TrainerFeedbackPriceInfo(trainer: widget.trainer),
             buildFeedbackListHeader()
           ],
         ),
