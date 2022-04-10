@@ -88,7 +88,7 @@ class _ScreenTrainerDetailState extends ConsumerState<ScreenTrainerDetail>
                     decoration: BoxDecoration(
                         image: DecorationImage(
                             image: NetworkImage(backgroundImageUrl),
-                            fit: BoxFit.fitHeight)),
+                            fit: BoxFit.cover)),
                     child: TrainerDetailInfo(
                       trainer: widget.trainer,
                     ))),
