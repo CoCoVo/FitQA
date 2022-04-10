@@ -14,6 +14,7 @@ _$_Feedback _$$_FeedbackFromJson(Map<String, dynamic> json) => _$_Feedback(
       title: json['title'] as String,
       content: json['content'] as String,
       locked: json['locked'] as bool,
+      status: json['status'] as String,
     );
 
 Map<String, dynamic> _$$_FeedbackToJson(_$_Feedback instance) =>
@@ -25,4 +26,5 @@ Map<String, dynamic> _$$_FeedbackToJson(_$_Feedback instance) =>
       'title': instance.title,
       'content': instance.content,
       'locked': instance.locked,
+      'status': instance.status,
     };
