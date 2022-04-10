@@ -1,18 +1,22 @@
+import 'package:fitqa/src/provider/feedback_provider.dart';
 import 'package:fitqa/src/theme/color.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class SectionFeedbackComment extends StatelessWidget {
-  const SectionFeedbackComment({Key? key}) : super(key: key);
+class SectionFeedbackComment extends ConsumerWidget {
+  SectionFeedbackComment({Key? key, this.feedbackToken}) : super(key: key);
+
+  String? feedbackToken;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10),
       child: Column(
         children: [
           FeedbackComment(),
           FeedbackComment(),
-          FeedbackWrite(),
+          FeedbackWrite(feedbackToken: feedbackToken),
         ],
       ),
     );
@@ -69,11 +73,13 @@ class FeedbackComment extends StatelessWidget {
   }
 }
 
-class FeedbackWrite extends StatelessWidget {
-  const FeedbackWrite({Key? key}) : super(key: key);
+class FeedbackWrite extends ConsumerWidget {
+  FeedbackWrite({Key? key, this.feedbackToken}) : super(key: key);
+
+  String? feedbackToken;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Container(
       height: 50,
       child: Row(
@@ -89,11 +95,19 @@ class FeedbackWrite extends StatelessWidget {
           ),
           Expanded(
             child: TextField(
-              decoration: InputDecoration(
+              onChanged: (value) =>
+                  {ref.read(commentProvider.notifier).state = value},
+              decoration: const InputDecoration(
                   border: UnderlineInputBorder(), hintText: "댓글쓰기"),
             ),
           ),
-          TextButton(onPressed: () => {}, child: Text("게시"))
+          TextButton(
+              onPressed: () {
+                if (feedbackToken != null) {
+                  ref.read(registerFeedbackCommentProvider(feedbackToken!));
+                }
+              },
+              child: Text("게시"))
         ],
       ),
     );
