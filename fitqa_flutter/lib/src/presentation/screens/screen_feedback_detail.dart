@@ -58,7 +58,7 @@ class ScreenFeedbackDetail extends ConsumerWidget {
                       SectionFeedbackAnswer(),
                       SectionFeedbackLike(),
                       ThinDivider(),
-                      SectionFeedbackComment(),
+                      SectionFeedbackComment(feedbackToken: feedbackToken),
                     ],
                   ),
                 )
