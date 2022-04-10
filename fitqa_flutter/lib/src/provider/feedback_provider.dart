@@ -6,3 +6,10 @@ final feedbackListProvider = FutureProvider<List<Feedback>>((ref) async {
   final feedbacks = ref.read(feedbackRepositoryProvider).getFeedbacks();
   return feedbacks;
 });
+
+final feedbackDetailProvider =
+    FutureProvider.family<Feedback, String>((ref, feedbackToken) async {
+  final feedback =
+      ref.read(feedbackRepositoryProvider).getFeedbackByToken(feedbackToken);
+  return feedback;
+});
