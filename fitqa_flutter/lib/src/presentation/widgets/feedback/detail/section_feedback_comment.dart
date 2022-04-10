@@ -52,6 +52,9 @@ class FeedbackComment extends StatelessWidget {
                     "3일 전",
                     style: TextStyle(fontSize: 10, color: FColors.black),
                   ),
+                  SizedBox(
+                    width: 7,
+                  ),
                   Text(
                     "좋아요 1개",
                     style: TextStyle(fontSize: 10, color: FColors.black),
