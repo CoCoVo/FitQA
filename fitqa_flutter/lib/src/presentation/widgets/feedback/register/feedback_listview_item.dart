@@ -1,4 +1,5 @@
-import 'package:fitqa/src/domain/entities/feedback/feedback.dart' as fq;
+import 'package:fitqa/src/domain/entities/feedback/feedback/feedback.dart'
+    as fq;
 import 'package:fitqa/src/presentation/widgets/common/area_small_widget.dart';
 import 'package:fitqa/src/presentation/widgets/common/small_info_box.dart';
 import 'package:fitqa/src/theme/color.dart';

@@ -1,14 +1,14 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'get_feedbacks_response.dart';
+part of 'feedback_list_response.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_GetFeedbacksResponse _$$_GetFeedbacksResponseFromJson(
+_$_FeedbackListResponse _$$_FeedbackListResponseFromJson(
         Map<String, dynamic> json) =>
-    _$_GetFeedbacksResponse(
+    _$_FeedbackListResponse(
       result: json['result'] as String,
       data: (json['data'] as List<dynamic>?)
           ?.map((e) => Feedback.fromJson(e as Map<String, dynamic>))
@@ -17,8 +17,8 @@ _$_GetFeedbacksResponse _$$_GetFeedbacksResponseFromJson(
       errorCode: json['errorCode'] as String?,
     );
 
-Map<String, dynamic> _$$_GetFeedbacksResponseToJson(
-        _$_GetFeedbacksResponse instance) =>
+Map<String, dynamic> _$$_FeedbackListResponseToJson(
+        _$_FeedbackListResponse instance) =>
     <String, dynamic>{
       'result': instance.result,
       'data': instance.data,
