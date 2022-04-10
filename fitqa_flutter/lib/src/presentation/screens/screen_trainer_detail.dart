@@ -1,12 +1,12 @@
 import 'package:fitqa/src/common/fitqa_icon.dart';
 import 'package:fitqa/src/domain/entities/trainer/trainer/trainer.dart';
-import 'package:fitqa/src/presentation/widgets/trainer/trainer_career_list.dart';
-import 'package:fitqa/src/presentation/widgets/trainer/trainer_career_summary.dart';
-import 'package:fitqa/src/presentation/widgets/trainer/trainer_detail_info.dart';
-import 'package:fitqa/src/presentation/widgets/trainer/trainer_feedback_price_info.dart';
-import 'package:fitqa/src/presentation/widgets/trainer/trainer_introduce.dart';
-import 'package:fitqa/src/presentation/widgets/trainer/trainer_license_list.dart';
-import 'package:fitqa/src/presentation/widgets/trainer/trainer_sns.dart';
+import 'package:fitqa/src/presentation/widgets/trainer/detail/trainer_career_list.dart';
+import 'package:fitqa/src/presentation/widgets/trainer/detail/trainer_career_summary.dart';
+import 'package:fitqa/src/presentation/widgets/trainer/detail/trainer_detail_info.dart';
+import 'package:fitqa/src/presentation/widgets/trainer/detail/trainer_feedback_price_info.dart';
+import 'package:fitqa/src/presentation/widgets/trainer/detail/trainer_introduce.dart';
+import 'package:fitqa/src/presentation/widgets/trainer/detail/trainer_license_list.dart';
+import 'package:fitqa/src/presentation/widgets/trainer/detail/trainer_sns.dart';
 import 'package:fitqa/src/theme/color.dart';
 import 'package:fitqa/src/theme/dimen.dart';
 import 'package:flutter/material.dart';
@@ -86,7 +86,7 @@ class _ScreenTrainerDetailState extends ConsumerState<ScreenTrainerDetail>
                     FDimen.trainerDetailBackgroundHeight,
                 child: Container(
                     height: FDimen.trainerDetailBackgroundHeight,
-                    padding: EdgeInsets.fromLTRB(15, 60, 0, 0),
+                    padding: const EdgeInsets.fromLTRB(15, 60, 0, 0),
                     decoration: BoxDecoration(
                         image: DecorationImage(
                             image: NetworkImage(backgroundImageUrl),
@@ -112,13 +112,13 @@ class _ScreenTrainerDetailState extends ConsumerState<ScreenTrainerDetail>
           Container(
             height: FDimen.trainerDetailFeedbackRequestItemSize,
             alignment: Alignment.center,
-            padding: EdgeInsets.symmetric(horizontal: 8),
-            child: ListTile(
+            padding: const EdgeInsets.symmetric(horizontal: 8),
+            child: const ListTile(
               title: Text("상담하기", style: TextStyle(fontSize: 18)),
               trailing: Icon(FitQaIcon.enter),
             ),
           ),
-          Divider(
+          const Divider(
               color: FColors.line,
               height: 1,
               thickness: 1,
@@ -127,8 +127,8 @@ class _ScreenTrainerDetailState extends ConsumerState<ScreenTrainerDetail>
           Container(
             height: FDimen.trainerDetailFeedbackRequestItemSize,
             alignment: Alignment.center,
-            padding: EdgeInsets.symmetric(horizontal: 8),
-            child: ListTile(
+            padding: const EdgeInsets.symmetric(horizontal: 8),
+            child: const ListTile(
               title: Text("답변내역", style: TextStyle(fontSize: 18)),
               trailing: Icon(FitQaIcon.enter),
             ),
@@ -146,9 +146,9 @@ class _ScreenTrainerDetailState extends ConsumerState<ScreenTrainerDetail>
           children: [
             TrainerIntroduce(trainer: widget.trainer),
             TrainerSns(trainer: widget.trainer),
-            TrainerCareerSummary(),
-            TrainerCareerList(),
-            TrainerLicenseList(),
+            const TrainerCareerSummary(),
+            const TrainerCareerList(),
+            const TrainerLicenseList(),
             TrainerFeedbackPriceInfo(trainer: widget.trainer),
             buildFeedbackListHeader()
           ],
@@ -156,62 +156,62 @@ class _ScreenTrainerDetailState extends ConsumerState<ScreenTrainerDetail>
       ));
 
   Widget buildFeedbackListHeader() => Container(
-      padding: EdgeInsets.fromLTRB(17, 0, 17, 10),
-      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      padding: const EdgeInsets.fromLTRB(17, 0, 17, 10),
+      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: const [
         Text("답변 내역", style: TextStyle(fontSize: 14)),
         SizedBox(height: 18),
         Divider(color: FColors.line, height: 1, thickness: 1),
       ]));
 
   Widget buildFeedbackListTab() => SliverPersistentHeader(
-      pinned: true, delegate: FeedbackTabBar(this.tabController));
+      pinned: true, delegate: FeedbackTabBar(tabController));
 
   Widget buildFeedbackListDivider() => SliverToBoxAdapter(
       child: Container(
-          padding: EdgeInsets.fromLTRB(17, 10, 17, 0),
+          padding: const EdgeInsets.fromLTRB(17, 10, 17, 0),
           color: FColors.white,
-          child: Divider(color: FColors.line, height: 1, thickness: 1)));
+          child: const Divider(color: FColors.line, height: 1, thickness: 1)));
 
   Widget buildFeedbackListView() => SliverFillRemaining(
         hasScrollBody: true,
         child: TabBarView(
-          controller: this.tabController,
+          controller: tabController,
           children: [
             CustomScrollView(
-              physics: BouncingScrollPhysics(),
+              physics: const BouncingScrollPhysics(),
               shrinkWrap: true,
               slivers: [
                 SliverList(
                     delegate: SliverChildBuilderDelegate(
                         (context, index) => Container(
-                              padding: EdgeInsets.all(16),
-                              child: Text("Hello 1"),
+                              padding: const EdgeInsets.all(16),
+                              child: const Text("Hello 1"),
                             ),
                         childCount: 3))
               ],
             ),
             CustomScrollView(
-              physics: BouncingScrollPhysics(),
+              physics: const BouncingScrollPhysics(),
               shrinkWrap: true,
               slivers: [
                 SliverList(
                     delegate: SliverChildBuilderDelegate(
                         (context, index) => Container(
-                              padding: EdgeInsets.all(16),
-                              child: Text("Hello 2"),
+                              padding: const EdgeInsets.all(16),
+                              child: const Text("Hello 2"),
                             ),
                         childCount: 3))
               ],
             ),
             CustomScrollView(
-              physics: BouncingScrollPhysics(),
+              physics: const BouncingScrollPhysics(),
               shrinkWrap: true,
               slivers: [
                 SliverList(
                     delegate: SliverChildBuilderDelegate(
                         (context, index) => Container(
-                              padding: EdgeInsets.all(16),
-                              child: Text("Hello 3"),
+                              padding: const EdgeInsets.all(16),
+                              child: const Text("Hello 3"),
                             ),
                         childCount: 3))
               ],
@@ -261,7 +261,7 @@ class FeedbackTabBar extends SliverPersistentHeaderDelegate {
             ),
           ),
         ],
-        controller: this.tabController,
+        controller: tabController,
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
         unselectedLabelColor: Colors.grey,
         labelColor: Colors.black,

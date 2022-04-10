@@ -2,7 +2,7 @@ import 'package:fitqa/src/theme/dimen.dart';
 import 'package:flutter/material.dart';
 
 class TrainerSnsItem extends StatelessWidget {
-  const TrainerSnsItem(this.snsIcon, this.snsUrl);
+  const TrainerSnsItem(this.snsIcon, this.snsUrl, {Key? key}) : super(key: key);
 
   final Icon snsIcon;
   final String snsUrl;
@@ -10,7 +10,7 @@ class TrainerSnsItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(left: 16),
+      padding: const EdgeInsets.only(left: 16),
       child: Row(
         children: [
           SizedBox(
@@ -18,8 +18,8 @@ class TrainerSnsItem extends StatelessWidget {
             width: FDimen.trainerDetailSnsSize,
             child: snsIcon,
           ),
-          SizedBox(width: 16),
-          Text("${snsUrl}", style: TextStyle(fontSize: 14))
+          const SizedBox(width: 16),
+          Text(snsUrl, style: const TextStyle(fontSize: 14))
         ],
       ),
     );

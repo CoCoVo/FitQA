@@ -1,5 +1,5 @@
 import 'package:fitqa/src/presentation/widgets/common/small_info_box.dart';
-import 'package:fitqa/src/presentation/widgets/trainer/area_small_widget.dart';
+import 'package:fitqa/src/presentation/widgets/common/area_small_widget.dart';
 import 'package:fitqa/src/theme/color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';

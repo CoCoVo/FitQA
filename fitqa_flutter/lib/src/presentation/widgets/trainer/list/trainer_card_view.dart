@@ -1,17 +1,16 @@
-import 'package:expandable/expandable.dart';
 import 'package:fitqa/src/domain/entities/trainer/trainer/trainer.dart';
 import 'package:fitqa/src/presentation/screens/screen_trainer_detail.dart';
-import 'package:fitqa/src/presentation/widgets/trainer/area_small_widget.dart';
-import 'package:fitqa/src/presentation/widgets/trainer/trainer_card_image.dart';
+import 'package:fitqa/src/presentation/widgets/common/area_small_widget.dart';
+import 'package:fitqa/src/presentation/widgets/trainer/list/trainer_card_image.dart';
 import 'package:fitqa/src/theme/color.dart';
 import 'package:fitqa/src/theme/dimen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class TrainerCardView extends ConsumerWidget {
-  final Trainer data;
-
   const TrainerCardView({Key? key, required this.data}) : super(key: key);
+
+  final Trainer data;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -26,8 +25,9 @@ class TrainerCardView extends ConsumerWidget {
             onTap: () => Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) =>
-                        ScreenTrainerDetail(trainer: this.data,))),
+                    builder: (context) => ScreenTrainerDetail(
+                          trainer: data,
+                        ))),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -92,17 +92,19 @@ class TrainerCardView extends ConsumerWidget {
   Widget buildAction() {
     return ElevatedButton(
       onPressed: () => {},
-      child: Text("상담 신청"),
+      child: const Text("상담 신청"),
       style: ElevatedButton.styleFrom(
           primary: FColors.blue,
-          textStyle: TextStyle(
+          textStyle: const TextStyle(
               fontSize: 14, color: FColors.white, fontWeight: FontWeight.bold)),
     );
   }
 
   List<Widget> buildInterestAreaWidgets() {
     List<Widget> interestAreas = <Widget>[];
-    if (data.interestAreas.length == 0) return interestAreas;
+
+    if (data.interestAreas.isEmpty) return interestAreas;
+
     for (var area in data.interestAreas) {
       interestAreas.add(AreaSmallWidget(area.interestArea,
           textColor: FColors.black,
