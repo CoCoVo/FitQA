@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'get_feedbacks_response.dart';
+part of 'feedback_detail_response.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,20 +14,21 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-GetFeedbacksResponse _$GetFeedbacksResponseFromJson(Map<String, dynamic> json) {
-  return _GetFeedbacksResponse.fromJson(json);
+FeedbackDetailResponse _$FeedbackDetailResponseFromJson(
+    Map<String, dynamic> json) {
+  return _FeedbackDetailResponse.fromJson(json);
 }
 
 /// @nodoc
-class _$GetFeedbacksResponseTearOff {
-  const _$GetFeedbacksResponseTearOff();
+class _$FeedbackDetailResponseTearOff {
+  const _$FeedbackDetailResponseTearOff();
 
-  _GetFeedbacksResponse call(
+  _FeedbackDetailResponse call(
       {required String result,
-      List<Feedback>? data,
+      Feedback? data,
       String? message,
       String? errorCode}) {
-    return _GetFeedbacksResponse(
+    return _FeedbackDetailResponse(
       result: result,
       data: data,
       message: message,
@@ -35,47 +36,46 @@ class _$GetFeedbacksResponseTearOff {
     );
   }
 
-  GetFeedbacksResponse fromJson(Map<String, Object?> json) {
-    return GetFeedbacksResponse.fromJson(json);
+  FeedbackDetailResponse fromJson(Map<String, Object?> json) {
+    return FeedbackDetailResponse.fromJson(json);
   }
 }
 
 /// @nodoc
-const $GetFeedbacksResponse = _$GetFeedbacksResponseTearOff();
+const $FeedbackDetailResponse = _$FeedbackDetailResponseTearOff();
 
 /// @nodoc
-mixin _$GetFeedbacksResponse {
+mixin _$FeedbackDetailResponse {
   String get result => throw _privateConstructorUsedError;
-  List<Feedback>? get data => throw _privateConstructorUsedError;
+  Feedback? get data => throw _privateConstructorUsedError;
   String? get message => throw _privateConstructorUsedError;
   String? get errorCode => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $GetFeedbacksResponseCopyWith<GetFeedbacksResponse> get copyWith =>
+  $FeedbackDetailResponseCopyWith<FeedbackDetailResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $GetFeedbacksResponseCopyWith<$Res> {
-  factory $GetFeedbacksResponseCopyWith(GetFeedbacksResponse value,
-          $Res Function(GetFeedbacksResponse) then) =
-      _$GetFeedbacksResponseCopyWithImpl<$Res>;
+abstract class $FeedbackDetailResponseCopyWith<$Res> {
+  factory $FeedbackDetailResponseCopyWith(FeedbackDetailResponse value,
+          $Res Function(FeedbackDetailResponse) then) =
+      _$FeedbackDetailResponseCopyWithImpl<$Res>;
   $Res call(
-      {String result,
-      List<Feedback>? data,
-      String? message,
-      String? errorCode});
+      {String result, Feedback? data, String? message, String? errorCode});
+
+  $FeedbackCopyWith<$Res>? get data;
 }
 
 /// @nodoc
-class _$GetFeedbacksResponseCopyWithImpl<$Res>
-    implements $GetFeedbacksResponseCopyWith<$Res> {
-  _$GetFeedbacksResponseCopyWithImpl(this._value, this._then);
+class _$FeedbackDetailResponseCopyWithImpl<$Res>
+    implements $FeedbackDetailResponseCopyWith<$Res> {
+  _$FeedbackDetailResponseCopyWithImpl(this._value, this._then);
 
-  final GetFeedbacksResponse _value;
+  final FeedbackDetailResponse _value;
   // ignore: unused_field
-  final $Res Function(GetFeedbacksResponse) _then;
+  final $Res Function(FeedbackDetailResponse) _then;
 
   @override
   $Res call({
@@ -92,7 +92,7 @@ class _$GetFeedbacksResponseCopyWithImpl<$Res>
       data: data == freezed
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as List<Feedback>?,
+              as Feedback?,
       message: message == freezed
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -103,32 +103,43 @@ class _$GetFeedbacksResponseCopyWithImpl<$Res>
               as String?,
     ));
   }
+
+  @override
+  $FeedbackCopyWith<$Res>? get data {
+    if (_value.data == null) {
+      return null;
+    }
+
+    return $FeedbackCopyWith<$Res>(_value.data!, (value) {
+      return _then(_value.copyWith(data: value));
+    });
+  }
 }
 
 /// @nodoc
-abstract class _$GetFeedbacksResponseCopyWith<$Res>
-    implements $GetFeedbacksResponseCopyWith<$Res> {
-  factory _$GetFeedbacksResponseCopyWith(_GetFeedbacksResponse value,
-          $Res Function(_GetFeedbacksResponse) then) =
-      __$GetFeedbacksResponseCopyWithImpl<$Res>;
+abstract class _$FeedbackDetailResponseCopyWith<$Res>
+    implements $FeedbackDetailResponseCopyWith<$Res> {
+  factory _$FeedbackDetailResponseCopyWith(_FeedbackDetailResponse value,
+          $Res Function(_FeedbackDetailResponse) then) =
+      __$FeedbackDetailResponseCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String result,
-      List<Feedback>? data,
-      String? message,
-      String? errorCode});
+      {String result, Feedback? data, String? message, String? errorCode});
+
+  @override
+  $FeedbackCopyWith<$Res>? get data;
 }
 
 /// @nodoc
-class __$GetFeedbacksResponseCopyWithImpl<$Res>
-    extends _$GetFeedbacksResponseCopyWithImpl<$Res>
-    implements _$GetFeedbacksResponseCopyWith<$Res> {
-  __$GetFeedbacksResponseCopyWithImpl(
-      _GetFeedbacksResponse _value, $Res Function(_GetFeedbacksResponse) _then)
-      : super(_value, (v) => _then(v as _GetFeedbacksResponse));
+class __$FeedbackDetailResponseCopyWithImpl<$Res>
+    extends _$FeedbackDetailResponseCopyWithImpl<$Res>
+    implements _$FeedbackDetailResponseCopyWith<$Res> {
+  __$FeedbackDetailResponseCopyWithImpl(_FeedbackDetailResponse _value,
+      $Res Function(_FeedbackDetailResponse) _then)
+      : super(_value, (v) => _then(v as _FeedbackDetailResponse));
 
   @override
-  _GetFeedbacksResponse get _value => super._value as _GetFeedbacksResponse;
+  _FeedbackDetailResponse get _value => super._value as _FeedbackDetailResponse;
 
   @override
   $Res call({
@@ -137,7 +148,7 @@ class __$GetFeedbacksResponseCopyWithImpl<$Res>
     Object? message = freezed,
     Object? errorCode = freezed,
   }) {
-    return _then(_GetFeedbacksResponse(
+    return _then(_FeedbackDetailResponse(
       result: result == freezed
           ? _value.result
           : result // ignore: cast_nullable_to_non_nullable
@@ -145,7 +156,7 @@ class __$GetFeedbacksResponseCopyWithImpl<$Res>
       data: data == freezed
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as List<Feedback>?,
+              as Feedback?,
       message: message == freezed
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -160,17 +171,17 @@ class __$GetFeedbacksResponseCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_GetFeedbacksResponse implements _GetFeedbacksResponse {
-  const _$_GetFeedbacksResponse(
+class _$_FeedbackDetailResponse implements _FeedbackDetailResponse {
+  const _$_FeedbackDetailResponse(
       {required this.result, this.data, this.message, this.errorCode});
 
-  factory _$_GetFeedbacksResponse.fromJson(Map<String, dynamic> json) =>
-      _$$_GetFeedbacksResponseFromJson(json);
+  factory _$_FeedbackDetailResponse.fromJson(Map<String, dynamic> json) =>
+      _$$_FeedbackDetailResponseFromJson(json);
 
   @override
   final String result;
   @override
-  final List<Feedback>? data;
+  final Feedback? data;
   @override
   final String? message;
   @override
@@ -178,14 +189,14 @@ class _$_GetFeedbacksResponse implements _GetFeedbacksResponse {
 
   @override
   String toString() {
-    return 'GetFeedbacksResponse(result: $result, data: $data, message: $message, errorCode: $errorCode)';
+    return 'FeedbackDetailResponse(result: $result, data: $data, message: $message, errorCode: $errorCode)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _GetFeedbacksResponse &&
+            other is _FeedbackDetailResponse &&
             const DeepCollectionEquality().equals(other.result, result) &&
             const DeepCollectionEquality().equals(other.data, data) &&
             const DeepCollectionEquality().equals(other.message, message) &&
@@ -202,36 +213,36 @@ class _$_GetFeedbacksResponse implements _GetFeedbacksResponse {
 
   @JsonKey(ignore: true)
   @override
-  _$GetFeedbacksResponseCopyWith<_GetFeedbacksResponse> get copyWith =>
-      __$GetFeedbacksResponseCopyWithImpl<_GetFeedbacksResponse>(
+  _$FeedbackDetailResponseCopyWith<_FeedbackDetailResponse> get copyWith =>
+      __$FeedbackDetailResponseCopyWithImpl<_FeedbackDetailResponse>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_GetFeedbacksResponseToJson(this);
+    return _$$_FeedbackDetailResponseToJson(this);
   }
 }
 
-abstract class _GetFeedbacksResponse implements GetFeedbacksResponse {
-  const factory _GetFeedbacksResponse(
+abstract class _FeedbackDetailResponse implements FeedbackDetailResponse {
+  const factory _FeedbackDetailResponse(
       {required String result,
-      List<Feedback>? data,
+      Feedback? data,
       String? message,
-      String? errorCode}) = _$_GetFeedbacksResponse;
+      String? errorCode}) = _$_FeedbackDetailResponse;
 
-  factory _GetFeedbacksResponse.fromJson(Map<String, dynamic> json) =
-      _$_GetFeedbacksResponse.fromJson;
+  factory _FeedbackDetailResponse.fromJson(Map<String, dynamic> json) =
+      _$_FeedbackDetailResponse.fromJson;
 
   @override
   String get result;
   @override
-  List<Feedback>? get data;
+  Feedback? get data;
   @override
   String? get message;
   @override
   String? get errorCode;
   @override
   @JsonKey(ignore: true)
-  _$GetFeedbacksResponseCopyWith<_GetFeedbacksResponse> get copyWith =>
+  _$FeedbackDetailResponseCopyWith<_FeedbackDetailResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }

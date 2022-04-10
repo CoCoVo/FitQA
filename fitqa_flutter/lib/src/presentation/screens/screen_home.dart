@@ -1,8 +1,8 @@
-import 'package:fitqa/src/presentation/controller/feedback_controller.dart';
 import 'package:fitqa/src/presentation/screens/screen_feedback_detail.dart';
 import 'package:fitqa/src/presentation/widgets/common/fitqa_appbar.dart';
 import 'package:fitqa/src/presentation/widgets/common/multi_select_chip.dart';
 import 'package:fitqa/src/presentation/widgets/feedback/register/feedback_listview_item.dart';
+import 'package:fitqa/src/provider/feedback_provider.dart';
 import 'package:fitqa/src/theme/color.dart';
 import 'package:fitqa/src/theme/dimen.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +13,7 @@ class ScreenHome extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final feedbacks = ref.watch(feedbackControllerProvider);
+    final feedbacks = ref.watch(feedbackListProvider);
     return Container(
         color: FColors.white,
         child: Column(mainAxisSize: MainAxisSize.min, children: [
