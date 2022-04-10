@@ -121,7 +121,8 @@ class TrainerCardView extends ConsumerWidget {
     List<Widget> interestAreas = <Widget>[];
     if (data.interestAreas.length == 0) return interestAreas;
     for (var area in data.interestAreas) {
-      interestAreas.add(AreaSmallWidget(area.interestArea));
+      interestAreas.add(AreaSmallWidget(area.interestArea, textColor: FColors
+            .black, backgroundColor: FColors.white, borderColor: FColors.black));
       interestAreas.add(const SizedBox(width: 5));
     }
     return interestAreas;
