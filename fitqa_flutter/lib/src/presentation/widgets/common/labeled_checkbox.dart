@@ -2,9 +2,13 @@ import 'package:flutter/material.dart';
 
 class LabeledCheckbox extends StatefulWidget {
   const LabeledCheckbox(
-      {Key? key, required this.label, required this.onChanged})
+      {Key? key,
+      required this.value,
+      required this.label,
+      required this.onChanged})
       : super(key: key);
 
+  final bool value;
   final String label;
   final Function onChanged;
 
@@ -13,7 +17,12 @@ class LabeledCheckbox extends StatefulWidget {
 }
 
 class _LabeledCheckboxState extends State<LabeledCheckbox> {
-  bool _val = true;
+  late bool _val;
+
+  @override
+  void initState() {
+    _val = widget.value;
+  }
 
   void _toggleCheck() {
     setState(() {

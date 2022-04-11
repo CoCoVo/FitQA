@@ -2,46 +2,18 @@ import 'package:fitqa/src/presentation/screens/screen_feedback_detail.dart';
 import 'package:fitqa/src/presentation/widgets/common/fitqa_appbar.dart';
 import 'package:fitqa/src/presentation/widgets/common/multi_select_chip.dart';
 import 'package:fitqa/src/presentation/widgets/feedback/register/feedback_listview_item.dart';
+import 'package:fitqa/src/provider/feedback_provider.dart';
 import 'package:fitqa/src/theme/color.dart';
 import 'package:fitqa/src/theme/dimen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class ScreenHome extends StatelessWidget {
+class ScreenHome extends ConsumerWidget {
   ScreenHome({Key? key}) : super(key: key);
 
-  final feedbackList = [
-    FeedbackListViewItem(
-      locked: false,
-      complete: true,
-    ),
-    FeedbackListViewItem(
-      locked: true,
-      complete: false,
-    ),
-    FeedbackListViewItem(
-      locked: false,
-      complete: false,
-    ),
-    FeedbackListViewItem(
-      locked: true,
-      complete: true,
-    ),
-    FeedbackListViewItem(
-      locked: true,
-      complete: true,
-    ),
-    FeedbackListViewItem(
-      locked: false,
-      complete: false,
-    ),
-    FeedbackListViewItem(
-      locked: false,
-      complete: true,
-    ),
-  ];
-
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final feedbacks = ref.watch(feedbackListProvider);
     return Container(
         color: FColors.white,
         child: Column(mainAxisSize: MainAxisSize.min, children: [
@@ -54,24 +26,34 @@ class ScreenHome extends StatelessWidget {
                     scrollDirection: Axis.horizontal,
                     child: MultiSelectChip(
                         const ['전체', '등', '어깨', '팔', '하체', '가슴'],
-                        onSelectionChanged: (selectedList) {
-                      print(selectedList);
-                    })),
+                        onSelectionChanged: (selectedList) {})),
               )),
-          Expanded(
-            child: ListView.separated(
-              itemCount: feedbackList.length,
-              itemBuilder: (context, index) => InkWell(
-                child: feedbackList[index],
-                onTap: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => ScreenFeedbackDetail())),
-              ),
-              separatorBuilder: (BuildContext context, int index) =>
-                  const Divider(),
-            ),
-          ),
+          feedbacks.when(
+              data: (feedbacks) {
+                return Expanded(
+                  child: ListView.separated(
+                    itemCount: feedbacks.length,
+                    itemBuilder: (context, index) => FeedbackListViewItem(
+                      feedback: feedbacks[index],
+                      onPressed: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ScreenFeedbackDetail(
+                                  feedbackToken: feedbacks[index].feedbackToken,
+                                )),
+                      ),
+                    ),
+                    separatorBuilder: (BuildContext context, int index) =>
+                        const Divider(),
+                  ),
+                );
+              },
+              error: (error, e) => Center(
+                    child: Text(error.toString()),
+                  ),
+              loading: () => const Center(
+                    child: CircularProgressIndicator(),
+                  ))
         ]));
   }
 }
