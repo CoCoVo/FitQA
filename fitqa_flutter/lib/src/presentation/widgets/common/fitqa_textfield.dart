@@ -2,16 +2,26 @@ import 'package:fitqa/src/theme/color.dart';
 import 'package:flutter/material.dart';
 
 class FTextField extends StatelessWidget {
-  const FTextField({Key? key, this.labelText, this.hintText, this.maxLines})
+  const FTextField(
+      {Key? key,
+      this.labelText,
+      this.hintText,
+      this.maxLines,
+      this.onChanged,
+      this.controller})
       : super(key: key);
 
   final String? labelText;
   final String? hintText;
   final int? maxLines;
+  final Function(String)? onChanged;
+  final TextEditingController? controller;
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      controller: controller,
+      onChanged: onChanged,
       maxLines: maxLines,
       decoration: InputDecoration(
         floatingLabelBehavior: FloatingLabelBehavior.always,

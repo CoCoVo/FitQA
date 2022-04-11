@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 class FeedbackSelectCategory extends StatelessWidget {
   FeedbackSelectCategory({Key? key}) : super(key: key);
 
-  static const String mockTrainerImage = 'https://s3-alpha-sig.figma'
-      '.com/img/2fcf/66ec/a2b468ff9efd9deb5575b35988aee23a?Expires=1649635200&Signature=VJfVUGc-ZVnUJUTTs~vfTPaqtAo1pfde8-D8ccx2JpUNAzhFvQMU9CsJiB~2J2IXVxl-AwNP2m2GdeIZ7mbLH88Dwly2yQFlWZ874w80mVpXyco6O~ZXeQqw9QBwQ0x1mN2e3yt-XhH76zMBHXY95yTyv03FLSuAkPyIvTvZI~L6PXKMudxQf9sCoUxePjfxUi6f2wwVddtjekMiDKb8dnQhXtvb2gra64JIz49vb5tOYZLzVovnSQtqZdZyaJERT~Sr6LeHyKOJ25sAMBxaSri6q1uAfOkvjgVQIwfxSoBN7nVVMGrfdZkFzcqkJi1JIHtLae8EliMz7aL3BhZ3Wg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA';
+  static const String mockTrainerImage =
+      'https://s3-alpha-sig.figma.com/img/ac38/00a5/1cb4dbc07970132c01ccc8b55649cc22?Expires=1650240000&Signature=WSANSa25hl~H~zYLc2GvPIcrlyjlRXEQoI7tNF7ontrb9a7iD93fTFP8JMeVzhH3z7t0NCC6OLaWmRufte~Ea4FsAlP~mRbECbRS~mG1zP-npoQJbtTaC5ZDsgShn-C60MPVssnqWU-v8vgTodXboM~LVzxY1tD7kcn0SpVlrGnW3NNRtfCWUNpL4BOBxge4ykjxY-vS8rg5yGhDY-7OJe6O8IqvgGaIGhrwdwk4yPmGN2rVvzq9vsgN5W1E6caSedlSqrX7QNIWjt7N6C4A8Kupg0J8ziB07kpJbWQVaq~P2-12TGt88bvdt7Pf2U7Qb-EQkIKr4yizf~oXsEjUnQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA';
 
   @override
   Widget build(BuildContext context) {
