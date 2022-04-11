@@ -1,4 +1,4 @@
-import 'package:fitqa/src/provider/feedback_provider.dart';
+import 'package:fitqa/src/application/feedback_provider.dart';
 import 'package:fitqa/src/theme/color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

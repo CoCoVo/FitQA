@@ -2,18 +2,11 @@ import 'package:dio/dio.dart';
 import 'package:fitqa/src/common/exceptions.dart';
 import 'package:fitqa/src/data/command/register_feedback/register_feedback.dart';
 import 'package:fitqa/src/data/command/register_feedback_comment/register_feedback_comment.dart';
-import 'package:fitqa/src/data/dtos/feedback/feedback_detail_response/feedback_detail_response.dart';
-import 'package:fitqa/src/data/dtos/feedback/feedback_list_response/feedback_list_response.dart';
 import 'package:fitqa/src/domain/entities/feedback/feedback/feedback.dart';
-import 'package:flutter/foundation.dart';
+import 'package:fitqa/src/repository/dto/feedback/feedback_detail_response/feedback_detail_response.dart';
+import 'package:fitqa/src/repository/dto/feedback/feedback_list_response/feedback_list_response.dart';
+import 'package:fitqa/src/repository/repository.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-const serverIP = (kIsWeb) ? '127.0.0.1' : '10.0.2.2';
-final clientProvider = Provider(
-    (ref) => Dio(BaseOptions(baseUrl: 'http://$serverIP:8080/api/v1')));
-
-final feedbackRepositoryProvider =
-    Provider<FeedbackRepositoryAPI>((ref) => FeedbackRepositoryAPI(ref.read));
 
 abstract class FeedbackRepository {
   Future<List<Feedback>> getFeedbacks();
