@@ -114,6 +114,7 @@ class _ScreenFeedbackRequestState extends ConsumerState<ScreenFeedbackRequest> {
         title: title,
         content: content,
         locked: locked)));
+    ref.refresh(feedbackListProvider);
   }
 
   @override
