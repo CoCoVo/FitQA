@@ -1,3 +1,4 @@
+import 'package:fitqa/src/data/command/register_feedback/register_feedback.dart';
 import 'package:fitqa/src/data/command/register_feedback_comment/register_feedback_comment.dart';
 import 'package:fitqa/src/domain/entities/feedback/feedback/feedback.dart';
 import 'package:fitqa/src/repository/feedback_repository.dart';
@@ -22,5 +23,11 @@ final registerFeedbackCommentProvider =
   final response = ref.read(feedbackRepositoryProvider).writeComment(
       RegisterFeedbackComment(
           feedbackToken: feedbackToken, writerId: "1", comment: comment));
+  return response;
+});
+
+final registerFeedbackProvider =
+    FutureProvider.family<Feedback, RegisterFeedback>((ref, req) async {
+  final response = ref.read(feedbackRepositoryProvider).registerFeedback(req);
   return response;
 });
