@@ -1,3 +1,4 @@
+import 'package:fitqa/src/application/feedback_provider.dart';
 import 'package:fitqa/src/presentation/widgets/common/ThinDivider.dart';
 import 'package:fitqa/src/presentation/widgets/common/carousel_with_indicator.dart';
 import 'package:fitqa/src/presentation/widgets/common/fitqa_appbar_sub.dart';
@@ -7,7 +8,6 @@ import 'package:fitqa/src/presentation/widgets/feedback/detail/section_feedback_
 import 'package:fitqa/src/presentation/widgets/feedback/detail/section_feedback_content.dart';
 import 'package:fitqa/src/presentation/widgets/feedback/detail/section_feedback_like.dart';
 import 'package:fitqa/src/presentation/widgets/feedback/detail/section_user_profile.dart';
-import 'package:fitqa/src/provider/feedback_provider.dart';
 import 'package:fitqa/src/theme/color.dart';
 import 'package:fitqa/src/theme/dimen.dart';
 import 'package:flutter/material.dart';

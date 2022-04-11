@@ -1,9 +1,9 @@
+import 'package:fitqa/src/application/feedback_provider.dart';
 import 'package:fitqa/src/data/command/register_feedback/register_feedback.dart';
 import 'package:fitqa/src/presentation/widgets/common/bullet_point_text.dart';
 import 'package:fitqa/src/presentation/widgets/common/fitqa_textfield.dart';
 import 'package:fitqa/src/presentation/widgets/common/labeled_checkbox.dart';
 import 'package:fitqa/src/presentation/widgets/feedback/register/feedback_collapsed_appbar.dart';
-import 'package:fitqa/src/provider/feedback_provider.dart';
 import 'package:fitqa/src/theme/color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
