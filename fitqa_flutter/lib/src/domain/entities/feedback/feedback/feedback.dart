@@ -1,3 +1,4 @@
+import 'package:fitqa/src/domain/entities/feedback/feedback_comment/feedback_comment.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'feedback.freezed.dart';
@@ -13,6 +14,7 @@ abstract class Feedback with _$Feedback {
       required String title,
       required String content,
       required bool locked,
+      required List<FeedbackComment> feedbackComments,
       required String status}) = _Feedback;
 
   factory Feedback.fromJson(Map<String, dynamic> json) =>

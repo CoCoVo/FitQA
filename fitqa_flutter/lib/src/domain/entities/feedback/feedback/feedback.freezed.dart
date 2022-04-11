@@ -30,6 +30,7 @@ class _$FeedbackTearOff {
       required String title,
       required String content,
       required bool locked,
+      required List<FeedbackComment> feedbackComments,
       required String status}) {
     return _Feedback(
       feedbackToken: feedbackToken,
@@ -39,6 +40,7 @@ class _$FeedbackTearOff {
       title: title,
       content: content,
       locked: locked,
+      feedbackComments: feedbackComments,
       status: status,
     );
   }
@@ -60,6 +62,8 @@ mixin _$Feedback {
   String get title => throw _privateConstructorUsedError;
   String get content => throw _privateConstructorUsedError;
   bool get locked => throw _privateConstructorUsedError;
+  List<FeedbackComment> get feedbackComments =>
+      throw _privateConstructorUsedError;
   String get status => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -80,6 +84,7 @@ abstract class $FeedbackCopyWith<$Res> {
       String title,
       String content,
       bool locked,
+      List<FeedbackComment> feedbackComments,
       String status});
 }
 
@@ -100,6 +105,7 @@ class _$FeedbackCopyWithImpl<$Res> implements $FeedbackCopyWith<$Res> {
     Object? title = freezed,
     Object? content = freezed,
     Object? locked = freezed,
+    Object? feedbackComments = freezed,
     Object? status = freezed,
   }) {
     return _then(_value.copyWith(
@@ -131,6 +137,10 @@ class _$FeedbackCopyWithImpl<$Res> implements $FeedbackCopyWith<$Res> {
           ? _value.locked
           : locked // ignore: cast_nullable_to_non_nullable
               as bool,
+      feedbackComments: feedbackComments == freezed
+          ? _value.feedbackComments
+          : feedbackComments // ignore: cast_nullable_to_non_nullable
+              as List<FeedbackComment>,
       status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -152,6 +162,7 @@ abstract class _$FeedbackCopyWith<$Res> implements $FeedbackCopyWith<$Res> {
       String title,
       String content,
       bool locked,
+      List<FeedbackComment> feedbackComments,
       String status});
 }
 
@@ -173,6 +184,7 @@ class __$FeedbackCopyWithImpl<$Res> extends _$FeedbackCopyWithImpl<$Res>
     Object? title = freezed,
     Object? content = freezed,
     Object? locked = freezed,
+    Object? feedbackComments = freezed,
     Object? status = freezed,
   }) {
     return _then(_Feedback(
@@ -204,6 +216,10 @@ class __$FeedbackCopyWithImpl<$Res> extends _$FeedbackCopyWithImpl<$Res>
           ? _value.locked
           : locked // ignore: cast_nullable_to_non_nullable
               as bool,
+      feedbackComments: feedbackComments == freezed
+          ? _value.feedbackComments
+          : feedbackComments // ignore: cast_nullable_to_non_nullable
+              as List<FeedbackComment>,
       status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -223,6 +239,7 @@ class _$_Feedback implements _Feedback {
       required this.title,
       required this.content,
       required this.locked,
+      required this.feedbackComments,
       required this.status});
 
   factory _$_Feedback.fromJson(Map<String, dynamic> json) =>
@@ -243,11 +260,13 @@ class _$_Feedback implements _Feedback {
   @override
   final bool locked;
   @override
+  final List<FeedbackComment> feedbackComments;
+  @override
   final String status;
 
   @override
   String toString() {
-    return 'Feedback(feedbackToken: $feedbackToken, ownerId: $ownerId, trainerId: $trainerId, price: $price, title: $title, content: $content, locked: $locked, status: $status)';
+    return 'Feedback(feedbackToken: $feedbackToken, ownerId: $ownerId, trainerId: $trainerId, price: $price, title: $title, content: $content, locked: $locked, feedbackComments: $feedbackComments, status: $status)';
   }
 
   @override
@@ -263,6 +282,8 @@ class _$_Feedback implements _Feedback {
             const DeepCollectionEquality().equals(other.title, title) &&
             const DeepCollectionEquality().equals(other.content, content) &&
             const DeepCollectionEquality().equals(other.locked, locked) &&
+            const DeepCollectionEquality()
+                .equals(other.feedbackComments, feedbackComments) &&
             const DeepCollectionEquality().equals(other.status, status));
   }
 
@@ -276,6 +297,7 @@ class _$_Feedback implements _Feedback {
       const DeepCollectionEquality().hash(title),
       const DeepCollectionEquality().hash(content),
       const DeepCollectionEquality().hash(locked),
+      const DeepCollectionEquality().hash(feedbackComments),
       const DeepCollectionEquality().hash(status));
 
   @JsonKey(ignore: true)
@@ -298,6 +320,7 @@ abstract class _Feedback implements Feedback {
       required String title,
       required String content,
       required bool locked,
+      required List<FeedbackComment> feedbackComments,
       required String status}) = _$_Feedback;
 
   factory _Feedback.fromJson(Map<String, dynamic> json) = _$_Feedback.fromJson;
@@ -316,6 +339,8 @@ abstract class _Feedback implements Feedback {
   String get content;
   @override
   bool get locked;
+  @override
+  List<FeedbackComment> get feedbackComments;
   @override
   String get status;
   @override
