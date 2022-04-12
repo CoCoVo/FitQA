@@ -3,9 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class SectionFeedbackComment extends ConsumerWidget {
-  SectionFeedbackComment({Key? key, this.feedbackToken}) : super(key: key);
-
-  String? feedbackToken;
+  SectionFeedbackComment({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -15,7 +13,7 @@ class SectionFeedbackComment extends ConsumerWidget {
         children: [
           FeedbackComment(),
           FeedbackComment(),
-          FeedbackWrite(feedbackToken: feedbackToken),
+          FeedbackWrite(),
         ],
       ),
     );
@@ -73,9 +71,7 @@ class FeedbackComment extends StatelessWidget {
 }
 
 class FeedbackWrite extends ConsumerWidget {
-  FeedbackWrite({Key? key, this.feedbackToken}) : super(key: key);
-
-  String? feedbackToken;
+  FeedbackWrite({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -102,9 +98,7 @@ class FeedbackWrite extends ConsumerWidget {
           ),
           TextButton(
               onPressed: () {
-                if (feedbackToken != null) {
-                  // ref.read(registerFeedbackCommentProvider(feedbackToken!));
-                }
+                // ref.read(registerFeedbackCommentProvider(feedbackToken!));
               },
               child: Text("게시"))
         ],
