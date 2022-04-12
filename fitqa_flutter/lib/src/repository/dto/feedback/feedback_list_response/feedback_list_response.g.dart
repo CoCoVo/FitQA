@@ -11,7 +11,7 @@ _$_FeedbackListResponse _$$_FeedbackListResponseFromJson(
     _$_FeedbackListResponse(
       result: json['result'] as String,
       data: (json['data'] as List<dynamic>?)
-          ?.map((e) => Feedback.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => FitqaFeedback.fromJson(e as Map<String, dynamic>))
           .toList(),
       message: json['message'] as String?,
       errorCode: json['errorCode'] as String?,

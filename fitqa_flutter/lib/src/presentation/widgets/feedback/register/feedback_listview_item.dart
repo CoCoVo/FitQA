@@ -1,5 +1,4 @@
-import 'package:fitqa/src/domain/entities/feedback/feedback/feedback.dart'
-    as fq;
+import 'package:fitqa/src/domain/entities/feedback/fitqa_feedback/fitqa_feedback.dart';
 import 'package:fitqa/src/presentation/widgets/common/area_small_widget.dart';
 import 'package:fitqa/src/presentation/widgets/common/small_info_box.dart';
 import 'package:fitqa/src/theme/color.dart';
@@ -14,7 +13,7 @@ class FeedbackListViewItem extends StatelessWidget {
     this.onPressed,
   }) : super(key: key);
 
-  fq.Feedback feedback;
+  FitqaFeedback feedback;
   Function()? onPressed;
   bool complete;
 

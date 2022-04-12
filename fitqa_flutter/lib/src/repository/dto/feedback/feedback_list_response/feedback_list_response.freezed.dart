@@ -24,7 +24,7 @@ class _$FeedbackListResponseTearOff {
 
   _FeedbackListResponse call(
       {required String result,
-      List<Feedback>? data,
+      List<FitqaFeedback>? data,
       String? message,
       String? errorCode}) {
     return _FeedbackListResponse(
@@ -46,7 +46,7 @@ const $FeedbackListResponse = _$FeedbackListResponseTearOff();
 /// @nodoc
 mixin _$FeedbackListResponse {
   String get result => throw _privateConstructorUsedError;
-  List<Feedback>? get data => throw _privateConstructorUsedError;
+  List<FitqaFeedback>? get data => throw _privateConstructorUsedError;
   String? get message => throw _privateConstructorUsedError;
   String? get errorCode => throw _privateConstructorUsedError;
 
@@ -63,7 +63,7 @@ abstract class $FeedbackListResponseCopyWith<$Res> {
       _$FeedbackListResponseCopyWithImpl<$Res>;
   $Res call(
       {String result,
-      List<Feedback>? data,
+      List<FitqaFeedback>? data,
       String? message,
       String? errorCode});
 }
@@ -92,7 +92,7 @@ class _$FeedbackListResponseCopyWithImpl<$Res>
       data: data == freezed
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as List<Feedback>?,
+              as List<FitqaFeedback>?,
       message: message == freezed
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -114,7 +114,7 @@ abstract class _$FeedbackListResponseCopyWith<$Res>
   @override
   $Res call(
       {String result,
-      List<Feedback>? data,
+      List<FitqaFeedback>? data,
       String? message,
       String? errorCode});
 }
@@ -145,7 +145,7 @@ class __$FeedbackListResponseCopyWithImpl<$Res>
       data: data == freezed
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as List<Feedback>?,
+              as List<FitqaFeedback>?,
       message: message == freezed
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -170,7 +170,7 @@ class _$_FeedbackListResponse implements _FeedbackListResponse {
   @override
   final String result;
   @override
-  final List<Feedback>? data;
+  final List<FitqaFeedback>? data;
   @override
   final String? message;
   @override
@@ -215,7 +215,7 @@ class _$_FeedbackListResponse implements _FeedbackListResponse {
 abstract class _FeedbackListResponse implements FeedbackListResponse {
   const factory _FeedbackListResponse(
       {required String result,
-      List<Feedback>? data,
+      List<FitqaFeedback>? data,
       String? message,
       String? errorCode}) = _$_FeedbackListResponse;
 
@@ -225,7 +225,7 @@ abstract class _FeedbackListResponse implements FeedbackListResponse {
   @override
   String get result;
   @override
-  List<Feedback>? get data;
+  List<FitqaFeedback>? get data;
   @override
   String? get message;
   @override

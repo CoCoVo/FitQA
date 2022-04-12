@@ -1,4 +1,4 @@
-import 'package:fitqa/src/domain/entities/feedback/feedback/feedback.dart';
+import 'package:fitqa/src/domain/entities/feedback/fitqa_feedback/fitqa_feedback.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'feedback_detail_response.freezed.dart';
@@ -8,7 +8,7 @@ part 'feedback_detail_response.g.dart';
 abstract class FeedbackDetailResponse with _$FeedbackDetailResponse {
   const factory FeedbackDetailResponse(
       {required String result,
-      Feedback? data,
+      FitqaFeedback? data,
       String? message,
       String? errorCode}) = _FeedbackDetailResponse;
 

@@ -12,7 +12,7 @@ _$_FeedbackDetailResponse _$$_FeedbackDetailResponseFromJson(
       result: json['result'] as String,
       data: json['data'] == null
           ? null
-          : Feedback.fromJson(json['data'] as Map<String, dynamic>),
+          : FitqaFeedback.fromJson(json['data'] as Map<String, dynamic>),
       message: json['message'] as String?,
       errorCode: json['errorCode'] as String?,
     );

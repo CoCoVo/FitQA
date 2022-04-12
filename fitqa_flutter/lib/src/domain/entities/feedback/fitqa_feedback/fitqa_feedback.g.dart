@@ -1,12 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'feedback.dart';
+part of 'fitqa_feedback.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Feedback _$$_FeedbackFromJson(Map<String, dynamic> json) => _$_Feedback(
+_$_FitqaFeedback _$$_FitqaFeedbackFromJson(Map<String, dynamic> json) =>
+    _$_FitqaFeedback(
       feedbackToken: json['feedbackToken'] as String,
       ownerId: json['ownerId'] as String,
       trainerId: json['trainerId'] as String,
@@ -20,7 +21,7 @@ _$_Feedback _$$_FeedbackFromJson(Map<String, dynamic> json) => _$_Feedback(
       status: json['status'] as String,
     );
 
-Map<String, dynamic> _$$_FeedbackToJson(_$_Feedback instance) =>
+Map<String, dynamic> _$$_FitqaFeedbackToJson(_$_FitqaFeedback instance) =>
     <String, dynamic>{
       'feedbackToken': instance.feedbackToken,
       'ownerId': instance.ownerId,

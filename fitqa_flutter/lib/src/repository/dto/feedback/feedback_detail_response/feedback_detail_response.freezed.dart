@@ -25,7 +25,7 @@ class _$FeedbackDetailResponseTearOff {
 
   _FeedbackDetailResponse call(
       {required String result,
-      Feedback? data,
+      FitqaFeedback? data,
       String? message,
       String? errorCode}) {
     return _FeedbackDetailResponse(
@@ -47,7 +47,7 @@ const $FeedbackDetailResponse = _$FeedbackDetailResponseTearOff();
 /// @nodoc
 mixin _$FeedbackDetailResponse {
   String get result => throw _privateConstructorUsedError;
-  Feedback? get data => throw _privateConstructorUsedError;
+  FitqaFeedback? get data => throw _privateConstructorUsedError;
   String? get message => throw _privateConstructorUsedError;
   String? get errorCode => throw _privateConstructorUsedError;
 
@@ -63,9 +63,9 @@ abstract class $FeedbackDetailResponseCopyWith<$Res> {
           $Res Function(FeedbackDetailResponse) then) =
       _$FeedbackDetailResponseCopyWithImpl<$Res>;
   $Res call(
-      {String result, Feedback? data, String? message, String? errorCode});
+      {String result, FitqaFeedback? data, String? message, String? errorCode});
 
-  $FeedbackCopyWith<$Res>? get data;
+  $FitqaFeedbackCopyWith<$Res>? get data;
 }
 
 /// @nodoc
@@ -92,7 +92,7 @@ class _$FeedbackDetailResponseCopyWithImpl<$Res>
       data: data == freezed
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as Feedback?,
+              as FitqaFeedback?,
       message: message == freezed
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -105,12 +105,12 @@ class _$FeedbackDetailResponseCopyWithImpl<$Res>
   }
 
   @override
-  $FeedbackCopyWith<$Res>? get data {
+  $FitqaFeedbackCopyWith<$Res>? get data {
     if (_value.data == null) {
       return null;
     }
 
-    return $FeedbackCopyWith<$Res>(_value.data!, (value) {
+    return $FitqaFeedbackCopyWith<$Res>(_value.data!, (value) {
       return _then(_value.copyWith(data: value));
     });
   }
@@ -124,10 +124,10 @@ abstract class _$FeedbackDetailResponseCopyWith<$Res>
       __$FeedbackDetailResponseCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String result, Feedback? data, String? message, String? errorCode});
+      {String result, FitqaFeedback? data, String? message, String? errorCode});
 
   @override
-  $FeedbackCopyWith<$Res>? get data;
+  $FitqaFeedbackCopyWith<$Res>? get data;
 }
 
 /// @nodoc
@@ -156,7 +156,7 @@ class __$FeedbackDetailResponseCopyWithImpl<$Res>
       data: data == freezed
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as Feedback?,
+              as FitqaFeedback?,
       message: message == freezed
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -181,7 +181,7 @@ class _$_FeedbackDetailResponse implements _FeedbackDetailResponse {
   @override
   final String result;
   @override
-  final Feedback? data;
+  final FitqaFeedback? data;
   @override
   final String? message;
   @override
@@ -226,7 +226,7 @@ class _$_FeedbackDetailResponse implements _FeedbackDetailResponse {
 abstract class _FeedbackDetailResponse implements FeedbackDetailResponse {
   const factory _FeedbackDetailResponse(
       {required String result,
-      Feedback? data,
+      FitqaFeedback? data,
       String? message,
       String? errorCode}) = _$_FeedbackDetailResponse;
 
@@ -236,7 +236,7 @@ abstract class _FeedbackDetailResponse implements FeedbackDetailResponse {
   @override
   String get result;
   @override
-  Feedback? get data;
+  FitqaFeedback? get data;
   @override
   String? get message;
   @override
