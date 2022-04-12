@@ -5,19 +5,25 @@ import 'package:fitqa/src/domain/services/feedback/feedback_service_impl.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 /// selected feedback token to show details.
-final selectedFeedbackDetailToken = StateProvider<String>((ref) => "");
+final selectedFeedbackToken = StateProvider<String>((ref) => "");
 
 final feedbackDetailProvider =
     StateNotifierProvider<FeedbackDetailNotifier, State<Feedback>>((ref) {
   final feedbackService = ref.watch(feedbackServiceProvider);
-  return FeedbackDetailNotifier(feedbackService);
+  final feedbackToken = ref.watch(selectedFeedbackToken);
+  return FeedbackDetailNotifier(feedbackService, feedbackToken);
 });
 
 class FeedbackDetailNotifier extends StateNotifier<State<Feedback>> {
-  FeedbackDetailNotifier(this.feedbackService) : super(const State.init());
-  FeedbackService feedbackService;
+  FeedbackDetailNotifier(this.feedbackService, this.feedbackToken)
+      : super(const State.init()) {
+    getFeedbackDetail();
+  }
 
-  void getFeedback(String feedbackToken) async {
+  FeedbackService feedbackService;
+  String feedbackToken;
+
+  void getFeedbackDetail() async {
     try {
       state = const State.loading();
       final feedback = await feedbackService.getFeedbackDetail(feedbackToken);
