@@ -2,17 +2,17 @@ import 'package:dio/dio.dart';
 import 'package:fitqa/src/common/exceptions.dart';
 import 'package:fitqa/src/data/command/register_feedback/register_feedback.dart';
 import 'package:fitqa/src/data/command/register_feedback_comment/register_feedback_comment.dart';
-import 'package:fitqa/src/domain/entities/feedback/feedback/feedback.dart';
+import 'package:fitqa/src/domain/entities/feedback/fitqa_feedback/fitqa_feedback.dart';
 import 'package:fitqa/src/repository/dto/feedback/feedback_detail_response/feedback_detail_response.dart';
 import 'package:fitqa/src/repository/dto/feedback/feedback_list_response/feedback_list_response.dart';
 import 'package:fitqa/src/repository/repository.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 abstract class FeedbackRepository {
-  Future<List<Feedback>> getFeedbacks();
-  Future<Feedback> getFeedbackByToken(String feedbackToken);
-  Future<Feedback> writeComment(RegisterFeedbackComment req);
-  Future<Feedback> registerFeedback(RegisterFeedback req);
+  Future<List<FitqaFeedback>> getFeedbacks();
+  Future<FitqaFeedback> getFeedbackByToken(String feedbackToken);
+  Future<FitqaFeedback> writeComment(RegisterFeedbackComment req);
+  Future<FitqaFeedback> registerFeedback(RegisterFeedback req);
 }
 
 class FeedbackRepositoryAPI implements FeedbackRepository {
@@ -20,7 +20,7 @@ class FeedbackRepositoryAPI implements FeedbackRepository {
   FeedbackRepositoryAPI(this.reader);
 
   @override
-  Future<List<Feedback>> getFeedbacks({CancelToken? cancelToken}) async {
+  Future<List<FitqaFeedback>> getFeedbacks({CancelToken? cancelToken}) async {
     try {
       final response = await reader(clientProvider)
           .get("/feedbacks", cancelToken: cancelToken);
@@ -31,7 +31,7 @@ class FeedbackRepositoryAPI implements FeedbackRepository {
   }
 
   @override
-  Future<Feedback> getFeedbackByToken(String feedbackToken,
+  Future<FitqaFeedback> getFeedbackByToken(String feedbackToken,
       {CancelToken? cancelToken}) async {
     try {
       final response = await reader(clientProvider)
@@ -43,7 +43,7 @@ class FeedbackRepositoryAPI implements FeedbackRepository {
   }
 
   @override
-  Future<Feedback> writeComment(RegisterFeedbackComment req,
+  Future<FitqaFeedback> writeComment(RegisterFeedbackComment req,
       {CancelToken? cancelToken}) async {
     try {
       final response = await reader(clientProvider).post(
@@ -57,7 +57,7 @@ class FeedbackRepositoryAPI implements FeedbackRepository {
   }
 
   @override
-  Future<Feedback> registerFeedback(RegisterFeedback req,
+  Future<FitqaFeedback> registerFeedback(RegisterFeedback req,
       {CancelToken? cancelToken}) async {
     try {
       final response = await reader(clientProvider).post("/feedbacks/register",

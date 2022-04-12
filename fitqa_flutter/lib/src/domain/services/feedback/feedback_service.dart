@@ -1,6 +1,6 @@
-import 'package:fitqa/src/domain/entities/feedback/feedback/feedback.dart';
+import 'package:fitqa/src/domain/entities/feedback/fitqa_feedback/fitqa_feedback.dart';
 
 abstract class FeedbackService {
-  Future<Feedback> getFeedbackDetail(String feedbackToken);
-  Future<List<Feedback>> getFeedbackAll();
+  Future<FitqaFeedback> getFeedbackDetail(String feedbackToken);
+  Future<List<FitqaFeedback>> getFeedbackAll();
 }

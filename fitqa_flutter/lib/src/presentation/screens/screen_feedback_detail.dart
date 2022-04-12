@@ -1,6 +1,5 @@
 import 'package:fitqa/src/application/feedback/feedback_detail.dart';
-import 'package:fitqa/src/domain/entities/feedback/feedback/feedback.dart'
-    as fq;
+import 'package:fitqa/src/domain/entities/feedback/fitqa_feedback/fitqa_feedback.dart';
 import 'package:fitqa/src/presentation/widgets/common/ThinDivider.dart';
 import 'package:fitqa/src/presentation/widgets/common/carousel_with_indicator.dart';
 import 'package:fitqa/src/presentation/widgets/common/fitqa_appbar_sub.dart';
@@ -42,7 +41,7 @@ class ScreenFeedbackDetail extends ConsumerWidget {
     );
   }
 
-  Widget _buildFeedbackDetail(fq.Feedback feedback) {
+  Widget _buildFeedbackDetail(FitqaFeedback feedback) {
     return SafeArea(
       top: false,
       child: ListView(padding: EdgeInsets.zero, children: [

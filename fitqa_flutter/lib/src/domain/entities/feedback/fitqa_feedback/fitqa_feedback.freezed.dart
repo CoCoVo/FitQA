@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'feedback.dart';
+part of 'fitqa_feedback.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,15 +14,15 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-Feedback _$FeedbackFromJson(Map<String, dynamic> json) {
-  return _Feedback.fromJson(json);
+FitqaFeedback _$FitqaFeedbackFromJson(Map<String, dynamic> json) {
+  return _FitqaFeedback.fromJson(json);
 }
 
 /// @nodoc
-class _$FeedbackTearOff {
-  const _$FeedbackTearOff();
+class _$FitqaFeedbackTearOff {
+  const _$FitqaFeedbackTearOff();
 
-  _Feedback call(
+  _FitqaFeedback call(
       {required String feedbackToken,
       required String ownerId,
       required String trainerId,
@@ -32,7 +32,7 @@ class _$FeedbackTearOff {
       required bool locked,
       required List<FeedbackComment> comments,
       required String status}) {
-    return _Feedback(
+    return _FitqaFeedback(
       feedbackToken: feedbackToken,
       ownerId: ownerId,
       trainerId: trainerId,
@@ -45,16 +45,16 @@ class _$FeedbackTearOff {
     );
   }
 
-  Feedback fromJson(Map<String, Object?> json) {
-    return Feedback.fromJson(json);
+  FitqaFeedback fromJson(Map<String, Object?> json) {
+    return FitqaFeedback.fromJson(json);
   }
 }
 
 /// @nodoc
-const $Feedback = _$FeedbackTearOff();
+const $FitqaFeedback = _$FitqaFeedbackTearOff();
 
 /// @nodoc
-mixin _$Feedback {
+mixin _$FitqaFeedback {
   String get feedbackToken => throw _privateConstructorUsedError;
   String get ownerId => throw _privateConstructorUsedError;
   String get trainerId => throw _privateConstructorUsedError;
@@ -67,14 +67,15 @@ mixin _$Feedback {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $FeedbackCopyWith<Feedback> get copyWith =>
+  $FitqaFeedbackCopyWith<FitqaFeedback> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $FeedbackCopyWith<$Res> {
-  factory $FeedbackCopyWith(Feedback value, $Res Function(Feedback) then) =
-      _$FeedbackCopyWithImpl<$Res>;
+abstract class $FitqaFeedbackCopyWith<$Res> {
+  factory $FitqaFeedbackCopyWith(
+          FitqaFeedback value, $Res Function(FitqaFeedback) then) =
+      _$FitqaFeedbackCopyWithImpl<$Res>;
   $Res call(
       {String feedbackToken,
       String ownerId,
@@ -88,12 +89,13 @@ abstract class $FeedbackCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$FeedbackCopyWithImpl<$Res> implements $FeedbackCopyWith<$Res> {
-  _$FeedbackCopyWithImpl(this._value, this._then);
+class _$FitqaFeedbackCopyWithImpl<$Res>
+    implements $FitqaFeedbackCopyWith<$Res> {
+  _$FitqaFeedbackCopyWithImpl(this._value, this._then);
 
-  final Feedback _value;
+  final FitqaFeedback _value;
   // ignore: unused_field
-  final $Res Function(Feedback) _then;
+  final $Res Function(FitqaFeedback) _then;
 
   @override
   $Res call({
@@ -149,9 +151,11 @@ class _$FeedbackCopyWithImpl<$Res> implements $FeedbackCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$FeedbackCopyWith<$Res> implements $FeedbackCopyWith<$Res> {
-  factory _$FeedbackCopyWith(_Feedback value, $Res Function(_Feedback) then) =
-      __$FeedbackCopyWithImpl<$Res>;
+abstract class _$FitqaFeedbackCopyWith<$Res>
+    implements $FitqaFeedbackCopyWith<$Res> {
+  factory _$FitqaFeedbackCopyWith(
+          _FitqaFeedback value, $Res Function(_FitqaFeedback) then) =
+      __$FitqaFeedbackCopyWithImpl<$Res>;
   @override
   $Res call(
       {String feedbackToken,
@@ -166,13 +170,15 @@ abstract class _$FeedbackCopyWith<$Res> implements $FeedbackCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$FeedbackCopyWithImpl<$Res> extends _$FeedbackCopyWithImpl<$Res>
-    implements _$FeedbackCopyWith<$Res> {
-  __$FeedbackCopyWithImpl(_Feedback _value, $Res Function(_Feedback) _then)
-      : super(_value, (v) => _then(v as _Feedback));
+class __$FitqaFeedbackCopyWithImpl<$Res>
+    extends _$FitqaFeedbackCopyWithImpl<$Res>
+    implements _$FitqaFeedbackCopyWith<$Res> {
+  __$FitqaFeedbackCopyWithImpl(
+      _FitqaFeedback _value, $Res Function(_FitqaFeedback) _then)
+      : super(_value, (v) => _then(v as _FitqaFeedback));
 
   @override
-  _Feedback get _value => super._value as _Feedback;
+  _FitqaFeedback get _value => super._value as _FitqaFeedback;
 
   @override
   $Res call({
@@ -186,7 +192,7 @@ class __$FeedbackCopyWithImpl<$Res> extends _$FeedbackCopyWithImpl<$Res>
     Object? comments = freezed,
     Object? status = freezed,
   }) {
-    return _then(_Feedback(
+    return _then(_FitqaFeedback(
       feedbackToken: feedbackToken == freezed
           ? _value.feedbackToken
           : feedbackToken // ignore: cast_nullable_to_non_nullable
@@ -229,8 +235,8 @@ class __$FeedbackCopyWithImpl<$Res> extends _$FeedbackCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Feedback implements _Feedback {
-  const _$_Feedback(
+class _$_FitqaFeedback implements _FitqaFeedback {
+  const _$_FitqaFeedback(
       {required this.feedbackToken,
       required this.ownerId,
       required this.trainerId,
@@ -241,8 +247,8 @@ class _$_Feedback implements _Feedback {
       required this.comments,
       required this.status});
 
-  factory _$_Feedback.fromJson(Map<String, dynamic> json) =>
-      _$$_FeedbackFromJson(json);
+  factory _$_FitqaFeedback.fromJson(Map<String, dynamic> json) =>
+      _$$_FitqaFeedbackFromJson(json);
 
   @override
   final String feedbackToken;
@@ -265,14 +271,14 @@ class _$_Feedback implements _Feedback {
 
   @override
   String toString() {
-    return 'Feedback(feedbackToken: $feedbackToken, ownerId: $ownerId, trainerId: $trainerId, price: $price, title: $title, content: $content, locked: $locked, comments: $comments, status: $status)';
+    return 'FitqaFeedback(feedbackToken: $feedbackToken, ownerId: $ownerId, trainerId: $trainerId, price: $price, title: $title, content: $content, locked: $locked, comments: $comments, status: $status)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Feedback &&
+            other is _FitqaFeedback &&
             const DeepCollectionEquality()
                 .equals(other.feedbackToken, feedbackToken) &&
             const DeepCollectionEquality().equals(other.ownerId, ownerId) &&
@@ -300,17 +306,17 @@ class _$_Feedback implements _Feedback {
 
   @JsonKey(ignore: true)
   @override
-  _$FeedbackCopyWith<_Feedback> get copyWith =>
-      __$FeedbackCopyWithImpl<_Feedback>(this, _$identity);
+  _$FitqaFeedbackCopyWith<_FitqaFeedback> get copyWith =>
+      __$FitqaFeedbackCopyWithImpl<_FitqaFeedback>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_FeedbackToJson(this);
+    return _$$_FitqaFeedbackToJson(this);
   }
 }
 
-abstract class _Feedback implements Feedback {
-  const factory _Feedback(
+abstract class _FitqaFeedback implements FitqaFeedback {
+  const factory _FitqaFeedback(
       {required String feedbackToken,
       required String ownerId,
       required String trainerId,
@@ -319,9 +325,10 @@ abstract class _Feedback implements Feedback {
       required String content,
       required bool locked,
       required List<FeedbackComment> comments,
-      required String status}) = _$_Feedback;
+      required String status}) = _$_FitqaFeedback;
 
-  factory _Feedback.fromJson(Map<String, dynamic> json) = _$_Feedback.fromJson;
+  factory _FitqaFeedback.fromJson(Map<String, dynamic> json) =
+      _$_FitqaFeedback.fromJson;
 
   @override
   String get feedbackToken;
@@ -343,6 +350,6 @@ abstract class _Feedback implements Feedback {
   String get status;
   @override
   @JsonKey(ignore: true)
-  _$FeedbackCopyWith<_Feedback> get copyWith =>
+  _$FitqaFeedbackCopyWith<_FitqaFeedback> get copyWith =>
       throw _privateConstructorUsedError;
 }

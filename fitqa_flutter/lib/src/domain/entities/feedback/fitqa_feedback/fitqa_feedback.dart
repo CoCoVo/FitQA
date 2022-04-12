@@ -1,12 +1,12 @@
 import 'package:fitqa/src/domain/entities/feedback/feedback_comment/feedback_comment.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'feedback.freezed.dart';
-part 'feedback.g.dart';
+part 'fitqa_feedback.freezed.dart';
+part 'fitqa_feedback.g.dart';
 
 @freezed
-abstract class Feedback with _$Feedback {
-  const factory Feedback(
+abstract class FitqaFeedback with _$FitqaFeedback {
+  const factory FitqaFeedback(
       {required String feedbackToken,
       required String ownerId,
       required String trainerId,
@@ -15,8 +15,8 @@ abstract class Feedback with _$Feedback {
       required String content,
       required bool locked,
       required List<FeedbackComment> comments,
-      required String status}) = _Feedback;
+      required String status}) = _FitqaFeedback;
 
-  factory Feedback.fromJson(Map<String, dynamic> json) =>
-      _$FeedbackFromJson(json);
+  factory FitqaFeedback.fromJson(Map<String, dynamic> json) =>
+      _$FitqaFeedbackFromJson(json);
 }

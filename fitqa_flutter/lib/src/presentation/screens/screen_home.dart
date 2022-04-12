@@ -1,7 +1,6 @@
 import 'package:fitqa/src/application/feedback/feedback_detail.dart';
 import 'package:fitqa/src/application/feedback/feedback_list.dart';
-import 'package:fitqa/src/domain/entities/feedback/feedback/feedback.dart'
-    as fq;
+import 'package:fitqa/src/domain/entities/feedback/fitqa_feedback/fitqa_feedback.dart';
 import 'package:fitqa/src/presentation/screens/screen_feedback_detail.dart';
 import 'package:fitqa/src/presentation/widgets/common/fitqa_appbar.dart';
 import 'package:fitqa/src/presentation/widgets/common/multi_select_chip.dart';
@@ -50,7 +49,7 @@ class ScreenHome extends ConsumerWidget {
 
   Widget _buildFeedbackListView(
       final BuildContext context,
-      List<fq.Feedback> feedbacks,
+      List<FitqaFeedback> feedbacks,
       StateController<String> feedbackTokenController) {
     return Expanded(
       child: ListView.separated(
