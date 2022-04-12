@@ -1,5 +1,3 @@
-import 'package:fitqa/src/application/feedback_provider.dart';
-import 'package:fitqa/src/data/command/register_feedback/register_feedback.dart';
 import 'package:fitqa/src/presentation/widgets/common/bullet_point_text.dart';
 import 'package:fitqa/src/presentation/widgets/common/fitqa_textfield.dart';
 import 'package:fitqa/src/presentation/widgets/common/labeled_checkbox.dart';
@@ -82,7 +80,7 @@ class _ScreenFeedbackRequestState extends ConsumerState<ScreenFeedbackRequest> {
               alignment: FractionalOffset.bottomCenter,
               child: InkWell(
                 onTap: () {
-                  _registerFeedback();
+                  // _registerFeedback();
                   Navigator.of(context).pop();
                 },
                 child: Container(
@@ -103,19 +101,19 @@ class _ScreenFeedbackRequestState extends ConsumerState<ScreenFeedbackRequest> {
         ));
   }
 
-  void _registerFeedback() {
-    final title = titleController.text;
-    final content = contentController.text;
-    ref.read(registerFeedbackProvider(RegisterFeedback(
-        ownerId: "2",
-        trainerId: "123",
-        interestArea: "LOWER",
-        price: 100000,
-        title: title,
-        content: content,
-        locked: locked)));
-    ref.refresh(feedbackListProvider);
-  }
+  // void _registerFeedback() {
+  //   final title = titleController.text;
+  //   final content = contentController.text;
+  //   ref.read(registerFeedbackProvider(RegisterFeedback(
+  //       ownerId: "2",
+  //       trainerId: "123",
+  //       interestArea: "LOWER",
+  //       price: 100000,
+  //       title: title,
+  //       content: content,
+  //       locked: locked)));
+  //   ref.refresh(feedbackListProvider);
+  // }
 
   @override
   void dispose() {
