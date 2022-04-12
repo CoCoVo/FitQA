@@ -14,7 +14,7 @@ abstract class Feedback with _$Feedback {
       required String title,
       required String content,
       required bool locked,
-      required List<FeedbackComment> feedbackComments,
+      required List<FeedbackComment> comments,
       required String status}) = _Feedback;
 
   factory Feedback.fromJson(Map<String, dynamic> json) =>

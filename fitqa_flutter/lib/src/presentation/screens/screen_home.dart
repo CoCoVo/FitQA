@@ -1,4 +1,4 @@
-import 'package:fitqa/src/application/feedback_provider.dart';
+import 'package:fitqa/src/application/feedback/feedback_list.dart';
 import 'package:fitqa/src/presentation/screens/screen_feedback_detail.dart';
 import 'package:fitqa/src/presentation/widgets/common/fitqa_appbar.dart';
 import 'package:fitqa/src/presentation/widgets/common/multi_select_chip.dart';
@@ -14,6 +14,7 @@ class ScreenHome extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final feedbacks = ref.watch(feedbackListProvider);
+
     return Container(
         color: FColors.white,
         child: Column(mainAxisSize: MainAxisSize.min, children: [
@@ -28,32 +29,36 @@ class ScreenHome extends ConsumerWidget {
                         const ['전체', '등', '어깨', '팔', '하체', '가슴'],
                         onSelectionChanged: (selectedList) {})),
               )),
-          feedbacks.when(
-              data: (feedbacks) {
-                return Expanded(
-                  child: ListView.separated(
-                    itemCount: feedbacks.length,
-                    itemBuilder: (context, index) => FeedbackListViewItem(
-                      feedback: feedbacks[index],
-                      onPressed: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => ScreenFeedbackDetail(
-                                  feedbackToken: feedbacks[index].feedbackToken,
-                                )),
-                      ),
+          feedbacks.maybeWhen(
+              success: (feedbacks) =>
+                  _buildFeedbackListView(context, feedbacks),
+              error: (err) => Center(
+                    child: Text(err.toString()),
+                  ),
+              orElse: () => const Expanded(
+                    child: Center(
+                      child: CircularProgressIndicator(),
                     ),
-                    separatorBuilder: (BuildContext context, int index) =>
-                        const Divider(),
-                  ),
-                );
-              },
-              error: (error, e) => Center(
-                    child: Text(error.toString()),
-                  ),
-              loading: () => const Center(
-                    child: CircularProgressIndicator(),
                   ))
         ]));
+  }
+
+  Widget _buildFeedbackListView(final BuildContext context, final feedbacks) {
+    return Expanded(
+      child: ListView.separated(
+        itemCount: feedbacks.length,
+        itemBuilder: (context, index) => FeedbackListViewItem(
+          feedback: feedbacks[index],
+          onPressed: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => ScreenFeedbackDetail(
+                      feedbackToken: feedbacks[index].feedbackToken,
+                    )),
+          ),
+        ),
+        separatorBuilder: (BuildContext context, int index) => const Divider(),
+      ),
+    );
   }
 }

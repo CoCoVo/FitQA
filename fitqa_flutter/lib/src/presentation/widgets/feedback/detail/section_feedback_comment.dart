@@ -1,4 +1,3 @@
-import 'package:fitqa/src/application/feedback_provider.dart';
 import 'package:fitqa/src/theme/color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -95,8 +94,8 @@ class FeedbackWrite extends ConsumerWidget {
           ),
           Expanded(
             child: TextField(
-              onChanged: (value) =>
-                  {ref.read(commentProvider.notifier).state = value},
+              onChanged: (value) => {},
+              // {ref.read(commentProvider.notifier).state = value},
               decoration: const InputDecoration(
                   border: UnderlineInputBorder(), hintText: "댓글쓰기"),
             ),
@@ -104,7 +103,7 @@ class FeedbackWrite extends ConsumerWidget {
           TextButton(
               onPressed: () {
                 if (feedbackToken != null) {
-                  ref.read(registerFeedbackCommentProvider(feedbackToken!));
+                  // ref.read(registerFeedbackCommentProvider(feedbackToken!));
                 }
               },
               child: Text("게시"))
