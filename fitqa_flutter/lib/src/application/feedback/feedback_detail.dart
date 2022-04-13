@@ -6,12 +6,12 @@ import 'package:fitqa/src/domain/services/feedback/feedback_service_impl.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 /// selected feedback token to show details.
-final selectedFeedbackToken = StateProvider<String>((ref) => "");
+final selectedFeedbackTokenProvider = StateProvider<String>((ref) => "");
 
 final feedbackDetailProvider =
     StateNotifierProvider<FeedbackDetailNotifier, State<FitqaFeedback>>((ref) {
   final feedbackService = ref.watch(feedbackServiceProvider);
-  final feedbackToken = ref.watch(selectedFeedbackToken);
+  final feedbackToken = ref.watch(selectedFeedbackTokenProvider);
   return FeedbackDetailNotifier(feedbackService, feedbackToken);
 });
 
