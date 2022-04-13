@@ -16,8 +16,7 @@ class ScreenHome extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final feedbacks = ref.watch(feedbackListProvider);
-    StateController<String> feedbackTokenController =
-        ref.watch(selectedFeedbackToken.notifier);
+    final feedbackTokenController = ref.watch(selectedFeedbackToken.notifier);
 
     return Container(
         color: FColors.white,

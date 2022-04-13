@@ -1,5 +1,4 @@
 import 'package:fitqa/src/application/feedback/feedback_detail.dart';
-import 'package:fitqa/src/domain/entities/feedback/fitqa_feedback/fitqa_feedback.dart';
 import 'package:fitqa/src/presentation/widgets/common/ThinDivider.dart';
 import 'package:fitqa/src/presentation/widgets/common/carousel_with_indicator.dart';
 import 'package:fitqa/src/presentation/widgets/common/fitqa_appbar_sub.dart';
@@ -24,7 +23,7 @@ class ScreenFeedbackDetail extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final feedbackController = ref.watch(feedbackDetailProvider);
+    final feedbackDetail = ref.watch(feedbackDetailProvider);
 
     return Scaffold(
       backgroundColor: FColors.white,
@@ -33,15 +32,15 @@ class ScreenFeedbackDetail extends ConsumerWidget {
         onPressed: () => Navigator.pop(context),
       ),
       extendBodyBehindAppBar: true,
-      body: feedbackController.maybeWhen(
-          success: (feedback) => _buildFeedbackDetail(feedback),
+      body: feedbackDetail.maybeWhen(
+          success: (_) => _buildFeedbackDetail(),
           orElse: () => const Center(
                 child: CircularProgressIndicator(),
               )),
     );
   }
 
-  Widget _buildFeedbackDetail(FitqaFeedback feedback) {
+  Widget _buildFeedbackDetail() {
     return SafeArea(
       top: false,
       child: ListView(padding: EdgeInsets.zero, children: [
@@ -58,8 +57,7 @@ class ScreenFeedbackDetail extends ConsumerWidget {
             children: [
               SectionUserProfile(),
               ThinDivider(),
-              SectionFeedbackContent(
-                  title: feedback.title, content: feedback.content),
+              SectionFeedbackContent(),
               ThinDivider(),
               SectionFeedbackAnswer(),
               SectionFeedbackLike(),
