@@ -1,3 +1,5 @@
+import 'package:fitqa/src/application/feedback/feedback_detail.dart';
+import 'package:fitqa/src/domain/entities/feedback/feedback_comment/feedback_comment.dart';
 import 'package:fitqa/src/theme/color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -7,21 +9,34 @@ class SectionFeedbackComment extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final feedback = ref.watch(feedbackDetailProvider);
+
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10),
       child: Column(
         children: [
-          FeedbackComment(),
-          FeedbackComment(),
-          FeedbackWrite(),
+          feedback.maybeWhen(
+              success: (feedback) {
+                return Column(
+                    children: feedback.comments
+                        .map((comment) =>
+                            _SectionFeedbackComment(comment: comment))
+                        .toList());
+              },
+              orElse: () => const Center(
+                    child: CircularProgressIndicator(),
+                  )),
+          _SectionFeedbackWrite(),
         ],
       ),
     );
   }
 }
 
-class FeedbackComment extends StatelessWidget {
-  const FeedbackComment({Key? key}) : super(key: key);
+class _SectionFeedbackComment extends StatelessWidget {
+  _SectionFeedbackComment({Key? key, required this.comment}) : super(key: key);
+
+  FeedbackComment comment;
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +59,7 @@ class FeedbackComment extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "운동 얼마나 하셨나요?",
+                comment.comment,
                 style: TextStyle(fontSize: 14, color: FColors.black),
               ),
               Row(
@@ -70,11 +85,16 @@ class FeedbackComment extends StatelessWidget {
   }
 }
 
-class FeedbackWrite extends ConsumerWidget {
-  FeedbackWrite({Key? key}) : super(key: key);
+class _SectionFeedbackWrite extends ConsumerWidget {
+  _SectionFeedbackWrite({Key? key}) : super(key: key);
+
+  final _commentProvider = StateProvider<String>((ref) => "");
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final feedbackController = ref.watch(feedbackDetailProvider.notifier);
+    final commentContentController = ref.watch(_commentProvider.notifier);
+
     return Container(
       height: 50,
       child: Row(
@@ -90,15 +110,14 @@ class FeedbackWrite extends ConsumerWidget {
           ),
           Expanded(
             child: TextField(
-              onChanged: (value) => {},
-              // {ref.read(commentProvider.notifier).state = value},
+              onChanged: (value) => {commentContentController.state = value},
               decoration: const InputDecoration(
                   border: UnderlineInputBorder(), hintText: "댓글쓰기"),
             ),
           ),
           TextButton(
               onPressed: () {
-                // ref.read(registerFeedbackCommentProvider(feedbackToken!));
+                feedbackController.addComment(commentContentController.state);
               },
               child: Text("게시"))
         ],

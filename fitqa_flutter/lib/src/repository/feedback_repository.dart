@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:fitqa/src/common/exceptions.dart';
-import 'package:fitqa/src/data/command/register_feedback/register_feedback.dart';
-import 'package:fitqa/src/data/command/register_feedback_comment/register_feedback_comment.dart';
+import 'package:fitqa/src/domain/command/feedback/register_feedback/register_feedback.dart';
+import 'package:fitqa/src/domain/command/feedback/register_feedback_comment/register_feedback_comment.dart';
 import 'package:fitqa/src/domain/entities/feedback/fitqa_feedback/fitqa_feedback.dart';
 import 'package:fitqa/src/repository/dto/feedback/feedback_detail_response/feedback_detail_response.dart';
 import 'package:fitqa/src/repository/dto/feedback/feedback_list_response/feedback_list_response.dart';
@@ -11,7 +11,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 abstract class FeedbackRepository {
   Future<List<FitqaFeedback>> getFeedbacks();
   Future<FitqaFeedback> getFeedbackByToken(String feedbackToken);
-  Future<FitqaFeedback> writeComment(RegisterFeedbackComment req);
+  Future<FitqaFeedback> registerComment(
+      String feedbackToken, RegisterFeedbackComment req);
   Future<FitqaFeedback> registerFeedback(RegisterFeedback req);
 }
 
@@ -43,12 +44,13 @@ class FeedbackRepositoryAPI implements FeedbackRepository {
   }
 
   @override
-  Future<FitqaFeedback> writeComment(RegisterFeedbackComment req,
+  Future<FitqaFeedback> registerComment(
+      String feedbackToken, RegisterFeedbackComment req,
       {CancelToken? cancelToken}) async {
     try {
       final response = await reader(clientProvider).post(
-          "/feedbacks/${req.feedbackToken}/comment",
-          data: {"writerId": req.writerId, "comment": req.comment},
+          "/feedbacks/$feedbackToken/comment",
+          data: req.toJson(),
           cancelToken: cancelToken);
       return FeedbackDetailResponse.fromJson(response.data).data!;
     } on DioError catch (error) {
