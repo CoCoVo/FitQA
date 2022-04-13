@@ -9,7 +9,6 @@ part of 'register_feedback_comment.dart';
 _$_RegisterFeedbackComment _$$_RegisterFeedbackCommentFromJson(
         Map<String, dynamic> json) =>
     _$_RegisterFeedbackComment(
-      feedbackToken: json['feedbackToken'] as String,
       writerId: json['writerId'] as String,
       comment: json['comment'] as String,
     );
@@ -17,7 +16,6 @@ _$_RegisterFeedbackComment _$$_RegisterFeedbackCommentFromJson(
 Map<String, dynamic> _$$_RegisterFeedbackCommentToJson(
         _$_RegisterFeedbackComment instance) =>
     <String, dynamic>{
-      'feedbackToken': instance.feedbackToken,
       'writerId': instance.writerId,
       'comment': instance.comment,
     };
