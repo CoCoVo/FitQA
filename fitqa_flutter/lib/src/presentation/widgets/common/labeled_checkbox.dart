@@ -26,7 +26,7 @@ class _LabeledCheckboxState extends State<LabeledCheckbox> {
 
   void _toggleCheck() {
     setState(() {
-      widget.onChanged(_val);
+      widget.onChanged(!_val);
       _val = !_val;
     });
   }

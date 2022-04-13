@@ -1,3 +1,4 @@
+import 'package:fitqa/src/domain/command/feedback/register_feedback/register_feedback.dart';
 import 'package:fitqa/src/domain/command/feedback/register_feedback_comment/register_feedback_comment.dart';
 import 'package:fitqa/src/domain/entities/feedback/fitqa_feedback/fitqa_feedback.dart';
 import 'package:fitqa/src/domain/services/feedback/feedback_service.dart';
@@ -30,6 +31,12 @@ class FeedbackServiceImpl implements FeedbackService {
   Future<FitqaFeedback> registerFeedbackComment(
       String feedbackToken, RegisterFeedbackComment command) {
     final response = repo.registerComment(feedbackToken, command);
+    return response;
+  }
+
+  @override
+  Future<FitqaFeedback> registerFeedback(RegisterFeedback command) {
+    final response = repo.registerFeedback(command);
     return response;
   }
 }
