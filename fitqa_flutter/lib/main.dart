@@ -1,9 +1,11 @@
 import 'package:fitqa/src/presentation/home.dart';
+import 'package:fitqa/src/presentation/screens/screen_login.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() {
-  runApp(const ProviderScope(child: MyApp()));
+  // runApp(const ProviderScope(child: MyApp()));
+  runApp(ScreenLogin());
 }
 
 class MyApp extends ConsumerWidget {

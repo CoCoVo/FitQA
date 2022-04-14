@@ -21,9 +21,6 @@ class FColors {
   static const Color statusBarBackground = Color(0xFFFFFFFF);
 
   static const Color textPrimary = Color(0xFF272B31);
-  static const Color textFacebook = Color(0xFFFFFFFF);
-  static const Color textGoogle = Color(0xFF000000);
-  static const Color textApple = Color(0xFFFFFFFF);
 
   static const Color buttonAccent = Color(0xFF1750FF);
   static const Color buttonFacebook = Color(0xFF1877F2);
@@ -32,4 +29,7 @@ class FColors {
 
   static const Color white = Color(0xFFFFFFFF);
   static const Color transparent = Colors.transparent;
+
+  static const Color socialFacebookColor = Color(0xff39579A);
+  static const Color socialGoogleColor = Color(0xffDF4A32);
 }
