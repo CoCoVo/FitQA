@@ -32,4 +32,6 @@ class FColors {
 
   static const Color socialFacebookColor = Color(0xff39579A);
   static const Color socialGoogleColor = Color(0xffDF4A32);
+  static const Color socialKakaoColor = Color(0xffFEE500);
+  static const Color socialNaverColor = Color(0xff03C75A);
 }

@@ -1,9 +1,23 @@
-import 'package:fitqa/src/presentation/widgets/common/social_login_button.dart';
+import 'package:fitqa/src/presentation/widgets/login/oauth_login_mobile.dart';
+import 'package:fitqa/src/presentation/widgets/login/social_login_button.dart';
+import 'package:fitqa/src/presentation/widgets/login/social_provider.dart';
 import 'package:fitqa/src/theme/color.dart';
 import 'package:flutter/material.dart';
 
 class ScreenLogin extends StatelessWidget {
-  const ScreenLogin({Key? key}) : super(key: key);
+  ScreenLogin({Key? key}) : super(key: key);
+
+  Map<SocialProvider, String> titles = {
+    SocialProvider.GOOGLE: "구글로 로그인",
+    SocialProvider.KAKAO: "카카오로 로그인",
+    SocialProvider.NAVER: "네이버로 로그인",
+  };
+
+  Map<SocialProvider, Color> colors = {
+    SocialProvider.GOOGLE: FColors.socialGoogleColor,
+    SocialProvider.KAKAO: FColors.socialKakaoColor,
+    SocialProvider.NAVER: FColors.socialNaverColor,
+  };
 
   @override
   Widget build(BuildContext context) {
@@ -16,12 +30,15 @@ class ScreenLogin extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               mainAxisSize: MainAxisSize.min,
               children: [
-                SocialLoginButton(
-                    onTap: () => _launchURL(
-                        "http://localhost:8080/oauth2/authorization/kakao"),
-                    title: "Login with Google",
-                    color: FColors.socialGoogleColor,
-                    icon: Icons.comment)
+                _buildLoginButton(context, SocialProvider.GOOGLE),
+                SizedBox(
+                  height: 16,
+                ),
+                _buildLoginButton(context, SocialProvider.KAKAO),
+                SizedBox(
+                  height: 16,
+                ),
+                _buildLoginButton(context, SocialProvider.NAVER)
               ],
             ),
           ),
@@ -30,7 +47,24 @@ class ScreenLogin extends StatelessWidget {
     );
   }
 
-  void _launchURL(String provider) async {
-    final oauthURL = "http://localhost:8080/oauth2/authorization/$provider";
+  Widget _buildLoginButton(
+      BuildContext context, SocialProvider socialProvider) {
+    return Builder(
+      builder: (BuildContext context) {
+        return SocialLoginButton(
+            onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => OAuthLoginMobile(
+                            baseURL:
+                                "http://118.220.102.116:8080/oauth2/authorization",
+                            socialProvider: socialProvider,
+                          )),
+                ),
+            title: titles[socialProvider]!,
+            color: colors[socialProvider]!,
+            icon: Icons.comment);
+      },
+    );
   }
 }
