@@ -1,11 +1,11 @@
+import 'package:fitqa/src/application/storage/user_token_facade.dart';
 import 'package:fitqa/src/presentation/home.dart';
 import 'package:fitqa/src/presentation/screens/screen_login.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() {
-  // runApp(const ProviderScope(child: MyApp()));
-  runApp(ScreenLogin());
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends ConsumerWidget {
@@ -14,13 +14,15 @@ class MyApp extends ConsumerWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    String userToken = ref.watch(userTokenProvider);
+
     return MaterialApp(
       title: 'FitQA',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Home(),
+      home: userToken.isEmpty ? ScreenLogin() : Home(),
     );
   }
 }
