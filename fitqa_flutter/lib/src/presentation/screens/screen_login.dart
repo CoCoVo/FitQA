@@ -30,15 +30,15 @@ class ScreenLogin extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               mainAxisSize: MainAxisSize.min,
               children: [
-                _buildLoginButton(context, SocialProvider.GOOGLE),
+                _buildLoginButton(SocialProvider.GOOGLE),
                 SizedBox(
                   height: 16,
                 ),
-                _buildLoginButton(context, SocialProvider.KAKAO),
+                _buildLoginButton(SocialProvider.KAKAO),
                 SizedBox(
                   height: 16,
                 ),
-                _buildLoginButton(context, SocialProvider.NAVER)
+                _buildLoginButton(SocialProvider.NAVER)
               ],
             ),
           ),
@@ -47,8 +47,7 @@ class ScreenLogin extends StatelessWidget {
     );
   }
 
-  Widget _buildLoginButton(
-      BuildContext context, SocialProvider socialProvider) {
+  Widget _buildLoginButton(SocialProvider socialProvider) {
     return Builder(
       builder: (BuildContext context) {
         return SocialLoginButton(
