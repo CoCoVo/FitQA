@@ -1,3 +1,4 @@
+import 'package:fitqa/src/config/remote_server_domain.dart';
 import 'package:fitqa/src/presentation/widgets/login/oauth_login_mobile.dart';
 import 'package:fitqa/src/presentation/widgets/login/social_login_button.dart';
 import 'package:fitqa/src/presentation/widgets/login/social_provider.dart';
@@ -55,8 +56,7 @@ class ScreenLogin extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                       builder: (context) => OAuthLoginMobile(
-                            baseURL:
-                                "http://118.220.102.116:8080/oauth2/authorization",
+                            baseURL: RemoteServerDomain.oauthBaseURL,
                             socialProvider: socialProvider,
                           )),
                 ),
