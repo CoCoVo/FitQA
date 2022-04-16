@@ -1,4 +1,5 @@
 import 'package:fitqa/src/presentation/widgets/common/fitqa_appbar_sub.dart';
+import 'package:fitqa/src/presentation/widgets/common/form/fitqa_big_button.dart';
 import 'package:fitqa/src/presentation/widgets/user_info/section_user_info_birth.dart';
 import 'package:fitqa/src/presentation/widgets/user_info/section_user_info_name.dart';
 import 'package:fitqa/src/presentation/widgets/user_info/section_user_info_optional.dart';
@@ -54,6 +55,14 @@ class ScreenUserInfo extends StatelessWidget {
               SectionUserInfoOptional(),
               const SizedBox(
                 height: 60,
+              ),
+              FitqaBigButton(
+                text: "완료",
+                filled: true,
+                onPressed: () {},
+              ),
+              const SizedBox(
+                height: 33,
               ),
             ],
           ),
