@@ -11,7 +11,9 @@ class ScreenUserInfo extends StatelessWidget {
         backgroundColor: FColors.white,
         appBar: FitqaAppbarSub(
           title: '운동정보 입력',
+          centerTitle: true,
           onPressed: () => Navigator.pop(context),
+          foreground: FColors.black,
         ),
         body: Center(
           child: Text("asdf"),
