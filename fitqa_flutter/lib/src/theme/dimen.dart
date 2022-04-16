@@ -21,6 +21,9 @@ class FDimen {
 
   static const double trainerDetailFeedbackPriceInfoSize = 95;
 
+  static const double trainerEditAppBarHeight = 50;
+  static const double trainerEditBottomButtonHeight = 42;
+
   static const double defaultAppbarHeight = 56;
   static const double defaultHorizontalPadding = 16;
 }
