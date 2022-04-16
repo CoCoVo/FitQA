@@ -49,9 +49,12 @@ class TrainerDetailInfo extends StatelessWidget {
     for (var element in trainer.interestAreas) {
       widgets.add(AreaSmallWidget(
         element.interestArea.toStringType(),
+        fontSize: 14,
         textColor: FColors.white,
         backgroundColor: FColors.transparent,
         borderColor: FColors.white,
+        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+        cornerRadius: 30,
       ));
       widgets.add(const SizedBox(width: 10));
     }
