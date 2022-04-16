@@ -6,9 +6,31 @@ part 'trainer_sns.g.dart';
 
 @freezed
 abstract class TrainerSns with _$TrainerSns {
-  const factory TrainerSns({required String snsType, required String snsUrl}) =
+  const factory TrainerSns({required SnsType snsType, required String snsUrl}) =
       _TrainerSns;
 
   factory TrainerSns.fromJson(Map<String, dynamic> json) =>
       _$TrainerSnsFromJson(json);
+}
+
+enum SnsType {
+  @JsonValue("FACEBOOK")
+  facebook,
+  @JsonValue("INSTAGRAM")
+  instagram,
+  @JsonValue("YOUTUBE")
+  youtube,
+}
+
+extension Converter on SnsType {
+  String toStringType() {
+    switch (this) {
+      case SnsType.facebook:
+        return '페이스북';
+      case SnsType.instagram:
+        return '인스타그램';
+      case SnsType.youtube:
+        return '유튜브';
+    }
+  }
 }

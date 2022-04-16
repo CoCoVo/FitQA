@@ -1,5 +1,6 @@
 import 'package:fitqa/src/common/fitqa_icon.dart';
 import 'package:fitqa/src/domain/entities/trainer/trainer/trainer.dart';
+import 'package:fitqa/src/domain/entities/trainer/trainer_sns/trainer_sns.dart';
 import 'package:fitqa/src/presentation/widgets/trainer/detail/trainer_sns_item.dart';
 import 'package:fitqa/src/theme/color.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +12,7 @@ class TrainerSns extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Map<String, String> snsMap = {};
+    Map<SnsType, String> snsMap = {};
 
     for (var element in trainer.sns) {
       snsMap[element.snsType] = element.snsUrl;
@@ -38,13 +39,13 @@ class TrainerSns extends StatelessWidget {
   List<Widget> _buildSnsList(Map snsMap) {
     List<Widget> snsList = [];
     snsList.add(TrainerSnsItem(
-        const Icon(FitQaIcon.facebook), snsMap['FACEBOOK'] ?? ""));
+        const Icon(FitQaIcon.facebook), snsMap[SnsType.facebook] ?? ""));
     snsList.add(const SizedBox(height: 14));
     snsList.add(TrainerSnsItem(
-        const Icon(FitQaIcon.instagram), snsMap['INSTAGRAM'] ?? ""));
+        const Icon(FitQaIcon.instagram), snsMap[SnsType.instagram] ?? ""));
     snsList.add(const SizedBox(height: 14));
     snsList.add(TrainerSnsItem(
-        const Icon(FitQaIcon.facebook), snsMap['YOUTUBE'] ?? ""));
+        const Icon(FitQaIcon.facebook), snsMap[SnsType.youtube] ?? ""));
     snsList.add(const SizedBox(height: 31));
 
     return snsList;

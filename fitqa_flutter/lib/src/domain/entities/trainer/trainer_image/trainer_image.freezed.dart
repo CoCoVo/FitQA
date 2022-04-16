@@ -22,7 +22,7 @@ TrainerImage _$TrainerImageFromJson(Map<String, dynamic> json) {
 class _$TrainerImageTearOff {
   const _$TrainerImageTearOff();
 
-  _TrainerImage call({required String imageUrl, required String imageType}) {
+  _TrainerImage call({required String imageUrl, required ImageType imageType}) {
     return _TrainerImage(
       imageUrl: imageUrl,
       imageType: imageType,
@@ -40,7 +40,7 @@ const $TrainerImage = _$TrainerImageTearOff();
 /// @nodoc
 mixin _$TrainerImage {
   String get imageUrl => throw _privateConstructorUsedError;
-  String get imageType => throw _privateConstructorUsedError;
+  ImageType get imageType => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -53,7 +53,7 @@ abstract class $TrainerImageCopyWith<$Res> {
   factory $TrainerImageCopyWith(
           TrainerImage value, $Res Function(TrainerImage) then) =
       _$TrainerImageCopyWithImpl<$Res>;
-  $Res call({String imageUrl, String imageType});
+  $Res call({String imageUrl, ImageType imageType});
 }
 
 /// @nodoc
@@ -77,7 +77,7 @@ class _$TrainerImageCopyWithImpl<$Res> implements $TrainerImageCopyWith<$Res> {
       imageType: imageType == freezed
           ? _value.imageType
           : imageType // ignore: cast_nullable_to_non_nullable
-              as String,
+              as ImageType,
     ));
   }
 }
@@ -89,7 +89,7 @@ abstract class _$TrainerImageCopyWith<$Res>
           _TrainerImage value, $Res Function(_TrainerImage) then) =
       __$TrainerImageCopyWithImpl<$Res>;
   @override
-  $Res call({String imageUrl, String imageType});
+  $Res call({String imageUrl, ImageType imageType});
 }
 
 /// @nodoc
@@ -115,7 +115,7 @@ class __$TrainerImageCopyWithImpl<$Res> extends _$TrainerImageCopyWithImpl<$Res>
       imageType: imageType == freezed
           ? _value.imageType
           : imageType // ignore: cast_nullable_to_non_nullable
-              as String,
+              as ImageType,
     ));
   }
 }
@@ -131,7 +131,7 @@ class _$_TrainerImage implements _TrainerImage {
   @override
   final String imageUrl;
   @override
-  final String imageType;
+  final ImageType imageType;
 
   @override
   String toString() {
@@ -166,7 +166,8 @@ class _$_TrainerImage implements _TrainerImage {
 
 abstract class _TrainerImage implements TrainerImage {
   const factory _TrainerImage(
-      {required String imageUrl, required String imageType}) = _$_TrainerImage;
+      {required String imageUrl,
+      required ImageType imageType}) = _$_TrainerImage;
 
   factory _TrainerImage.fromJson(Map<String, dynamic> json) =
       _$_TrainerImage.fromJson;
@@ -174,7 +175,7 @@ abstract class _TrainerImage implements TrainerImage {
   @override
   String get imageUrl;
   @override
-  String get imageType;
+  ImageType get imageType;
   @override
   @JsonKey(ignore: true)
   _$TrainerImageCopyWith<_TrainerImage> get copyWith =>

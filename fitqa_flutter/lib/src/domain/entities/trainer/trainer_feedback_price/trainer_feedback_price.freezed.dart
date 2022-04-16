@@ -22,10 +22,9 @@ TrainerFeedbackPrice _$TrainerFeedbackPriceFromJson(Map<String, dynamic> json) {
 class _$TrainerFeedbackPriceTearOff {
   const _$TrainerFeedbackPriceTearOff();
 
-  _TrainerFeedbackPrice call(
-      {required String interestArea, required int price}) {
+  _TrainerFeedbackPrice call({required WorkOutArea area, required int price}) {
     return _TrainerFeedbackPrice(
-      interestArea: interestArea,
+      area: area,
       price: price,
     );
   }
@@ -40,7 +39,7 @@ const $TrainerFeedbackPrice = _$TrainerFeedbackPriceTearOff();
 
 /// @nodoc
 mixin _$TrainerFeedbackPrice {
-  String get interestArea => throw _privateConstructorUsedError;
+  WorkOutArea get area => throw _privateConstructorUsedError;
   int get price => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -54,7 +53,7 @@ abstract class $TrainerFeedbackPriceCopyWith<$Res> {
   factory $TrainerFeedbackPriceCopyWith(TrainerFeedbackPrice value,
           $Res Function(TrainerFeedbackPrice) then) =
       _$TrainerFeedbackPriceCopyWithImpl<$Res>;
-  $Res call({String interestArea, int price});
+  $Res call({WorkOutArea area, int price});
 }
 
 /// @nodoc
@@ -68,14 +67,14 @@ class _$TrainerFeedbackPriceCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? interestArea = freezed,
+    Object? area = freezed,
     Object? price = freezed,
   }) {
     return _then(_value.copyWith(
-      interestArea: interestArea == freezed
-          ? _value.interestArea
-          : interestArea // ignore: cast_nullable_to_non_nullable
-              as String,
+      area: area == freezed
+          ? _value.area
+          : area // ignore: cast_nullable_to_non_nullable
+              as WorkOutArea,
       price: price == freezed
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
@@ -91,7 +90,7 @@ abstract class _$TrainerFeedbackPriceCopyWith<$Res>
           $Res Function(_TrainerFeedbackPrice) then) =
       __$TrainerFeedbackPriceCopyWithImpl<$Res>;
   @override
-  $Res call({String interestArea, int price});
+  $Res call({WorkOutArea area, int price});
 }
 
 /// @nodoc
@@ -107,14 +106,14 @@ class __$TrainerFeedbackPriceCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? interestArea = freezed,
+    Object? area = freezed,
     Object? price = freezed,
   }) {
     return _then(_TrainerFeedbackPrice(
-      interestArea: interestArea == freezed
-          ? _value.interestArea
-          : interestArea // ignore: cast_nullable_to_non_nullable
-              as String,
+      area: area == freezed
+          ? _value.area
+          : area // ignore: cast_nullable_to_non_nullable
+              as WorkOutArea,
       price: price == freezed
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
@@ -126,20 +125,19 @@ class __$TrainerFeedbackPriceCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_TrainerFeedbackPrice implements _TrainerFeedbackPrice {
-  const _$_TrainerFeedbackPrice(
-      {required this.interestArea, required this.price});
+  const _$_TrainerFeedbackPrice({required this.area, required this.price});
 
   factory _$_TrainerFeedbackPrice.fromJson(Map<String, dynamic> json) =>
       _$$_TrainerFeedbackPriceFromJson(json);
 
   @override
-  final String interestArea;
+  final WorkOutArea area;
   @override
   final int price;
 
   @override
   String toString() {
-    return 'TrainerFeedbackPrice(interestArea: $interestArea, price: $price)';
+    return 'TrainerFeedbackPrice(area: $area, price: $price)';
   }
 
   @override
@@ -147,15 +145,14 @@ class _$_TrainerFeedbackPrice implements _TrainerFeedbackPrice {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _TrainerFeedbackPrice &&
-            const DeepCollectionEquality()
-                .equals(other.interestArea, interestArea) &&
+            const DeepCollectionEquality().equals(other.area, area) &&
             const DeepCollectionEquality().equals(other.price, price));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(interestArea),
+      const DeepCollectionEquality().hash(area),
       const DeepCollectionEquality().hash(price));
 
   @JsonKey(ignore: true)
@@ -172,14 +169,14 @@ class _$_TrainerFeedbackPrice implements _TrainerFeedbackPrice {
 
 abstract class _TrainerFeedbackPrice implements TrainerFeedbackPrice {
   const factory _TrainerFeedbackPrice(
-      {required String interestArea,
+      {required WorkOutArea area,
       required int price}) = _$_TrainerFeedbackPrice;
 
   factory _TrainerFeedbackPrice.fromJson(Map<String, dynamic> json) =
       _$_TrainerFeedbackPrice.fromJson;
 
   @override
-  String get interestArea;
+  WorkOutArea get area;
   @override
   int get price;
   @override

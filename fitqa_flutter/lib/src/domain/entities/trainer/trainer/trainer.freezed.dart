@@ -25,7 +25,7 @@ class _$TrainerTearOff {
   _Trainer call(
       {required String trainerToken,
       required String name,
-      required String style,
+      required WorkOutStyle style,
       required String introduceTitle,
       required String introduceContext,
       required int likesCount,
@@ -61,7 +61,7 @@ const $Trainer = _$TrainerTearOff();
 mixin _$Trainer {
   String get trainerToken => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  String get style => throw _privateConstructorUsedError;
+  WorkOutStyle get style => throw _privateConstructorUsedError;
   String get introduceTitle => throw _privateConstructorUsedError;
   String get introduceContext => throw _privateConstructorUsedError;
   int get likesCount => throw _privateConstructorUsedError;
@@ -85,7 +85,7 @@ abstract class $TrainerCopyWith<$Res> {
   $Res call(
       {String trainerToken,
       String name,
-      String style,
+      WorkOutStyle style,
       String introduceTitle,
       String introduceContext,
       int likesCount,
@@ -130,7 +130,7 @@ class _$TrainerCopyWithImpl<$Res> implements $TrainerCopyWith<$Res> {
       style: style == freezed
           ? _value.style
           : style // ignore: cast_nullable_to_non_nullable
-              as String,
+              as WorkOutStyle,
       introduceTitle: introduceTitle == freezed
           ? _value.introduceTitle
           : introduceTitle // ignore: cast_nullable_to_non_nullable
@@ -175,7 +175,7 @@ abstract class _$TrainerCopyWith<$Res> implements $TrainerCopyWith<$Res> {
   $Res call(
       {String trainerToken,
       String name,
-      String style,
+      WorkOutStyle style,
       String introduceTitle,
       String introduceContext,
       int likesCount,
@@ -221,7 +221,7 @@ class __$TrainerCopyWithImpl<$Res> extends _$TrainerCopyWithImpl<$Res>
       style: style == freezed
           ? _value.style
           : style // ignore: cast_nullable_to_non_nullable
-              as String,
+              as WorkOutStyle,
       introduceTitle: introduceTitle == freezed
           ? _value.introduceTitle
           : introduceTitle // ignore: cast_nullable_to_non_nullable
@@ -282,7 +282,7 @@ class _$_Trainer implements _Trainer {
   @override
   final String name;
   @override
-  final String style;
+  final WorkOutStyle style;
   @override
   final String introduceTitle;
   @override
@@ -359,7 +359,7 @@ abstract class _Trainer implements Trainer {
   const factory _Trainer(
       {required String trainerToken,
       required String name,
-      required String style,
+      required WorkOutStyle style,
       required String introduceTitle,
       required String introduceContext,
       required int likesCount,
@@ -376,7 +376,7 @@ abstract class _Trainer implements Trainer {
   @override
   String get name;
   @override
-  String get style;
+  WorkOutStyle get style;
   @override
   String get introduceTitle;
   @override

@@ -22,10 +22,10 @@ TrainerCareer _$TrainerCareerFromJson(Map<String, dynamic> json) {
 class _$TrainerCareerTearOff {
   const _$TrainerCareerTearOff();
 
-  _TrainerCareer call({required int contestId, required String awards}) {
+  _TrainerCareer call({required String description, required CareerType type}) {
     return _TrainerCareer(
-      contestId: contestId,
-      awards: awards,
+      description: description,
+      type: type,
     );
   }
 
@@ -39,8 +39,8 @@ const $TrainerCareer = _$TrainerCareerTearOff();
 
 /// @nodoc
 mixin _$TrainerCareer {
-  int get contestId => throw _privateConstructorUsedError;
-  String get awards => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
+  CareerType get type => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -53,7 +53,7 @@ abstract class $TrainerCareerCopyWith<$Res> {
   factory $TrainerCareerCopyWith(
           TrainerCareer value, $Res Function(TrainerCareer) then) =
       _$TrainerCareerCopyWithImpl<$Res>;
-  $Res call({int contestId, String awards});
+  $Res call({String description, CareerType type});
 }
 
 /// @nodoc
@@ -67,18 +67,18 @@ class _$TrainerCareerCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? contestId = freezed,
-    Object? awards = freezed,
+    Object? description = freezed,
+    Object? type = freezed,
   }) {
     return _then(_value.copyWith(
-      contestId: contestId == freezed
-          ? _value.contestId
-          : contestId // ignore: cast_nullable_to_non_nullable
-              as int,
-      awards: awards == freezed
-          ? _value.awards
-          : awards // ignore: cast_nullable_to_non_nullable
+      description: description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
               as String,
+      type: type == freezed
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as CareerType,
     ));
   }
 }
@@ -90,7 +90,7 @@ abstract class _$TrainerCareerCopyWith<$Res>
           _TrainerCareer value, $Res Function(_TrainerCareer) then) =
       __$TrainerCareerCopyWithImpl<$Res>;
   @override
-  $Res call({int contestId, String awards});
+  $Res call({String description, CareerType type});
 }
 
 /// @nodoc
@@ -106,18 +106,18 @@ class __$TrainerCareerCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? contestId = freezed,
-    Object? awards = freezed,
+    Object? description = freezed,
+    Object? type = freezed,
   }) {
     return _then(_TrainerCareer(
-      contestId: contestId == freezed
-          ? _value.contestId
-          : contestId // ignore: cast_nullable_to_non_nullable
-              as int,
-      awards: awards == freezed
-          ? _value.awards
-          : awards // ignore: cast_nullable_to_non_nullable
+      description: description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
               as String,
+      type: type == freezed
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as CareerType,
     ));
   }
 }
@@ -125,19 +125,19 @@ class __$TrainerCareerCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_TrainerCareer implements _TrainerCareer {
-  const _$_TrainerCareer({required this.contestId, required this.awards});
+  const _$_TrainerCareer({required this.description, required this.type});
 
   factory _$_TrainerCareer.fromJson(Map<String, dynamic> json) =>
       _$$_TrainerCareerFromJson(json);
 
   @override
-  final int contestId;
+  final String description;
   @override
-  final String awards;
+  final CareerType type;
 
   @override
   String toString() {
-    return 'TrainerCareer(contestId: $contestId, awards: $awards)';
+    return 'TrainerCareer(description: $description, type: $type)';
   }
 
   @override
@@ -145,15 +145,16 @@ class _$_TrainerCareer implements _TrainerCareer {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _TrainerCareer &&
-            const DeepCollectionEquality().equals(other.contestId, contestId) &&
-            const DeepCollectionEquality().equals(other.awards, awards));
+            const DeepCollectionEquality()
+                .equals(other.description, description) &&
+            const DeepCollectionEquality().equals(other.type, type));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(contestId),
-      const DeepCollectionEquality().hash(awards));
+      const DeepCollectionEquality().hash(description),
+      const DeepCollectionEquality().hash(type));
 
   @JsonKey(ignore: true)
   @override
@@ -168,15 +169,16 @@ class _$_TrainerCareer implements _TrainerCareer {
 
 abstract class _TrainerCareer implements TrainerCareer {
   const factory _TrainerCareer(
-      {required int contestId, required String awards}) = _$_TrainerCareer;
+      {required String description,
+      required CareerType type}) = _$_TrainerCareer;
 
   factory _TrainerCareer.fromJson(Map<String, dynamic> json) =
       _$_TrainerCareer.fromJson;
 
   @override
-  int get contestId;
+  String get description;
   @override
-  String get awards;
+  CareerType get type;
   @override
   @JsonKey(ignore: true)
   _$TrainerCareerCopyWith<_TrainerCareer> get copyWith =>

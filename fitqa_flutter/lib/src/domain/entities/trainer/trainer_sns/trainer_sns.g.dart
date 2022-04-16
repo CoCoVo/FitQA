@@ -8,12 +8,18 @@ part of 'trainer_sns.dart';
 
 _$_TrainerSns _$$_TrainerSnsFromJson(Map<String, dynamic> json) =>
     _$_TrainerSns(
-      snsType: json['snsType'] as String,
+      snsType: $enumDecode(_$SnsTypeEnumMap, json['snsType']),
       snsUrl: json['snsUrl'] as String,
     );
 
 Map<String, dynamic> _$$_TrainerSnsToJson(_$_TrainerSns instance) =>
     <String, dynamic>{
-      'snsType': instance.snsType,
+      'snsType': _$SnsTypeEnumMap[instance.snsType],
       'snsUrl': instance.snsUrl,
     };
+
+const _$SnsTypeEnumMap = {
+  SnsType.facebook: 'FACEBOOK',
+  SnsType.instagram: 'INSTAGRAM',
+  SnsType.youtube: 'YOUTUBE',
+};
