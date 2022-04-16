@@ -1,5 +1,6 @@
 import 'package:fitqa/src/application/state/state.dart';
 import 'package:fitqa/src/domain/command/feedback/register_feedback/register_feedback.dart';
+import 'package:fitqa/src/domain/entities/common/enum/common_eunm.dart';
 import 'package:fitqa/src/domain/entities/feedback/fitqa_feedback/fitqa_feedback.dart';
 import 'package:fitqa/src/domain/services/feedback/feedback_service.dart';
 import 'package:fitqa/src/domain/services/feedback/feedback_service_impl.dart';
@@ -29,14 +30,21 @@ class FeedbackListNotifier extends StateNotifier<State<List<FitqaFeedback>>> {
     }
   }
 
-  void registerFeedback(String title, String content, bool locked) async {
+  void registerFeedback(
+      String ownerToken,
+      String trainerToken,
+      WorkOutArea area,
+      int price,
+      String title,
+      String content,
+      bool locked) async {
     try {
       state = const State.loading();
       await feedbackService.registerFeedback(RegisterFeedback(
-          ownerId: "345",
-          trainerId: "123",
-          interestArea: "LOWER",
-          price: 10000,
+          ownerToken: ownerToken,
+          trainerToken: trainerToken,
+          interestArea: area.name.toUpperCase(),
+          price: price,
           title: title,
           content: content,
           locked: locked));
