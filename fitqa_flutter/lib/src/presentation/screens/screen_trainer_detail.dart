@@ -2,6 +2,7 @@ import 'package:fitqa/src/common/fitqa_icon.dart';
 import 'package:fitqa/src/domain/entities/trainer/trainer/trainer.dart';
 import 'package:fitqa/src/domain/entities/trainer/trainer_image/trainer_image.dart';
 import 'package:fitqa/src/presentation/screens/screen_edit_trainer_detail.dart';
+import 'package:fitqa/src/presentation/screens/screen_feedback_request.dart';
 import 'package:fitqa/src/presentation/widgets/trainer/detail/trainer_career_list.dart';
 import 'package:fitqa/src/presentation/widgets/trainer/detail/trainer_career_summary.dart';
 import 'package:fitqa/src/presentation/widgets/trainer/detail/trainer_detail_info.dart';
@@ -39,12 +40,12 @@ class _ScreenTrainerDetailState extends ConsumerState<ScreenTrainerDetail>
   Widget build(BuildContext context) {
     return Scaffold(
       body: CustomScrollView(
-        slivers: [buildAppBar(), buildContext()],
+        slivers: [buildAppBar(context), buildContext()],
       ),
     );
   }
 
-  Widget buildAppBar() {
+  Widget buildAppBar(BuildContext context) {
     return SliverAppBar(
       backgroundColor: FColors.black,
       expandedHeight: FDimen.trainerDetailExpandedHeight,
@@ -66,15 +67,13 @@ class _ScreenTrainerDetailState extends ConsumerState<ScreenTrainerDetail>
                       builder: (context) => ScreenEditTrainerDetail())),
               child: const Icon(FitQaIcon.modification),
             ))
-        //FIXME(in.heo)
-        // - relocation widget
       ],
       centerTitle: false,
-      flexibleSpace: buildFlexibleSpace(),
+      flexibleSpace: buildFlexibleSpace(context),
     );
   }
 
-  Widget buildFlexibleSpace() {
+  Widget buildFlexibleSpace(BuildContext context) {
     String backgroundImageUrl = widget.trainer.images
         .firstWhere((element) => element.imageType == ImageType.background)
         .imageUrl;
@@ -103,12 +102,12 @@ class _ScreenTrainerDetailState extends ConsumerState<ScreenTrainerDetail>
                 top: FDimen.trainerDetailBackgroundHeight - 40,
                 left: 20,
                 right: 20,
-                child: buildFeedbackRequester())
+                child: buildFeedbackRequester(context))
           ],
         ));
   }
 
-  Widget buildFeedbackRequester() {
+  Widget buildFeedbackRequester(BuildContext context) {
     return Card(
         child: SizedBox(
       height: FDimen.trainerDetailFeedbackRequesterSize,
@@ -118,9 +117,14 @@ class _ScreenTrainerDetailState extends ConsumerState<ScreenTrainerDetail>
             height: FDimen.trainerDetailFeedbackRequestItemSize,
             alignment: Alignment.center,
             padding: const EdgeInsets.symmetric(horizontal: 8),
-            child: const ListTile(
+            child: ListTile(
               title: Text("상담하기", style: TextStyle(fontSize: 18)),
               trailing: Icon(FitQaIcon.enter),
+              onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          ScreenFeedbackRequest(trainer: widget.trainer))),
             ),
           ),
           const Divider(

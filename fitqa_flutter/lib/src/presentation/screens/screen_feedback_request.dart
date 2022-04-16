@@ -1,18 +1,23 @@
 import 'package:fitqa/src/application/feedback/feedback_list.dart';
+import 'package:fitqa/src/domain/entities/common/enum/common_eunm.dart';
+import 'package:fitqa/src/domain/entities/trainer/trainer/trainer.dart';
 import 'package:fitqa/src/presentation/widgets/common/bullet_point_text.dart';
 import 'package:fitqa/src/presentation/widgets/common/fitqa_textfield.dart';
 import 'package:fitqa/src/presentation/widgets/common/labeled_checkbox.dart';
 import 'package:fitqa/src/presentation/widgets/feedback/register/feedback_collapsed_appbar.dart';
+import 'package:fitqa/src/presentation/widgets/feedback/register/feedback_select_category.dart';
 import 'package:fitqa/src/theme/color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class ScreenFeedbackRequest extends ConsumerWidget {
-  ScreenFeedbackRequest({Key? key}) : super(key: key);
+  ScreenFeedbackRequest({Key? key, this.trainer}) : super(key: key);
 
   final _titleProvider = StateProvider<String>((ref) => "");
   final _contentProvider = StateProvider<String>((ref) => "");
   final _lockedProvider = StateProvider<bool>((ref) => false);
+
+  final Trainer? trainer;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -24,24 +29,24 @@ class ScreenFeedbackRequest extends ConsumerWidget {
         backgroundColor: FColors.white,
         body: ListView(
           children: [
-            FeedbackCollapsedAppbar(),
+            FeedbackCollapsedAppbar(trainer: trainer),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16),
+              padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 24,
                     ),
-                    Text(
+                    const Text(
                       "안내사항",
                       style:
                           TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 16,
                     ),
-                    BulletPointText(
+                    const BulletPointText(
                         textStyle: TextStyle(fontSize: 12),
                         children: [
                           "궁금한 내용이나 영상에 대한 추가설명은 글로 작성해주세요.",
@@ -49,7 +54,7 @@ class ScreenFeedbackRequest extends ConsumerWidget {
                           "보내주시는 영상은 가급적 0분 이내로 맞춰 주세요.",
                           "자세가 잘 보이도록 정확하고 선명한 영상을 전달해주시면 더 좋은 피드백이 가능합니다."
                         ]),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     FTextField(
@@ -57,7 +62,7 @@ class ScreenFeedbackRequest extends ConsumerWidget {
                       labelText: "제목",
                       hintText: "예시) 벤치할 때 팔꿈치가 아픕니다",
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 16,
                     ),
                     FTextField(
@@ -67,7 +72,7 @@ class ScreenFeedbackRequest extends ConsumerWidget {
                       hintText:
                           "예시) 안녕하세요. 운동 n년차 바디빌딩 헬린이입니다. 중량이 올라가면서 팔꿈치가 많이 아픕니다.",
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 12,
                     ),
                     LabeledCheckbox(
@@ -106,7 +111,25 @@ class ScreenFeedbackRequest extends ConsumerWidget {
     final title = ref.watch(_titleProvider);
     final content = ref.watch(_contentProvider);
     final locked = ref.watch(_lockedProvider);
+    final selectedFeedback = ref.watch(selectedFeedbackCategory);
+
     final feedbackController = ref.watch(feedbackListProvider.notifier);
-    feedbackController.registerFeedback(title, content, locked);
+
+    if (trainer == null) {
+      // 트레이너 선택을 안함
+      return;
+    } else if (selectedFeedback.area == WorkOutArea.none ||
+        selectedFeedback.area == WorkOutArea.all) {
+      // 잘못된 접근
+      return;
+    }
+    feedbackController.registerFeedback(
+        "usr_SLhg42P1Jer941La",
+        trainer!.trainerToken,
+        selectedFeedback.area,
+        selectedFeedback.price,
+        title,
+        content,
+        locked);
   }
 }

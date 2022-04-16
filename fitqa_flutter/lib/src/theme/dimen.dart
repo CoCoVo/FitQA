@@ -27,6 +27,8 @@ class FDimen {
   static const double trainerEditBottomButtonHeight = 42;
   static const double trainerEditProfileRadius = 80;
 
+  static const double feedbackSelectCategoryCardHeight = 200;
+
   static const double defaultAppbarHeight = 56;
   static const double defaultHorizontalPadding = 16;
 }

@@ -8,6 +8,7 @@ class FDropDown extends ConsumerWidget {
   const FDropDown(
       {Key? key,
       required this.title,
+      this.subTitle,
       this.height = FDimen.defaultDropDownHeight,
       this.padding = const EdgeInsets.symmetric(horizontal: 16, vertical: 18),
       this.borderRadius = 8,
@@ -17,6 +18,7 @@ class FDropDown extends ConsumerWidget {
   final double? height;
   final EdgeInsetsGeometry? padding;
   final String title;
+  final String? subTitle;
   final double borderRadius;
   final List<Widget> itemList;
 
@@ -35,11 +37,22 @@ class FDropDown extends ConsumerWidget {
           child: Row(
             children: [
               Expanded(
-                child: Text(
-                  title,
-                  style: TextStyle(fontSize: 16, color: FColors.grey_3),
-                ),
-              ),
+                  child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  subTitle != null
+                      ? Text(
+                          subTitle!,
+                          style: const TextStyle(
+                              fontSize: 10, color: FColors.grey_3),
+                        )
+                      : const SizedBox.shrink(),
+                  Text(
+                    title,
+                    style: const TextStyle(fontSize: 16, color: FColors.grey_3),
+                  ),
+                ],
+              )),
               SvgPicture.asset(
                 "images/arrow_dropdown.svg",
                 color: FColors.grey_3,
