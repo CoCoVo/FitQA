@@ -2,7 +2,8 @@ import 'package:fitqa/src/application/storage/user_token_facade.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'src/presentation/screens/screen_user_info.dart';
+import 'src/presentation/home.dart';
+import 'src/presentation/screens/screen_login.dart';
 
 void main() {
   runApp(const ProviderScope(child: MyApp()));
@@ -22,8 +23,7 @@ class MyApp extends ConsumerWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      // home: userToken.isEmpty ? ScreenLogin() : Home(),
-      home: ScreenUserInfo(),
+      home: userToken.isEmpty ? ScreenLogin() : Home(),
     );
   }
 }
