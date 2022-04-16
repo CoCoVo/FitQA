@@ -167,8 +167,8 @@ class _ScreenTrainerDetailState extends ConsumerState<ScreenTrainerDetail>
             TrainerIntroduce(trainer: widget.trainer),
             TrainerSns(trainer: widget.trainer),
             const TrainerCareerSummary(),
-            const TrainerCareerList(),
-            const TrainerLicenseList(),
+            TrainerCareerList(trainerCareers: widget.trainer.careers),
+            TrainerLicenseList(trainerLicenses: widget.trainer.careers),
           ],
         ),
       ));

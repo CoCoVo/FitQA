@@ -43,17 +43,17 @@ class TrainerSns extends StatelessWidget {
     snsList.add(TrainerSnsItem(
         snsIcon: const Icon(FitQaIcon.facebook),
         snsTitle: snsTitleMap[SnsType.facebook] ?? "",
-        snsUrl: snsUrlMap[SnsType.facebook]));
+        snsUrl: snsUrlMap[SnsType.facebook] ?? ""));
     snsList.add(const SizedBox(height: 14));
     snsList.add(TrainerSnsItem(
         snsIcon: const Icon(FitQaIcon.instagram),
         snsTitle: snsTitleMap[SnsType.instagram] ?? "",
-        snsUrl: snsUrlMap[SnsType.instagram]));
+        snsUrl: snsUrlMap[SnsType.instagram] ?? ""));
     snsList.add(const SizedBox(height: 14));
     snsList.add(TrainerSnsItem(
         snsIcon: const Icon(FitQaIcon.facebook),
         snsTitle: snsTitleMap[SnsType.youtube] ?? "",
-        snsUrl: snsUrlMap[SnsType.youtube]));
+        snsUrl: snsUrlMap[SnsType.youtube] ?? ""));
     snsList.add(const SizedBox(height: 31));
 
     return snsList;
