@@ -9,6 +9,7 @@ part of 'trainer.dart';
 _$_Trainer _$$_TrainerFromJson(Map<String, dynamic> json) => _$_Trainer(
       trainerToken: json['trainerToken'] as String,
       name: json['name'] as String,
+      email: json['email'] as String,
       style: $enumDecode(_$WorkOutStyleEnumMap, json['style']),
       introduceTitle: json['introduceTitle'] as String,
       introduceContext: json['introduceContext'] as String,
@@ -34,6 +35,7 @@ Map<String, dynamic> _$$_TrainerToJson(_$_Trainer instance) =>
     <String, dynamic>{
       'trainerToken': instance.trainerToken,
       'name': instance.name,
+      'email': instance.email,
       'style': _$WorkOutStyleEnumMap[instance.style],
       'introduceTitle': instance.introduceTitle,
       'introduceContext': instance.introduceContext,

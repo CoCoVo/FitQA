@@ -25,6 +25,7 @@ class _$TrainerTearOff {
   _Trainer call(
       {required String trainerToken,
       required String name,
+      required String email,
       required WorkOutStyle style,
       required String introduceTitle,
       required String introduceContext,
@@ -37,6 +38,7 @@ class _$TrainerTearOff {
     return _Trainer(
       trainerToken: trainerToken,
       name: name,
+      email: email,
       style: style,
       introduceTitle: introduceTitle,
       introduceContext: introduceContext,
@@ -61,6 +63,7 @@ const $Trainer = _$TrainerTearOff();
 mixin _$Trainer {
   String get trainerToken => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
+  String get email => throw _privateConstructorUsedError;
   WorkOutStyle get style => throw _privateConstructorUsedError;
   String get introduceTitle => throw _privateConstructorUsedError;
   String get introduceContext => throw _privateConstructorUsedError;
@@ -85,6 +88,7 @@ abstract class $TrainerCopyWith<$Res> {
   $Res call(
       {String trainerToken,
       String name,
+      String email,
       WorkOutStyle style,
       String introduceTitle,
       String introduceContext,
@@ -108,6 +112,7 @@ class _$TrainerCopyWithImpl<$Res> implements $TrainerCopyWith<$Res> {
   $Res call({
     Object? trainerToken = freezed,
     Object? name = freezed,
+    Object? email = freezed,
     Object? style = freezed,
     Object? introduceTitle = freezed,
     Object? introduceContext = freezed,
@@ -126,6 +131,10 @@ class _$TrainerCopyWithImpl<$Res> implements $TrainerCopyWith<$Res> {
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      email: email == freezed
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
               as String,
       style: style == freezed
           ? _value.style
@@ -175,6 +184,7 @@ abstract class _$TrainerCopyWith<$Res> implements $TrainerCopyWith<$Res> {
   $Res call(
       {String trainerToken,
       String name,
+      String email,
       WorkOutStyle style,
       String introduceTitle,
       String introduceContext,
@@ -199,6 +209,7 @@ class __$TrainerCopyWithImpl<$Res> extends _$TrainerCopyWithImpl<$Res>
   $Res call({
     Object? trainerToken = freezed,
     Object? name = freezed,
+    Object? email = freezed,
     Object? style = freezed,
     Object? introduceTitle = freezed,
     Object? introduceContext = freezed,
@@ -217,6 +228,10 @@ class __$TrainerCopyWithImpl<$Res> extends _$TrainerCopyWithImpl<$Res>
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      email: email == freezed
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
               as String,
       style: style == freezed
           ? _value.style
@@ -264,6 +279,7 @@ class _$_Trainer implements _Trainer {
   const _$_Trainer(
       {required this.trainerToken,
       required this.name,
+      required this.email,
       required this.style,
       required this.introduceTitle,
       required this.introduceContext,
@@ -281,6 +297,8 @@ class _$_Trainer implements _Trainer {
   final String trainerToken;
   @override
   final String name;
+  @override
+  final String email;
   @override
   final WorkOutStyle style;
   @override
@@ -302,7 +320,7 @@ class _$_Trainer implements _Trainer {
 
   @override
   String toString() {
-    return 'Trainer(trainerToken: $trainerToken, name: $name, style: $style, introduceTitle: $introduceTitle, introduceContext: $introduceContext, likesCount: $likesCount, images: $images, careers: $careers, feedbackPrices: $feedbackPrices, interestAreas: $interestAreas, sns: $sns)';
+    return 'Trainer(trainerToken: $trainerToken, name: $name, email: $email, style: $style, introduceTitle: $introduceTitle, introduceContext: $introduceContext, likesCount: $likesCount, images: $images, careers: $careers, feedbackPrices: $feedbackPrices, interestAreas: $interestAreas, sns: $sns)';
   }
 
   @override
@@ -313,6 +331,7 @@ class _$_Trainer implements _Trainer {
             const DeepCollectionEquality()
                 .equals(other.trainerToken, trainerToken) &&
             const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality().equals(other.email, email) &&
             const DeepCollectionEquality().equals(other.style, style) &&
             const DeepCollectionEquality()
                 .equals(other.introduceTitle, introduceTitle) &&
@@ -334,6 +353,7 @@ class _$_Trainer implements _Trainer {
       runtimeType,
       const DeepCollectionEquality().hash(trainerToken),
       const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(email),
       const DeepCollectionEquality().hash(style),
       const DeepCollectionEquality().hash(introduceTitle),
       const DeepCollectionEquality().hash(introduceContext),
@@ -359,6 +379,7 @@ abstract class _Trainer implements Trainer {
   const factory _Trainer(
       {required String trainerToken,
       required String name,
+      required String email,
       required WorkOutStyle style,
       required String introduceTitle,
       required String introduceContext,
@@ -375,6 +396,8 @@ abstract class _Trainer implements Trainer {
   String get trainerToken;
   @override
   String get name;
+  @override
+  String get email;
   @override
   WorkOutStyle get style;
   @override
