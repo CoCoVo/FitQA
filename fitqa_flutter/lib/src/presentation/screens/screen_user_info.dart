@@ -1,4 +1,5 @@
 import 'package:fitqa/src/presentation/widgets/common/fitqa_appbar_sub.dart';
+import 'package:fitqa/src/presentation/widgets/user_info/section_user_info_name.dart';
 import 'package:fitqa/src/presentation/widgets/user_info/section_user_info_title.dart';
 import 'package:fitqa/src/theme/color.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +24,11 @@ class ScreenUserInfo extends StatelessWidget {
               const SizedBox(
                 height: 32,
               ),
-              SectionUserInfoTitle()
+              SectionUserInfoTitle(),
+              const SizedBox(
+                height: 26,
+              ),
+              SectionUserName(),
             ],
           ),
         ));
