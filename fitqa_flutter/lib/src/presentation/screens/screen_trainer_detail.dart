@@ -64,7 +64,7 @@ class _ScreenTrainerDetailState extends ConsumerState<ScreenTrainerDetail>
               onTap: () => Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => ScreenEditTrainerDetail())),
+                      builder: (context) => const ScreenEditTrainerDetail())),
               child: const Icon(FitQaIcon.modification),
             ))
       ],
@@ -118,8 +118,19 @@ class _ScreenTrainerDetailState extends ConsumerState<ScreenTrainerDetail>
             alignment: Alignment.center,
             padding: const EdgeInsets.symmetric(horizontal: 8),
             child: ListTile(
-              title: Text("상담하기", style: TextStyle(fontSize: 18)),
-              trailing: Icon(FitQaIcon.enter),
+              title: RichText(
+                  text: TextSpan(
+                      text: "상담하기",
+                      style: const TextStyle(fontSize: 18, color: FColors.black),
+                      children: [
+                    TextSpan(
+                        text: " /${widget.trainer.feedbackPrices.length}종류",
+                        style: const TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: FColors.blue))
+                  ])),
+              trailing: const Icon(FitQaIcon.enter),
               onTap: () => Navigator.push(
                   context,
                   MaterialPageRoute(
