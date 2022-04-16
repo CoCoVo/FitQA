@@ -2,15 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class FitqaUnderlinedTextField extends StatefulWidget {
-  FitqaUnderlinedTextField(
-      {Key? key,
-      this.labelText,
-      this.hintText,
-      this.maxLength,
-      this.onChanged,
-      this.suffixChild,
-      this.showClear = false})
-      : super(key: key);
+  FitqaUnderlinedTextField({
+    Key? key,
+    this.labelText,
+    this.hintText,
+    this.maxLength,
+    this.onChanged,
+    this.suffixChild,
+    this.showClear = false,
+    this.readOnly = false,
+    this.controller,
+  }) : super(key: key);
 
   String? labelText;
   String? hintText;
@@ -18,6 +20,8 @@ class FitqaUnderlinedTextField extends StatefulWidget {
   ValueChanged<String>? onChanged;
   Widget? suffixChild;
   bool showClear;
+  bool readOnly;
+  TextEditingController? controller;
 
   @override
   State<FitqaUnderlinedTextField> createState() =>
@@ -25,10 +29,20 @@ class FitqaUnderlinedTextField extends StatefulWidget {
 }
 
 class _FitqaUnderlinedTextFieldState extends State<FitqaUnderlinedTextField> {
-  final _textController = TextEditingController();
+  late TextEditingController _textController;
 
   Color enabledColor = const Color(0xFFE4E9F2);
   Color focusedColor = const Color(0xFF222B45);
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.controller == null) {
+      _textController = TextEditingController();
+    } else {
+      _textController = widget.controller!;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,6 +50,7 @@ class _FitqaUnderlinedTextFieldState extends State<FitqaUnderlinedTextField> {
       controller: _textController,
       maxLines: 1,
       maxLength: widget.maxLength,
+      readOnly: widget.readOnly,
       style: TextStyle(color: focusedColor),
       onChanged: (s) {
         if (widget.onChanged != null) widget.onChanged!(s);
