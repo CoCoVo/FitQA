@@ -30,6 +30,7 @@ class ScreenFeedbackDetail extends ConsumerWidget {
       appBar: FitqaAppbarSub(
         title: '목록',
         onPressed: () => Navigator.pop(context),
+        foreground: FColors.white,
       ),
       extendBodyBehindAppBar: true,
       body: feedbackDetail.maybeWhen(

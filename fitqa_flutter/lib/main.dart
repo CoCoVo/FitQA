@@ -1,8 +1,9 @@
 import 'package:fitqa/src/application/storage/user_token_facade.dart';
-import 'package:fitqa/src/presentation/home.dart';
-import 'package:fitqa/src/presentation/screens/screen_login.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import 'src/presentation/home.dart';
+import 'src/presentation/screens/screen_login.dart';
 
 void main() {
   runApp(const ProviderScope(child: MyApp()));
