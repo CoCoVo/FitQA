@@ -21,6 +21,8 @@ Map<String, dynamic> _$$_TrainerFeedbackPriceToJson(
     };
 
 const _$WorkOutAreaEnumMap = {
+  WorkOutArea.all: 'all',
+  WorkOutArea.none: 'none',
   WorkOutArea.lower: 'LOWER',
   WorkOutArea.back: 'BACK',
   WorkOutArea.chest: 'CHEST',

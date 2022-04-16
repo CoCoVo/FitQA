@@ -8,8 +8,8 @@ part of 'register_feedback.dart';
 
 _$_RegisterFeedback _$$_RegisterFeedbackFromJson(Map<String, dynamic> json) =>
     _$_RegisterFeedback(
-      ownerId: json['ownerId'] as String,
-      trainerId: json['trainerId'] as String,
+      ownerToken: json['ownerToken'] as String,
+      trainerToken: json['trainerToken'] as String,
       interestArea: json['interestArea'] as String,
       price: json['price'] as int,
       title: json['title'] as String,
@@ -19,8 +19,8 @@ _$_RegisterFeedback _$$_RegisterFeedbackFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$_RegisterFeedbackToJson(_$_RegisterFeedback instance) =>
     <String, dynamic>{
-      'ownerId': instance.ownerId,
-      'trainerId': instance.trainerId,
+      'ownerToken': instance.ownerToken,
+      'trainerToken': instance.trainerToken,
       'interestArea': instance.interestArea,
       'price': instance.price,
       'title': instance.title,

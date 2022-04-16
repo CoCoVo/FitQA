@@ -9,8 +9,8 @@ part of 'fitqa_feedback.dart';
 _$_FitqaFeedback _$$_FitqaFeedbackFromJson(Map<String, dynamic> json) =>
     _$_FitqaFeedback(
       feedbackToken: json['feedbackToken'] as String,
-      ownerId: json['ownerId'] as String,
-      trainerId: json['trainerId'] as String,
+      ownerToken: json['ownerToken'] as String,
+      trainerToken: json['trainerToken'] as String,
       price: json['price'] as int,
       title: json['title'] as String,
       content: json['content'] as String,
@@ -24,8 +24,8 @@ _$_FitqaFeedback _$$_FitqaFeedbackFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$_FitqaFeedbackToJson(_$_FitqaFeedback instance) =>
     <String, dynamic>{
       'feedbackToken': instance.feedbackToken,
-      'ownerId': instance.ownerId,
-      'trainerId': instance.trainerId,
+      'ownerToken': instance.ownerToken,
+      'trainerToken': instance.trainerToken,
       'price': instance.price,
       'title': instance.title,
       'content': instance.content,
