@@ -23,7 +23,7 @@ class EditTab {
 final List<EditTab> _editTabs = [
   const EditTab(EditForm.info, 0, "기본정보", EditInfo()),
   EditTab(EditForm.introduce, 1, "소개글", EditIntroduce()),
-  const EditTab(EditForm.career, 2, "경력 및 자격면허", EditCareer()),
+  EditTab(EditForm.career, 2, "경력 및 자격면허", EditCareer()),
   const EditTab(EditForm.feedbackType, 3, "상담 종류", EditFeedbackType()),
   const EditTab(EditForm.sns, 4, "연결 링크", EditSns()),
 ];
