@@ -1,3 +1,4 @@
+import 'package:fitqa/src/domain/entities/common/enum/common_eunm.dart';
 import 'package:fitqa/src/presentation/controller/screen_trainer_controller.dart';
 import 'package:fitqa/src/presentation/widgets/common/fitqa_appbar.dart';
 import 'package:fitqa/src/presentation/widgets/common/multi_select_chip.dart';
@@ -24,11 +25,10 @@ class ScreenTrainer extends ConsumerWidget {
               height: FDimen.defaultMultiSelectChipSize,
               child: SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
-                  child:
-                      //FIXME(in.heo) Generalize
-                      // - interestAreas
-                      MultiSelectChip(const ['전체', '등', '어깨', '팔', '하체', '가슴'],
-                          onSelectionChanged: (selectedList) {})),
+                  child: MultiSelectChip(
+                      WorkOutArea.values.map((e) => e.toStringType()).toList(),
+                      spacing: 8,
+                      onSelectionChanged: (selectedList) {})),
             )),
         trainers.when(
             data: (trainers) {

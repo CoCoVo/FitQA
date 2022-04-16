@@ -7,8 +7,17 @@ class MultiSelectChip extends StatefulWidget {
   final Function(List<String>)? onMaxSelected;
   final int? maxSelection;
 
+  final double spacing;
+  final EdgeInsetsGeometry? padding;
+
   MultiSelectChip(this.reportList,
-      {this.onSelectionChanged, this.onMaxSelected, this.maxSelection});
+      {Key? key,
+      this.onSelectionChanged,
+      this.onMaxSelected,
+      this.maxSelection,
+      this.spacing = 5,
+      this.padding = const EdgeInsets.symmetric(vertical: 6, horizontal: 17)})
+      : super(key: key);
 
   @override
   _MultiSelectChipState createState() => _MultiSelectChipState();
@@ -20,16 +29,13 @@ class _MultiSelectChipState extends State<MultiSelectChip> {
   _buildChoiceList() {
     List<Widget> choices = [];
 
-    widget.reportList.forEach((item) {
+    for (var item in widget.reportList) {
       var isSelected = selectedChoices.contains(item);
-      choices.add(Container(
-        padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 5),
-        child: ChoiceChip(
-          padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 17),
+      choices.add(
+        ChoiceChip(
+          padding: widget.padding,
           label: Text(item,
               style: TextStyle(
-                  fontWeight: FontWeight.w400,
-                  fontSize: 14,
                   color: (isSelected ? FColors.white : FColors.blue))),
           backgroundColor: FColors.white,
           selectedColor: (isSelected ? FColors.blue : FColors.white),
@@ -52,8 +58,8 @@ class _MultiSelectChipState extends State<MultiSelectChip> {
             }
           },
         ),
-      ));
-    });
+      );
+    }
 
     return choices;
   }
@@ -62,6 +68,7 @@ class _MultiSelectChipState extends State<MultiSelectChip> {
   Widget build(BuildContext context) {
     return Wrap(
       children: _buildChoiceList(),
+      spacing: widget.spacing,
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:fitqa/src/application/feedback/feedback_detail.dart';
 import 'package:fitqa/src/application/feedback/feedback_list.dart';
+import 'package:fitqa/src/domain/entities/common/enum/common_eunm.dart';
 import 'package:fitqa/src/domain/entities/feedback/fitqa_feedback/fitqa_feedback.dart';
 import 'package:fitqa/src/presentation/screens/screen_feedback_detail.dart';
 import 'package:fitqa/src/presentation/widgets/common/fitqa_appbar.dart';
@@ -30,7 +31,10 @@ class ScreenHome extends ConsumerWidget {
                 child: SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: MultiSelectChip(
-                        const ['전체', '등', '어깨', '팔', '하체', '가슴'],
+                        WorkOutArea.values
+                            .map((e) => e.toStringType())
+                            .toList(),
+                        spacing: 8,
                         onSelectionChanged: (selectedList) {})),
               )),
           feedbacks.maybeWhen(
