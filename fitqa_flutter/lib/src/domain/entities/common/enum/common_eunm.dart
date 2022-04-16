@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 enum WorkOutArea {
+  all,
   @JsonValue("LOWER")
   lower,
   @JsonValue("BACK")
@@ -16,6 +17,8 @@ enum WorkOutArea {
 extension Converter on WorkOutArea {
   String toStringType() {
     switch (this) {
+      case WorkOutArea.all:
+        return '전체';
       case WorkOutArea.lower:
         return '하체';
       case WorkOutArea.back:
