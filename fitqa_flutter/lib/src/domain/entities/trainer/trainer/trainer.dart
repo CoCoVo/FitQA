@@ -14,6 +14,7 @@ abstract class Trainer with _$Trainer {
   const factory Trainer(
       {required String trainerToken,
       required String name,
+      required String email,
       required WorkOutStyle style,
       required String introduceTitle,
       required String introduceContext,
