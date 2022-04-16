@@ -8,6 +8,7 @@ class AreaSmallWidget extends StatelessWidget {
       required this.backgroundColor,
       required this.borderColor,
       this.padding = const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+      this.margin,
       this.fontSize = 12,
       this.cornerRadius = 12})
       : super(key: key);
@@ -17,7 +18,8 @@ class AreaSmallWidget extends StatelessWidget {
   final Color backgroundColor;
   final Color borderColor;
 
-  EdgeInsets padding;
+  EdgeInsets? padding;
+  EdgeInsets? margin;
   double fontSize;
   double cornerRadius;
 
@@ -25,17 +27,20 @@ class AreaSmallWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: padding,
+      margin: margin,
       decoration: BoxDecoration(
           border: Border.all(width: 1.5, color: borderColor),
           color: backgroundColor,
           borderRadius: BorderRadius.all(Radius.circular(cornerRadius))),
-      child: Text(
-        data,
-        style: TextStyle(
-            color: textColor,
-            fontSize: fontSize,
-            fontWeight: FontWeight.w500,
-            height: FDimen.workOutAreaWidgetLineHeightPx / fontSize),
+      child: Center(
+        child: Text(
+          data,
+          style: TextStyle(
+              color: textColor,
+              fontSize: fontSize,
+              fontWeight: FontWeight.w500,
+              height: FDimen.workOutAreaWidgetLineHeightPx / fontSize),
+        ),
       ),
     );
   }

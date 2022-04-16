@@ -14,6 +14,7 @@ class EditLayout extends StatelessWidget {
       color: FColors.white,
       padding: const EdgeInsets.fromLTRB(16, 40, 16, 16),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [...children, _buildBottomAction()],
       ),
     );

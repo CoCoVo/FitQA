@@ -2,6 +2,8 @@ class FDimen {
   static const double defaultTabBarSize = 60;
   static const double defaultMultiSelectChipSize = 60;
 
+  static const double defaultModalBottomHeight = 300;
+  static const double defaultDropDownHeight = 50;
   static const double workOutAreaWidgetLineHeightPx = 18;
 
   static const double trainerCardWidth = 358;
@@ -23,6 +25,7 @@ class FDimen {
 
   static const double trainerEditAppBarHeight = 50;
   static const double trainerEditBottomButtonHeight = 42;
+  static const double trainerEditProfileRadius = 80;
 
   static const double defaultAppbarHeight = 56;
   static const double defaultHorizontalPadding = 16;
