@@ -15,7 +15,6 @@ class SectionUserInfoBirth extends ConsumerWidget {
     final birthdayController = ref.watch(_birthdayProvider.notifier);
 
     return FitqaUnderlinedTextField(
-      // text: DateFormat("yyyy년 MM월 dd일").format(birthdayController.state),
       labelText: "생년월일",
       readOnly: true,
       controller: _textController,
