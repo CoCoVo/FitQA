@@ -32,6 +32,7 @@ class ScreenHome extends ConsumerWidget {
                     scrollDirection: Axis.horizontal,
                     child: MultiSelectChip(
                         WorkOutArea.values
+                            .where((element) => element != WorkOutArea.none)
                             .map((e) => e.toStringType())
                             .toList(),
                         spacing: 8,

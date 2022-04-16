@@ -6,8 +6,8 @@ part 'register_feedback.g.dart';
 @freezed
 abstract class RegisterFeedback with _$RegisterFeedback {
   const factory RegisterFeedback({
-    required String ownerId,
-    required String trainerId,
+    required String ownerToken,
+    required String trainerToken,
     required String interestArea,
     required int price,
     required String title,

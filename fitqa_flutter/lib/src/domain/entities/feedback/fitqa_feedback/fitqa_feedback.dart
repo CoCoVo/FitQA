@@ -8,8 +8,8 @@ part 'fitqa_feedback.g.dart';
 abstract class FitqaFeedback with _$FitqaFeedback {
   const factory FitqaFeedback(
       {required String feedbackToken,
-      required String ownerId,
-      required String trainerId,
+      required String ownerToken,
+      required String trainerToken,
       required int price,
       required String title,
       required String content,

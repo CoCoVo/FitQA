@@ -26,7 +26,10 @@ class ScreenTrainer extends ConsumerWidget {
               child: SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: MultiSelectChip(
-                      WorkOutArea.values.map((e) => e.toStringType()).toList(),
+                      WorkOutArea.values
+                          .where((element) => element != WorkOutArea.none)
+                          .map((e) => e.toStringType())
+                          .toList(),
                       spacing: 8,
                       onSelectionChanged: (selectedList) {})),
             )),

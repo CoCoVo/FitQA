@@ -12,10 +12,12 @@ class TrainerSns extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Map<SnsType, String> snsMap = {};
+    Map<SnsType, String> snsUrlMap = {};
+    Map<SnsType, String> snsTitleMap = {};
 
     for (var element in trainer.sns) {
-      snsMap[element.snsType] = element.snsUrl;
+      snsUrlMap[element.snsType] = element.snsUrl;
+      snsTitleMap[element.snsType] = element.snsTitle;
     }
 
     return Container(
@@ -29,23 +31,29 @@ class TrainerSns extends StatelessWidget {
           const SizedBox(height: 16),
           const Divider(height: 1, color: FColors.line, thickness: 1),
           const SizedBox(height: 19),
-          ..._buildSnsList(snsMap),
+          ..._buildSnsList(snsUrlMap, snsTitleMap),
           const Divider(color: FColors.black, height: 1, thickness: 3)
         ],
       ),
     );
   }
 
-  List<Widget> _buildSnsList(Map snsMap) {
+  List<Widget> _buildSnsList(Map snsUrlMap, Map snsTitleMap) {
     List<Widget> snsList = [];
     snsList.add(TrainerSnsItem(
-        const Icon(FitQaIcon.facebook), snsMap[SnsType.facebook] ?? ""));
+        snsIcon: const Icon(FitQaIcon.facebook),
+        snsTitle: snsTitleMap[SnsType.facebook] ?? "",
+        snsUrl: snsUrlMap[SnsType.facebook]));
     snsList.add(const SizedBox(height: 14));
     snsList.add(TrainerSnsItem(
-        const Icon(FitQaIcon.instagram), snsMap[SnsType.instagram] ?? ""));
+        snsIcon: const Icon(FitQaIcon.instagram),
+        snsTitle: snsTitleMap[SnsType.instagram] ?? "",
+        snsUrl: snsUrlMap[SnsType.instagram]));
     snsList.add(const SizedBox(height: 14));
     snsList.add(TrainerSnsItem(
-        const Icon(FitQaIcon.facebook), snsMap[SnsType.youtube] ?? ""));
+        snsIcon: const Icon(FitQaIcon.facebook),
+        snsTitle: snsTitleMap[SnsType.youtube] ?? "",
+        snsUrl: snsUrlMap[SnsType.youtube]));
     snsList.add(const SizedBox(height: 31));
 
     return snsList;

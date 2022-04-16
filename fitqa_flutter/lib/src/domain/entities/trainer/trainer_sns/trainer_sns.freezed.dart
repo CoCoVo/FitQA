@@ -22,10 +22,14 @@ TrainerSns _$TrainerSnsFromJson(Map<String, dynamic> json) {
 class _$TrainerSnsTearOff {
   const _$TrainerSnsTearOff();
 
-  _TrainerSns call({required SnsType snsType, required String snsUrl}) {
+  _TrainerSns call(
+      {required SnsType snsType,
+      required String snsUrl,
+      required String snsTitle}) {
     return _TrainerSns(
       snsType: snsType,
       snsUrl: snsUrl,
+      snsTitle: snsTitle,
     );
   }
 
@@ -41,6 +45,7 @@ const $TrainerSns = _$TrainerSnsTearOff();
 mixin _$TrainerSns {
   SnsType get snsType => throw _privateConstructorUsedError;
   String get snsUrl => throw _privateConstructorUsedError;
+  String get snsTitle => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -53,7 +58,7 @@ abstract class $TrainerSnsCopyWith<$Res> {
   factory $TrainerSnsCopyWith(
           TrainerSns value, $Res Function(TrainerSns) then) =
       _$TrainerSnsCopyWithImpl<$Res>;
-  $Res call({SnsType snsType, String snsUrl});
+  $Res call({SnsType snsType, String snsUrl, String snsTitle});
 }
 
 /// @nodoc
@@ -68,6 +73,7 @@ class _$TrainerSnsCopyWithImpl<$Res> implements $TrainerSnsCopyWith<$Res> {
   $Res call({
     Object? snsType = freezed,
     Object? snsUrl = freezed,
+    Object? snsTitle = freezed,
   }) {
     return _then(_value.copyWith(
       snsType: snsType == freezed
@@ -77,6 +83,10 @@ class _$TrainerSnsCopyWithImpl<$Res> implements $TrainerSnsCopyWith<$Res> {
       snsUrl: snsUrl == freezed
           ? _value.snsUrl
           : snsUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      snsTitle: snsTitle == freezed
+          ? _value.snsTitle
+          : snsTitle // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -88,7 +98,7 @@ abstract class _$TrainerSnsCopyWith<$Res> implements $TrainerSnsCopyWith<$Res> {
           _TrainerSns value, $Res Function(_TrainerSns) then) =
       __$TrainerSnsCopyWithImpl<$Res>;
   @override
-  $Res call({SnsType snsType, String snsUrl});
+  $Res call({SnsType snsType, String snsUrl, String snsTitle});
 }
 
 /// @nodoc
@@ -105,6 +115,7 @@ class __$TrainerSnsCopyWithImpl<$Res> extends _$TrainerSnsCopyWithImpl<$Res>
   $Res call({
     Object? snsType = freezed,
     Object? snsUrl = freezed,
+    Object? snsTitle = freezed,
   }) {
     return _then(_TrainerSns(
       snsType: snsType == freezed
@@ -115,6 +126,10 @@ class __$TrainerSnsCopyWithImpl<$Res> extends _$TrainerSnsCopyWithImpl<$Res>
           ? _value.snsUrl
           : snsUrl // ignore: cast_nullable_to_non_nullable
               as String,
+      snsTitle: snsTitle == freezed
+          ? _value.snsTitle
+          : snsTitle // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -122,7 +137,8 @@ class __$TrainerSnsCopyWithImpl<$Res> extends _$TrainerSnsCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_TrainerSns implements _TrainerSns {
-  const _$_TrainerSns({required this.snsType, required this.snsUrl});
+  const _$_TrainerSns(
+      {required this.snsType, required this.snsUrl, required this.snsTitle});
 
   factory _$_TrainerSns.fromJson(Map<String, dynamic> json) =>
       _$$_TrainerSnsFromJson(json);
@@ -131,10 +147,12 @@ class _$_TrainerSns implements _TrainerSns {
   final SnsType snsType;
   @override
   final String snsUrl;
+  @override
+  final String snsTitle;
 
   @override
   String toString() {
-    return 'TrainerSns(snsType: $snsType, snsUrl: $snsUrl)';
+    return 'TrainerSns(snsType: $snsType, snsUrl: $snsUrl, snsTitle: $snsTitle)';
   }
 
   @override
@@ -143,14 +161,16 @@ class _$_TrainerSns implements _TrainerSns {
         (other.runtimeType == runtimeType &&
             other is _TrainerSns &&
             const DeepCollectionEquality().equals(other.snsType, snsType) &&
-            const DeepCollectionEquality().equals(other.snsUrl, snsUrl));
+            const DeepCollectionEquality().equals(other.snsUrl, snsUrl) &&
+            const DeepCollectionEquality().equals(other.snsTitle, snsTitle));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(snsType),
-      const DeepCollectionEquality().hash(snsUrl));
+      const DeepCollectionEquality().hash(snsUrl),
+      const DeepCollectionEquality().hash(snsTitle));
 
   @JsonKey(ignore: true)
   @override
@@ -165,7 +185,9 @@ class _$_TrainerSns implements _TrainerSns {
 
 abstract class _TrainerSns implements TrainerSns {
   const factory _TrainerSns(
-      {required SnsType snsType, required String snsUrl}) = _$_TrainerSns;
+      {required SnsType snsType,
+      required String snsUrl,
+      required String snsTitle}) = _$_TrainerSns;
 
   factory _TrainerSns.fromJson(Map<String, dynamic> json) =
       _$_TrainerSns.fromJson;
@@ -174,6 +196,8 @@ abstract class _TrainerSns implements TrainerSns {
   SnsType get snsType;
   @override
   String get snsUrl;
+  @override
+  String get snsTitle;
   @override
   @JsonKey(ignore: true)
   _$TrainerSnsCopyWith<_TrainerSns> get copyWith =>

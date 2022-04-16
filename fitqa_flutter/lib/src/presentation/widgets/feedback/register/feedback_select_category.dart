@@ -1,86 +1,132 @@
-import 'package:fitqa/src/presentation/widgets/feedback/register/feedback_category_dropdown.dart';
+import 'package:fitqa/src/domain/entities/common/enum/common_eunm.dart';
+import 'package:fitqa/src/domain/entities/trainer/trainer/trainer.dart';
+import 'package:fitqa/src/domain/entities/trainer/trainer_feedback_price/trainer_feedback_price.dart';
+import 'package:fitqa/src/domain/entities/trainer/trainer_image/trainer_image.dart';
+import 'package:fitqa/src/presentation/widgets/common/fitqa_dropdown.dart';
+import 'package:fitqa/src/presentation/widgets/feedback/register/feedback_category_item.dart';
 import 'package:fitqa/src/theme/color.dart';
+import 'package:fitqa/src/theme/dimen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class FeedbackSelectCategory extends StatelessWidget {
-  FeedbackSelectCategory({Key? key}) : super(key: key);
+final selectedFeedbackCategory = StateProvider<TrainerFeedbackPrice>(
+    (ref) => const TrainerFeedbackPrice(area: WorkOutArea.none, price: 0));
 
-  static const String mockTrainerImage =
-      'https://s3-alpha-sig.figma.com/img/ac38/00a5/1cb4dbc07970132c01ccc8b55649cc22?Expires=1650240000&Signature=WSANSa25hl~H~zYLc2GvPIcrlyjlRXEQoI7tNF7ontrb9a7iD93fTFP8JMeVzhH3z7t0NCC6OLaWmRufte~Ea4FsAlP~mRbECbRS~mG1zP-npoQJbtTaC5ZDsgShn-C60MPVssnqWU-v8vgTodXboM~LVzxY1tD7kcn0SpVlrGnW3NNRtfCWUNpL4BOBxge4ykjxY-vS8rg5yGhDY-7OJe6O8IqvgGaIGhrwdwk4yPmGN2rVvzq9vsgN5W1E6caSedlSqrX7QNIWjt7N6C4A8Kupg0J8ziB07kpJbWQVaq~P2-12TGt88bvdt7Pf2U7Qb-EQkIKr4yizf~oXsEjUnQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA';
+class FeedbackSelectCategory extends ConsumerWidget {
+  FeedbackSelectCategory({Key? key, required this.trainer}) : super(key: key);
+
+  final Trainer trainer;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final trainerImageUrl = trainer.images
+        .firstWhere((element) => element.imageType == ImageType.profile)
+        .imageUrl;
+    final selectedFeedbackName =
+        ref.watch(selectedFeedbackCategory).area.toStringType();
+    final selectedFeedbackPrice = ref.watch(selectedFeedbackCategory).price;
+
     return Container(
-      height: 200,
+      height: FDimen.feedbackSelectCategoryCardHeight,
       padding: const EdgeInsets.only(left: 16, right: 16, top: 24, bottom: 14),
       child: Column(
         children: [
           Row(
             children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(16),
-                child: Image.network(
-                  mockTrainerImage,
-                  width: 85,
-                  height: 85,
-                  fit: BoxFit.cover,
-                ),
-              ),
+              _buildProfileImage(trainerImageUrl),
               const SizedBox(
                 width: 16,
               ),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    RichText(
-                      text: const TextSpan(
-                          text: "강경원",
-                          style: TextStyle(
-                              fontSize: 18,
-                              color: FColors.black,
-                              fontWeight: FontWeight.bold),
-                          children: [
-                            TextSpan(
-                                text: " 트레이너",
-                                style:
-                                    TextStyle(fontWeight: FontWeight.normal)),
-                          ]),
-                    ),
-                    const SizedBox(
-                      height: 8,
-                    ),
-                    FeedbackCategoryDropdown()
-                  ],
-                ),
-              )
+              _buildTrainerCategoryBox(context, ref, selectedFeedbackName),
             ],
           ),
-          const Divider(),
-          Expanded(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                const Text(
-                  "결제금액",
-                  style: TextStyle(fontSize: 14, color: FColors.black),
-                ),
-                RichText(
-                    text: const TextSpan(
-                        text: "11,000",
-                        style: TextStyle(
-                            fontSize: 24,
-                            color: FColors.black,
-                            fontWeight: FontWeight.bold),
-                        children: [
-                      TextSpan(
-                          text: " 원",
-                          style: TextStyle(fontWeight: FontWeight.normal))
-                    ])),
-              ],
-            ),
-          )
+          const Divider(height: 1, color: FColors.line),
+          _buildPriceBox(selectedFeedbackPrice),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildProfileImage(String trainerImageUrl) {
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(16),
+      child: Image.network(
+        trainerImageUrl,
+        width: 85,
+        height: 85,
+        fit: BoxFit.cover,
+      ),
+    );
+  }
+
+  Widget _buildTrainerCategoryBox(
+      BuildContext context, WidgetRef ref, String selectedFeedbackName) {
+    return Expanded(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          _buildTrainerNameBox(),
+          const SizedBox(
+            height: 8,
+          ),
+          _buildFeedbackCategoryDropBox(context, ref, selectedFeedbackName)
+        ],
+      ),
+    );
+  }
+
+  Widget _buildTrainerNameBox() {
+    return RichText(
+      text: TextSpan(
+          text: trainer.name,
+          style: const TextStyle(
+              fontSize: 18, color: FColors.black, fontWeight: FontWeight.bold),
+          children: const [
+            TextSpan(
+                text: " 트레이너", style: TextStyle(fontWeight: FontWeight.normal)),
+          ]),
+    );
+  }
+
+  Widget _buildFeedbackCategoryDropBox(
+      BuildContext context, WidgetRef ref, String selectedFeedbackName) {
+    return FDropDown(
+        height: 56,
+        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+        title: selectedFeedbackName.isEmpty ? "선택" : selectedFeedbackName,
+        subTitle: "카테고리 선택",
+        itemList: trainer.feedbackPrices
+            .map((e) => FeedbackCategoryItem(
+                title: e.area.toStringType(),
+                subtitle: "${e.price}",
+                onTap: () {
+                  ref.read(selectedFeedbackCategory.notifier).state = e;
+                  Navigator.pop(context);
+                }))
+            .toList());
+  }
+
+  Widget _buildPriceBox(int selectedFeedbackPrice) {
+    return Expanded(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          const Text(
+            "결제금액",
+            style: TextStyle(fontSize: 14, color: FColors.black),
+          ),
+          RichText(
+              text: TextSpan(
+                  text: "$selectedFeedbackPrice",
+                  style: const TextStyle(
+                      fontSize: 24,
+                      color: FColors.black,
+                      fontWeight: FontWeight.bold),
+                  children: const [
+                TextSpan(
+                    text: " 원", style: TextStyle(fontWeight: FontWeight.normal))
+              ])),
         ],
       ),
     );

@@ -64,8 +64,8 @@ class FeedbackRepositoryAPI implements FeedbackRepository {
     try {
       final response = await reader(clientProvider).post("/feedbacks/register",
           data: {
-            "ownerId": req.ownerId,
-            "trainerId": req.trainerId,
+            "ownerToken": req.ownerToken,
+            "trainerToken": req.trainerToken,
             "interestArea": req.interestArea,
             "price": req.price,
             "title": req.title,

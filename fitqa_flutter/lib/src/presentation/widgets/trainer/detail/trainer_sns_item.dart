@@ -1,10 +1,14 @@
 import 'package:fitqa/src/theme/dimen.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class TrainerSnsItem extends StatelessWidget {
-  const TrainerSnsItem(this.snsIcon, this.snsUrl, {Key? key}) : super(key: key);
+  const TrainerSnsItem(
+      {Key? key, this.snsIcon, required this.snsTitle, required this.snsUrl})
+      : super(key: key);
 
-  final Icon snsIcon;
+  final Icon? snsIcon;
+  final String snsTitle;
   final String snsUrl;
 
   @override
@@ -19,7 +23,9 @@ class TrainerSnsItem extends StatelessWidget {
             child: snsIcon,
           ),
           const SizedBox(width: 16),
-          Text(snsUrl, style: const TextStyle(fontSize: 14))
+          InkWell(
+              child: Text(snsTitle, style: const TextStyle(fontSize: 14)),
+              onTap: () => launch(snsUrl))
         ],
       ),
     );

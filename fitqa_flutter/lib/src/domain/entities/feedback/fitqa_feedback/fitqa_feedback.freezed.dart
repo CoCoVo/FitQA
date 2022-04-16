@@ -24,8 +24,8 @@ class _$FitqaFeedbackTearOff {
 
   _FitqaFeedback call(
       {required String feedbackToken,
-      required String ownerId,
-      required String trainerId,
+      required String ownerToken,
+      required String trainerToken,
       required int price,
       required String title,
       required String content,
@@ -34,8 +34,8 @@ class _$FitqaFeedbackTearOff {
       required String status}) {
     return _FitqaFeedback(
       feedbackToken: feedbackToken,
-      ownerId: ownerId,
-      trainerId: trainerId,
+      ownerToken: ownerToken,
+      trainerToken: trainerToken,
       price: price,
       title: title,
       content: content,
@@ -56,8 +56,8 @@ const $FitqaFeedback = _$FitqaFeedbackTearOff();
 /// @nodoc
 mixin _$FitqaFeedback {
   String get feedbackToken => throw _privateConstructorUsedError;
-  String get ownerId => throw _privateConstructorUsedError;
-  String get trainerId => throw _privateConstructorUsedError;
+  String get ownerToken => throw _privateConstructorUsedError;
+  String get trainerToken => throw _privateConstructorUsedError;
   int get price => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get content => throw _privateConstructorUsedError;
@@ -78,8 +78,8 @@ abstract class $FitqaFeedbackCopyWith<$Res> {
       _$FitqaFeedbackCopyWithImpl<$Res>;
   $Res call(
       {String feedbackToken,
-      String ownerId,
-      String trainerId,
+      String ownerToken,
+      String trainerToken,
       int price,
       String title,
       String content,
@@ -100,8 +100,8 @@ class _$FitqaFeedbackCopyWithImpl<$Res>
   @override
   $Res call({
     Object? feedbackToken = freezed,
-    Object? ownerId = freezed,
-    Object? trainerId = freezed,
+    Object? ownerToken = freezed,
+    Object? trainerToken = freezed,
     Object? price = freezed,
     Object? title = freezed,
     Object? content = freezed,
@@ -114,13 +114,13 @@ class _$FitqaFeedbackCopyWithImpl<$Res>
           ? _value.feedbackToken
           : feedbackToken // ignore: cast_nullable_to_non_nullable
               as String,
-      ownerId: ownerId == freezed
-          ? _value.ownerId
-          : ownerId // ignore: cast_nullable_to_non_nullable
+      ownerToken: ownerToken == freezed
+          ? _value.ownerToken
+          : ownerToken // ignore: cast_nullable_to_non_nullable
               as String,
-      trainerId: trainerId == freezed
-          ? _value.trainerId
-          : trainerId // ignore: cast_nullable_to_non_nullable
+      trainerToken: trainerToken == freezed
+          ? _value.trainerToken
+          : trainerToken // ignore: cast_nullable_to_non_nullable
               as String,
       price: price == freezed
           ? _value.price
@@ -159,8 +159,8 @@ abstract class _$FitqaFeedbackCopyWith<$Res>
   @override
   $Res call(
       {String feedbackToken,
-      String ownerId,
-      String trainerId,
+      String ownerToken,
+      String trainerToken,
       int price,
       String title,
       String content,
@@ -183,8 +183,8 @@ class __$FitqaFeedbackCopyWithImpl<$Res>
   @override
   $Res call({
     Object? feedbackToken = freezed,
-    Object? ownerId = freezed,
-    Object? trainerId = freezed,
+    Object? ownerToken = freezed,
+    Object? trainerToken = freezed,
     Object? price = freezed,
     Object? title = freezed,
     Object? content = freezed,
@@ -197,13 +197,13 @@ class __$FitqaFeedbackCopyWithImpl<$Res>
           ? _value.feedbackToken
           : feedbackToken // ignore: cast_nullable_to_non_nullable
               as String,
-      ownerId: ownerId == freezed
-          ? _value.ownerId
-          : ownerId // ignore: cast_nullable_to_non_nullable
+      ownerToken: ownerToken == freezed
+          ? _value.ownerToken
+          : ownerToken // ignore: cast_nullable_to_non_nullable
               as String,
-      trainerId: trainerId == freezed
-          ? _value.trainerId
-          : trainerId // ignore: cast_nullable_to_non_nullable
+      trainerToken: trainerToken == freezed
+          ? _value.trainerToken
+          : trainerToken // ignore: cast_nullable_to_non_nullable
               as String,
       price: price == freezed
           ? _value.price
@@ -238,8 +238,8 @@ class __$FitqaFeedbackCopyWithImpl<$Res>
 class _$_FitqaFeedback implements _FitqaFeedback {
   const _$_FitqaFeedback(
       {required this.feedbackToken,
-      required this.ownerId,
-      required this.trainerId,
+      required this.ownerToken,
+      required this.trainerToken,
       required this.price,
       required this.title,
       required this.content,
@@ -253,9 +253,9 @@ class _$_FitqaFeedback implements _FitqaFeedback {
   @override
   final String feedbackToken;
   @override
-  final String ownerId;
+  final String ownerToken;
   @override
-  final String trainerId;
+  final String trainerToken;
   @override
   final int price;
   @override
@@ -271,7 +271,7 @@ class _$_FitqaFeedback implements _FitqaFeedback {
 
   @override
   String toString() {
-    return 'FitqaFeedback(feedbackToken: $feedbackToken, ownerId: $ownerId, trainerId: $trainerId, price: $price, title: $title, content: $content, locked: $locked, comments: $comments, status: $status)';
+    return 'FitqaFeedback(feedbackToken: $feedbackToken, ownerToken: $ownerToken, trainerToken: $trainerToken, price: $price, title: $title, content: $content, locked: $locked, comments: $comments, status: $status)';
   }
 
   @override
@@ -281,8 +281,10 @@ class _$_FitqaFeedback implements _FitqaFeedback {
             other is _FitqaFeedback &&
             const DeepCollectionEquality()
                 .equals(other.feedbackToken, feedbackToken) &&
-            const DeepCollectionEquality().equals(other.ownerId, ownerId) &&
-            const DeepCollectionEquality().equals(other.trainerId, trainerId) &&
+            const DeepCollectionEquality()
+                .equals(other.ownerToken, ownerToken) &&
+            const DeepCollectionEquality()
+                .equals(other.trainerToken, trainerToken) &&
             const DeepCollectionEquality().equals(other.price, price) &&
             const DeepCollectionEquality().equals(other.title, title) &&
             const DeepCollectionEquality().equals(other.content, content) &&
@@ -295,8 +297,8 @@ class _$_FitqaFeedback implements _FitqaFeedback {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(feedbackToken),
-      const DeepCollectionEquality().hash(ownerId),
-      const DeepCollectionEquality().hash(trainerId),
+      const DeepCollectionEquality().hash(ownerToken),
+      const DeepCollectionEquality().hash(trainerToken),
       const DeepCollectionEquality().hash(price),
       const DeepCollectionEquality().hash(title),
       const DeepCollectionEquality().hash(content),
@@ -318,8 +320,8 @@ class _$_FitqaFeedback implements _FitqaFeedback {
 abstract class _FitqaFeedback implements FitqaFeedback {
   const factory _FitqaFeedback(
       {required String feedbackToken,
-      required String ownerId,
-      required String trainerId,
+      required String ownerToken,
+      required String trainerToken,
       required int price,
       required String title,
       required String content,
@@ -333,9 +335,9 @@ abstract class _FitqaFeedback implements FitqaFeedback {
   @override
   String get feedbackToken;
   @override
-  String get ownerId;
+  String get ownerToken;
   @override
-  String get trainerId;
+  String get trainerToken;
   @override
   int get price;
   @override

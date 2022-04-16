@@ -23,16 +23,16 @@ class _$RegisterFeedbackTearOff {
   const _$RegisterFeedbackTearOff();
 
   _RegisterFeedback call(
-      {required String ownerId,
-      required String trainerId,
+      {required String ownerToken,
+      required String trainerToken,
       required String interestArea,
       required int price,
       required String title,
       required String content,
       required bool locked}) {
     return _RegisterFeedback(
-      ownerId: ownerId,
-      trainerId: trainerId,
+      ownerToken: ownerToken,
+      trainerToken: trainerToken,
       interestArea: interestArea,
       price: price,
       title: title,
@@ -51,8 +51,8 @@ const $RegisterFeedback = _$RegisterFeedbackTearOff();
 
 /// @nodoc
 mixin _$RegisterFeedback {
-  String get ownerId => throw _privateConstructorUsedError;
-  String get trainerId => throw _privateConstructorUsedError;
+  String get ownerToken => throw _privateConstructorUsedError;
+  String get trainerToken => throw _privateConstructorUsedError;
   String get interestArea => throw _privateConstructorUsedError;
   int get price => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
@@ -71,8 +71,8 @@ abstract class $RegisterFeedbackCopyWith<$Res> {
           RegisterFeedback value, $Res Function(RegisterFeedback) then) =
       _$RegisterFeedbackCopyWithImpl<$Res>;
   $Res call(
-      {String ownerId,
-      String trainerId,
+      {String ownerToken,
+      String trainerToken,
       String interestArea,
       int price,
       String title,
@@ -91,8 +91,8 @@ class _$RegisterFeedbackCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? ownerId = freezed,
-    Object? trainerId = freezed,
+    Object? ownerToken = freezed,
+    Object? trainerToken = freezed,
     Object? interestArea = freezed,
     Object? price = freezed,
     Object? title = freezed,
@@ -100,13 +100,13 @@ class _$RegisterFeedbackCopyWithImpl<$Res>
     Object? locked = freezed,
   }) {
     return _then(_value.copyWith(
-      ownerId: ownerId == freezed
-          ? _value.ownerId
-          : ownerId // ignore: cast_nullable_to_non_nullable
+      ownerToken: ownerToken == freezed
+          ? _value.ownerToken
+          : ownerToken // ignore: cast_nullable_to_non_nullable
               as String,
-      trainerId: trainerId == freezed
-          ? _value.trainerId
-          : trainerId // ignore: cast_nullable_to_non_nullable
+      trainerToken: trainerToken == freezed
+          ? _value.trainerToken
+          : trainerToken // ignore: cast_nullable_to_non_nullable
               as String,
       interestArea: interestArea == freezed
           ? _value.interestArea
@@ -140,8 +140,8 @@ abstract class _$RegisterFeedbackCopyWith<$Res>
       __$RegisterFeedbackCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String ownerId,
-      String trainerId,
+      {String ownerToken,
+      String trainerToken,
       String interestArea,
       int price,
       String title,
@@ -162,8 +162,8 @@ class __$RegisterFeedbackCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? ownerId = freezed,
-    Object? trainerId = freezed,
+    Object? ownerToken = freezed,
+    Object? trainerToken = freezed,
     Object? interestArea = freezed,
     Object? price = freezed,
     Object? title = freezed,
@@ -171,13 +171,13 @@ class __$RegisterFeedbackCopyWithImpl<$Res>
     Object? locked = freezed,
   }) {
     return _then(_RegisterFeedback(
-      ownerId: ownerId == freezed
-          ? _value.ownerId
-          : ownerId // ignore: cast_nullable_to_non_nullable
+      ownerToken: ownerToken == freezed
+          ? _value.ownerToken
+          : ownerToken // ignore: cast_nullable_to_non_nullable
               as String,
-      trainerId: trainerId == freezed
-          ? _value.trainerId
-          : trainerId // ignore: cast_nullable_to_non_nullable
+      trainerToken: trainerToken == freezed
+          ? _value.trainerToken
+          : trainerToken // ignore: cast_nullable_to_non_nullable
               as String,
       interestArea: interestArea == freezed
           ? _value.interestArea
@@ -207,8 +207,8 @@ class __$RegisterFeedbackCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_RegisterFeedback implements _RegisterFeedback {
   const _$_RegisterFeedback(
-      {required this.ownerId,
-      required this.trainerId,
+      {required this.ownerToken,
+      required this.trainerToken,
       required this.interestArea,
       required this.price,
       required this.title,
@@ -219,9 +219,9 @@ class _$_RegisterFeedback implements _RegisterFeedback {
       _$$_RegisterFeedbackFromJson(json);
 
   @override
-  final String ownerId;
+  final String ownerToken;
   @override
-  final String trainerId;
+  final String trainerToken;
   @override
   final String interestArea;
   @override
@@ -235,7 +235,7 @@ class _$_RegisterFeedback implements _RegisterFeedback {
 
   @override
   String toString() {
-    return 'RegisterFeedback(ownerId: $ownerId, trainerId: $trainerId, interestArea: $interestArea, price: $price, title: $title, content: $content, locked: $locked)';
+    return 'RegisterFeedback(ownerToken: $ownerToken, trainerToken: $trainerToken, interestArea: $interestArea, price: $price, title: $title, content: $content, locked: $locked)';
   }
 
   @override
@@ -243,8 +243,10 @@ class _$_RegisterFeedback implements _RegisterFeedback {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _RegisterFeedback &&
-            const DeepCollectionEquality().equals(other.ownerId, ownerId) &&
-            const DeepCollectionEquality().equals(other.trainerId, trainerId) &&
+            const DeepCollectionEquality()
+                .equals(other.ownerToken, ownerToken) &&
+            const DeepCollectionEquality()
+                .equals(other.trainerToken, trainerToken) &&
             const DeepCollectionEquality()
                 .equals(other.interestArea, interestArea) &&
             const DeepCollectionEquality().equals(other.price, price) &&
@@ -256,8 +258,8 @@ class _$_RegisterFeedback implements _RegisterFeedback {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(ownerId),
-      const DeepCollectionEquality().hash(trainerId),
+      const DeepCollectionEquality().hash(ownerToken),
+      const DeepCollectionEquality().hash(trainerToken),
       const DeepCollectionEquality().hash(interestArea),
       const DeepCollectionEquality().hash(price),
       const DeepCollectionEquality().hash(title),
@@ -277,8 +279,8 @@ class _$_RegisterFeedback implements _RegisterFeedback {
 
 abstract class _RegisterFeedback implements RegisterFeedback {
   const factory _RegisterFeedback(
-      {required String ownerId,
-      required String trainerId,
+      {required String ownerToken,
+      required String trainerToken,
       required String interestArea,
       required int price,
       required String title,
@@ -289,9 +291,9 @@ abstract class _RegisterFeedback implements RegisterFeedback {
       _$_RegisterFeedback.fromJson;
 
   @override
-  String get ownerId;
+  String get ownerToken;
   @override
-  String get trainerId;
+  String get trainerToken;
   @override
   String get interestArea;
   @override
