@@ -6,7 +6,7 @@ part 'trainer_sns.g.dart';
 
 @freezed
 abstract class TrainerSns with _$TrainerSns {
-  const factory TrainerSns({required SnsType snsType, required String snsUrl}) =
+  const factory TrainerSns({required SnsType snsType, required String snsUrl, required String snsTitle}) =
       _TrainerSns;
 
   factory TrainerSns.fromJson(Map<String, dynamic> json) =>
