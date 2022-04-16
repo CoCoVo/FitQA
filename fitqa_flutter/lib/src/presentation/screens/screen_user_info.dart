@@ -3,6 +3,7 @@ import 'package:fitqa/src/presentation/widgets/user_info/section_user_info_birth
 import 'package:fitqa/src/presentation/widgets/user_info/section_user_info_name.dart';
 import 'package:fitqa/src/presentation/widgets/user_info/section_user_info_title.dart';
 import 'package:fitqa/src/presentation/widgets/user_info/section_user_info_workout_level.dart';
+import 'package:fitqa/src/presentation/widgets/user_info/section_user_info_workout_style.dart';
 import 'package:fitqa/src/theme/color.dart';
 import 'package:flutter/material.dart';
 
@@ -37,6 +38,10 @@ class ScreenUserInfo extends StatelessWidget {
               SectionUserInfoBirth(),
               const SizedBox(height: 38),
               SectionUserInfoWorkoutLevel(),
+              const SizedBox(
+                height: 38,
+              ),
+              SectionUserInfoWorkoutStyle(),
             ],
           ),
         ));
