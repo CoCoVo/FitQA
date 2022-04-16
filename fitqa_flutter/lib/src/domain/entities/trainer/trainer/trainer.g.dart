@@ -9,7 +9,7 @@ part of 'trainer.dart';
 _$_Trainer _$$_TrainerFromJson(Map<String, dynamic> json) => _$_Trainer(
       trainerToken: json['trainerToken'] as String,
       name: json['name'] as String,
-      style: json['style'] as String,
+      style: $enumDecode(_$WorkOutStyleEnumMap, json['style']),
       introduceTitle: json['introduceTitle'] as String,
       introduceContext: json['introduceContext'] as String,
       likesCount: json['likesCount'] as int,
@@ -34,7 +34,7 @@ Map<String, dynamic> _$$_TrainerToJson(_$_Trainer instance) =>
     <String, dynamic>{
       'trainerToken': instance.trainerToken,
       'name': instance.name,
-      'style': instance.style,
+      'style': _$WorkOutStyleEnumMap[instance.style],
       'introduceTitle': instance.introduceTitle,
       'introduceContext': instance.introduceContext,
       'likesCount': instance.likesCount,
@@ -44,3 +44,9 @@ Map<String, dynamic> _$$_TrainerToJson(_$_Trainer instance) =>
       'interestAreas': instance.interestAreas,
       'sns': instance.sns,
     };
+
+const _$WorkOutStyleEnumMap = {
+  WorkOutStyle.none: 'NONE',
+  WorkOutStyle.bodyBuilding: 'BODY_BUILDING',
+  WorkOutStyle.diet: 'DIET',
+};

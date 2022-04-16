@@ -22,7 +22,7 @@ TrainerInterestArea _$TrainerInterestAreaFromJson(Map<String, dynamic> json) {
 class _$TrainerInterestAreaTearOff {
   const _$TrainerInterestAreaTearOff();
 
-  _TrainerInterest call({required String interestArea}) {
+  _TrainerInterest call({required WorkOutArea interestArea}) {
     return _TrainerInterest(
       interestArea: interestArea,
     );
@@ -38,7 +38,7 @@ const $TrainerInterestArea = _$TrainerInterestAreaTearOff();
 
 /// @nodoc
 mixin _$TrainerInterestArea {
-  String get interestArea => throw _privateConstructorUsedError;
+  WorkOutArea get interestArea => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -51,7 +51,7 @@ abstract class $TrainerInterestAreaCopyWith<$Res> {
   factory $TrainerInterestAreaCopyWith(
           TrainerInterestArea value, $Res Function(TrainerInterestArea) then) =
       _$TrainerInterestAreaCopyWithImpl<$Res>;
-  $Res call({String interestArea});
+  $Res call({WorkOutArea interestArea});
 }
 
 /// @nodoc
@@ -71,7 +71,7 @@ class _$TrainerInterestAreaCopyWithImpl<$Res>
       interestArea: interestArea == freezed
           ? _value.interestArea
           : interestArea // ignore: cast_nullable_to_non_nullable
-              as String,
+              as WorkOutArea,
     ));
   }
 }
@@ -83,7 +83,7 @@ abstract class _$TrainerInterestCopyWith<$Res>
           _TrainerInterest value, $Res Function(_TrainerInterest) then) =
       __$TrainerInterestCopyWithImpl<$Res>;
   @override
-  $Res call({String interestArea});
+  $Res call({WorkOutArea interestArea});
 }
 
 /// @nodoc
@@ -105,7 +105,7 @@ class __$TrainerInterestCopyWithImpl<$Res>
       interestArea: interestArea == freezed
           ? _value.interestArea
           : interestArea // ignore: cast_nullable_to_non_nullable
-              as String,
+              as WorkOutArea,
     ));
   }
 }
@@ -119,7 +119,7 @@ class _$_TrainerInterest implements _TrainerInterest {
       _$$_TrainerInterestFromJson(json);
 
   @override
-  final String interestArea;
+  final WorkOutArea interestArea;
 
   @override
   String toString() {
@@ -151,14 +151,14 @@ class _$_TrainerInterest implements _TrainerInterest {
 }
 
 abstract class _TrainerInterest implements TrainerInterestArea {
-  const factory _TrainerInterest({required String interestArea}) =
+  const factory _TrainerInterest({required WorkOutArea interestArea}) =
       _$_TrainerInterest;
 
   factory _TrainerInterest.fromJson(Map<String, dynamic> json) =
       _$_TrainerInterest.fromJson;
 
   @override
-  String get interestArea;
+  WorkOutArea get interestArea;
   @override
   @JsonKey(ignore: true)
   _$TrainerInterestCopyWith<_TrainerInterest> get copyWith =>

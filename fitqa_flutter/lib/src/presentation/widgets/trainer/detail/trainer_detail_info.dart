@@ -1,4 +1,6 @@
+import 'package:fitqa/src/domain/entities/common/enum/common_eunm.dart';
 import 'package:fitqa/src/domain/entities/trainer/trainer/trainer.dart';
+import 'package:fitqa/src/domain/entities/trainer/trainer_image/trainer_image.dart';
 import 'package:fitqa/src/presentation/widgets/common/area_small_widget.dart';
 import 'package:fitqa/src/theme/color.dart';
 import 'package:fitqa/src/theme/dimen.dart';
@@ -11,10 +13,8 @@ class TrainerDetailInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // FIXME(in.heo)
-    // - makes imageType from String to enum class
     final String profileImage = trainer.images
-        .firstWhere((element) => element.imageType == "PROFILE")
+        .firstWhere((element) => element.imageType == ImageType.profile)
         .imageUrl;
 
     return Column(
@@ -35,7 +35,7 @@ class TrainerDetailInfo extends StatelessWidget {
                 fontSize: 30,
                 fontWeight: FontWeight.bold)),
         const SizedBox(height: 16),
-        Text(trainer.style,
+        Text(trainer.style.toStringType(),
             style: const TextStyle(color: FColors.white, fontSize: 14)),
         const SizedBox(height: 14),
         Row(children: _buildInterestAreas())
@@ -48,7 +48,7 @@ class TrainerDetailInfo extends StatelessWidget {
 
     for (var element in trainer.interestAreas) {
       widgets.add(AreaSmallWidget(
-        element.interestArea,
+        element.interestArea.toStringType(),
         textColor: FColors.white,
         backgroundColor: FColors.transparent,
         borderColor: FColors.white,

@@ -8,12 +8,17 @@ part of 'trainer_career.dart';
 
 _$_TrainerCareer _$$_TrainerCareerFromJson(Map<String, dynamic> json) =>
     _$_TrainerCareer(
-      contestId: json['contestId'] as int,
-      awards: json['awards'] as String,
+      description: json['description'] as String,
+      type: $enumDecode(_$CareerTypeEnumMap, json['type']),
     );
 
 Map<String, dynamic> _$$_TrainerCareerToJson(_$_TrainerCareer instance) =>
     <String, dynamic>{
-      'contestId': instance.contestId,
-      'awards': instance.awards,
+      'description': instance.description,
+      'type': _$CareerTypeEnumMap[instance.type],
     };
+
+const _$CareerTypeEnumMap = {
+  CareerType.career: 'CAREER',
+  CareerType.license: 'LICENSE',
+};

@@ -1,4 +1,5 @@
 import 'package:fitqa/src/domain/entities/trainer/trainer/trainer.dart';
+import 'package:fitqa/src/domain/entities/trainer/trainer_image/trainer_image.dart';
 import 'package:fitqa/src/theme/dimen.dart';
 import 'package:flutter/material.dart';
 
@@ -9,10 +10,8 @@ class TrainerIntroduce extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //FIXME(in.heo)
-    // - makes imageType from String to enum
     final profileImage = trainer.images
-        .firstWhere((element) => element.imageType == "PROFILE")
+        .firstWhere((element) => element.imageType == ImageType.profile)
         .imageUrl;
 
     return Container(

@@ -1,5 +1,6 @@
 import 'package:fitqa/src/common/fitqa_icon.dart';
 import 'package:fitqa/src/domain/entities/trainer/trainer/trainer.dart';
+import 'package:fitqa/src/domain/entities/trainer/trainer_image/trainer_image.dart';
 import 'package:fitqa/src/presentation/widgets/trainer/detail/trainer_career_list.dart';
 import 'package:fitqa/src/presentation/widgets/trainer/detail/trainer_career_summary.dart';
 import 'package:fitqa/src/presentation/widgets/trainer/detail/trainer_detail_info.dart';
@@ -69,7 +70,7 @@ class _ScreenTrainerDetailState extends ConsumerState<ScreenTrainerDetail>
 
   Widget buildFlexibleSpace() {
     String backgroundImageUrl = widget.trainer.images
-        .firstWhere((element) => element.imageType == "BACKGROUND")
+        .firstWhere((element) => element.imageType == ImageType.background)
         .imageUrl;
     return FlexibleSpaceBar(
         collapseMode: CollapseMode.pin,

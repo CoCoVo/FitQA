@@ -7,10 +7,17 @@ part 'trainer_career.g.dart';
 @freezed
 abstract class TrainerCareer with _$TrainerCareer {
   const factory TrainerCareer({
-    required int contestId,
-    required String awards,
+    required String description,
+    required CareerType type,
   }) = _TrainerCareer;
 
   factory TrainerCareer.fromJson(Map<String, dynamic> json) =>
       _$TrainerCareerFromJson(json);
+}
+
+enum CareerType {
+  @JsonValue("CAREER")
+  career,
+  @JsonValue("LICENSE")
+  license,
 }

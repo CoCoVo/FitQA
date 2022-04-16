@@ -22,7 +22,7 @@ TrainerSns _$TrainerSnsFromJson(Map<String, dynamic> json) {
 class _$TrainerSnsTearOff {
   const _$TrainerSnsTearOff();
 
-  _TrainerSns call({required String snsType, required String snsUrl}) {
+  _TrainerSns call({required SnsType snsType, required String snsUrl}) {
     return _TrainerSns(
       snsType: snsType,
       snsUrl: snsUrl,
@@ -39,7 +39,7 @@ const $TrainerSns = _$TrainerSnsTearOff();
 
 /// @nodoc
 mixin _$TrainerSns {
-  String get snsType => throw _privateConstructorUsedError;
+  SnsType get snsType => throw _privateConstructorUsedError;
   String get snsUrl => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -53,7 +53,7 @@ abstract class $TrainerSnsCopyWith<$Res> {
   factory $TrainerSnsCopyWith(
           TrainerSns value, $Res Function(TrainerSns) then) =
       _$TrainerSnsCopyWithImpl<$Res>;
-  $Res call({String snsType, String snsUrl});
+  $Res call({SnsType snsType, String snsUrl});
 }
 
 /// @nodoc
@@ -73,7 +73,7 @@ class _$TrainerSnsCopyWithImpl<$Res> implements $TrainerSnsCopyWith<$Res> {
       snsType: snsType == freezed
           ? _value.snsType
           : snsType // ignore: cast_nullable_to_non_nullable
-              as String,
+              as SnsType,
       snsUrl: snsUrl == freezed
           ? _value.snsUrl
           : snsUrl // ignore: cast_nullable_to_non_nullable
@@ -88,7 +88,7 @@ abstract class _$TrainerSnsCopyWith<$Res> implements $TrainerSnsCopyWith<$Res> {
           _TrainerSns value, $Res Function(_TrainerSns) then) =
       __$TrainerSnsCopyWithImpl<$Res>;
   @override
-  $Res call({String snsType, String snsUrl});
+  $Res call({SnsType snsType, String snsUrl});
 }
 
 /// @nodoc
@@ -110,7 +110,7 @@ class __$TrainerSnsCopyWithImpl<$Res> extends _$TrainerSnsCopyWithImpl<$Res>
       snsType: snsType == freezed
           ? _value.snsType
           : snsType // ignore: cast_nullable_to_non_nullable
-              as String,
+              as SnsType,
       snsUrl: snsUrl == freezed
           ? _value.snsUrl
           : snsUrl // ignore: cast_nullable_to_non_nullable
@@ -128,7 +128,7 @@ class _$_TrainerSns implements _TrainerSns {
       _$$_TrainerSnsFromJson(json);
 
   @override
-  final String snsType;
+  final SnsType snsType;
   @override
   final String snsUrl;
 
@@ -164,14 +164,14 @@ class _$_TrainerSns implements _TrainerSns {
 }
 
 abstract class _TrainerSns implements TrainerSns {
-  const factory _TrainerSns({required String snsType, required String snsUrl}) =
-      _$_TrainerSns;
+  const factory _TrainerSns(
+      {required SnsType snsType, required String snsUrl}) = _$_TrainerSns;
 
   factory _TrainerSns.fromJson(Map<String, dynamic> json) =
       _$_TrainerSns.fromJson;
 
   @override
-  String get snsType;
+  SnsType get snsType;
   @override
   String get snsUrl;
   @override

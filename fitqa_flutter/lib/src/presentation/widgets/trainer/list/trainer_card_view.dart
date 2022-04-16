@@ -1,4 +1,6 @@
+import 'package:fitqa/src/domain/entities/common/enum/common_eunm.dart';
 import 'package:fitqa/src/domain/entities/trainer/trainer/trainer.dart';
+import 'package:fitqa/src/domain/entities/trainer/trainer_image/trainer_image.dart';
 import 'package:fitqa/src/presentation/screens/screen_trainer_detail.dart';
 import 'package:fitqa/src/presentation/widgets/common/area_small_widget.dart';
 import 'package:fitqa/src/presentation/widgets/trainer/list/trainer_card_image.dart';
@@ -47,8 +49,9 @@ class TrainerCardView extends ConsumerWidget {
 
     //TODO(in.heo)
     // - Ordering을 추가해야 할 수도, 어플에서 보여지는 위젯의 순서
-    final galleryImages =
-        data.images.where((element) => element.imageType == "GALLERY").toList();
+    final galleryImages = data.images
+        .where((element) => element.imageType == ImageType.gallery)
+        .toList();
 
     for (var i = 0; i < FDimen.trainerCardImageCount; i++) {
       if (galleryImages.length > i) {
@@ -111,7 +114,7 @@ class TrainerCardView extends ConsumerWidget {
     if (data.interestAreas.isEmpty) return interestAreas;
 
     for (var area in data.interestAreas) {
-      interestAreas.add(AreaSmallWidget(area.interestArea,
+      interestAreas.add(AreaSmallWidget(area.interestArea.toStringType(),
           textColor: FColors.black,
           backgroundColor: FColors.white,
           borderColor: FColors.black));

@@ -14,7 +14,7 @@ abstract class Trainer with _$Trainer {
   const factory Trainer(
       {required String trainerToken,
       required String name,
-      required String style,
+      required WorkOutStyle style,
       required String introduceTitle,
       required String introduceContext,
       required int likesCount,
@@ -26,4 +26,26 @@ abstract class Trainer with _$Trainer {
 
   factory Trainer.fromJson(Map<String, dynamic> json) =>
       _$TrainerFromJson(json);
+}
+
+enum WorkOutStyle {
+  @JsonValue("NONE")
+  none,
+  @JsonValue("BODY_BUILDING")
+  bodyBuilding,
+  @JsonValue("DIET")
+  diet,
+}
+
+extension Converter on WorkOutStyle {
+  String toStringType() {
+    switch (this) {
+      case WorkOutStyle.none:
+        return '없음';
+      case WorkOutStyle.bodyBuilding:
+        return '보디빌딩';
+      case WorkOutStyle.diet:
+        return '다이어트';
+    }
+  }
 }
