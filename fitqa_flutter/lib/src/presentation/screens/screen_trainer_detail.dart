@@ -48,7 +48,10 @@ class _ScreenTrainerDetailState extends ConsumerState<ScreenTrainerDetail>
     return SliverAppBar(
       backgroundColor: FColors.black,
       expandedHeight: FDimen.trainerDetailExpandedHeight,
-      title: const Text('목록'),
+      title: Transform(
+        transform: Matrix4.translationValues(-20, 0, 0),
+        child: const Text('목록'),
+      ),
       leading: InkWell(
         onTap: () => Navigator.of(context).pop(),
         child: const Icon(FitQaIcon.back),
