@@ -121,7 +121,8 @@ class _ScreenTrainerDetailState extends ConsumerState<ScreenTrainerDetail>
               title: RichText(
                   text: TextSpan(
                       text: "상담하기",
-                      style: const TextStyle(fontSize: 18, color: FColors.black),
+                      style:
+                          const TextStyle(fontSize: 18, color: FColors.black),
                       children: [
                     TextSpan(
                         text: " /${widget.trainer.feedbackPrices.length}종류",
@@ -166,7 +167,8 @@ class _ScreenTrainerDetailState extends ConsumerState<ScreenTrainerDetail>
           children: [
             TrainerIntroduce(trainer: widget.trainer),
             TrainerSns(trainer: widget.trainer),
-            const TrainerCareerSummary(),
+            TrainerCareerSummary(
+                representativeCareer: widget.trainer.representativeCareer),
             TrainerCareerList(trainerCareers: widget.trainer.careers),
             TrainerLicenseList(trainerLicenses: widget.trainer.careers),
           ],

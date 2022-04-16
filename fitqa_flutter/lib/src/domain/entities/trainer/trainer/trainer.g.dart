@@ -13,6 +13,8 @@ _$_Trainer _$$_TrainerFromJson(Map<String, dynamic> json) => _$_Trainer(
       style: $enumDecode(_$WorkOutStyleEnumMap, json['style']),
       introduceTitle: json['introduceTitle'] as String,
       introduceContext: json['introduceContext'] as String,
+      representativeCareer: json['representativeCareer'] as String,
+      representativeFootprints: json['representativeFootprints'] as String,
       likesCount: json['likesCount'] as int,
       images: (json['images'] as List<dynamic>)
           .map((e) => TrainerImage.fromJson(e as Map<String, dynamic>))
@@ -39,6 +41,8 @@ Map<String, dynamic> _$$_TrainerToJson(_$_Trainer instance) =>
       'style': _$WorkOutStyleEnumMap[instance.style],
       'introduceTitle': instance.introduceTitle,
       'introduceContext': instance.introduceContext,
+      'representativeCareer': instance.representativeCareer,
+      'representativeFootprints': instance.representativeFootprints,
       'likesCount': instance.likesCount,
       'images': instance.images,
       'careers': instance.careers,
