@@ -12,6 +12,8 @@ class FColors {
   static const Color grey_2 = Color(0xFFE4E9F2);
   static const Color grey_3 = Color(0xFF8F9BB3);
   static const Color grey_4 = Color(0xFFC4C4C4);
+  static const Color grey_5 = Color(0xFFFCFCFC);
+  static const Color grey_6 = Color(0xE4E9F2CC);
   static const Color red = Color(0xFFF80D38);
   static const Color line = Color(0xFFE4E9F2);
 
