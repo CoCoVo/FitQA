@@ -47,7 +47,7 @@ class _SectionFeedbackComment extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "운동조아",
+            comment.writer.name,
             style: TextStyle(
                 fontSize: 14,
                 color: FColors.black,

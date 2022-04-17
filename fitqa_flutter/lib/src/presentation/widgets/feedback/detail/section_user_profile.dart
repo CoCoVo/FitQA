@@ -19,7 +19,7 @@ class SectionUserProfile extends ConsumerWidget {
         children: [
           CircleAvatar(
             radius: 23,
-            backgroundColor: FColors.grey_2,
+            backgroundImage: NetworkImage(feedbackDetail.owner.photoURL),
           ),
           SizedBox(
             width: 20,
@@ -29,7 +29,7 @@ class SectionUserProfile extends ConsumerWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "운동조아",
+                  feedbackDetail.owner.name,
                   style: TextStyle(
                       fontSize: 16,
                       color: FColors.black,

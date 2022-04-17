@@ -1,7 +1,10 @@
 import 'package:expandable/expandable.dart';
+import 'package:fitqa/src/application/feedback/feedback_detail.dart';
+import 'package:fitqa/src/domain/entities/feedback/feedback_trainer_image/feedback_trainer_image.dart';
 import 'package:fitqa/src/presentation/widgets/common/fitqa_textfield.dart';
 import 'package:fitqa/src/theme/color.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class SectionFeedbackAnswer extends StatefulWidget {
   const SectionFeedbackAnswer({Key? key}) : super(key: key);
@@ -46,26 +49,28 @@ class _SectionFeedbackAnswerState extends State<SectionFeedbackAnswer> {
   }
 }
 
-class SectionAnswerProfile extends StatelessWidget {
+class SectionAnswerProfile extends ConsumerWidget {
   SectionAnswerProfile({Key? key, this.onComplete}) : super(key: key);
 
   Function()? onComplete;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final feedbackDetail = ref.watch(feedbackDetailProvider).data!;
+
     return Row(
       children: [
         CircleAvatar(
-          radius: 28,
-          backgroundColor: FColors.grey_2,
-        ),
+            radius: 28,
+            backgroundImage: NetworkImage(
+                _selectTrainerImageUrl(feedbackDetail.trainer.images))),
         SizedBox(
           width: 20,
         ),
         Expanded(
             child: RichText(
                 text: TextSpan(
-                    text: "강경원",
+                    text: feedbackDetail.trainer.name,
                     style: TextStyle(
                         fontSize: 18,
                         color: FColors.black,
@@ -92,6 +97,10 @@ class SectionAnswerProfile extends StatelessWidget {
         )
       ],
     );
+  }
+
+  String _selectTrainerImageUrl(List<FeedbackTrainerImage> images) {
+    return images.firstWhere((img) => img.imageType == "PROFILE").imageUrl;
   }
 }
 
