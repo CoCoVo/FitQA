@@ -1,16 +1,21 @@
-import 'package:fitqa/src/data/repositories/fitqa_repository.dart';
+import 'package:fitqa/src/repository/trainer_repository.dart';
 import 'package:fitqa/src/domain/entities/trainer/trainer/trainer.dart';
 import 'package:fitqa/src/domain/services/trainer/trainer_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class TrainerServiceImpl implements TrainerService {
-  final FitQaRepository fitQaRepository;
+  final TrainerRepository trainerRepository;
 
-  TrainerServiceImpl(this.fitQaRepository);
+  TrainerServiceImpl(this.trainerRepository);
 
   @override
   Future<List<Trainer>> getTrainers() {
-    return fitQaRepository.getTrainers();
+    return trainerRepository.getTrainers();
+  }
+
+  @override
+  Future<Trainer> getTrainerByToken(String trainerToken) {
+    return trainerRepository.getTrainerByToken(trainerToken);
   }
 }
 

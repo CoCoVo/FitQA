@@ -14,33 +14,18 @@ import 'package:fitqa/src/theme/dimen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-const List<int> feedbackGroup = [0, 1, 2];
+final selectedTrainerTokenProvider = StateProvider<String>((ref) => "");
 
-class ScreenTrainerDetail extends ConsumerStatefulWidget {
-  const ScreenTrainerDetail({Key? key, required this.trainer})
-      : super(key: key);
+class ScreenTrainerDetail extends ConsumerWidget {
+  ScreenTrainerDetail({Key? key, required this.trainer}) : super(key: key);
 
   final Trainer trainer;
 
   @override
-  _ScreenTrainerDetailState createState() => _ScreenTrainerDetailState();
-}
-
-class _ScreenTrainerDetailState extends ConsumerState<ScreenTrainerDetail>
-    with SingleTickerProviderStateMixin {
-  late TabController tabController;
-
-  @override
-  void initState() {
-    super.initState();
-    tabController = TabController(length: 3, vsync: this);
-  }
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       body: CustomScrollView(
-        slivers: [buildAppBar(context), buildContext()],
+        slivers: [buildAppBar(context), buildContext(), /*buildFeedbackListView()*/],
       ),
     );
   }
@@ -74,7 +59,7 @@ class _ScreenTrainerDetailState extends ConsumerState<ScreenTrainerDetail>
   }
 
   Widget buildFlexibleSpace(BuildContext context) {
-    String backgroundImageUrl = widget.trainer.images
+    String backgroundImageUrl = trainer.images
         .firstWhere((element) => element.imageType == ImageType.background)
         .imageUrl;
     return FlexibleSpaceBar(
@@ -96,7 +81,7 @@ class _ScreenTrainerDetailState extends ConsumerState<ScreenTrainerDetail>
                             image: NetworkImage(backgroundImageUrl),
                             fit: BoxFit.cover)),
                     child: TrainerDetailInfo(
-                      trainer: widget.trainer,
+                      trainer: trainer,
                     ))),
             Positioned(
                 top: FDimen.trainerDetailBackgroundHeight - 40,
@@ -125,7 +110,7 @@ class _ScreenTrainerDetailState extends ConsumerState<ScreenTrainerDetail>
                           const TextStyle(fontSize: 18, color: FColors.black),
                       children: [
                     TextSpan(
-                        text: " /${widget.trainer.feedbackPrices.length}종류",
+                        text: " /${trainer.feedbackPrices.length}종류",
                         style: const TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
@@ -156,7 +141,7 @@ class _ScreenTrainerDetailState extends ConsumerState<ScreenTrainerDetail>
                           const TextStyle(fontSize: 18, color: FColors.black),
                       children: [
                     TextSpan(
-                        text: " /${widget.trainer.feedbacks.length}건",
+                        text: " /${trainer.feedbacks.length}건",
                         style: const TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
@@ -180,13 +165,18 @@ class _ScreenTrainerDetailState extends ConsumerState<ScreenTrainerDetail>
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            TrainerIntroduce(trainer: widget.trainer),
-            TrainerSns(trainer: widget.trainer),
+            TrainerIntroduce(trainer: trainer),
+            TrainerSns(trainer: trainer),
             TrainerCareerSummary(
-                representativeCareer: widget.trainer.representativeCareer),
-            TrainerCareerList(trainerCareers: widget.trainer.careers),
-            TrainerLicenseList(trainerLicenses: widget.trainer.careers),
+                representativeCareer: trainer.representativeCareer),
+            TrainerCareerList(trainerCareers: trainer.careers),
+            TrainerLicenseList(trainerLicenses: trainer.careers),
           ],
         ),
       ));
+/*
+  Widget buildFeedbackListView() => SliverFillRemaining(
+    hasScrollBody: true,
+    child: TrainerFeedbackTab()
+  );*/
 }

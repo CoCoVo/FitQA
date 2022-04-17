@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'get_trainers_response.dart';
+part of 'trainer_list_response.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,20 +14,20 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-GetTrainersResponse _$GetTrainersResponseFromJson(Map<String, dynamic> json) {
-  return _GetTrainersResponse.fromJson(json);
+TrainerListResponse _$TrainerListResponseFromJson(Map<String, dynamic> json) {
+  return _TrainerListResponse.fromJson(json);
 }
 
 /// @nodoc
-class _$GetTrainersResponseTearOff {
-  const _$GetTrainersResponseTearOff();
+class _$TrainerListResponseTearOff {
+  const _$TrainerListResponseTearOff();
 
-  _GetTrainersResponse call(
+  _TrainerListResponse call(
       {required String result,
       List<Trainer>? data,
       String? message,
       String? errorCode}) {
-    return _GetTrainersResponse(
+    return _TrainerListResponse(
       result: result,
       data: data,
       message: message,
@@ -35,16 +35,16 @@ class _$GetTrainersResponseTearOff {
     );
   }
 
-  GetTrainersResponse fromJson(Map<String, Object?> json) {
-    return GetTrainersResponse.fromJson(json);
+  TrainerListResponse fromJson(Map<String, Object?> json) {
+    return TrainerListResponse.fromJson(json);
   }
 }
 
 /// @nodoc
-const $GetTrainersResponse = _$GetTrainersResponseTearOff();
+const $TrainerListResponse = _$TrainerListResponseTearOff();
 
 /// @nodoc
-mixin _$GetTrainersResponse {
+mixin _$TrainerListResponse {
   String get result => throw _privateConstructorUsedError;
   List<Trainer>? get data => throw _privateConstructorUsedError;
   String? get message => throw _privateConstructorUsedError;
@@ -52,27 +52,27 @@ mixin _$GetTrainersResponse {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $GetTrainersResponseCopyWith<GetTrainersResponse> get copyWith =>
+  $TrainerListResponseCopyWith<TrainerListResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $GetTrainersResponseCopyWith<$Res> {
-  factory $GetTrainersResponseCopyWith(
-          GetTrainersResponse value, $Res Function(GetTrainersResponse) then) =
-      _$GetTrainersResponseCopyWithImpl<$Res>;
+abstract class $TrainerListResponseCopyWith<$Res> {
+  factory $TrainerListResponseCopyWith(
+          TrainerListResponse value, $Res Function(TrainerListResponse) then) =
+      _$TrainerListResponseCopyWithImpl<$Res>;
   $Res call(
       {String result, List<Trainer>? data, String? message, String? errorCode});
 }
 
 /// @nodoc
-class _$GetTrainersResponseCopyWithImpl<$Res>
-    implements $GetTrainersResponseCopyWith<$Res> {
-  _$GetTrainersResponseCopyWithImpl(this._value, this._then);
+class _$TrainerListResponseCopyWithImpl<$Res>
+    implements $TrainerListResponseCopyWith<$Res> {
+  _$TrainerListResponseCopyWithImpl(this._value, this._then);
 
-  final GetTrainersResponse _value;
+  final TrainerListResponse _value;
   // ignore: unused_field
-  final $Res Function(GetTrainersResponse) _then;
+  final $Res Function(TrainerListResponse) _then;
 
   @override
   $Res call({
@@ -103,26 +103,26 @@ class _$GetTrainersResponseCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$GetTrainersResponseCopyWith<$Res>
-    implements $GetTrainersResponseCopyWith<$Res> {
-  factory _$GetTrainersResponseCopyWith(_GetTrainersResponse value,
-          $Res Function(_GetTrainersResponse) then) =
-      __$GetTrainersResponseCopyWithImpl<$Res>;
+abstract class _$TrainerListResponseCopyWith<$Res>
+    implements $TrainerListResponseCopyWith<$Res> {
+  factory _$TrainerListResponseCopyWith(_TrainerListResponse value,
+          $Res Function(_TrainerListResponse) then) =
+      __$TrainerListResponseCopyWithImpl<$Res>;
   @override
   $Res call(
       {String result, List<Trainer>? data, String? message, String? errorCode});
 }
 
 /// @nodoc
-class __$GetTrainersResponseCopyWithImpl<$Res>
-    extends _$GetTrainersResponseCopyWithImpl<$Res>
-    implements _$GetTrainersResponseCopyWith<$Res> {
-  __$GetTrainersResponseCopyWithImpl(
-      _GetTrainersResponse _value, $Res Function(_GetTrainersResponse) _then)
-      : super(_value, (v) => _then(v as _GetTrainersResponse));
+class __$TrainerListResponseCopyWithImpl<$Res>
+    extends _$TrainerListResponseCopyWithImpl<$Res>
+    implements _$TrainerListResponseCopyWith<$Res> {
+  __$TrainerListResponseCopyWithImpl(
+      _TrainerListResponse _value, $Res Function(_TrainerListResponse) _then)
+      : super(_value, (v) => _then(v as _TrainerListResponse));
 
   @override
-  _GetTrainersResponse get _value => super._value as _GetTrainersResponse;
+  _TrainerListResponse get _value => super._value as _TrainerListResponse;
 
   @override
   $Res call({
@@ -131,7 +131,7 @@ class __$GetTrainersResponseCopyWithImpl<$Res>
     Object? message = freezed,
     Object? errorCode = freezed,
   }) {
-    return _then(_GetTrainersResponse(
+    return _then(_TrainerListResponse(
       result: result == freezed
           ? _value.result
           : result // ignore: cast_nullable_to_non_nullable
@@ -154,12 +154,12 @@ class __$GetTrainersResponseCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_GetTrainersResponse implements _GetTrainersResponse {
-  const _$_GetTrainersResponse(
+class _$_TrainerListResponse implements _TrainerListResponse {
+  const _$_TrainerListResponse(
       {required this.result, this.data, this.message, this.errorCode});
 
-  factory _$_GetTrainersResponse.fromJson(Map<String, dynamic> json) =>
-      _$$_GetTrainersResponseFromJson(json);
+  factory _$_TrainerListResponse.fromJson(Map<String, dynamic> json) =>
+      _$$_TrainerListResponseFromJson(json);
 
   @override
   final String result;
@@ -172,14 +172,14 @@ class _$_GetTrainersResponse implements _GetTrainersResponse {
 
   @override
   String toString() {
-    return 'GetTrainersResponse(result: $result, data: $data, message: $message, errorCode: $errorCode)';
+    return 'TrainerListResponse(result: $result, data: $data, message: $message, errorCode: $errorCode)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _GetTrainersResponse &&
+            other is _TrainerListResponse &&
             const DeepCollectionEquality().equals(other.result, result) &&
             const DeepCollectionEquality().equals(other.data, data) &&
             const DeepCollectionEquality().equals(other.message, message) &&
@@ -196,25 +196,25 @@ class _$_GetTrainersResponse implements _GetTrainersResponse {
 
   @JsonKey(ignore: true)
   @override
-  _$GetTrainersResponseCopyWith<_GetTrainersResponse> get copyWith =>
-      __$GetTrainersResponseCopyWithImpl<_GetTrainersResponse>(
+  _$TrainerListResponseCopyWith<_TrainerListResponse> get copyWith =>
+      __$TrainerListResponseCopyWithImpl<_TrainerListResponse>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_GetTrainersResponseToJson(this);
+    return _$$_TrainerListResponseToJson(this);
   }
 }
 
-abstract class _GetTrainersResponse implements GetTrainersResponse {
-  const factory _GetTrainersResponse(
+abstract class _TrainerListResponse implements TrainerListResponse {
+  const factory _TrainerListResponse(
       {required String result,
       List<Trainer>? data,
       String? message,
-      String? errorCode}) = _$_GetTrainersResponse;
+      String? errorCode}) = _$_TrainerListResponse;
 
-  factory _GetTrainersResponse.fromJson(Map<String, dynamic> json) =
-      _$_GetTrainersResponse.fromJson;
+  factory _TrainerListResponse.fromJson(Map<String, dynamic> json) =
+      _$_TrainerListResponse.fromJson;
 
   @override
   String get result;
@@ -226,6 +226,6 @@ abstract class _GetTrainersResponse implements GetTrainersResponse {
   String? get errorCode;
   @override
   @JsonKey(ignore: true)
-  _$GetTrainersResponseCopyWith<_GetTrainersResponse> get copyWith =>
+  _$TrainerListResponseCopyWith<_TrainerListResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
