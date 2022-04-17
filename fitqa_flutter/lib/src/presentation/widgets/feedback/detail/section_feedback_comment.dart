@@ -1,4 +1,5 @@
 import 'package:fitqa/src/application/feedback/feedback_detail.dart';
+import 'package:fitqa/src/application/storage/user_token_facade.dart';
 import 'package:fitqa/src/common/time_utils.dart';
 import 'package:fitqa/src/domain/entities/feedback/feedback_comment/feedback_comment.dart';
 import 'package:fitqa/src/theme/color.dart';
@@ -95,6 +96,7 @@ class _SectionFeedbackWrite extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final feedbackController = ref.watch(feedbackDetailProvider.notifier);
     final commentContentController = ref.watch(_commentProvider.notifier);
+    final userToken = ref.watch(userTokenProvider);
 
     return Container(
       height: 50,
@@ -118,7 +120,10 @@ class _SectionFeedbackWrite extends ConsumerWidget {
           ),
           TextButton(
               onPressed: () {
-                feedbackController.addComment(commentContentController.state);
+                feedbackController.addComment(
+                  userToken,
+                  commentContentController.state,
+                );
               },
               child: Text(
                 "게시",

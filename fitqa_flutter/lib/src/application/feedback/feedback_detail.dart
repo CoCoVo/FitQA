@@ -34,12 +34,12 @@ class FeedbackDetailNotifier extends StateNotifier<State<FitqaFeedback>> {
     }
   }
 
-  void addComment(String comment) async {
+  void addComment(String writerToken, String comment) async {
     try {
       state = const State.loading();
       final feedback = await feedbackService.registerFeedbackComment(
           feedbackToken,
-          RegisterFeedbackComment(writerId: "123", comment: comment));
+          RegisterFeedbackComment(writerToken: writerToken, comment: comment));
       state = State.success(feedback);
     } on Exception catch (e) {
       state = State.error(e);
