@@ -1,5 +1,5 @@
 import 'package:fitqa/src/application/feedback/feedback_detail.dart';
-import 'package:fitqa/src/common/TimeUtils.dart';
+import 'package:fitqa/src/common/time_utils.dart';
 import 'package:fitqa/src/presentation/widgets/common/small_info_box.dart';
 import 'package:fitqa/src/theme/color.dart';
 import 'package:flutter/material.dart';
