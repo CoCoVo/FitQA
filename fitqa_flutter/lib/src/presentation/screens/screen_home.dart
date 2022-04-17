@@ -58,6 +58,7 @@ class ScreenHome extends ConsumerWidget {
       StateController<String> feedbackTokenController) {
     return Expanded(
       child: ListView.separated(
+        padding: const EdgeInsets.symmetric(vertical: 8),
         itemCount: feedbacks.length,
         itemBuilder: (context, index) => FeedbackListViewItem(
           feedback: feedbacks[index],
