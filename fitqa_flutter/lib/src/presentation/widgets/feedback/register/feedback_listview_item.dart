@@ -1,9 +1,11 @@
+import 'package:fitqa/src/domain/entities/common/enum/common_eunm.dart';
 import 'package:fitqa/src/domain/entities/feedback/fitqa_feedback/fitqa_feedback.dart';
 import 'package:fitqa/src/presentation/widgets/common/area_small_widget.dart';
 import 'package:fitqa/src/presentation/widgets/common/small_info_box.dart';
 import 'package:fitqa/src/theme/color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:intl/intl.dart';
 
 class FeedbackListViewItem extends StatelessWidget {
   FeedbackListViewItem({
@@ -20,7 +22,7 @@ class FeedbackListViewItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: onPressed,
+      onTap: (feedback.locked) ? null : onPressed,
       child: Container(
           padding: EdgeInsets.symmetric(horizontal: 16),
           height: 72,
@@ -53,7 +55,8 @@ class FeedbackListViewItem extends StatelessWidget {
                         children: [
                           Visibility(
                             visible: !feedback.locked,
-                            child: AreaSmallWidget("비공개",
+                            child: AreaSmallWidget(
+                                feedback.interestArea.toStringType(),
                                 textColor: FColors.black,
                                 backgroundColor: FColors.white,
                                 borderColor: FColors.black),
@@ -85,7 +88,7 @@ class FeedbackListViewItem extends StatelessWidget {
                             width: 8,
                           ),
                           Text(
-                            "2022.03.15",
+                            DateFormat("yyyy.MM.dd").format(feedback.createdAt),
                             style:
                                 TextStyle(color: FColors.grey_4, fontSize: 10),
                           )
@@ -98,8 +101,8 @@ class FeedbackListViewItem extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 4),
                 child: SmallInfoBox(
-                  text: "답변대기",
-                  outlined: !complete,
+                  text: feedback.status.toStringType(),
+                  outlined: feedback.status == FeedbackStatus.prepare,
                 ),
               )
             ],
