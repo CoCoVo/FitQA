@@ -1,4 +1,5 @@
 import 'package:fitqa/src/application/feedback/feedback_list.dart';
+import 'package:fitqa/src/application/storage/user_token_facade.dart';
 import 'package:fitqa/src/domain/entities/common/enum/common_eunm.dart';
 import 'package:fitqa/src/domain/entities/trainer/trainer/trainer.dart';
 import 'package:fitqa/src/presentation/widgets/common/bullet_point_text.dart';
@@ -112,7 +113,7 @@ class ScreenFeedbackRequest extends ConsumerWidget {
     final content = ref.watch(_contentProvider);
     final locked = ref.watch(_lockedProvider);
     final selectedFeedback = ref.watch(selectedFeedbackCategory);
-
+    final currentUser = ref.watch(userTokenProvider);
     final feedbackController = ref.watch(feedbackListProvider.notifier);
 
     if (trainer == null) {
@@ -123,13 +124,7 @@ class ScreenFeedbackRequest extends ConsumerWidget {
       // 잘못된 접근
       return;
     }
-    feedbackController.registerFeedback(
-        "usr_SLhg42P1Jer941La",
-        trainer!.trainerToken,
-        selectedFeedback.area,
-        selectedFeedback.price,
-        title,
-        content,
-        locked);
+    feedbackController.registerFeedback(currentUser, trainer!.trainerToken,
+        selectedFeedback.area, selectedFeedback.price, title, content, locked);
   }
 }
