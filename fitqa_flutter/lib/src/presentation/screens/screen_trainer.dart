@@ -54,7 +54,8 @@ class ScreenTrainer extends ConsumerWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => ScreenTrainerDetail()));
+                                builder: (context) =>
+                                    const ScreenTrainerDetail()));
                       }),
                 ),
               ));

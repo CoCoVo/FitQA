@@ -66,10 +66,10 @@ class ScreenTrainerDetail extends ConsumerWidget {
         color: FColors.white,
         child: Column(
           mainAxisSize: MainAxisSize.min,
-          children: [
-            const TrainerIntroduce(),
-            const TrainerSns(),
-            const TrainerCareerSummary(),
+          children: const [
+            TrainerIntroduce(),
+            TrainerSns(),
+            TrainerCareerSummary(),
             TrainerCareerList(),
             TrainerLicenseList(),
           ],
