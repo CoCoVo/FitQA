@@ -1,24 +1,24 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'get_trainers_response.dart';
+part of 'trainer_detail_response.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_GetTrainersResponse _$$_GetTrainersResponseFromJson(
+_$_TrainerDetailResponse _$$_TrainerDetailResponseFromJson(
         Map<String, dynamic> json) =>
-    _$_GetTrainersResponse(
+    _$_TrainerDetailResponse(
       result: json['result'] as String,
-      data: (json['data'] as List<dynamic>?)
-          ?.map((e) => Trainer.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      data: json['data'] == null
+          ? null
+          : Trainer.fromJson(json['data'] as Map<String, dynamic>),
       message: json['message'] as String?,
       errorCode: json['errorCode'] as String?,
     );
 
-Map<String, dynamic> _$$_GetTrainersResponseToJson(
-        _$_GetTrainersResponse instance) =>
+Map<String, dynamic> _$$_TrainerDetailResponseToJson(
+        _$_TrainerDetailResponse instance) =>
     <String, dynamic>{
       'result': instance.result,
       'data': instance.data,

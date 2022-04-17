@@ -114,11 +114,11 @@ class TrainerCardView extends ConsumerWidget {
           child: RichText(
               text: TextSpan(
                   text: "총 답변 수",
-                  style: TextStyle(fontSize: 12, color: FColors.black),
+                  style: const TextStyle(fontSize: 12, color: FColors.black),
                   children: [
                 TextSpan(
                     text: " /${trainer.feedbacks.length}건",
-                    style: TextStyle(
+                    style: const TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.bold,
                         color: FColors.blue))
