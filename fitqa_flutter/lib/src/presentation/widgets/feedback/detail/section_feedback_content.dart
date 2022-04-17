@@ -1,4 +1,5 @@
 import 'package:fitqa/src/application/feedback/feedback_detail.dart';
+import 'package:fitqa/src/domain/entities/common/enum/common_eunm.dart';
 import 'package:fitqa/src/presentation/widgets/common/area_small_widget.dart';
 import 'package:fitqa/src/theme/color.dart';
 import 'package:flutter/material.dart';
@@ -26,10 +27,12 @@ class SectionFeedbackContent extends ConsumerWidget {
           SizedBox(
             height: 12,
           ),
-          AreaSmallWidget("등",
-              textColor: FColors.black,
-              borderColor: FColors.black,
-              backgroundColor: FColors.white),
+          AreaSmallWidget(
+            feedbackDetail.interestArea.toStringType(),
+            textColor: FColors.black,
+            borderColor: FColors.black,
+            backgroundColor: FColors.white,
+          ),
           SizedBox(
             height: 32,
           ),

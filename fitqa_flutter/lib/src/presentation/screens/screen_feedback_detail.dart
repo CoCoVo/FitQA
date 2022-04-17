@@ -55,6 +55,7 @@ class ScreenFeedbackDetail extends ConsumerWidget {
           padding: const EdgeInsets.symmetric(
               horizontal: FDimen.defaultHorizontalPadding),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SectionUserProfile(),
               ThinDivider(),

@@ -1,11 +1,15 @@
+import 'package:fitqa/src/application/storage/user_token_facade.dart';
+import 'package:fitqa/src/domain/entities/common/enum/common_eunm.dart';
 import 'package:fitqa/src/domain/entities/feedback/fitqa_feedback/fitqa_feedback.dart';
 import 'package:fitqa/src/presentation/widgets/common/area_small_widget.dart';
 import 'package:fitqa/src/presentation/widgets/common/small_info_box.dart';
 import 'package:fitqa/src/theme/color.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:intl/intl.dart';
 
-class FeedbackListViewItem extends StatelessWidget {
+class FeedbackListViewItem extends ConsumerWidget {
   FeedbackListViewItem({
     Key? key,
     required this.feedback,
@@ -18,9 +22,11 @@ class FeedbackListViewItem extends StatelessWidget {
   bool complete;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    String userToken = ref.watch(userTokenProvider);
+
     return InkWell(
-      onTap: onPressed,
+      onTap: _isLocked(userToken, feedback) ? null : onPressed,
       child: Container(
           padding: EdgeInsets.symmetric(horizontal: 16),
           height: 72,
@@ -37,7 +43,7 @@ class FeedbackListViewItem extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Visibility(
-                        visible: !feedback.locked,
+                        visible: !_isLocked(userToken, feedback),
                         child: Text(
                           feedback.title,
                           overflow: TextOverflow.ellipsis,
@@ -52,22 +58,23 @@ class FeedbackListViewItem extends StatelessWidget {
                       Row(
                         children: [
                           Visibility(
-                            visible: !feedback.locked,
-                            child: AreaSmallWidget("비공개",
+                            visible: !_isLocked(userToken, feedback),
+                            child: AreaSmallWidget(
+                                feedback.interestArea.toStringType(),
                                 textColor: FColors.black,
                                 backgroundColor: FColors.white,
                                 borderColor: FColors.black),
                           ),
                           Visibility(
-                            visible: !feedback.locked,
+                            visible: !_isLocked(userToken, feedback),
                             child: SizedBox(
                               width: 6,
                             ),
                           ),
                           Visibility(
-                            visible: !feedback.locked,
+                            visible: !_isLocked(userToken, feedback),
                             child: Text(
-                              "운동조아",
+                              feedback.owner.name,
                               style: TextStyle(
                                   color: FColors.black,
                                   fontSize: 12,
@@ -85,7 +92,7 @@ class FeedbackListViewItem extends StatelessWidget {
                             width: 8,
                           ),
                           Text(
-                            "2022.03.15",
+                            DateFormat("yyyy.MM.dd").format(feedback.createdAt),
                             style:
                                 TextStyle(color: FColors.grey_4, fontSize: 10),
                           )
@@ -98,8 +105,8 @@ class FeedbackListViewItem extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 4),
                 child: SmallInfoBox(
-                  text: "답변대기",
-                  outlined: !complete,
+                  text: feedback.status.toStringType(),
+                  outlined: feedback.status == FeedbackStatus.prepare,
                 ),
               )
             ],
@@ -120,5 +127,15 @@ class FeedbackListViewItem extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  bool _isLocked(String userToken, FitqaFeedback feedback) {
+    // 1. 현재 사용자랑 feedback owner 가 같으면 false.
+    if (userToken == feedback.owner.userToken) return false;
+
+    // 2. feedback 이 locked 이면 true.
+    if (feedback.locked) return true;
+
+    return false;
   }
 }

@@ -22,10 +22,16 @@ FeedbackComment _$FeedbackCommentFromJson(Map<String, dynamic> json) {
 class _$FeedbackCommentTearOff {
   const _$FeedbackCommentTearOff();
 
-  _FeedbackComment call({required String writer, required String comment}) {
+  _FeedbackComment call(
+      {required FeedbackOwner writer,
+      required String comment,
+      required DateTime createdAt,
+      required DateTime updatedAt}) {
     return _FeedbackComment(
       writer: writer,
       comment: comment,
+      createdAt: createdAt,
+      updatedAt: updatedAt,
     );
   }
 
@@ -39,8 +45,10 @@ const $FeedbackComment = _$FeedbackCommentTearOff();
 
 /// @nodoc
 mixin _$FeedbackComment {
-  String get writer => throw _privateConstructorUsedError;
+  FeedbackOwner get writer => throw _privateConstructorUsedError;
   String get comment => throw _privateConstructorUsedError;
+  DateTime get createdAt => throw _privateConstructorUsedError;
+  DateTime get updatedAt => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -53,7 +61,13 @@ abstract class $FeedbackCommentCopyWith<$Res> {
   factory $FeedbackCommentCopyWith(
           FeedbackComment value, $Res Function(FeedbackComment) then) =
       _$FeedbackCommentCopyWithImpl<$Res>;
-  $Res call({String writer, String comment});
+  $Res call(
+      {FeedbackOwner writer,
+      String comment,
+      DateTime createdAt,
+      DateTime updatedAt});
+
+  $FeedbackOwnerCopyWith<$Res> get writer;
 }
 
 /// @nodoc
@@ -69,17 +83,34 @@ class _$FeedbackCommentCopyWithImpl<$Res>
   $Res call({
     Object? writer = freezed,
     Object? comment = freezed,
+    Object? createdAt = freezed,
+    Object? updatedAt = freezed,
   }) {
     return _then(_value.copyWith(
       writer: writer == freezed
           ? _value.writer
           : writer // ignore: cast_nullable_to_non_nullable
-              as String,
+              as FeedbackOwner,
       comment: comment == freezed
           ? _value.comment
           : comment // ignore: cast_nullable_to_non_nullable
               as String,
+      createdAt: createdAt == freezed
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      updatedAt: updatedAt == freezed
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
     ));
+  }
+
+  @override
+  $FeedbackOwnerCopyWith<$Res> get writer {
+    return $FeedbackOwnerCopyWith<$Res>(_value.writer, (value) {
+      return _then(_value.copyWith(writer: value));
+    });
   }
 }
 
@@ -90,7 +121,14 @@ abstract class _$FeedbackCommentCopyWith<$Res>
           _FeedbackComment value, $Res Function(_FeedbackComment) then) =
       __$FeedbackCommentCopyWithImpl<$Res>;
   @override
-  $Res call({String writer, String comment});
+  $Res call(
+      {FeedbackOwner writer,
+      String comment,
+      DateTime createdAt,
+      DateTime updatedAt});
+
+  @override
+  $FeedbackOwnerCopyWith<$Res> get writer;
 }
 
 /// @nodoc
@@ -108,16 +146,26 @@ class __$FeedbackCommentCopyWithImpl<$Res>
   $Res call({
     Object? writer = freezed,
     Object? comment = freezed,
+    Object? createdAt = freezed,
+    Object? updatedAt = freezed,
   }) {
     return _then(_FeedbackComment(
       writer: writer == freezed
           ? _value.writer
           : writer // ignore: cast_nullable_to_non_nullable
-              as String,
+              as FeedbackOwner,
       comment: comment == freezed
           ? _value.comment
           : comment // ignore: cast_nullable_to_non_nullable
               as String,
+      createdAt: createdAt == freezed
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      updatedAt: updatedAt == freezed
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
     ));
   }
 }
@@ -125,19 +173,27 @@ class __$FeedbackCommentCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_FeedbackComment implements _FeedbackComment {
-  const _$_FeedbackComment({required this.writer, required this.comment});
+  const _$_FeedbackComment(
+      {required this.writer,
+      required this.comment,
+      required this.createdAt,
+      required this.updatedAt});
 
   factory _$_FeedbackComment.fromJson(Map<String, dynamic> json) =>
       _$$_FeedbackCommentFromJson(json);
 
   @override
-  final String writer;
+  final FeedbackOwner writer;
   @override
   final String comment;
+  @override
+  final DateTime createdAt;
+  @override
+  final DateTime updatedAt;
 
   @override
   String toString() {
-    return 'FeedbackComment(writer: $writer, comment: $comment)';
+    return 'FeedbackComment(writer: $writer, comment: $comment, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -146,14 +202,18 @@ class _$_FeedbackComment implements _FeedbackComment {
         (other.runtimeType == runtimeType &&
             other is _FeedbackComment &&
             const DeepCollectionEquality().equals(other.writer, writer) &&
-            const DeepCollectionEquality().equals(other.comment, comment));
+            const DeepCollectionEquality().equals(other.comment, comment) &&
+            const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
+            const DeepCollectionEquality().equals(other.updatedAt, updatedAt));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(writer),
-      const DeepCollectionEquality().hash(comment));
+      const DeepCollectionEquality().hash(comment),
+      const DeepCollectionEquality().hash(createdAt),
+      const DeepCollectionEquality().hash(updatedAt));
 
   @JsonKey(ignore: true)
   @override
@@ -168,15 +228,22 @@ class _$_FeedbackComment implements _FeedbackComment {
 
 abstract class _FeedbackComment implements FeedbackComment {
   const factory _FeedbackComment(
-      {required String writer, required String comment}) = _$_FeedbackComment;
+      {required FeedbackOwner writer,
+      required String comment,
+      required DateTime createdAt,
+      required DateTime updatedAt}) = _$_FeedbackComment;
 
   factory _FeedbackComment.fromJson(Map<String, dynamic> json) =
       _$_FeedbackComment.fromJson;
 
   @override
-  String get writer;
+  FeedbackOwner get writer;
   @override
   String get comment;
+  @override
+  DateTime get createdAt;
+  @override
+  DateTime get updatedAt;
   @override
   @JsonKey(ignore: true)
   _$FeedbackCommentCopyWith<_FeedbackComment> get copyWith =>

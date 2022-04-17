@@ -24,9 +24,9 @@ class _$RegisterFeedbackCommentTearOff {
   const _$RegisterFeedbackCommentTearOff();
 
   _RegisterFeedbackComment call(
-      {required String writerId, required String comment}) {
+      {required String writerToken, required String comment}) {
     return _RegisterFeedbackComment(
-      writerId: writerId,
+      writerToken: writerToken,
       comment: comment,
     );
   }
@@ -41,7 +41,7 @@ const $RegisterFeedbackComment = _$RegisterFeedbackCommentTearOff();
 
 /// @nodoc
 mixin _$RegisterFeedbackComment {
-  String get writerId => throw _privateConstructorUsedError;
+  String get writerToken => throw _privateConstructorUsedError;
   String get comment => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -55,7 +55,7 @@ abstract class $RegisterFeedbackCommentCopyWith<$Res> {
   factory $RegisterFeedbackCommentCopyWith(RegisterFeedbackComment value,
           $Res Function(RegisterFeedbackComment) then) =
       _$RegisterFeedbackCommentCopyWithImpl<$Res>;
-  $Res call({String writerId, String comment});
+  $Res call({String writerToken, String comment});
 }
 
 /// @nodoc
@@ -69,13 +69,13 @@ class _$RegisterFeedbackCommentCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? writerId = freezed,
+    Object? writerToken = freezed,
     Object? comment = freezed,
   }) {
     return _then(_value.copyWith(
-      writerId: writerId == freezed
-          ? _value.writerId
-          : writerId // ignore: cast_nullable_to_non_nullable
+      writerToken: writerToken == freezed
+          ? _value.writerToken
+          : writerToken // ignore: cast_nullable_to_non_nullable
               as String,
       comment: comment == freezed
           ? _value.comment
@@ -92,7 +92,7 @@ abstract class _$RegisterFeedbackCommentCopyWith<$Res>
           $Res Function(_RegisterFeedbackComment) then) =
       __$RegisterFeedbackCommentCopyWithImpl<$Res>;
   @override
-  $Res call({String writerId, String comment});
+  $Res call({String writerToken, String comment});
 }
 
 /// @nodoc
@@ -109,13 +109,13 @@ class __$RegisterFeedbackCommentCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? writerId = freezed,
+    Object? writerToken = freezed,
     Object? comment = freezed,
   }) {
     return _then(_RegisterFeedbackComment(
-      writerId: writerId == freezed
-          ? _value.writerId
-          : writerId // ignore: cast_nullable_to_non_nullable
+      writerToken: writerToken == freezed
+          ? _value.writerToken
+          : writerToken // ignore: cast_nullable_to_non_nullable
               as String,
       comment: comment == freezed
           ? _value.comment
@@ -129,19 +129,19 @@ class __$RegisterFeedbackCommentCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_RegisterFeedbackComment implements _RegisterFeedbackComment {
   const _$_RegisterFeedbackComment(
-      {required this.writerId, required this.comment});
+      {required this.writerToken, required this.comment});
 
   factory _$_RegisterFeedbackComment.fromJson(Map<String, dynamic> json) =>
       _$$_RegisterFeedbackCommentFromJson(json);
 
   @override
-  final String writerId;
+  final String writerToken;
   @override
   final String comment;
 
   @override
   String toString() {
-    return 'RegisterFeedbackComment(writerId: $writerId, comment: $comment)';
+    return 'RegisterFeedbackComment(writerToken: $writerToken, comment: $comment)';
   }
 
   @override
@@ -149,14 +149,15 @@ class _$_RegisterFeedbackComment implements _RegisterFeedbackComment {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _RegisterFeedbackComment &&
-            const DeepCollectionEquality().equals(other.writerId, writerId) &&
+            const DeepCollectionEquality()
+                .equals(other.writerToken, writerToken) &&
             const DeepCollectionEquality().equals(other.comment, comment));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(writerId),
+      const DeepCollectionEquality().hash(writerToken),
       const DeepCollectionEquality().hash(comment));
 
   @JsonKey(ignore: true)
@@ -173,14 +174,14 @@ class _$_RegisterFeedbackComment implements _RegisterFeedbackComment {
 
 abstract class _RegisterFeedbackComment implements RegisterFeedbackComment {
   const factory _RegisterFeedbackComment(
-      {required String writerId,
+      {required String writerToken,
       required String comment}) = _$_RegisterFeedbackComment;
 
   factory _RegisterFeedbackComment.fromJson(Map<String, dynamic> json) =
       _$_RegisterFeedbackComment.fromJson;
 
   @override
-  String get writerId;
+  String get writerToken;
   @override
   String get comment;
   @override
