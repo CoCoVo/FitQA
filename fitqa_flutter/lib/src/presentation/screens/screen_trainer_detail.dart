@@ -80,9 +80,7 @@ class ScreenTrainerDetail extends ConsumerWidget {
                         image: DecorationImage(
                             image: NetworkImage(backgroundImageUrl),
                             fit: BoxFit.cover)),
-                    child: TrainerDetailInfo(
-                      trainer: trainer,
-                    ))),
+                    child: TrainerDetailInfo())),
             Positioned(
                 top: FDimen.trainerDetailBackgroundHeight - 40,
                 left: 20,

@@ -1,19 +1,22 @@
+import 'package:fitqa/src/application/trainer/trainer_detail.dart';
 import 'package:fitqa/src/domain/entities/common/enum/common_eunm.dart';
 import 'package:fitqa/src/domain/entities/trainer/trainer/trainer.dart';
 import 'package:fitqa/src/domain/entities/trainer/trainer_image/trainer_image.dart';
+import 'package:fitqa/src/domain/entities/trainer/trainer_interest/trainer_interest.dart';
 import 'package:fitqa/src/presentation/widgets/common/area_small_widget.dart';
 import 'package:fitqa/src/theme/color.dart';
 import 'package:fitqa/src/theme/dimen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class TrainerDetailInfo extends StatelessWidget {
-  const TrainerDetailInfo({Key? key, required this.trainer}) : super(key: key);
-
-  final Trainer trainer;
+class TrainerDetailInfo extends ConsumerWidget {
+  const TrainerDetailInfo({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    final String profileImage = trainer.images
+  Widget build(BuildContext context, WidgetRef ref) {
+    final trainerDetail = ref.watch(trainerDetailProvider).data!;
+
+    final String profileImage = trainerDetail.images
         .firstWhere((element) => element.imageType == ImageType.profile)
         .imageUrl;
 
@@ -29,24 +32,24 @@ class TrainerDetailInfo extends StatelessWidget {
               width: FDimen.trainerDetailProfileSize),
         ),
         const SizedBox(height: 33),
-        Text("${trainer.name} 트레이너",
+        Text("${trainerDetail.name} 트레이너",
             style: const TextStyle(
                 color: FColors.white,
                 fontSize: 30,
                 fontWeight: FontWeight.bold)),
         const SizedBox(height: 16),
-        Text(trainer.style.toStringType(),
+        Text(trainerDetail.style.toStringType(),
             style: const TextStyle(color: FColors.white, fontSize: 14)),
         const SizedBox(height: 14),
-        Row(children: _buildInterestAreas())
+        Row(children: _buildInterestAreas(trainerDetail.interestAreas))
       ],
     );
   }
 
-  List<Widget> _buildInterestAreas() {
+  List<Widget> _buildInterestAreas(List<TrainerInterestArea> interestAreas) {
     List<Widget> widgets = <Widget>[];
 
-    for (var element in trainer.interestAreas) {
+    for (var element in interestAreas) {
       widgets.add(AreaSmallWidget(
         element.interestArea.toStringType(),
         fontSize: 14,
