@@ -36,7 +36,8 @@ class _$TrainerTearOff {
       required List<TrainerCareer> careers,
       required List<TrainerFeedbackPrice> feedbackPrices,
       required List<TrainerInterestArea> interestAreas,
-      required List<TrainerSns> sns}) {
+      required List<TrainerSns> sns,
+      required List<FitqaFeedback> feedbacks}) {
     return _Trainer(
       trainerToken: trainerToken,
       name: name,
@@ -52,6 +53,7 @@ class _$TrainerTearOff {
       feedbackPrices: feedbackPrices,
       interestAreas: interestAreas,
       sns: sns,
+      feedbacks: feedbacks,
     );
   }
 
@@ -81,6 +83,7 @@ mixin _$Trainer {
   List<TrainerInterestArea> get interestAreas =>
       throw _privateConstructorUsedError;
   List<TrainerSns> get sns => throw _privateConstructorUsedError;
+  List<FitqaFeedback> get feedbacks => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -105,7 +108,8 @@ abstract class $TrainerCopyWith<$Res> {
       List<TrainerCareer> careers,
       List<TrainerFeedbackPrice> feedbackPrices,
       List<TrainerInterestArea> interestAreas,
-      List<TrainerSns> sns});
+      List<TrainerSns> sns,
+      List<FitqaFeedback> feedbacks});
 }
 
 /// @nodoc
@@ -132,6 +136,7 @@ class _$TrainerCopyWithImpl<$Res> implements $TrainerCopyWith<$Res> {
     Object? feedbackPrices = freezed,
     Object? interestAreas = freezed,
     Object? sns = freezed,
+    Object? feedbacks = freezed,
   }) {
     return _then(_value.copyWith(
       trainerToken: trainerToken == freezed
@@ -190,6 +195,10 @@ class _$TrainerCopyWithImpl<$Res> implements $TrainerCopyWith<$Res> {
           ? _value.sns
           : sns // ignore: cast_nullable_to_non_nullable
               as List<TrainerSns>,
+      feedbacks: feedbacks == freezed
+          ? _value.feedbacks
+          : feedbacks // ignore: cast_nullable_to_non_nullable
+              as List<FitqaFeedback>,
     ));
   }
 }
@@ -213,7 +222,8 @@ abstract class _$TrainerCopyWith<$Res> implements $TrainerCopyWith<$Res> {
       List<TrainerCareer> careers,
       List<TrainerFeedbackPrice> feedbackPrices,
       List<TrainerInterestArea> interestAreas,
-      List<TrainerSns> sns});
+      List<TrainerSns> sns,
+      List<FitqaFeedback> feedbacks});
 }
 
 /// @nodoc
@@ -241,6 +251,7 @@ class __$TrainerCopyWithImpl<$Res> extends _$TrainerCopyWithImpl<$Res>
     Object? feedbackPrices = freezed,
     Object? interestAreas = freezed,
     Object? sns = freezed,
+    Object? feedbacks = freezed,
   }) {
     return _then(_Trainer(
       trainerToken: trainerToken == freezed
@@ -299,6 +310,10 @@ class __$TrainerCopyWithImpl<$Res> extends _$TrainerCopyWithImpl<$Res>
           ? _value.sns
           : sns // ignore: cast_nullable_to_non_nullable
               as List<TrainerSns>,
+      feedbacks: feedbacks == freezed
+          ? _value.feedbacks
+          : feedbacks // ignore: cast_nullable_to_non_nullable
+              as List<FitqaFeedback>,
     ));
   }
 }
@@ -320,7 +335,8 @@ class _$_Trainer implements _Trainer {
       required this.careers,
       required this.feedbackPrices,
       required this.interestAreas,
-      required this.sns});
+      required this.sns,
+      required this.feedbacks});
 
   factory _$_Trainer.fromJson(Map<String, dynamic> json) =>
       _$$_TrainerFromJson(json);
@@ -353,10 +369,12 @@ class _$_Trainer implements _Trainer {
   final List<TrainerInterestArea> interestAreas;
   @override
   final List<TrainerSns> sns;
+  @override
+  final List<FitqaFeedback> feedbacks;
 
   @override
   String toString() {
-    return 'Trainer(trainerToken: $trainerToken, name: $name, email: $email, style: $style, introduceTitle: $introduceTitle, introduceContext: $introduceContext, representativeCareer: $representativeCareer, representativeFootprints: $representativeFootprints, likesCount: $likesCount, images: $images, careers: $careers, feedbackPrices: $feedbackPrices, interestAreas: $interestAreas, sns: $sns)';
+    return 'Trainer(trainerToken: $trainerToken, name: $name, email: $email, style: $style, introduceTitle: $introduceTitle, introduceContext: $introduceContext, representativeCareer: $representativeCareer, representativeFootprints: $representativeFootprints, likesCount: $likesCount, images: $images, careers: $careers, feedbackPrices: $feedbackPrices, interestAreas: $interestAreas, sns: $sns, feedbacks: $feedbacks)';
   }
 
   @override
@@ -385,7 +403,8 @@ class _$_Trainer implements _Trainer {
                 .equals(other.feedbackPrices, feedbackPrices) &&
             const DeepCollectionEquality()
                 .equals(other.interestAreas, interestAreas) &&
-            const DeepCollectionEquality().equals(other.sns, sns));
+            const DeepCollectionEquality().equals(other.sns, sns) &&
+            const DeepCollectionEquality().equals(other.feedbacks, feedbacks));
   }
 
   @override
@@ -404,7 +423,8 @@ class _$_Trainer implements _Trainer {
       const DeepCollectionEquality().hash(careers),
       const DeepCollectionEquality().hash(feedbackPrices),
       const DeepCollectionEquality().hash(interestAreas),
-      const DeepCollectionEquality().hash(sns));
+      const DeepCollectionEquality().hash(sns),
+      const DeepCollectionEquality().hash(feedbacks));
 
   @JsonKey(ignore: true)
   @override
@@ -432,7 +452,8 @@ abstract class _Trainer implements Trainer {
       required List<TrainerCareer> careers,
       required List<TrainerFeedbackPrice> feedbackPrices,
       required List<TrainerInterestArea> interestAreas,
-      required List<TrainerSns> sns}) = _$_Trainer;
+      required List<TrainerSns> sns,
+      required List<FitqaFeedback> feedbacks}) = _$_Trainer;
 
   factory _Trainer.fromJson(Map<String, dynamic> json) = _$_Trainer.fromJson;
 
@@ -464,6 +485,8 @@ abstract class _Trainer implements Trainer {
   List<TrainerInterestArea> get interestAreas;
   @override
   List<TrainerSns> get sns;
+  @override
+  List<FitqaFeedback> get feedbacks;
   @override
   @JsonKey(ignore: true)
   _$TrainerCopyWith<_Trainer> get copyWith =>

@@ -112,12 +112,12 @@ class TrainerCardView extends ConsumerWidget {
         child: Align(
           alignment: Alignment.centerRight,
           child: RichText(
-              text: const TextSpan(
+              text: TextSpan(
                   text: "총 답변 수",
                   style: TextStyle(fontSize: 12, color: FColors.black),
                   children: [
                 TextSpan(
-                    text: " /24건",
+                    text: " /${trainer.feedbacks.length}건",
                     style: TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.bold,

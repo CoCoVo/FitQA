@@ -149,9 +149,26 @@ class _ScreenTrainerDetailState extends ConsumerState<ScreenTrainerDetail>
             height: FDimen.trainerDetailFeedbackRequestItemSize,
             alignment: Alignment.center,
             padding: const EdgeInsets.symmetric(horizontal: 8),
-            child: const ListTile(
-              title: Text("답변내역", style: TextStyle(fontSize: 18)),
-              trailing: Icon(FitQaIcon.enter),
+            child: ListTile(
+              title: RichText(
+                  text: TextSpan(
+                      text: "답변하기",
+                      style:
+                          const TextStyle(fontSize: 18, color: FColors.black),
+                      children: [
+                    TextSpan(
+                        text: " /${widget.trainer.feedbacks.length}건",
+                        style: const TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: FColors.blue))
+                  ])),
+              trailing: const Icon(FitQaIcon.enter),
+              onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          ScreenFeedbackRequest(trainer: widget.trainer))),
             ),
           ),
         ],

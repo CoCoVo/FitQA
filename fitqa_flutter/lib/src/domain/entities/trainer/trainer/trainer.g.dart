@@ -31,6 +31,9 @@ _$_Trainer _$$_TrainerFromJson(Map<String, dynamic> json) => _$_Trainer(
       sns: (json['sns'] as List<dynamic>)
           .map((e) => TrainerSns.fromJson(e as Map<String, dynamic>))
           .toList(),
+      feedbacks: (json['feedbacks'] as List<dynamic>)
+          .map((e) => FitqaFeedback.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$$_TrainerToJson(_$_Trainer instance) =>
@@ -49,6 +52,7 @@ Map<String, dynamic> _$$_TrainerToJson(_$_Trainer instance) =>
       'feedbackPrices': instance.feedbackPrices,
       'interestAreas': instance.interestAreas,
       'sns': instance.sns,
+      'feedbacks': instance.feedbacks,
     };
 
 const _$WorkOutStyleEnumMap = {
