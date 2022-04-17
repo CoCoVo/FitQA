@@ -9,8 +9,9 @@ part of 'fitqa_feedback.dart';
 _$_FitqaFeedback _$$_FitqaFeedbackFromJson(Map<String, dynamic> json) =>
     _$_FitqaFeedback(
       feedbackToken: json['feedbackToken'] as String,
-      ownerToken: json['ownerToken'] as String,
-      trainerToken: json['trainerToken'] as String,
+      owner: FeedbackOwner.fromJson(json['owner'] as Map<String, dynamic>),
+      trainer:
+          FeedbackTrainer.fromJson(json['trainer'] as Map<String, dynamic>),
       interestArea: $enumDecode(_$WorkOutAreaEnumMap, json['interestArea']),
       price: json['price'] as int,
       title: json['title'] as String,
@@ -30,8 +31,8 @@ _$_FitqaFeedback _$$_FitqaFeedbackFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$_FitqaFeedbackToJson(_$_FitqaFeedback instance) =>
     <String, dynamic>{
       'feedbackToken': instance.feedbackToken,
-      'ownerToken': instance.ownerToken,
-      'trainerToken': instance.trainerToken,
+      'owner': instance.owner,
+      'trainer': instance.trainer,
       'interestArea': _$WorkOutAreaEnumMap[instance.interestArea],
       'price': instance.price,
       'title': instance.title,
