@@ -6,10 +6,9 @@ class FDimen {
   static const double defaultDropDownHeight = 50;
   static const double workOutAreaWidgetLineHeightPx = 18;
 
-  static const double trainerCardWidth = 358;
-  static const double trainerCardHeight = 280;
-  static const double trainerCardImageSize = 140;
+  static const double trainerCardImageSize = 118;
   static const int trainerCardImageCount = 3;
+  static const double trainerCardButtonHeight = 48;
 
   static const double trainerDetailExpandedHeight = 510;
   static const double trainerDetailBackgroundHeight = 400;
