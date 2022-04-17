@@ -40,7 +40,7 @@ class ScreenTrainer extends ConsumerWidget {
                 scrollDirection: Axis.vertical,
                 itemCount: trainers.length,
                 itemBuilder: (context, int index) => ProviderScope(
-                  child: TrainerCardView(data: trainers[index]),
+                  child: TrainerCardView(trainer: trainers[index]),
                 ),
               ));
             },

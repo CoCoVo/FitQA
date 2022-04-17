@@ -2,6 +2,7 @@ import 'package:fitqa/src/common/fitqa_icon.dart';
 import 'package:fitqa/src/domain/entities/common/enum/common_eunm.dart';
 import 'package:fitqa/src/domain/entities/trainer/trainer/trainer.dart';
 import 'package:fitqa/src/domain/entities/trainer/trainer_image/trainer_image.dart';
+import 'package:fitqa/src/presentation/screens/screen_feedback_request.dart';
 import 'package:fitqa/src/presentation/screens/screen_trainer_detail.dart';
 import 'package:fitqa/src/presentation/widgets/common/area_small_widget.dart';
 import 'package:fitqa/src/presentation/widgets/common/fitqa_elevated_button.dart';
@@ -12,9 +13,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class TrainerCardView extends ConsumerWidget {
-  const TrainerCardView({Key? key, required this.data}) : super(key: key);
+  const TrainerCardView({Key? key, required this.trainer}) : super(key: key);
 
-  final Trainer data;
+  final Trainer trainer;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -27,14 +28,14 @@ class TrainerCardView extends ConsumerWidget {
             context,
             MaterialPageRoute(
                 builder: (context) => ScreenTrainerDetail(
-                      trainer: data,
+                      trainer: trainer,
                     ))),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             buildCardImage(),
-            buildCardContent(),
+            buildCardContent(context),
             const SizedBox(height: 5),
           ],
         ),
@@ -47,7 +48,7 @@ class TrainerCardView extends ConsumerWidget {
 
     //TODO(in.heo)
     // - Ordering을 추가해야 할 수도, 어플에서 보여지는 위젯의 순서
-    final galleryImages = data.images
+    final galleryImages = trainer.images
         .where((element) => element.imageType == ImageType.gallery)
         .toList();
 
@@ -64,7 +65,7 @@ class TrainerCardView extends ConsumerWidget {
     );
   }
 
-  Widget buildCardContent() => Padding(
+  Widget buildCardContent(BuildContext context) => Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 18),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -79,20 +80,20 @@ class TrainerCardView extends ConsumerWidget {
           const SizedBox(
             height: 8,
           ),
-          buildAction(),
+          buildAction(context),
         ],
       ));
 
   Widget buildContentHeader() {
     return Row(
       children: [
-        Text("${data.name} 트레이너",
+        Text("${trainer.name} 트레이너",
             style: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w700,
                 color: FColors.black)),
         const SizedBox(width: 8),
-        Text(data.representativeFootprints,
+        Text(trainer.representativeFootprints,
             style: const TextStyle(
                 fontSize: 12, height: 1.2, color: FColors.blue)),
         const Expanded(
@@ -127,12 +128,16 @@ class TrainerCardView extends ConsumerWidget {
     ]);
   }
 
-  Widget buildAction() {
+  Widget buildAction(BuildContext context) {
     return Row(
       children: [
         Expanded(
           child: FElevatedButton(
-            onPressed: () => {},
+            onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) =>
+                        ScreenFeedbackRequest(trainer: trainer))),
             child: const Text("상담 신청",
                 style: TextStyle(
                     fontSize: 16,
@@ -150,9 +155,9 @@ class TrainerCardView extends ConsumerWidget {
   List<Widget> buildInterestAreaWidgets() {
     List<Widget> interestAreas = <Widget>[];
 
-    if (data.interestAreas.isEmpty) return interestAreas;
+    if (trainer.interestAreas.isEmpty) return interestAreas;
 
-    for (var area in data.interestAreas) {
+    for (var area in trainer.interestAreas) {
       interestAreas.add(AreaSmallWidget(area.interestArea.toStringType(),
           textColor: FColors.black,
           backgroundColor: FColors.white,
