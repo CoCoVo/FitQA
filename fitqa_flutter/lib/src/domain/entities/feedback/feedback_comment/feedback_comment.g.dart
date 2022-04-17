@@ -8,7 +8,7 @@ part of 'feedback_comment.dart';
 
 _$_FeedbackComment _$$_FeedbackCommentFromJson(Map<String, dynamic> json) =>
     _$_FeedbackComment(
-      writer: json['writer'] as String,
+      writer: FeedbackOwner.fromJson(json['writer'] as Map<String, dynamic>),
       comment: json['comment'] as String,
       createdAt: DateTime.parse(json['createdAt'] as String),
       updatedAt: DateTime.parse(json['updatedAt'] as String),

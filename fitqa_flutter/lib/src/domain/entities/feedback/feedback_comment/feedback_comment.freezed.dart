@@ -23,7 +23,7 @@ class _$FeedbackCommentTearOff {
   const _$FeedbackCommentTearOff();
 
   _FeedbackComment call(
-      {required String writer,
+      {required FeedbackOwner writer,
       required String comment,
       required DateTime createdAt,
       required DateTime updatedAt}) {
@@ -45,7 +45,7 @@ const $FeedbackComment = _$FeedbackCommentTearOff();
 
 /// @nodoc
 mixin _$FeedbackComment {
-  String get writer => throw _privateConstructorUsedError;
+  FeedbackOwner get writer => throw _privateConstructorUsedError;
   String get comment => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
   DateTime get updatedAt => throw _privateConstructorUsedError;
@@ -62,7 +62,12 @@ abstract class $FeedbackCommentCopyWith<$Res> {
           FeedbackComment value, $Res Function(FeedbackComment) then) =
       _$FeedbackCommentCopyWithImpl<$Res>;
   $Res call(
-      {String writer, String comment, DateTime createdAt, DateTime updatedAt});
+      {FeedbackOwner writer,
+      String comment,
+      DateTime createdAt,
+      DateTime updatedAt});
+
+  $FeedbackOwnerCopyWith<$Res> get writer;
 }
 
 /// @nodoc
@@ -85,7 +90,7 @@ class _$FeedbackCommentCopyWithImpl<$Res>
       writer: writer == freezed
           ? _value.writer
           : writer // ignore: cast_nullable_to_non_nullable
-              as String,
+              as FeedbackOwner,
       comment: comment == freezed
           ? _value.comment
           : comment // ignore: cast_nullable_to_non_nullable
@@ -100,6 +105,13 @@ class _$FeedbackCommentCopyWithImpl<$Res>
               as DateTime,
     ));
   }
+
+  @override
+  $FeedbackOwnerCopyWith<$Res> get writer {
+    return $FeedbackOwnerCopyWith<$Res>(_value.writer, (value) {
+      return _then(_value.copyWith(writer: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -110,7 +122,13 @@ abstract class _$FeedbackCommentCopyWith<$Res>
       __$FeedbackCommentCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String writer, String comment, DateTime createdAt, DateTime updatedAt});
+      {FeedbackOwner writer,
+      String comment,
+      DateTime createdAt,
+      DateTime updatedAt});
+
+  @override
+  $FeedbackOwnerCopyWith<$Res> get writer;
 }
 
 /// @nodoc
@@ -135,7 +153,7 @@ class __$FeedbackCommentCopyWithImpl<$Res>
       writer: writer == freezed
           ? _value.writer
           : writer // ignore: cast_nullable_to_non_nullable
-              as String,
+              as FeedbackOwner,
       comment: comment == freezed
           ? _value.comment
           : comment // ignore: cast_nullable_to_non_nullable
@@ -165,7 +183,7 @@ class _$_FeedbackComment implements _FeedbackComment {
       _$$_FeedbackCommentFromJson(json);
 
   @override
-  final String writer;
+  final FeedbackOwner writer;
   @override
   final String comment;
   @override
@@ -210,7 +228,7 @@ class _$_FeedbackComment implements _FeedbackComment {
 
 abstract class _FeedbackComment implements FeedbackComment {
   const factory _FeedbackComment(
-      {required String writer,
+      {required FeedbackOwner writer,
       required String comment,
       required DateTime createdAt,
       required DateTime updatedAt}) = _$_FeedbackComment;
@@ -219,7 +237,7 @@ abstract class _FeedbackComment implements FeedbackComment {
       _$_FeedbackComment.fromJson;
 
   @override
-  String get writer;
+  FeedbackOwner get writer;
   @override
   String get comment;
   @override

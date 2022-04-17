@@ -10,10 +10,10 @@ abstract class FeedbackOwner with _$FeedbackOwner {
     required String name,
     required String email,
     required String photoURL,
-    required String workOutStyle,
-    required String workoutLevel,
-    required String gender,
-    required String provider,
+    required String? workOutStyle,
+    required String? workOutLevel,
+    required String? gender,
+    required String? provider,
   }) = _FeedbackOwner;
 
   factory FeedbackOwner.fromJson(Map<String, dynamic> json) =>
