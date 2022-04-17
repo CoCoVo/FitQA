@@ -7,8 +7,10 @@ class TrainerCareerItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(career,
-        style: const TextStyle(
-            fontSize: 16, fontWeight: FontWeight.bold, height: 1.5));
+    return Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 15),
+        child: Text(career,
+            style: const TextStyle(
+                fontSize: 16, fontWeight: FontWeight.bold, height: 1.5)));
   }
 }

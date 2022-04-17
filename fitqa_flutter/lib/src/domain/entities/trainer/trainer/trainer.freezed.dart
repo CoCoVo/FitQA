@@ -29,6 +29,8 @@ class _$TrainerTearOff {
       required WorkOutStyle style,
       required String introduceTitle,
       required String introduceContext,
+      required String representativeCareer,
+      required String representativeFootprints,
       required int likesCount,
       required List<TrainerImage> images,
       required List<TrainerCareer> careers,
@@ -42,6 +44,8 @@ class _$TrainerTearOff {
       style: style,
       introduceTitle: introduceTitle,
       introduceContext: introduceContext,
+      representativeCareer: representativeCareer,
+      representativeFootprints: representativeFootprints,
       likesCount: likesCount,
       images: images,
       careers: careers,
@@ -67,6 +71,8 @@ mixin _$Trainer {
   WorkOutStyle get style => throw _privateConstructorUsedError;
   String get introduceTitle => throw _privateConstructorUsedError;
   String get introduceContext => throw _privateConstructorUsedError;
+  String get representativeCareer => throw _privateConstructorUsedError;
+  String get representativeFootprints => throw _privateConstructorUsedError;
   int get likesCount => throw _privateConstructorUsedError;
   List<TrainerImage> get images => throw _privateConstructorUsedError;
   List<TrainerCareer> get careers => throw _privateConstructorUsedError;
@@ -92,6 +98,8 @@ abstract class $TrainerCopyWith<$Res> {
       WorkOutStyle style,
       String introduceTitle,
       String introduceContext,
+      String representativeCareer,
+      String representativeFootprints,
       int likesCount,
       List<TrainerImage> images,
       List<TrainerCareer> careers,
@@ -116,6 +124,8 @@ class _$TrainerCopyWithImpl<$Res> implements $TrainerCopyWith<$Res> {
     Object? style = freezed,
     Object? introduceTitle = freezed,
     Object? introduceContext = freezed,
+    Object? representativeCareer = freezed,
+    Object? representativeFootprints = freezed,
     Object? likesCount = freezed,
     Object? images = freezed,
     Object? careers = freezed,
@@ -147,6 +157,14 @@ class _$TrainerCopyWithImpl<$Res> implements $TrainerCopyWith<$Res> {
       introduceContext: introduceContext == freezed
           ? _value.introduceContext
           : introduceContext // ignore: cast_nullable_to_non_nullable
+              as String,
+      representativeCareer: representativeCareer == freezed
+          ? _value.representativeCareer
+          : representativeCareer // ignore: cast_nullable_to_non_nullable
+              as String,
+      representativeFootprints: representativeFootprints == freezed
+          ? _value.representativeFootprints
+          : representativeFootprints // ignore: cast_nullable_to_non_nullable
               as String,
       likesCount: likesCount == freezed
           ? _value.likesCount
@@ -188,6 +206,8 @@ abstract class _$TrainerCopyWith<$Res> implements $TrainerCopyWith<$Res> {
       WorkOutStyle style,
       String introduceTitle,
       String introduceContext,
+      String representativeCareer,
+      String representativeFootprints,
       int likesCount,
       List<TrainerImage> images,
       List<TrainerCareer> careers,
@@ -213,6 +233,8 @@ class __$TrainerCopyWithImpl<$Res> extends _$TrainerCopyWithImpl<$Res>
     Object? style = freezed,
     Object? introduceTitle = freezed,
     Object? introduceContext = freezed,
+    Object? representativeCareer = freezed,
+    Object? representativeFootprints = freezed,
     Object? likesCount = freezed,
     Object? images = freezed,
     Object? careers = freezed,
@@ -244,6 +266,14 @@ class __$TrainerCopyWithImpl<$Res> extends _$TrainerCopyWithImpl<$Res>
       introduceContext: introduceContext == freezed
           ? _value.introduceContext
           : introduceContext // ignore: cast_nullable_to_non_nullable
+              as String,
+      representativeCareer: representativeCareer == freezed
+          ? _value.representativeCareer
+          : representativeCareer // ignore: cast_nullable_to_non_nullable
+              as String,
+      representativeFootprints: representativeFootprints == freezed
+          ? _value.representativeFootprints
+          : representativeFootprints // ignore: cast_nullable_to_non_nullable
               as String,
       likesCount: likesCount == freezed
           ? _value.likesCount
@@ -283,6 +313,8 @@ class _$_Trainer implements _Trainer {
       required this.style,
       required this.introduceTitle,
       required this.introduceContext,
+      required this.representativeCareer,
+      required this.representativeFootprints,
       required this.likesCount,
       required this.images,
       required this.careers,
@@ -306,6 +338,10 @@ class _$_Trainer implements _Trainer {
   @override
   final String introduceContext;
   @override
+  final String representativeCareer;
+  @override
+  final String representativeFootprints;
+  @override
   final int likesCount;
   @override
   final List<TrainerImage> images;
@@ -320,7 +356,7 @@ class _$_Trainer implements _Trainer {
 
   @override
   String toString() {
-    return 'Trainer(trainerToken: $trainerToken, name: $name, email: $email, style: $style, introduceTitle: $introduceTitle, introduceContext: $introduceContext, likesCount: $likesCount, images: $images, careers: $careers, feedbackPrices: $feedbackPrices, interestAreas: $interestAreas, sns: $sns)';
+    return 'Trainer(trainerToken: $trainerToken, name: $name, email: $email, style: $style, introduceTitle: $introduceTitle, introduceContext: $introduceContext, representativeCareer: $representativeCareer, representativeFootprints: $representativeFootprints, likesCount: $likesCount, images: $images, careers: $careers, feedbackPrices: $feedbackPrices, interestAreas: $interestAreas, sns: $sns)';
   }
 
   @override
@@ -337,6 +373,10 @@ class _$_Trainer implements _Trainer {
                 .equals(other.introduceTitle, introduceTitle) &&
             const DeepCollectionEquality()
                 .equals(other.introduceContext, introduceContext) &&
+            const DeepCollectionEquality()
+                .equals(other.representativeCareer, representativeCareer) &&
+            const DeepCollectionEquality().equals(
+                other.representativeFootprints, representativeFootprints) &&
             const DeepCollectionEquality()
                 .equals(other.likesCount, likesCount) &&
             const DeepCollectionEquality().equals(other.images, images) &&
@@ -357,6 +397,8 @@ class _$_Trainer implements _Trainer {
       const DeepCollectionEquality().hash(style),
       const DeepCollectionEquality().hash(introduceTitle),
       const DeepCollectionEquality().hash(introduceContext),
+      const DeepCollectionEquality().hash(representativeCareer),
+      const DeepCollectionEquality().hash(representativeFootprints),
       const DeepCollectionEquality().hash(likesCount),
       const DeepCollectionEquality().hash(images),
       const DeepCollectionEquality().hash(careers),
@@ -383,6 +425,8 @@ abstract class _Trainer implements Trainer {
       required WorkOutStyle style,
       required String introduceTitle,
       required String introduceContext,
+      required String representativeCareer,
+      required String representativeFootprints,
       required int likesCount,
       required List<TrainerImage> images,
       required List<TrainerCareer> careers,
@@ -404,6 +448,10 @@ abstract class _Trainer implements Trainer {
   String get introduceTitle;
   @override
   String get introduceContext;
+  @override
+  String get representativeCareer;
+  @override
+  String get representativeFootprints;
   @override
   int get likesCount;
   @override

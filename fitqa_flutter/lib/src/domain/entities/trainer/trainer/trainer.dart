@@ -18,6 +18,8 @@ abstract class Trainer with _$Trainer {
       required WorkOutStyle style,
       required String introduceTitle,
       required String introduceContext,
+      required String representativeCareer,
+      required String representativeFootprints,
       required int likesCount,
       required List<TrainerImage> images,
       required List<TrainerCareer> careers,
