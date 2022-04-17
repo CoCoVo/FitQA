@@ -32,15 +32,13 @@ class AreaSmallWidget extends StatelessWidget {
           border: Border.all(width: 1.5, color: borderColor),
           color: backgroundColor,
           borderRadius: BorderRadius.all(Radius.circular(cornerRadius))),
-      child: Center(
-        child: Text(
-          data,
-          style: TextStyle(
-              color: textColor,
-              fontSize: fontSize,
-              fontWeight: FontWeight.w500,
-              height: FDimen.workOutAreaWidgetLineHeightPx / fontSize),
-        ),
+      child: Text(
+        data,
+        style: TextStyle(
+            color: textColor,
+            fontSize: fontSize,
+            fontWeight: FontWeight.w500,
+            height: FDimen.workOutAreaWidgetLineHeightPx / fontSize),
       ),
     );
   }

@@ -1,4 +1,5 @@
 import 'package:fitqa/src/application/feedback/feedback_detail.dart';
+import 'package:fitqa/src/common/TimeUtils.dart';
 import 'package:fitqa/src/domain/entities/feedback/feedback_comment/feedback_comment.dart';
 import 'package:fitqa/src/theme/color.dart';
 import 'package:flutter/material.dart';
@@ -65,7 +66,7 @@ class _SectionFeedbackComment extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    "3일 전",
+                    TimeUtils.timeAgo(comment.createdAt),
                     style: TextStyle(fontSize: 10, color: FColors.black),
                   ),
                   SizedBox(
@@ -119,7 +120,10 @@ class _SectionFeedbackWrite extends ConsumerWidget {
               onPressed: () {
                 feedbackController.addComment(commentContentController.state);
               },
-              child: Text("게시"))
+              child: Text(
+                "게시",
+                style: TextStyle(fontSize: 14, color: FColors.grey_3),
+              ))
         ],
       ),
     );
