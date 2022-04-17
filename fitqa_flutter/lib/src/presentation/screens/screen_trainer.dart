@@ -48,7 +48,6 @@ class ScreenTrainer extends ConsumerWidget {
                   child: TrainerCardView(
                       trainer: trainers[index],
                       onTap: () {
-                        print(trainers[index].trainerToken);
                         trainerTokenController.state =
                             trainers[index].trainerToken;
 

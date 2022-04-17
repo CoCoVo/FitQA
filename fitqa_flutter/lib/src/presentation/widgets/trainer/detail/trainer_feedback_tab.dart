@@ -1,5 +1,4 @@
-import 'package:fitqa/src/presentation/widgets/trainer/edit/edit_career.dart';
-import 'package:fitqa/src/presentation/widgets/trainer/edit/edit_introduce.dart';
+import 'package:fitqa/src/presentation/widgets/trainer/detail/trainer_feedback_list.dart';
 import 'package:fitqa/src/theme/color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -16,9 +15,11 @@ class FeedbackTab {
 }
 
 final List<FeedbackTab> _categoryTabs = [
-/*  FeedbackTab(FeedbackCategory.all, 0, "전체보기", TrainerFeedbackAll(trainer: trainer)),*/
-  FeedbackTab(FeedbackCategory.notComplete, 1, "답변대기", EditIntroduce()),
-  FeedbackTab(FeedbackCategory.complete, 2, "답변완료", EditCareer()),
+  const FeedbackTab(FeedbackCategory.all, 0, "전체보기", TrainerFeedbackList()),
+  const FeedbackTab(FeedbackCategory.notComplete, 1, "답변대기",
+      TrainerFeedbackList(category: FeedbackCategory.notComplete)),
+  const FeedbackTab(FeedbackCategory.complete, 2, "답변완료",
+      TrainerFeedbackList(category: FeedbackCategory.complete)),
 ];
 
 class TrainerFeedbackTab extends ConsumerWidget {
