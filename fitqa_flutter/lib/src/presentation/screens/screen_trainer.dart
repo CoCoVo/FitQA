@@ -1,5 +1,7 @@
+import 'package:fitqa/src/application/trainer/trainer_detail.dart';
 import 'package:fitqa/src/domain/entities/common/enum/common_eunm.dart';
 import 'package:fitqa/src/presentation/controller/screen_trainer_controller.dart';
+import 'package:fitqa/src/presentation/screens/screen_trainer_detail.dart';
 import 'package:fitqa/src/presentation/widgets/common/fitqa_appbar.dart';
 import 'package:fitqa/src/presentation/widgets/common/multi_select_chip.dart';
 import 'package:fitqa/src/presentation/widgets/trainer/list/trainer_card_view.dart';
@@ -14,6 +16,9 @@ class ScreenTrainer extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final trainers = ref.watch(trainerControllerProvider);
+    final trainerTokenController =
+        ref.watch(selectedTrainerTokenProvider.notifier);
+
     return Container(
       color: FColors.white,
       padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -40,7 +45,18 @@ class ScreenTrainer extends ConsumerWidget {
                 scrollDirection: Axis.vertical,
                 itemCount: trainers.length,
                 itemBuilder: (context, int index) => ProviderScope(
-                  child: TrainerCardView(trainer: trainers[index]),
+                  child: TrainerCardView(
+                      trainer: trainers[index],
+                      onTap: () {
+                        print(trainers[index].trainerToken);
+                        trainerTokenController.state =
+                            trainers[index].trainerToken;
+
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ScreenTrainerDetail()));
+                      }),
                 ),
               ));
             },

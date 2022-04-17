@@ -1,11 +1,10 @@
+import 'package:fitqa/src/application/trainer/trainer_detail.dart';
 import 'package:fitqa/src/common/fitqa_icon.dart';
-import 'package:fitqa/src/domain/entities/trainer/trainer/trainer.dart';
-import 'package:fitqa/src/domain/entities/trainer/trainer_image/trainer_image.dart';
 import 'package:fitqa/src/presentation/screens/screen_edit_trainer_detail.dart';
-import 'package:fitqa/src/presentation/screens/screen_feedback_request.dart';
 import 'package:fitqa/src/presentation/widgets/trainer/detail/trainer_career_list.dart';
 import 'package:fitqa/src/presentation/widgets/trainer/detail/trainer_career_summary.dart';
-import 'package:fitqa/src/presentation/widgets/trainer/detail/trainer_detail_info.dart';
+import 'package:fitqa/src/presentation/widgets/trainer/detail/trainer_feedback_tab.dart';
+import 'package:fitqa/src/presentation/widgets/trainer/detail/trainer_flexible_space.dart';
 import 'package:fitqa/src/presentation/widgets/trainer/detail/trainer_introduce.dart';
 import 'package:fitqa/src/presentation/widgets/trainer/detail/trainer_license_list.dart';
 import 'package:fitqa/src/presentation/widgets/trainer/detail/trainer_sns.dart';
@@ -14,33 +13,22 @@ import 'package:fitqa/src/theme/dimen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-const List<int> feedbackGroup = [0, 1, 2];
-
-class ScreenTrainerDetail extends ConsumerStatefulWidget {
-  const ScreenTrainerDetail({Key? key, required this.trainer})
-      : super(key: key);
-
-  final Trainer trainer;
+class ScreenTrainerDetail extends ConsumerWidget {
+  const ScreenTrainerDetail({Key? key}) : super(key: key);
 
   @override
-  _ScreenTrainerDetailState createState() => _ScreenTrainerDetailState();
-}
+  Widget build(BuildContext context, WidgetRef ref) {
+    final trainerDetail = ref.watch(trainerDetailProvider);
 
-class _ScreenTrainerDetailState extends ConsumerState<ScreenTrainerDetail>
-    with SingleTickerProviderStateMixin {
-  late TabController tabController;
-
-  @override
-  void initState() {
-    super.initState();
-    tabController = TabController(length: 3, vsync: this);
-  }
-
-  @override
-  Widget build(BuildContext context) {
     return Scaffold(
       body: CustomScrollView(
-        slivers: [buildAppBar(context), buildContext()],
+        slivers: trainerDetail.maybeWhen(
+            orElse: () => [_buildLoading()],
+            success: (_) => [
+                  buildAppBar(context),
+                  buildContext(),
+                  buildFeedbackListView()
+                ]),
       ),
     );
   }
@@ -69,111 +57,8 @@ class _ScreenTrainerDetailState extends ConsumerState<ScreenTrainerDetail>
             ))
       ],
       centerTitle: false,
-      flexibleSpace: buildFlexibleSpace(context),
+      flexibleSpace: const TrainerFlexibleSpace(),
     );
-  }
-
-  Widget buildFlexibleSpace(BuildContext context) {
-    String backgroundImageUrl = widget.trainer.images
-        .firstWhere((element) => element.imageType == ImageType.background)
-        .imageUrl;
-    return FlexibleSpaceBar(
-        collapseMode: CollapseMode.pin,
-        background: Stack(
-          fit: StackFit.expand,
-          children: [
-            Container(
-              color: FColors.white,
-            ),
-            Positioned.fill(
-                bottom: FDimen.trainerDetailExpandedHeight -
-                    FDimen.trainerDetailBackgroundHeight,
-                child: Container(
-                    height: FDimen.trainerDetailBackgroundHeight,
-                    padding: const EdgeInsets.fromLTRB(15, 60, 0, 0),
-                    decoration: BoxDecoration(
-                        image: DecorationImage(
-                            image: NetworkImage(backgroundImageUrl),
-                            fit: BoxFit.cover)),
-                    child: TrainerDetailInfo(
-                      trainer: widget.trainer,
-                    ))),
-            Positioned(
-                top: FDimen.trainerDetailBackgroundHeight - 40,
-                left: 20,
-                right: 20,
-                child: buildFeedbackRequester(context))
-          ],
-        ));
-  }
-
-  Widget buildFeedbackRequester(BuildContext context) {
-    return Card(
-        child: SizedBox(
-      height: FDimen.trainerDetailFeedbackRequesterSize,
-      child: Column(
-        children: [
-          Container(
-            height: FDimen.trainerDetailFeedbackRequestItemSize,
-            alignment: Alignment.center,
-            padding: const EdgeInsets.symmetric(horizontal: 8),
-            child: ListTile(
-              title: RichText(
-                  text: TextSpan(
-                      text: "상담하기",
-                      style:
-                          const TextStyle(fontSize: 18, color: FColors.black),
-                      children: [
-                    TextSpan(
-                        text: " /${widget.trainer.feedbackPrices.length}종류",
-                        style: const TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: FColors.blue))
-                  ])),
-              trailing: const Icon(FitQaIcon.enter),
-              onTap: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) =>
-                          ScreenFeedbackRequest(trainer: widget.trainer))),
-            ),
-          ),
-          const Divider(
-              color: FColors.line,
-              height: 1,
-              thickness: 1,
-              indent: 16,
-              endIndent: 16),
-          Container(
-            height: FDimen.trainerDetailFeedbackRequestItemSize,
-            alignment: Alignment.center,
-            padding: const EdgeInsets.symmetric(horizontal: 8),
-            child: ListTile(
-              title: RichText(
-                  text: TextSpan(
-                      text: "답변하기",
-                      style:
-                          const TextStyle(fontSize: 18, color: FColors.black),
-                      children: [
-                    TextSpan(
-                        text: " /${widget.trainer.feedbacks.length}건",
-                        style: const TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: FColors.blue))
-                  ])),
-              trailing: const Icon(FitQaIcon.enter),
-              onTap: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) =>
-                          ScreenFeedbackRequest(trainer: widget.trainer))),
-            ),
-          ),
-        ],
-      ),
-    ));
   }
 
   Widget buildContext() => SliverToBoxAdapter(
@@ -182,13 +67,18 @@ class _ScreenTrainerDetailState extends ConsumerState<ScreenTrainerDetail>
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            TrainerIntroduce(trainer: widget.trainer),
-            TrainerSns(trainer: widget.trainer),
-            TrainerCareerSummary(
-                representativeCareer: widget.trainer.representativeCareer),
-            TrainerCareerList(trainerCareers: widget.trainer.careers),
-            TrainerLicenseList(trainerLicenses: widget.trainer.careers),
+            const TrainerIntroduce(),
+            const TrainerSns(),
+            const TrainerCareerSummary(),
+            TrainerCareerList(),
+            TrainerLicenseList(),
           ],
         ),
       ));
+
+  Widget _buildLoading() => const SliverToBoxAdapter(
+      child: Center(child: CircularProgressIndicator()));
+
+  Widget buildFeedbackListView() => const SliverFillRemaining(
+      hasScrollBody: true, child: TrainerFeedbackTab());
 }

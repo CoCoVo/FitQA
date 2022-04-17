@@ -1,25 +1,24 @@
+import 'package:fitqa/src/application/trainer/trainer_detail.dart';
 import 'package:fitqa/src/common/fitqa_icon.dart';
-import 'package:fitqa/src/domain/entities/trainer/trainer/trainer.dart';
 import 'package:fitqa/src/domain/entities/trainer/trainer_sns/trainer_sns.dart';
 import 'package:fitqa/src/presentation/widgets/trainer/detail/trainer_sns_item.dart';
 import 'package:fitqa/src/theme/color.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class TrainerSns extends StatelessWidget {
-  const TrainerSns({Key? key, required this.trainer}) : super(key: key);
-
-  final Trainer trainer;
+class TrainerSns extends ConsumerWidget {
+  const TrainerSns({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final trainerDetail = ref.watch(trainerDetailProvider).data!;
     Map<SnsType, String> snsUrlMap = {};
     Map<SnsType, String> snsTitleMap = {};
 
-    for (var element in trainer.sns) {
+    for (var element in trainerDetail.sns) {
       snsUrlMap[element.snsType] = element.snsUrl;
       snsTitleMap[element.snsType] = element.snsTitle;
     }
-
     return Container(
       padding: const EdgeInsets.fromLTRB(17, 0, 17, 30),
       child: Column(

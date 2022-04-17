@@ -13,9 +13,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class TrainerCardView extends ConsumerWidget {
-  const TrainerCardView({Key? key, required this.trainer}) : super(key: key);
+  const TrainerCardView({Key? key, required this.trainer, this.onTap})
+      : super(key: key);
 
   final Trainer trainer;
+
+  final GestureTapCallback? onTap;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -24,12 +27,7 @@ class TrainerCardView extends ConsumerWidget {
       elevation: 1,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
       child: InkWell(
-        onTap: () => Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => ScreenTrainerDetail(
-                      trainer: trainer,
-                    ))),
+        onTap: onTap,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -114,11 +112,11 @@ class TrainerCardView extends ConsumerWidget {
           child: RichText(
               text: TextSpan(
                   text: "총 답변 수",
-                  style: TextStyle(fontSize: 12, color: FColors.black),
+                  style: const TextStyle(fontSize: 12, color: FColors.black),
                   children: [
                 TextSpan(
                     text: " /${trainer.feedbacks.length}건",
-                    style: TextStyle(
+                    style: const TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.bold,
                         color: FColors.blue))
