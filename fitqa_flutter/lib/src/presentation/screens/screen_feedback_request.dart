@@ -1,5 +1,6 @@
 import 'package:fitqa/src/application/feedback/feedback_list.dart';
 import 'package:fitqa/src/application/feedback/feedback_selected_trainer.dart';
+import 'package:fitqa/src/application/storage/user_token_facade.dart';
 import 'package:fitqa/src/domain/entities/common/enum/common_eunm.dart';
 import 'package:fitqa/src/presentation/widgets/common/bullet_point_text.dart';
 import 'package:fitqa/src/presentation/widgets/common/fitqa_textfield.dart';
@@ -111,6 +112,7 @@ class ScreenFeedbackRequest extends ConsumerWidget {
   }
 
   void _registerFeedback(WidgetRef ref) {
+    final userToken = ref.watch(userTokenProvider);
     final title = ref.watch(_titleProvider);
     final content = ref.watch(_contentProvider);
     final locked = ref.watch(_lockedProvider);
@@ -130,7 +132,7 @@ class ScreenFeedbackRequest extends ConsumerWidget {
       return;
     }
     feedbackController.registerFeedback(
-        "usr_SLhg42P1Jer941La",
+        userToken,
         selectedTrainer.trainerToken,
         selectedFeedbackPrice.area,
         selectedFeedbackPrice.price,
