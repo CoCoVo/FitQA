@@ -3,7 +3,6 @@ import 'package:fitqa/src/common/fitqa_icon.dart';
 import 'package:fitqa/src/domain/entities/common/enum/common_eunm.dart';
 import 'package:fitqa/src/domain/entities/trainer/trainer/trainer.dart';
 import 'package:fitqa/src/domain/entities/trainer/trainer_image/trainer_image.dart';
-import 'package:fitqa/src/presentation/screens/screen_feedback_request.dart';
 import 'package:fitqa/src/presentation/screens/screen_trainer_detail.dart';
 import 'package:fitqa/src/presentation/widgets/common/area_small_widget.dart';
 import 'package:fitqa/src/presentation/widgets/common/fitqa_elevated_button.dart';
@@ -14,9 +13,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class TrainerCardView extends ConsumerWidget {
-  const TrainerCardView({Key? key, required this.trainer}) : super(key: key);
+  const TrainerCardView({Key? key, required this.trainer, this.onPressed})
+      : super(key: key);
 
   final Trainer trainer;
+  final Function()? onPressed;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -138,10 +139,7 @@ class TrainerCardView extends ConsumerWidget {
           child: FElevatedButton(
             onPressed: () {
               selectedTrainerController.state = trainer;
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => ScreenFeedbackRequest()));
+              if (onPressed != null) onPressed!();
             },
             child: const Text("상담 신청",
                 style: TextStyle(

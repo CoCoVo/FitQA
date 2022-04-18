@@ -7,7 +7,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class TrainerList extends ConsumerWidget {
-  const TrainerList({Key? key}) : super(key: key);
+  TrainerList({Key? key, this.onTrainerSelect}) : super(key: key);
+
+  Function()? onTrainerSelect;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -33,9 +35,8 @@ class TrainerList extends ConsumerWidget {
               padding: const EdgeInsets.symmetric(vertical: 8),
               scrollDirection: Axis.vertical,
               itemCount: trainers.length,
-              itemBuilder: (context, int index) => ProviderScope(
-                child: TrainerCardView(trainer: trainers[index]),
-              ),
+              itemBuilder: (context, int index) => TrainerCardView(
+                  trainer: trainers[index], onPressed: onTrainerSelect),
             ));
           },
           error: (error, e) => Center(

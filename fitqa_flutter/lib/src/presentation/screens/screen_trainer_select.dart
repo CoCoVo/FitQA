@@ -14,9 +14,11 @@ class ScreenTrainerSelect extends StatelessWidget {
         backgroundColor: FColors.blue,
         onPressed: () => Navigator.pop(context),
       ),
-      body: const Padding(
-        padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-        child: TrainerList(),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+        child: TrainerList(
+          onTrainerSelect: () => Navigator.pop(context),
+        ),
       ),
     );
   }
