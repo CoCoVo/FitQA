@@ -1,6 +1,8 @@
 import 'package:fitqa/src/application/feedback/feedback_selected_trainer.dart';
+import 'package:fitqa/src/presentation/widgets/common/fitqa_appbar_sub.dart';
 import 'package:fitqa/src/presentation/widgets/feedback/register/feedback_select_category.dart';
 import 'package:fitqa/src/presentation/widgets/feedback/register/feedback_select_trainer.dart';
+import 'package:fitqa/src/theme/color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -18,19 +20,11 @@ class FeedbackCollapsedAppbar extends ConsumerWidget {
         Container(
           // status bar 크기를 뺀 만큼으로 크기를 잡는다.
           height: 200 - statusBarHeight,
-          child: AppBar(
-            title: const Text(
-              '새 게시물 쓰기',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            ),
+          color: FColors.blue,
+          child: FitqaAppbarSub(
+            title: "새 게시물 쓰기",
             centerTitle: true,
-            elevation: 0.0,
-            leading: InkWell(
-              child: const Icon(Icons.arrow_back_ios_rounded),
-              onTap: () {
-                _close(context, ref);
-              },
-            ),
+            onPressed: () => _close(context, ref),
           ),
         ),
         Padding(
