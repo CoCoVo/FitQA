@@ -3,42 +3,45 @@ import 'package:fitqa/src/theme/dimen.dart';
 import 'package:flutter/material.dart';
 
 class FitqaAppbarSub extends StatelessWidget with PreferredSizeWidget {
-  FitqaAppbarSub(
-      {Key? key,
-      required this.title,
-      this.actions,
-      this.onPressed,
-      this.foreground,
-      this.centerTitle = false})
-      : super(key: key);
+  FitqaAppbarSub({
+    Key? key,
+    required this.title,
+    this.actions,
+    this.onPressed,
+    this.foregroundColor,
+    this.centerTitle = false,
+    this.backgroundColor = FColors.transparent,
+  }) : super(key: key);
 
   String title;
   List<Widget>? actions;
   Function()? onPressed;
 
-  Color? foreground;
+  Color? foregroundColor;
+  Color? backgroundColor;
   bool centerTitle;
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-        leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back_ios_rounded,
-            color: foreground,
-          ),
-          onPressed: onPressed,
+      leading: IconButton(
+        icon: Icon(
+          Icons.arrow_back_ios_rounded,
+          color: foregroundColor,
         ),
-        title: Text(
-          title,
-          style: TextStyle(
-              fontSize: 18, color: foreground, fontWeight: FontWeight.bold),
-        ),
-        centerTitle: centerTitle,
-        titleSpacing: 0,
-        elevation: 0,
-        backgroundColor: FColors.transparent,
-        actions: actions);
+        onPressed: onPressed,
+      ),
+      title: Text(
+        title,
+        style: TextStyle(
+            fontSize: 18, color: foregroundColor, fontWeight: FontWeight.bold),
+      ),
+      centerTitle: centerTitle,
+      titleSpacing: 0,
+      elevation: 0,
+      backgroundColor: backgroundColor,
+      actions: actions,
+    );
   }
 
   @override
