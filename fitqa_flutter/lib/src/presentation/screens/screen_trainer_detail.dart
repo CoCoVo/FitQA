@@ -135,8 +135,7 @@ class _ScreenTrainerDetailState extends ConsumerState<ScreenTrainerDetail>
               onTap: () => Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) =>
-                          ScreenFeedbackRequest(trainer: widget.trainer))),
+                      builder: (context) => ScreenFeedbackRequest())),
             ),
           ),
           const Divider(
@@ -167,8 +166,7 @@ class _ScreenTrainerDetailState extends ConsumerState<ScreenTrainerDetail>
               onTap: () => Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) =>
-                          ScreenFeedbackRequest(trainer: widget.trainer))),
+                      builder: (context) => ScreenFeedbackRequest())),
             ),
           ),
         ],

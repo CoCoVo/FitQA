@@ -1,3 +1,4 @@
+import 'package:fitqa/src/application/feedback/feedback_selected_trainer.dart';
 import 'package:fitqa/src/common/fitqa_icon.dart';
 import 'package:fitqa/src/domain/entities/common/enum/common_eunm.dart';
 import 'package:fitqa/src/domain/entities/trainer/trainer/trainer.dart';
@@ -35,7 +36,7 @@ class TrainerCardView extends ConsumerWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             buildCardImage(),
-            buildCardContent(context),
+            buildCardContent(context, ref),
             const SizedBox(height: 5),
           ],
         ),
@@ -65,7 +66,7 @@ class TrainerCardView extends ConsumerWidget {
     );
   }
 
-  Widget buildCardContent(BuildContext context) => Padding(
+  Widget buildCardContent(BuildContext context, WidgetRef ref) => Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 18),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -80,7 +81,7 @@ class TrainerCardView extends ConsumerWidget {
           const SizedBox(
             height: 8,
           ),
-          buildAction(context),
+          buildAction(context, ref),
         ],
       ));
 
@@ -128,16 +129,20 @@ class TrainerCardView extends ConsumerWidget {
     ]);
   }
 
-  Widget buildAction(BuildContext context) {
+  Widget buildAction(BuildContext context, WidgetRef ref) {
+    final selectedTrainerController =
+        ref.watch(selectedTrainerProvider.notifier);
     return Row(
       children: [
         Expanded(
           child: FElevatedButton(
-            onPressed: () => Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) =>
-                        ScreenFeedbackRequest(trainer: trainer))),
+            onPressed: () {
+              selectedTrainerController.state = trainer;
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => ScreenFeedbackRequest()));
+            },
             child: const Text("상담 신청",
                 style: TextStyle(
                     fontSize: 16,

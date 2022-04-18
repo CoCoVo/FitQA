@@ -1,4 +1,5 @@
 import 'package:fitqa/src/theme/color.dart';
+import 'package:fitqa/src/theme/dimen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -9,8 +10,8 @@ class FitqaDropdown extends StatelessWidget {
     required this.label,
     required this.hint,
     this.text,
-    this.height = 56,
-    this.listHeight = 300,
+    this.height = FDimen.defaultDropDownHeight,
+    this.childHeight = FDimen.defaultModalBottomHeight,
   }) : super(key: key);
 
   Widget child;
@@ -18,7 +19,7 @@ class FitqaDropdown extends StatelessWidget {
   String hint;
   String? text;
   double height;
-  double listHeight;
+  double childHeight;
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +68,10 @@ class FitqaDropdown extends StatelessWidget {
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(8), topRight: Radius.circular(8))),
         builder: (BuildContext ctx) {
-          return child;
+          return SizedBox(
+            height: childHeight,
+            child: child,
+          );
         });
   }
 }
