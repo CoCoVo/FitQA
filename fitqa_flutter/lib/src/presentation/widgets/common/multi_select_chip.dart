@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 class MultiSelectChip extends StatefulWidget {
   final List<String> reportList;
+  final List<bool>? selected;
   final Function(List<String>)? onSelectionChanged;
   final Function(List<String>)? onMaxSelected;
   final int? maxSelection;
@@ -12,6 +13,7 @@ class MultiSelectChip extends StatefulWidget {
 
   MultiSelectChip(this.reportList,
       {Key? key,
+      this.selected,
       this.onSelectionChanged,
       this.onMaxSelected,
       this.maxSelection,
@@ -24,7 +26,18 @@ class MultiSelectChip extends StatefulWidget {
 }
 
 class _MultiSelectChipState extends State<MultiSelectChip> {
-  List<String> selectedChoices = [];
+  late List<String> selectedChoices;
+
+  @override
+  void initState() {
+    super.initState();
+    selectedChoices = [];
+    if (widget.selected != null) {
+      widget.reportList.asMap().forEach((index, value) {
+        if (widget.selected![index]) selectedChoices.add(value);
+      });
+    }
+  }
 
   _buildChoiceList() {
     List<Widget> choices = [];

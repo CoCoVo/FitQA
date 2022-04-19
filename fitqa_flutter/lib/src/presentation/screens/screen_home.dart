@@ -6,7 +6,6 @@ import 'package:fitqa/src/presentation/widgets/common/fitqa_appbar.dart';
 import 'package:fitqa/src/presentation/widgets/common/fitqa_workout_area_filter.dart';
 import 'package:fitqa/src/presentation/widgets/feedback/register/feedback_listview_item.dart';
 import 'package:fitqa/src/theme/color.dart';
-import 'package:fitqa/src/theme/dimen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -16,22 +15,20 @@ class ScreenHome extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final feedbacks = ref.watch(feedbackListProvider);
+
     final feedbackTokenController =
         ref.watch(selectedFeedbackTokenProvider.notifier);
+    final feedbackFilterController = ref.watch(feedbackFilterProvider.notifier);
 
     return Container(
         color: FColors.white,
         child: Column(mainAxisSize: MainAxisSize.min, children: [
           const FitqaAppbar(),
-          Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8),
-              child: SizedBox(
-                height: FDimen.defaultMultiSelectChipSize,
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: FitqaWorkoutAreaFilter(),
-                ),
-              )),
+          FitqaWorkoutAreaFilter(
+            onSelectionChanged: (selectedFilter) {
+              feedbackFilterController.update(selectedFilter);
+            },
+          ),
           feedbacks.maybeWhen(
               success: (feedbacks) => _buildFeedbackListView(
                   context, feedbacks, feedbackTokenController),
