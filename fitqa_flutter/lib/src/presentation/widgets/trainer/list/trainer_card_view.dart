@@ -1,9 +1,7 @@
-import 'package:fitqa/src/application/feedback/feedback_selected_trainer.dart';
 import 'package:fitqa/src/common/fitqa_icon.dart';
 import 'package:fitqa/src/domain/entities/common/enum/common_eunm.dart';
 import 'package:fitqa/src/domain/entities/trainer/trainer/trainer.dart';
 import 'package:fitqa/src/domain/entities/trainer/trainer_image/trainer_image.dart';
-import 'package:fitqa/src/presentation/screens/screen_trainer_detail.dart';
 import 'package:fitqa/src/presentation/widgets/common/area_small_widget.dart';
 import 'package:fitqa/src/presentation/widgets/common/fitqa_elevated_button.dart';
 import 'package:fitqa/src/presentation/widgets/trainer/list/trainer_card_image.dart';
@@ -13,11 +11,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class TrainerCardView extends ConsumerWidget {
-  const TrainerCardView({Key? key, required this.trainer, this.onPressed})
+  const TrainerCardView(
+      {Key? key,
+      required this.trainer,
+      required this.onTrainerTap,
+      required this.onButtonTap})
       : super(key: key);
 
   final Trainer trainer;
-  final Function()? onPressed;
+  final Function(Trainer)? onTrainerTap;
+  final Function(Trainer)? onButtonTap;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -26,12 +29,9 @@ class TrainerCardView extends ConsumerWidget {
       elevation: 1,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
       child: InkWell(
-        onTap: () => Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => ScreenTrainerDetail(
-                      trainer: trainer,
-                    ))),
+        onTap: () {
+          if (onTrainerTap != null) onTrainerTap!(trainer);
+        },
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -82,7 +82,7 @@ class TrainerCardView extends ConsumerWidget {
           const SizedBox(
             height: 8,
           ),
-          buildAction(context, ref),
+          buildAction(),
         ],
       ));
 
@@ -130,16 +130,13 @@ class TrainerCardView extends ConsumerWidget {
     ]);
   }
 
-  Widget buildAction(BuildContext context, WidgetRef ref) {
-    final selectedTrainerController =
-        ref.watch(selectedTrainerProvider.notifier);
+  Widget buildAction() {
     return Row(
       children: [
         Expanded(
           child: FElevatedButton(
             onPressed: () {
-              selectedTrainerController.state = trainer;
-              if (onPressed != null) onPressed!();
+              if (onButtonTap != null) onButtonTap!(trainer);
             },
             child: const Text("상담 신청",
                 style: TextStyle(

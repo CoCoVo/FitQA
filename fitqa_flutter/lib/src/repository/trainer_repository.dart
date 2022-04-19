@@ -39,7 +39,7 @@ class TrainerRepositoryAPI implements TrainerRepository {
       {CancelToken? cancelToken}) async {
     try {
       final response = await reader(clientProvider)
-          .get('/trainer/$trainerToken', cancelToken: cancelToken);
+          .get('/trainers/$trainerToken', cancelToken: cancelToken);
       return TrainerDetailResponse.fromJson(response.data).data!;
     } on DioError catch (error) {
       throw DataException.fromDioError(error);

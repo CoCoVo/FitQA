@@ -1,4 +1,7 @@
+import 'package:fitqa/src/application/feedback/feedback_selected_trainer.dart';
+import 'package:fitqa/src/application/trainer/trainer_detail.dart';
 import 'package:fitqa/src/presentation/screens/screen_feedback_request.dart';
+import 'package:fitqa/src/presentation/screens/screen_trainer_detail.dart';
 import 'package:fitqa/src/presentation/widgets/common/fitqa_appbar.dart';
 import 'package:fitqa/src/presentation/widgets/trainer/list/trainer_list.dart';
 import 'package:fitqa/src/theme/color.dart';
@@ -10,6 +13,11 @@ class ScreenTrainer extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final selectedTrainerController =
+        ref.watch(selectedTrainerProvider.notifier);
+    final selectedTrainerTokenController =
+        ref.watch(selectedTrainerTokenProvider.notifier);
+
     return Container(
       color: FColors.white,
       child: Column(children: [
@@ -18,10 +26,20 @@ class ScreenTrainer extends ConsumerWidget {
             child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 8),
                 child: TrainerList(
-                  onTrainerSelect: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => ScreenFeedbackRequest())),
+                  onTrainerTap: (trainer) {
+                    selectedTrainerTokenController.state = trainer.trainerToken;
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ScreenTrainerDetail()));
+                  },
+                  onButtonTap: (trainer) {
+                    selectedTrainerController.state = trainer;
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ScreenFeedbackRequest()));
+                  },
                 ))),
       ]),
     );

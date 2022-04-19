@@ -1,13 +1,6 @@
-import 'package:fitqa/src/common/fitqa_icon.dart';
-import 'package:fitqa/src/domain/entities/trainer/trainer/trainer.dart';
 import 'package:fitqa/src/presentation/widgets/trainer/edit/edit_career.dart';
-import 'package:fitqa/src/presentation/widgets/trainer/edit/edit_feedback_type.dart';
-import 'package:fitqa/src/presentation/widgets/trainer/edit/edit_info.dart';
 import 'package:fitqa/src/presentation/widgets/trainer/edit/edit_introduce.dart';
-import 'package:fitqa/src/presentation/widgets/trainer/edit/edit_sns.dart';
-import 'package:fitqa/src/presentation/widgets/trainer/feedback/trainer_feedback_all.dart';
 import 'package:fitqa/src/theme/color.dart';
-import 'package:fitqa/src/theme/dimen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -29,9 +22,7 @@ final List<FeedbackTab> _categoryTabs = [
 ];
 
 class TrainerFeedbackTab extends ConsumerWidget {
-  const TrainerFeedbackTab({Key? key, required this.trainer}) : super(key: key);
-
-  final Trainer trainer;
+  const TrainerFeedbackTab({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

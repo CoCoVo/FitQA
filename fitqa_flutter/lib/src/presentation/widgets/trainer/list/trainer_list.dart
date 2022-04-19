@@ -1,4 +1,5 @@
 import 'package:fitqa/src/domain/entities/common/enum/common_eunm.dart';
+import 'package:fitqa/src/domain/entities/trainer/trainer/trainer.dart';
 import 'package:fitqa/src/presentation/controller/screen_trainer_controller.dart';
 import 'package:fitqa/src/presentation/widgets/common/multi_select_chip.dart';
 import 'package:fitqa/src/presentation/widgets/trainer/list/trainer_card_view.dart';
@@ -7,9 +8,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class TrainerList extends ConsumerWidget {
-  TrainerList({Key? key, this.onTrainerSelect}) : super(key: key);
+  TrainerList({
+    Key? key,
+    this.onTrainerTap,
+    this.onButtonTap,
+  }) : super(key: key);
 
-  Function()? onTrainerSelect;
+  Function(Trainer)? onTrainerTap, onButtonTap;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -36,7 +41,10 @@ class TrainerList extends ConsumerWidget {
               scrollDirection: Axis.vertical,
               itemCount: trainers.length,
               itemBuilder: (context, int index) => TrainerCardView(
-                  trainer: trainers[index], onPressed: onTrainerSelect),
+                trainer: trainers[index],
+                onTrainerTap: onTrainerTap,
+                onButtonTap: onButtonTap,
+              ),
             ));
           },
           error: (error, e) => Center(
