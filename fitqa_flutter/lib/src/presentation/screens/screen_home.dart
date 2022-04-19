@@ -1,10 +1,9 @@
 import 'package:fitqa/src/application/feedback/feedback_detail.dart';
 import 'package:fitqa/src/application/feedback/feedback_list.dart';
-import 'package:fitqa/src/domain/entities/common/enum/common_eunm.dart';
 import 'package:fitqa/src/domain/entities/feedback/fitqa_feedback/fitqa_feedback.dart';
 import 'package:fitqa/src/presentation/screens/screen_feedback_detail.dart';
 import 'package:fitqa/src/presentation/widgets/common/fitqa_appbar.dart';
-import 'package:fitqa/src/presentation/widgets/common/multi_select_chip.dart';
+import 'package:fitqa/src/presentation/widgets/common/fitqa_workout_area_filter.dart';
 import 'package:fitqa/src/presentation/widgets/feedback/register/feedback_listview_item.dart';
 import 'package:fitqa/src/theme/color.dart';
 import 'package:fitqa/src/theme/dimen.dart';
@@ -29,14 +28,9 @@ class ScreenHome extends ConsumerWidget {
               child: SizedBox(
                 height: FDimen.defaultMultiSelectChipSize,
                 child: SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: MultiSelectChip(
-                        WorkOutArea.values
-                            .where((element) => element != WorkOutArea.none)
-                            .map((e) => e.toStringType())
-                            .toList(),
-                        spacing: 8,
-                        onSelectionChanged: (selectedList) {})),
+                  scrollDirection: Axis.horizontal,
+                  child: FitqaWorkoutAreaFilter(),
+                ),
               )),
           feedbacks.maybeWhen(
               success: (feedbacks) => _buildFeedbackListView(
