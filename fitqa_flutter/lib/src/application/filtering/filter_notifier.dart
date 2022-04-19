@@ -7,12 +7,11 @@ class FilterNotifier extends StateNotifier<List<WorkOutArea>> {
   }
 
   void reset() {
-    state.clear();
+    state = [WorkOutArea.all];
   }
 
   void update(List<WorkOutArea> filter) {
     final areas = filter.where((area) => area != WorkOutArea.none).toList();
-
     reset();
     state = [...areas];
   }
