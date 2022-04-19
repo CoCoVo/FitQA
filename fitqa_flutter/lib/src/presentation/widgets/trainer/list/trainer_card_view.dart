@@ -11,18 +11,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class TrainerCardView extends ConsumerWidget {
-  const TrainerCardView(
-      {Key? key,
-      required this.trainer,
-      required this.onTrainerTap,
-      required this.onButtonTap})
-      : super(key: key);
+  const TrainerCardView({
+    Key? key,
+    required this.trainer,
+    required this.onTrainerTap,
+    required this.onButtonTap,
+  }) : super(key: key);
 
   final Trainer trainer;
   final Function(Trainer)? onTrainerTap;
   final Function(Trainer)? onButtonTap;
-
-  final GestureTapCallback? onTap;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
