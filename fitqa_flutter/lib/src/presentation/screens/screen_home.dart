@@ -15,6 +15,7 @@ class ScreenHome extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final feedbacks = ref.watch(feedbackListProvider);
+    final feedbackFilters = ref.watch(feedbackFilterProvider);
 
     final feedbackTokenController =
         ref.watch(selectedFeedbackTokenProvider.notifier);
@@ -25,8 +26,9 @@ class ScreenHome extends ConsumerWidget {
         child: Column(mainAxisSize: MainAxisSize.min, children: [
           const FitqaAppbar(),
           FitqaWorkoutAreaFilter(
-            onSelectionChanged: (selectedFilter) {
-              feedbackFilterController.update(selectedFilter);
+            selected: feedbackFilters,
+            onSelected: (area, selected) {
+              feedbackFilterController.update(area, selected);
             },
           ),
           feedbacks.maybeWhen(

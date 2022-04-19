@@ -4,10 +4,11 @@ import 'package:fitqa/src/theme/dimen.dart';
 import 'package:flutter/material.dart';
 
 class FitqaWorkoutAreaFilter extends StatelessWidget {
-  const FitqaWorkoutAreaFilter({Key? key, this.onSelectionChanged})
+  const FitqaWorkoutAreaFilter({Key? key, this.selected, this.onSelected})
       : super(key: key);
 
-  final Function(List<WorkOutArea>)? onSelectionChanged;
+  final List<WorkOutArea>? selected;
+  final Function(WorkOutArea, bool)? onSelected;
 
   @override
   Widget build(BuildContext context) {
@@ -15,10 +16,6 @@ class FitqaWorkoutAreaFilter extends StatelessWidget {
         .where((element) => element != WorkOutArea.none)
         .map((e) => e.toStringType())
         .toList();
-    final initSelect = [
-      true,
-      ...List<bool>.generate(filterList.length - 1, (_) => false)
-    ];
 
     return Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -29,13 +26,10 @@ class FitqaWorkoutAreaFilter extends StatelessWidget {
             child: MultiSelectChip(
               filterList,
               spacing: 8,
-              selected: initSelect,
-              onSelectionChanged: (selectedList) {
-                final selectedFilter = selectedList
-                    .map((e) => WorkOutAreaConverter.fromString(e))
-                    .toList();
-                if (onSelectionChanged != null) {
-                  onSelectionChanged!(selectedFilter);
+              selected: selected?.map((e) => e.toStringType()).toList(),
+              onSelected: (area, selected) {
+                if (onSelected != null) {
+                  onSelected!(WorkOutAreaConverter.fromString(area), selected);
                 }
               },
             ),
