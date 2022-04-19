@@ -1,5 +1,6 @@
 import 'package:fitqa/src/application/feedback/feedback_detail.dart';
 import 'package:fitqa/src/common/time_utils.dart';
+import 'package:fitqa/src/domain/entities/feedback/fitqa_feedback/fitqa_feedback.dart';
 import 'package:fitqa/src/presentation/widgets/common/small_info_box.dart';
 import 'package:fitqa/src/theme/color.dart';
 import 'package:flutter/material.dart';
@@ -45,7 +46,10 @@ class SectionUserProfile extends ConsumerWidget {
               ],
             ),
           ),
-          SmallInfoBox(text: "답변대기")
+          SmallInfoBox(
+            text: feedbackDetail.status.toStringType(),
+            outlined: feedbackDetail.status == FeedbackStatus.prepare,
+          )
         ],
       ),
     );
