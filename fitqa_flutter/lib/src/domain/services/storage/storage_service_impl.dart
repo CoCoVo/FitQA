@@ -22,4 +22,14 @@ class StorageServiceImpl extends StorageService {
   Future<void> storeUserToken(String userToken) {
     return storage.write(StorageKey.USER_ID, userToken);
   }
+
+  @override
+  Future<String?> getTrainerToken() {
+    return storage.read(StorageKey.TRAINER_TOKEN);
+  }
+
+  @override
+  Future<void> storeTrainerToken(String trainerToken) {
+    return storage.write(StorageKey.TRAINER_TOKEN, trainerToken);
+  }
 }
