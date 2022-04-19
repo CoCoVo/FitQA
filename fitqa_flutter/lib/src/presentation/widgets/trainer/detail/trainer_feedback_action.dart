@@ -1,6 +1,7 @@
 import 'package:fitqa/src/application/trainer/trainer_detail.dart';
 import 'package:fitqa/src/common/fitqa_icon.dart';
 import 'package:fitqa/src/presentation/screens/screen_feedback_request.dart';
+import 'package:fitqa/src/presentation/screens/screen_trainer_detail.dart';
 import 'package:fitqa/src/theme/color.dart';
 import 'package:fitqa/src/theme/dimen.dart';
 import 'package:flutter/material.dart';
@@ -12,7 +13,11 @@ class TrainerFeedbackAction extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final trainerDetail = ref.watch(trainerDetailProvider).data!;
-
+    final scrollController = ref.watch(trainerDetailScrollController);
+    // FIXME(in.heo)
+    // - hard-coded value
+    // - 답변 내역까지 콘텐츠의 양에 따라 이동해야 되는데
+    final scrollAmount = MediaQuery.of(context).size.height * 2;
     return Card(
         child: SizedBox(
       height: FDimen.trainerDetailFeedbackRequesterSize,
@@ -56,7 +61,7 @@ class TrainerFeedbackAction extends ConsumerWidget {
             child: ListTile(
               title: RichText(
                   text: TextSpan(
-                      text: "답변하기",
+                      text: "답변내역",
                       style:
                           const TextStyle(fontSize: 18, color: FColors.black),
                       children: [
@@ -68,10 +73,8 @@ class TrainerFeedbackAction extends ConsumerWidget {
                             color: FColors.blue))
                   ])),
               trailing: const Icon(FitQaIcon.enter),
-              onTap: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => ScreenFeedbackRequest())),
+              onTap: () => scrollController.animateTo(scrollAmount,
+                  duration: const Duration(seconds: 1), curve: Curves.easeOut),
             ),
           ),
         ],
