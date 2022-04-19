@@ -2,7 +2,6 @@ import 'package:fitqa/src/common/fitqa_icon.dart';
 import 'package:fitqa/src/domain/entities/common/enum/common_eunm.dart';
 import 'package:fitqa/src/domain/entities/trainer/trainer/trainer.dart';
 import 'package:fitqa/src/domain/entities/trainer/trainer_image/trainer_image.dart';
-import 'package:fitqa/src/presentation/screens/screen_feedback_request.dart';
 import 'package:fitqa/src/presentation/widgets/common/area_small_widget.dart';
 import 'package:fitqa/src/presentation/widgets/common/fitqa_elevated_button.dart';
 import 'package:fitqa/src/presentation/widgets/trainer/list/trainer_card_image.dart';
@@ -12,10 +11,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class TrainerCardView extends ConsumerWidget {
-  const TrainerCardView({Key? key, required this.trainer, this.onTap})
+  const TrainerCardView(
+      {Key? key,
+      required this.trainer,
+      required this.onTrainerTap,
+      required this.onButtonTap})
       : super(key: key);
 
   final Trainer trainer;
+  final Function(Trainer)? onTrainerTap;
+  final Function(Trainer)? onButtonTap;
 
   final GestureTapCallback? onTap;
 
@@ -26,13 +31,15 @@ class TrainerCardView extends ConsumerWidget {
       elevation: 1,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
       child: InkWell(
-        onTap: onTap,
+        onTap: () {
+          if (onTrainerTap != null) onTrainerTap!(trainer);
+        },
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             buildCardImage(),
-            buildCardContent(context),
+            buildCardContent(context, ref),
             const SizedBox(height: 5),
           ],
         ),
@@ -62,7 +69,7 @@ class TrainerCardView extends ConsumerWidget {
     );
   }
 
-  Widget buildCardContent(BuildContext context) => Padding(
+  Widget buildCardContent(BuildContext context, WidgetRef ref) => Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 18),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -77,7 +84,7 @@ class TrainerCardView extends ConsumerWidget {
           const SizedBox(
             height: 8,
           ),
-          buildAction(context),
+          buildAction(),
         ],
       ));
 
@@ -125,16 +132,14 @@ class TrainerCardView extends ConsumerWidget {
     ]);
   }
 
-  Widget buildAction(BuildContext context) {
+  Widget buildAction() {
     return Row(
       children: [
         Expanded(
           child: FElevatedButton(
-            onPressed: () => Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) =>
-                        ScreenFeedbackRequest(trainer: trainer))),
+            onPressed: () {
+              if (onButtonTap != null) onButtonTap!(trainer);
+            },
             child: const Text("상담 신청",
                 style: TextStyle(
                     fontSize: 16,

@@ -40,8 +40,7 @@ class TrainerFeedbackAction extends ConsumerWidget {
               onTap: () => Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) =>
-                          ScreenFeedbackRequest(trainer: trainerDetail))),
+                      builder: (context) => ScreenFeedbackRequest())),
             ),
           ),
           const Divider(
@@ -72,8 +71,7 @@ class TrainerFeedbackAction extends ConsumerWidget {
               onTap: () => Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) =>
-                          ScreenFeedbackRequest(trainer: trainerDetail))),
+                      builder: (context) => ScreenFeedbackRequest())),
             ),
           ),
         ],

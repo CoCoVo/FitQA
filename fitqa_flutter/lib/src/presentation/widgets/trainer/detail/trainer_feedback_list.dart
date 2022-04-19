@@ -15,20 +15,17 @@ class TrainerFeedbackList extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final trainerDetail = ref
-        .watch(trainerDetailProvider)
-        .data!;
+    final trainerDetail = ref.watch(trainerDetailProvider).data!;
     final feedbackTokenController =
-    ref.watch(selectedFeedbackTokenProvider.notifier);
+        ref.watch(selectedFeedbackTokenProvider.notifier);
 
-    final List<FitqaFeedback> filteredFeedbacks = filterFeedbacks(
-        trainerDetail.feedbacks, category);
+    final List<FitqaFeedback> filteredFeedbacks =
+        filterFeedbacks(trainerDetail.feedbacks, category);
 
     return ListView.separated(
         padding: const EdgeInsets.symmetric(vertical: 8),
         itemCount: filteredFeedbacks.length,
-        itemBuilder: (context, index) =>
-            FeedbackListViewItem(
+        itemBuilder: (context, index) => FeedbackListViewItem(
               feedback: filteredFeedbacks[index],
               onPressed: () {
                 feedbackTokenController.state =
@@ -44,19 +41,15 @@ class TrainerFeedbackList extends ConsumerWidget {
         separatorBuilder: (BuildContext context, int index) => const Divider());
   }
 
-  List<FitqaFeedback> filterFeedbacks(List<FitqaFeedback> feedbacks,
-      FeedbackCategory category) {
+  List<FitqaFeedback> filterFeedbacks(
+      List<FitqaFeedback> feedbacks, FeedbackCategory category) {
     switch (category) {
       case FeedbackCategory.all:
         return feedbacks;
       case FeedbackCategory.notComplete:
-        return feedbacks
-            .where((element) => element.answer == null)
-            .toList();
+        return feedbacks.where((element) => element.answer == null).toList();
       case FeedbackCategory.complete:
-        return feedbacks
-            .where((element) => element.answer != null)
-            .toList();
+        return feedbacks.where((element) => element.answer != null).toList();
     }
   }
 }

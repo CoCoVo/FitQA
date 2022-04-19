@@ -1,30 +1,25 @@
+import 'package:fitqa/src/application/feedback/feedback_selected_trainer.dart';
+import 'package:fitqa/src/common/number_utils.dart';
 import 'package:fitqa/src/domain/entities/common/enum/common_eunm.dart';
-import 'package:fitqa/src/domain/entities/trainer/trainer/trainer.dart';
-import 'package:fitqa/src/domain/entities/trainer/trainer_feedback_price/trainer_feedback_price.dart';
 import 'package:fitqa/src/domain/entities/trainer/trainer_image/trainer_image.dart';
-import 'package:fitqa/src/presentation/widgets/common/fitqa_dropdown.dart';
+import 'package:fitqa/src/presentation/widgets/common/form/fitqa_dropdown.dart';
 import 'package:fitqa/src/presentation/widgets/feedback/register/feedback_category_item.dart';
 import 'package:fitqa/src/theme/color.dart';
 import 'package:fitqa/src/theme/dimen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final selectedFeedbackCategory = StateProvider<TrainerFeedbackPrice>(
-    (ref) => const TrainerFeedbackPrice(area: WorkOutArea.none, price: 0));
-
 class FeedbackSelectCategory extends ConsumerWidget {
-  FeedbackSelectCategory({Key? key, required this.trainer}) : super(key: key);
-
-  final Trainer trainer;
+  FeedbackSelectCategory({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final trainerImageUrl = trainer.images
+    final selectedTrainer = ref.watch(selectedTrainerProvider)!;
+    final selectedFeedbackPrice =
+        ref.watch(selectedTrainerFeedbackPriceProvider);
+    final trainerImageUrl = selectedTrainer.images
         .firstWhere((element) => element.imageType == ImageType.profile)
         .imageUrl;
-    final selectedFeedbackName =
-        ref.watch(selectedFeedbackCategory).area.toStringType();
-    final selectedFeedbackPrice = ref.watch(selectedFeedbackCategory).price;
 
     return Container(
       height: FDimen.feedbackSelectCategoryCardHeight,
@@ -37,11 +32,14 @@ class FeedbackSelectCategory extends ConsumerWidget {
               const SizedBox(
                 width: 16,
               ),
-              _buildTrainerCategoryBox(context, ref, selectedFeedbackName),
+              _buildTrainerCategoryBox(context, ref),
             ],
           ),
+          const SizedBox(
+            height: 14,
+          ),
           const Divider(height: 1, color: FColors.line),
-          _buildPriceBox(selectedFeedbackPrice),
+          _buildPriceBox(selectedFeedbackPrice?.price),
         ],
       ),
     );
@@ -55,30 +53,38 @@ class FeedbackSelectCategory extends ConsumerWidget {
         width: 85,
         height: 85,
         fit: BoxFit.cover,
+        errorBuilder: (_, __, ___) {
+          return Container(
+            color: FColors.black,
+            width: 85,
+            height: 85,
+          );
+        },
       ),
     );
   }
 
-  Widget _buildTrainerCategoryBox(
-      BuildContext context, WidgetRef ref, String selectedFeedbackName) {
+  Widget _buildTrainerCategoryBox(BuildContext context, WidgetRef ref) {
     return Expanded(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _buildTrainerNameBox(),
+          _buildTrainerNameBox(ref),
           const SizedBox(
             height: 8,
           ),
-          _buildFeedbackCategoryDropBox(context, ref, selectedFeedbackName)
+          _buildFeedbackCategoryDropBox(context, ref)
         ],
       ),
     );
   }
 
-  Widget _buildTrainerNameBox() {
+  Widget _buildTrainerNameBox(WidgetRef ref) {
+    final selectedTrainer = ref.watch(selectedTrainerProvider)!;
+
     return RichText(
       text: TextSpan(
-          text: trainer.name,
+          text: selectedTrainer.name,
           style: const TextStyle(
               fontSize: 18, color: FColors.black, fontWeight: FontWeight.bold),
           children: const [
@@ -88,25 +94,32 @@ class FeedbackSelectCategory extends ConsumerWidget {
     );
   }
 
-  Widget _buildFeedbackCategoryDropBox(
-      BuildContext context, WidgetRef ref, String selectedFeedbackName) {
-    return FDropDown(
+  Widget _buildFeedbackCategoryDropBox(BuildContext context, WidgetRef ref) {
+    final selectedTrainer = ref.watch(selectedTrainerProvider)!;
+    final selectedFeedbackPrice =
+        ref.watch(selectedTrainerFeedbackPriceProvider);
+    final selectedFeedbackPriceController =
+        ref.watch(selectedTrainerFeedbackPriceProvider.notifier);
+
+    return FitqaDropdown(
         height: 56,
-        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
-        title: selectedFeedbackName.isEmpty ? "선택" : selectedFeedbackName,
-        subTitle: "카테고리 선택",
-        itemList: trainer.feedbackPrices
-            .map((e) => FeedbackCategoryItem(
-                title: e.area.toStringType(),
-                subtitle: "${e.price}",
-                onTap: () {
-                  ref.read(selectedFeedbackCategory.notifier).state = e;
-                  Navigator.pop(context);
-                }))
-            .toList());
+        label: "카테고리 선택",
+        hint: "선택",
+        text: selectedFeedbackPrice?.area.toStringType(),
+        child: ListView(
+          children: selectedTrainer.feedbackPrices
+              .map((e) => FeedbackCategoryItem(
+                  title: e.area.toStringType(),
+                  subtitle: NumberUtils.thousandSeparate(e.price),
+                  onTap: () {
+                    selectedFeedbackPriceController.state = e;
+                    Navigator.pop(context);
+                  }))
+              .toList(),
+        ));
   }
 
-  Widget _buildPriceBox(int selectedFeedbackPrice) {
+  Widget _buildPriceBox(int? price) {
     return Expanded(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -118,7 +131,9 @@ class FeedbackSelectCategory extends ConsumerWidget {
           ),
           RichText(
               text: TextSpan(
-                  text: "$selectedFeedbackPrice",
+                  text: (price == null)
+                      ? ""
+                      : NumberUtils.thousandSeparate(price),
                   style: const TextStyle(
                       fontSize: 24,
                       color: FColors.black,

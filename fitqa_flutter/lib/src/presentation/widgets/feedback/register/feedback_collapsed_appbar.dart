@@ -1,64 +1,52 @@
-import 'package:fitqa/src/common/fitqa_icon.dart';
-import 'package:fitqa/src/domain/entities/trainer/trainer/trainer.dart';
-import 'package:fitqa/src/presentation/screens/screen_trainer.dart';
+import 'package:fitqa/src/application/feedback/feedback_selected_trainer.dart';
+import 'package:fitqa/src/presentation/widgets/common/fitqa_appbar_sub.dart';
 import 'package:fitqa/src/presentation/widgets/feedback/register/feedback_select_category.dart';
+import 'package:fitqa/src/presentation/widgets/feedback/register/feedback_select_trainer.dart';
 import 'package:fitqa/src/theme/color.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class FeedbackCollapsedAppbar extends StatelessWidget {
-  const FeedbackCollapsedAppbar({Key? key, this.trainer}) : super(key: key);
-
-  final Trainer? trainer;
+class FeedbackCollapsedAppbar extends ConsumerWidget {
+  const FeedbackCollapsedAppbar({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final selectedTrainer = ref.watch(selectedTrainerProvider);
+
+    final statusBarHeight = MediaQuery.of(context).viewPadding.top;
+
     return Stack(
       children: <Widget>[
         Container(
-          height: 200,
-          child: AppBar(
-            title: const Text(
-              '새 게시물 쓰기',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            ),
+          // status bar 크기를 뺀 만큼으로 크기를 잡는다.
+          height: 200 - statusBarHeight,
+          color: FColors.blue,
+          child: FitqaAppbarSub(
+            title: "새 게시물 쓰기",
             centerTitle: true,
-            elevation: 0.0,
-            leading: InkWell(
-              child: const Icon(Icons.arrow_back_ios_rounded),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
+            onPressed: () => _close(context, ref),
           ),
         ),
         Padding(
-          padding: const EdgeInsets.only(top: 60),
+          padding: EdgeInsets.only(top: 95 - statusBarHeight),
           child: Card(
-            child: trainer == null
-                ? ListTile(
-                    contentPadding:
-                        const EdgeInsets.symmetric(horizontal: 16, vertical: 32),
-                    title: const Text("트레이너 선택",
-                        style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.bold)),
-                    trailing: const Icon(FitQaIcon.enter, color: FColors.blue),
-                    onTap: () {
-                      Navigator.pop(context);
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const ScreenTrainer()));
-                    },
-                  )
-                : FeedbackSelectCategory(trainer: trainer!),
+            child: (selectedTrainer == null)
+                ? FeedbackSelectTrainer()
+                : FeedbackSelectCategory(),
             margin: const EdgeInsets.symmetric(horizontal: 16),
             elevation: 4,
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(4)),
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
             clipBehavior: Clip.antiAlias,
           ),
         )
       ],
     );
+  }
+
+  void _close(BuildContext context, WidgetRef ref) {
+    ref.watch(selectedTrainerProvider.notifier).state = null;
+    ref.watch(selectedTrainerFeedbackPriceProvider.notifier).state = null;
+    Navigator.pop(context);
   }
 }

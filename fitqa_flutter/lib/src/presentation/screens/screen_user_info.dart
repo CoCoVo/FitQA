@@ -21,7 +21,7 @@ class ScreenUserInfo extends StatelessWidget {
           title: '운동정보 입력',
           centerTitle: true,
           onPressed: () => Navigator.pop(context),
-          foreground: FColors.black,
+          foregroundColor: FColors.black,
         ),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 35),
