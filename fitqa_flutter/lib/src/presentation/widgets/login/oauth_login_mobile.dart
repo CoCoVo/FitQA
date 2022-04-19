@@ -1,4 +1,5 @@
 import 'package:fitqa/src/application/storage/user_token_facade.dart';
+import 'package:fitqa/src/common/string_utils.dart';
 import 'package:fitqa/src/presentation/widgets/login/social_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -23,9 +24,14 @@ class OAuthLoginMobile extends ConsumerWidget {
           onPageFinished: (String url) {
             final attemptResult = url.split("/").last;
             if (attemptResult.startsWith("success")) {
-              final userToken = attemptResult.split("=").last;
+              final params = StringUtils.getUrlParameters(url);
+              final userToken = params['token'];
+              final trainerToken = params['trainer_token'];
+
               print("User Token : $userToken");
-              userTokenController.state = userToken;
+              print("Trainer Token : $trainerToken");
+
+              userTokenController.state = userToken!;
               _closeScreen(context);
             } else if (attemptResult.startsWith("failed")) {
               print("User Login Failed");
