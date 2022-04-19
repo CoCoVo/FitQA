@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:fitqa/src/application/storage/trainer_token_facade.dart';
 import 'package:fitqa/src/application/trainer/trainer_detail.dart';
 import 'package:fitqa/src/common/fitqa_icon.dart';
@@ -14,6 +16,9 @@ import 'package:fitqa/src/theme/dimen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+final trainerDetailScrollController =
+    StateProvider<ScrollController>((ref) => ScrollController());
+
 class ScreenTrainerDetail extends ConsumerWidget {
   const ScreenTrainerDetail({Key? key}) : super(key: key);
 
@@ -21,8 +26,11 @@ class ScreenTrainerDetail extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final trainerDetail = ref.watch(trainerDetailProvider);
     final ownerTrainerToken = ref.watch(trainerTokenProvider);
+    final scrollController = ref.watch(trainerDetailScrollController);
+
     return Scaffold(
       body: CustomScrollView(
+        controller: scrollController,
         slivers: trainerDetail.maybeWhen(
             orElse: () => [_buildLoading()],
             success: (_) => [
