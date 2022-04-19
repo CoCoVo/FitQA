@@ -1,3 +1,4 @@
+import 'package:fitqa/src/application/storage/trainer_token_facade.dart';
 import 'package:fitqa/src/application/trainer/trainer_detail.dart';
 import 'package:fitqa/src/common/fitqa_icon.dart';
 import 'package:fitqa/src/presentation/screens/screen_edit_trainer_detail.dart';
@@ -19,13 +20,13 @@ class ScreenTrainerDetail extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final trainerDetail = ref.watch(trainerDetailProvider);
-
+    final ownerTrainerToken = ref.watch(trainerTokenProvider);
     return Scaffold(
       body: CustomScrollView(
         slivers: trainerDetail.maybeWhen(
             orElse: () => [_buildLoading()],
             success: (_) => [
-                  buildAppBar(context),
+                  buildAppBar(context, ownerTrainerToken),
                   buildContext(),
                   buildFeedbackListView()
                 ]),
@@ -33,7 +34,7 @@ class ScreenTrainerDetail extends ConsumerWidget {
     );
   }
 
-  Widget buildAppBar(BuildContext context) {
+  Widget buildAppBar(BuildContext context, String trainerToken) {
     return SliverAppBar(
       backgroundColor: FColors.black,
       expandedHeight: FDimen.trainerDetailExpandedHeight,
@@ -48,13 +49,9 @@ class ScreenTrainerDetail extends ConsumerWidget {
       actions: [
         Padding(
             padding: const EdgeInsets.only(right: 10, top: 10),
-            child: InkWell(
-              onTap: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const ScreenEditTrainerDetail())),
-              child: const Icon(FitQaIcon.modification),
-            ))
+            child: trainerToken.isEmpty
+                ? _buildFavoriteAction()
+                : _buildModifyAction(context))
       ],
       centerTitle: false,
       flexibleSpace: const TrainerFlexibleSpace(),
@@ -78,6 +75,19 @@ class ScreenTrainerDetail extends ConsumerWidget {
 
   Widget _buildLoading() => const SliverToBoxAdapter(
       child: Center(child: CircularProgressIndicator()));
+
+  Widget _buildModifyAction(BuildContext context) => InkWell(
+        onTap: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => const ScreenEditTrainerDetail())),
+        child: const Icon(FitQaIcon.modification),
+      );
+
+  Widget _buildFavoriteAction() => InkWell(
+        onTap: () => {},
+        child: const Icon(FitQaIcon.star),
+      );
 
   Widget buildFeedbackListView() => const SliverFillRemaining(
       hasScrollBody: true, child: TrainerFeedbackTab());
