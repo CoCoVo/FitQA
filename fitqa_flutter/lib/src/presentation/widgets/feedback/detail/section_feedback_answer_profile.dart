@@ -9,61 +9,66 @@ class SectionFeedbackAnswerProfile extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final feedbackDetail = ref.watch(feedbackDetailProvider).data!;
+    final feedbackDetail = ref.watch(feedbackDetailProvider);
 
-    return Padding(
-      padding: const EdgeInsets.only(top: 30, bottom: 22),
-      child: Row(
-        children: [
-          CircleAvatar(
-            radius: 28,
-            backgroundImage: NetworkImage(
-                ImageUtils.getTrainerProfile(feedbackDetail.trainer.images)),
-          ),
-          const SizedBox(
-            width: 20,
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "${feedbackDetail.trainer.name}님 답변",
-                style: const TextStyle(
-                  fontSize: 18,
-                  color: FColors.black,
-                  fontWeight: FontWeight.bold,
+    return feedbackDetail.maybeWhen(
+        success: (feedback) {
+          return Padding(
+            padding: const EdgeInsets.only(top: 30, bottom: 22),
+            child: Row(
+              children: [
+                CircleAvatar(
+                  radius: 28,
+                  backgroundImage: NetworkImage(
+                      ImageUtils.getTrainerProfile(feedback.trainer.images)),
                 ),
-              ),
-              const SizedBox(height: 4),
-              Row(
-                children: [
-                  const Text(
-                    "대표이력",
-                    style: TextStyle(
-                        fontSize: 12,
+                const SizedBox(
+                  width: 20,
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "${feedback.trainer.name}님 답변",
+                      style: const TextStyle(
+                        fontSize: 18,
                         color: FColors.black,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  const SizedBox(
-                    width: 8,
-                  ),
-                  const Text(
-                    "|",
-                    style: TextStyle(color: FColors.black),
-                  ),
-                  const SizedBox(
-                    width: 8,
-                  ),
-                  Text(
-                    feedbackDetail.trainer.representativeFootprints,
-                    style: const TextStyle(fontSize: 12, color: FColors.black),
-                  ),
-                ],
-              )
-            ],
-          )
-        ],
-      ),
-    );
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 4),
+                    Row(
+                      children: [
+                        const Text(
+                          "대표이력",
+                          style: TextStyle(
+                              fontSize: 12,
+                              color: FColors.black,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        const SizedBox(
+                          width: 8,
+                        ),
+                        const Text(
+                          "|",
+                          style: TextStyle(color: FColors.black),
+                        ),
+                        const SizedBox(
+                          width: 8,
+                        ),
+                        Text(
+                          feedback.trainer.representativeFootprints,
+                          style: const TextStyle(
+                              fontSize: 12, color: FColors.black),
+                        ),
+                      ],
+                    )
+                  ],
+                )
+              ],
+            ),
+          );
+        },
+        orElse: () => const SizedBox());
   }
 }

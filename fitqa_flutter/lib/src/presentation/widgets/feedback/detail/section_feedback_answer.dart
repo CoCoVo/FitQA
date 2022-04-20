@@ -8,13 +8,17 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class SectionFeedbackAnswer extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final feedbackDetail = ref.watch(feedbackDetailProvider).data!;
+    final feedbackDetail = ref.watch(feedbackDetailProvider);
     final ownerTrainerToken = ref.watch(trainerTokenProvider);
 
-    // 답변을 해야되는 경우. (트레이너 지정되고, 아직 답변 안했을때.
-    if (ownerTrainerToken == feedbackDetail.trainer.trainerToken &&
-        feedbackDetail.answer == null) return SectionFeedbackAnswerOwner();
+    return feedbackDetail.maybeWhen(
+        success: (feedback) {
+          // 답변을 해야되는 경우. (트레이너 지정되고, 아직 답변 안했을때.
+          if (ownerTrainerToken == feedback.trainer.trainerToken &&
+              feedback.answer == null) return SectionFeedbackAnswerOwner();
 
-    return const SectionFeedbackAnswerOther();
+          return const SectionFeedbackAnswerOther();
+        },
+        orElse: () => const CircularProgressIndicator());
   }
 }

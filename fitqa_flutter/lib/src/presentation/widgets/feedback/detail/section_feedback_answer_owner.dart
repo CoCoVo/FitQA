@@ -58,48 +58,52 @@ class SectionAnswerOwnerProfile extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final feedbackDetail = ref.watch(feedbackDetailProvider).data!;
+    final feedbackDetail = ref.watch(feedbackDetailProvider);
 
-    return Row(
-      children: [
-        CircleAvatar(
-            radius: 28,
-            backgroundImage: NetworkImage(
-                ImageUtils.getTrainerProfile(feedbackDetail.trainer.images))),
-        SizedBox(
-          width: 20,
-        ),
-        Expanded(
-            child: RichText(
-                text: TextSpan(
-                    text: feedbackDetail.trainer.name,
-                    style: TextStyle(
-                        fontSize: 18,
-                        color: FColors.black,
-                        fontWeight: FontWeight.bold),
-                    children: [
-              TextSpan(
-                  text: "님의 답변을\n기다리는 중입니다",
-                  style: TextStyle(fontWeight: FontWeight.normal))
-            ]))),
-        SizedBox(
-          width: 20,
-        ),
-        ExpandableButton(
-          child: ElevatedButton(
-            onPressed:
-                onCompletePressed ?? ExpandableController.of(context)?.toggle,
-            child: Text((onCompletePressed == null) ? "답변하기" : "작성완료"),
-            style: ElevatedButton.styleFrom(
-                primary: FColors.blue,
-                textStyle: TextStyle(
-                    fontSize: 14,
-                    color: FColors.white,
-                    fontWeight: FontWeight.bold)),
-          ),
-        )
-      ],
-    );
+    return feedbackDetail.maybeWhen(
+        success: (feedback) {
+          return Row(
+            children: [
+              CircleAvatar(
+                  radius: 28,
+                  backgroundImage: NetworkImage(
+                      ImageUtils.getTrainerProfile(feedback.trainer.images))),
+              SizedBox(
+                width: 20,
+              ),
+              Expanded(
+                  child: RichText(
+                      text: TextSpan(
+                          text: feedback.trainer.name,
+                          style: TextStyle(
+                              fontSize: 18,
+                              color: FColors.black,
+                              fontWeight: FontWeight.bold),
+                          children: [
+                    TextSpan(
+                        text: "님의 답변을\n기다리는 중입니다",
+                        style: TextStyle(fontWeight: FontWeight.normal))
+                  ]))),
+              SizedBox(
+                width: 20,
+              ),
+              ExpandableButton(
+                child: ElevatedButton(
+                  onPressed: onCompletePressed ??
+                      ExpandableController.of(context)?.toggle,
+                  child: Text((onCompletePressed == null) ? "답변하기" : "작성완료"),
+                  style: ElevatedButton.styleFrom(
+                      primary: FColors.blue,
+                      textStyle: TextStyle(
+                          fontSize: 14,
+                          color: FColors.white,
+                          fontWeight: FontWeight.bold)),
+                ),
+              )
+            ],
+          );
+        },
+        orElse: () => const SizedBox());
   }
 }
 

@@ -11,47 +11,51 @@ class SectionUserProfile extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final feedbackDetail = ref.watch(feedbackDetailProvider).data!;
+    final feedbackDetail = ref.watch(feedbackDetailProvider);
 
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 26),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          CircleAvatar(
-            radius: 23,
-            backgroundImage: NetworkImage(feedbackDetail.owner.photoURL),
-          ),
-          SizedBox(
-            width: 20,
-          ),
-          Expanded(
-            child: Column(
+    return feedbackDetail.maybeWhen(
+        success: (feedback) {
+          return Padding(
+            padding: const EdgeInsets.symmetric(vertical: 26),
+            child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  feedbackDetail.owner.name,
-                  style: TextStyle(
-                      fontSize: 16,
-                      color: FColors.black,
-                      fontWeight: FontWeight.bold),
+                CircleAvatar(
+                  radius: 23,
+                  backgroundImage: NetworkImage(feedback.owner.photoURL),
                 ),
-                Text(
-                  TimeUtils.timeAgo(feedbackDetail.createdAt),
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: FColors.black,
+                SizedBox(
+                  width: 20,
+                ),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        feedback.owner.name,
+                        style: TextStyle(
+                            fontSize: 16,
+                            color: FColors.black,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        TimeUtils.timeAgo(feedback.createdAt),
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: FColors.black,
+                        ),
+                      )
+                    ],
                   ),
+                ),
+                SmallInfoBox(
+                  text: feedback.status.toStringType(),
+                  outlined: feedback.status == FeedbackStatus.prepare,
                 )
               ],
             ),
-          ),
-          SmallInfoBox(
-            text: feedbackDetail.status.toStringType(),
-            outlined: feedbackDetail.status == FeedbackStatus.prepare,
-          )
-        ],
-      ),
-    );
+          );
+        },
+        orElse: () => const SizedBox());
   }
 }
