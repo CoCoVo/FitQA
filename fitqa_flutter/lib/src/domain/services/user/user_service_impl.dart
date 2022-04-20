@@ -1,3 +1,4 @@
+import 'package:fitqa/src/domain/command/user/update_user_info/update_user_info.dart';
 import 'package:fitqa/src/domain/entities/user/user/user.dart';
 import 'package:fitqa/src/domain/services/user/user_service.dart';
 import 'package:fitqa/src/repository/repository.dart';
@@ -16,5 +17,10 @@ class UserServiceImpl implements UserService {
   @override
   Future<User> getUserProfile(String userToken) {
     return userRepository.getUserByToken(userToken);
+  }
+
+  @override
+  Future<User> updateUserInfo(String userToken, UpdateUserInfo command) {
+    return userRepository.updateUserInfo(userToken, command);
   }
 }
