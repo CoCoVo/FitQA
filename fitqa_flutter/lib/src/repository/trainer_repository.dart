@@ -1,13 +1,13 @@
 import 'package:dio/dio.dart';
 import 'package:fitqa/src/common/exceptions.dart';
 import 'package:fitqa/src/config/remote_server_domain.dart';
+import 'package:fitqa/src/domain/entities/trainer/trainer/trainer.dart';
 import 'package:fitqa/src/repository/dto/trainer/trainer_detail_response/trainer_detail_response.dart';
 import 'package:fitqa/src/repository/dto/trainer/trainer_list_response/trainer_list_response.dart';
-import 'package:fitqa/src/domain/entities/trainer/trainer/trainer.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final clientProvider =
-    Provider((ref) => Dio(BaseOptions(baseUrl: RemoteServerDomain.localFitQA)));
+final clientProvider = Provider(
+    (ref) => Dio(BaseOptions(baseUrl: RemoteServerDomain.fitqaApiUrl)));
 
 final fitQaRepositoryProvider =
     Provider<TrainerRepositoryAPI>((ref) => TrainerRepositoryAPI(ref.read));
