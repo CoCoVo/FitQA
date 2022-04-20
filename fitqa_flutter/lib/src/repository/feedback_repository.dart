@@ -1,8 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:fitqa/src/common/exceptions.dart';
 import 'package:fitqa/src/domain/command/feedback/register_feedback/register_feedback.dart';
+import 'package:fitqa/src/domain/command/feedback/register_feedback_answer/register_feedback_answer.dart';
 import 'package:fitqa/src/domain/command/feedback/register_feedback_comment/register_feedback_comment.dart';
+import 'package:fitqa/src/domain/entities/feedback/feedback_answer/feedback_answer.dart';
 import 'package:fitqa/src/domain/entities/feedback/fitqa_feedback/fitqa_feedback.dart';
+import 'package:fitqa/src/repository/dto/feedback/feedback_answer_response/feedback_answer_response.dart';
 import 'package:fitqa/src/repository/dto/feedback/feedback_detail_response/feedback_detail_response.dart';
 import 'package:fitqa/src/repository/dto/feedback/feedback_list_response/feedback_list_response.dart';
 import 'package:fitqa/src/repository/repository.dart';
@@ -14,6 +17,8 @@ abstract class FeedbackRepository {
   Future<FitqaFeedback> registerComment(
       String feedbackToken, RegisterFeedbackComment req);
   Future<FitqaFeedback> registerFeedback(RegisterFeedback req);
+  Future<FeedbackAnswer> registerFeedbackAnswer(
+      String feedbackToken, RegisterFeedbackAnswer req);
 }
 
 class FeedbackRepositoryAPI implements FeedbackRepository {
@@ -74,6 +79,21 @@ class FeedbackRepositoryAPI implements FeedbackRepository {
           },
           cancelToken: cancelToken);
       return FeedbackDetailResponse.fromJson(response.data).data!;
+    } on DioError catch (error) {
+      throw DataException.fromDioError(error);
+    }
+  }
+
+  @override
+  Future<FeedbackAnswer> registerFeedbackAnswer(
+      String feedbackToken, RegisterFeedbackAnswer req,
+      {CancelToken? cancelToken}) async {
+    try {
+      final response = await reader(clientProvider).post(
+          "/feedbacks/$feedbackToken/answer",
+          data: req.toJson(),
+          cancelToken: cancelToken);
+      return FeedbackAnswerResponse.fromJson(response.data).data!;
     } on DioError catch (error) {
       throw DataException.fromDioError(error);
     }

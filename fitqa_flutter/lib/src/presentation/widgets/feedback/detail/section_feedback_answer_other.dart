@@ -10,15 +10,20 @@ class SectionFeedbackAnswerOther extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final feedbackDetail = ref.watch(feedbackDetailProvider).data!;
-    return Column(
-      children: [
-        SectionFeedbackAnswerProfile(),
-        if (feedbackDetail.answer == null)
-          SectionFeedbackAnswerUncompleted()
-        else
-          SectionFeedbackAnswerCompleted()
-      ],
-    );
+    final feedbackDetail = ref.watch(feedbackDetailProvider);
+
+    return feedbackDetail.maybeWhen(
+        success: (feedback) {
+          return Column(
+            children: [
+              SectionFeedbackAnswerProfile(),
+              if (feedback.answer == null)
+                SectionFeedbackAnswerUncompleted()
+              else
+                SectionFeedbackAnswerCompleted()
+            ],
+          );
+        },
+        orElse: () => const SizedBox());
   }
 }
