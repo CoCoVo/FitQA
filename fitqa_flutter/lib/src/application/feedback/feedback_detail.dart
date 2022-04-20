@@ -1,4 +1,5 @@
 import 'package:fitqa/src/application/state/state.dart';
+import 'package:fitqa/src/domain/command/feedback/register_feedback_answer/register_feedback_answer.dart';
 import 'package:fitqa/src/domain/command/feedback/register_feedback_comment/register_feedback_comment.dart';
 import 'package:fitqa/src/domain/entities/feedback/fitqa_feedback/fitqa_feedback.dart';
 import 'package:fitqa/src/domain/services/feedback/feedback_service.dart';
@@ -40,6 +41,22 @@ class FeedbackDetailNotifier extends StateNotifier<State<FitqaFeedback>> {
       final feedback = await feedbackService.registerFeedbackComment(
           feedbackToken,
           RegisterFeedbackComment(writerToken: writerToken, comment: comment));
+      state = State.success(feedback);
+    } on Exception catch (e) {
+      state = State.error(e);
+    }
+  }
+
+  void answer(String trainerToken, String description) async {
+    try {
+      state = const State.loading();
+      final feedback = await feedbackService.registerFeedbackAnswer(
+          feedbackToken,
+          RegisterFeedbackAnswer(
+              trainerToken: trainerToken,
+              videoUrl:
+                  'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4',
+              description: description));
       state = State.success(feedback);
     } on Exception catch (e) {
       state = State.error(e);
