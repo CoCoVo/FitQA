@@ -20,9 +20,7 @@ class MyApp extends ConsumerWidget {
     return MaterialApp(
         title: 'FitQA',
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
+        theme: ThemeData(primarySwatch: Colors.blue, fontFamily: 'text'),
         home: _firstScreen(userToken));
   }
 

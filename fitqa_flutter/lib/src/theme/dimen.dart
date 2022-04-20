@@ -3,7 +3,7 @@ class FDimen {
   static const double defaultMultiSelectChipSize = 60;
 
   static const double defaultModalBottomHeight = 300;
-  static const double defaultDropDownHeight = 50;
+  static const double defaultDropDownHeight = 60;
   static const double workOutAreaWidgetLineHeightPx = 18;
 
   static const double trainerCardImageSize = 118;
