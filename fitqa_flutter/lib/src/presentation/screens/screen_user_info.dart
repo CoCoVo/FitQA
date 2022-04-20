@@ -1,3 +1,4 @@
+import 'package:fitqa/src/application/user/user_info.dart';
 import 'package:fitqa/src/presentation/home.dart';
 import 'package:fitqa/src/presentation/widgets/common/fitqa_appbar_sub.dart';
 import 'package:fitqa/src/presentation/widgets/common/form/fitqa_big_button.dart';
@@ -10,12 +11,13 @@ import 'package:fitqa/src/presentation/widgets/user_info/section_user_info_worko
 import 'package:fitqa/src/presentation/widgets/user_info/section_user_info_workout_style.dart';
 import 'package:fitqa/src/theme/color.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class ScreenUserInfo extends StatelessWidget {
+class ScreenUserInfo extends ConsumerWidget {
   const ScreenUserInfo({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
         backgroundColor: FColors.white,
         appBar: FitqaAppbarSub(
@@ -64,7 +66,9 @@ class ScreenUserInfo extends StatelessWidget {
               FitqaBigButton(
                 text: "완료",
                 filled: true,
-                onPressed: () {},
+                onPressed: () {
+                  _sendUserInfo(ref);
+                },
               ),
               const SizedBox(
                 height: 33,
@@ -72,5 +76,24 @@ class ScreenUserInfo extends StatelessWidget {
             ],
           ),
         ));
+  }
+
+  void _sendUserInfo(WidgetRef ref) {
+    final userName = ref.read(userInfoNameProvider);
+    final userBirth = ref.read(userInfoBirthProvider);
+    final workoutLevel = ref.read(userInfoWorkoutLevelProvider);
+    final workoutStyle = ref.read(userInfoWorkoutStyleProvider);
+    final height = ref.read(userInfoHeightProvider);
+    final weight = ref.read(userInfoWeightProvider);
+    final fat = ref.read(userInfoFatProvider);
+    final muscle = ref.read(userInfoMuscleMassProvider);
+    print(userName);
+    print(userBirth);
+    print(workoutLevel);
+    print(workoutStyle);
+    print(height);
+    print(weight);
+    print(fat);
+    print(muscle);
   }
 }

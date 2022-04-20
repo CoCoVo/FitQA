@@ -1,3 +1,4 @@
+import 'package:fitqa/src/application/user/user_info.dart';
 import 'package:fitqa/src/presentation/widgets/common/form/fitqa_underlined_textfield.dart';
 import 'package:fitqa/src/theme/color.dart';
 import 'package:flutter/material.dart';
@@ -7,12 +8,11 @@ import 'package:intl/intl.dart';
 class SectionUserInfoBirth extends ConsumerWidget {
   SectionUserInfoBirth({Key? key}) : super(key: key);
 
-  final _birthdayProvider = StateProvider<DateTime>((ref) => DateTime.now());
   final _textController = TextEditingController();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final birthdayController = ref.watch(_birthdayProvider.notifier);
+    final birthdayController = ref.watch(userInfoBirthProvider.notifier);
 
     return FitqaUnderlinedTextField(
       labelText: "생년월일",

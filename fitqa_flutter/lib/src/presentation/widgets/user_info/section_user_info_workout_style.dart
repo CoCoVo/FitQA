@@ -1,3 +1,4 @@
+import 'package:fitqa/src/application/user/user_info.dart';
 import 'package:fitqa/src/presentation/widgets/common/form/fitqa_dropdown.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -5,12 +6,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class SectionUserInfoWorkoutStyle extends ConsumerWidget {
   SectionUserInfoWorkoutStyle({Key? key}) : super(key: key);
 
-  final selectedStyleProvider = StateProvider<String?>((ref) => null);
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    String? selectedStyle = ref.watch(selectedStyleProvider);
-    final selectedStyleController = ref.watch(selectedStyleProvider.notifier);
+    String? selectedStyle = ref.watch(userInfoWorkoutStyleProvider);
+    final selectedStyleController =
+        ref.watch(userInfoWorkoutStyleProvider.notifier);
 
     return FitqaDropdown(
       label: "운동성향",

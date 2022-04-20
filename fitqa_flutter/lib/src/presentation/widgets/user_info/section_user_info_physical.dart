@@ -1,3 +1,4 @@
+import 'package:fitqa/src/application/user/user_info.dart';
 import 'package:fitqa/src/presentation/widgets/common/ThinDivider.dart';
 import 'package:fitqa/src/theme/color.dart';
 import 'package:flutter/material.dart';
@@ -7,15 +8,12 @@ import 'package:numberpicker/numberpicker.dart';
 class SectionUserInfoPhysical extends ConsumerWidget {
   SectionUserInfoPhysical({Key? key}) : super(key: key);
 
-  final _heightProvider = StateProvider<int>((ref) => 160);
-  final _weightProvider = StateProvider<int>((ref) => 60);
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final height = ref.watch(_heightProvider);
-    final weight = ref.watch(_weightProvider);
-    final heightController = ref.watch(_heightProvider.notifier);
-    final weightController = ref.watch(_weightProvider.notifier);
+    final height = ref.watch(userInfoHeightProvider);
+    final weight = ref.watch(userInfoWeightProvider);
+    final heightController = ref.watch(userInfoHeightProvider.notifier);
+    final weightController = ref.watch(userInfoWeightProvider.notifier);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,

@@ -1,4 +1,5 @@
 import 'package:dotted_border/dotted_border.dart';
+import 'package:fitqa/src/application/user/user_info.dart';
 import 'package:fitqa/src/presentation/widgets/common/form/fitqa_optional_textfield.dart';
 import 'package:fitqa/src/theme/color.dart';
 import 'package:flutter/material.dart';
@@ -7,13 +8,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class SectionUserInfoOptional extends ConsumerWidget {
   SectionUserInfoOptional({Key? key}) : super(key: key);
 
-  final _fatProvider = StateProvider<double>((ref) => 0);
-  final _muscleProvider = StateProvider<double>((ref) => 0);
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final fatController = ref.watch(_fatProvider.notifier);
-    final muscleController = ref.watch(_muscleProvider.notifier);
+    final fatController = ref.watch(userInfoFatProvider.notifier);
+    final muscleController = ref.watch(userInfoMuscleMassProvider.notifier);
 
     return DottedBorder(
       borderType: BorderType.RRect,
