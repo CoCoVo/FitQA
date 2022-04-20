@@ -19,8 +19,8 @@ class UserTokenNotifier extends StateNotifier<String> {
     state = await storageService.getUserToken() ?? "";
   }
 
-  void setUserToken(String userToken) {
-    storageService.storeUserToken(userToken);
+  void setUserToken(String? userToken) {
+    storageService.storeUserToken(userToken ?? "");
     getUserToken();
   }
 }
