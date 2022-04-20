@@ -30,7 +30,7 @@ class Home extends ConsumerWidget {
             BottomNavigationBarItem(
                 label: '알림', icon: Icon(FitQaIcon.notification)),
             BottomNavigationBarItem(
-                label: '마이페이지', icon: Icon(FitQaIcon.myPage))
+                label: '마이페이지', icon: Icon(FitQaIcon.my_page))
           ],
           currentIndex: navigation.index,
           onTap: (index) {
