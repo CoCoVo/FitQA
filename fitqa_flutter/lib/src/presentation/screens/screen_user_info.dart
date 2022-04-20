@@ -1,3 +1,4 @@
+import 'package:fitqa/src/presentation/home.dart';
 import 'package:fitqa/src/presentation/widgets/common/fitqa_appbar_sub.dart';
 import 'package:fitqa/src/presentation/widgets/common/form/fitqa_big_button.dart';
 import 'package:fitqa/src/presentation/widgets/user_info/section_user_info_birth.dart';
@@ -20,7 +21,11 @@ class ScreenUserInfo extends StatelessWidget {
         appBar: FitqaAppbarSub(
           title: '운동정보 입력',
           centerTitle: true,
-          onPressed: () => Navigator.pop(context),
+          onPressed: () {
+            Navigator.pushReplacement(
+                context, MaterialPageRoute(builder: (context) => const Home()));
+            // Navigator.pop(context);
+          },
           foregroundColor: FColors.black,
         ),
         body: Padding(
