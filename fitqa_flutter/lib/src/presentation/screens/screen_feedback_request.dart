@@ -1,7 +1,7 @@
 import 'package:fitqa/src/application/feedback/feedback_list.dart';
 import 'package:fitqa/src/application/feedback/feedback_selected_trainer.dart';
 import 'package:fitqa/src/application/storage/user_token_facade.dart';
-import 'package:fitqa/src/domain/entities/common/enum/common_eunm.dart';
+import 'package:fitqa/src/domain/entities/common/enum/workout_area.dart';
 import 'package:fitqa/src/presentation/widgets/common/bullet_point_text.dart';
 import 'package:fitqa/src/presentation/widgets/common/fitqa_textfield.dart';
 import 'package:fitqa/src/presentation/widgets/common/labeled_checkbox.dart';

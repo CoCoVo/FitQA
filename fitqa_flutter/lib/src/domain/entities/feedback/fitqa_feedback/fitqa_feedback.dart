@@ -1,4 +1,4 @@
-import 'package:fitqa/src/domain/entities/common/enum/common_eunm.dart';
+import 'package:fitqa/src/domain/entities/common/enum/workout_area.dart';
 import 'package:fitqa/src/domain/entities/feedback/feedback_answer/feedback_answer.dart';
 import 'package:fitqa/src/domain/entities/feedback/feedback_comment/feedback_comment.dart';
 import 'package:fitqa/src/domain/entities/feedback/feedback_owner/feedback_owner.dart';

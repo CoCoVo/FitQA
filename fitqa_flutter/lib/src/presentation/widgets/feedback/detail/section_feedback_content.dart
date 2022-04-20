@@ -1,5 +1,5 @@
 import 'package:fitqa/src/application/feedback/feedback_detail.dart';
-import 'package:fitqa/src/domain/entities/common/enum/common_eunm.dart';
+import 'package:fitqa/src/domain/entities/common/enum/workout_area.dart';
 import 'package:fitqa/src/presentation/widgets/common/area_small_widget.dart';
 import 'package:fitqa/src/theme/color.dart';
 import 'package:flutter/material.dart';

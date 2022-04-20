@@ -1,7 +1,5 @@
-import 'package:fitqa/src/common/fitqa_icon.dart';
-import 'package:fitqa/src/domain/entities/common/enum/common_eunm.dart';
-import 'package:fitqa/src/domain/entities/trainer/trainer/trainer.dart';
-import 'package:fitqa/src/presentation/widgets/common/area_small_widget.dart';
+import 'package:fitqa/src/domain/entities/common/enum/workout_area.dart';
+import 'package:fitqa/src/domain/entities/common/enum/workout_style.dart';
 import 'package:fitqa/src/presentation/widgets/common/fitqa_dropdown.dart';
 import 'package:fitqa/src/presentation/widgets/common/fitqa_textfield.dart';
 import 'package:fitqa/src/presentation/widgets/common/multi_select_chip.dart';

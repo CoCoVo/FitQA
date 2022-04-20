@@ -1,6 +1,6 @@
 import 'package:fitqa/src/application/trainer/trainer_detail.dart';
-import 'package:fitqa/src/domain/entities/common/enum/common_eunm.dart';
-import 'package:fitqa/src/domain/entities/trainer/trainer/trainer.dart';
+import 'package:fitqa/src/domain/entities/common/enum/workout_area.dart';
+import 'package:fitqa/src/domain/entities/common/enum/workout_style.dart';
 import 'package:fitqa/src/domain/entities/trainer/trainer_image/trainer_image.dart';
 import 'package:fitqa/src/domain/entities/trainer/trainer_interest/trainer_interest.dart';
 import 'package:fitqa/src/presentation/widgets/common/area_small_widget.dart';

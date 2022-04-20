@@ -1,5 +1,5 @@
 import 'package:fitqa/src/application/storage/user_token_facade.dart';
-import 'package:fitqa/src/domain/entities/common/enum/common_eunm.dart';
+import 'package:fitqa/src/domain/entities/common/enum/workout_area.dart';
 import 'package:fitqa/src/domain/entities/feedback/fitqa_feedback/fitqa_feedback.dart';
 import 'package:fitqa/src/presentation/widgets/common/area_small_widget.dart';
 import 'package:fitqa/src/presentation/widgets/common/small_info_box.dart';

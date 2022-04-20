@@ -1,3 +1,4 @@
+import 'package:fitqa/src/domain/entities/common/enum/workout_style.dart';
 import 'package:fitqa/src/domain/entities/feedback/fitqa_feedback/fitqa_feedback.dart';
 import 'package:fitqa/src/domain/entities/trainer/trainer_career/trainer_career.dart';
 import 'package:fitqa/src/domain/entities/trainer/trainer_feedback_price/trainer_feedback_price.dart';
@@ -6,9 +7,8 @@ import 'package:fitqa/src/domain/entities/trainer/trainer_interest/trainer_inter
 import 'package:fitqa/src/domain/entities/trainer/trainer_sns/trainer_sns.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'trainer.g.dart';
-
 part 'trainer.freezed.dart';
+part 'trainer.g.dart';
 
 @freezed
 abstract class Trainer with _$Trainer {
@@ -31,26 +31,4 @@ abstract class Trainer with _$Trainer {
 
   factory Trainer.fromJson(Map<String, dynamic> json) =>
       _$TrainerFromJson(json);
-}
-
-enum WorkOutStyle {
-  @JsonValue("NONE")
-  none,
-  @JsonValue("BODY_BUILDING")
-  bodyBuilding,
-  @JsonValue("DIET")
-  diet,
-}
-
-extension Converter on WorkOutStyle {
-  String toStringType() {
-    switch (this) {
-      case WorkOutStyle.none:
-        return '없음';
-      case WorkOutStyle.bodyBuilding:
-        return '보디빌딩';
-      case WorkOutStyle.diet:
-        return '다이어트';
-    }
-  }
 }

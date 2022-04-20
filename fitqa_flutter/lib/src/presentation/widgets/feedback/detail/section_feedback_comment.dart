@@ -1,5 +1,6 @@
 import 'package:fitqa/src/application/feedback/feedback_detail.dart';
 import 'package:fitqa/src/application/storage/user_token_facade.dart';
+import 'package:fitqa/src/application/user/user_profile.dart';
 import 'package:fitqa/src/common/time_utils.dart';
 import 'package:fitqa/src/domain/entities/feedback/feedback_comment/feedback_comment.dart';
 import 'package:fitqa/src/theme/color.dart';
@@ -96,7 +97,9 @@ class _SectionFeedbackWrite extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final feedbackController = ref.watch(feedbackDetailProvider.notifier);
     final commentContentController = ref.watch(_commentProvider.notifier);
+
     final userToken = ref.watch(userTokenProvider);
+    final userProfile = ref.watch(userProfileProvider);
 
     return Container(
       height: 50,
@@ -104,11 +107,16 @@ class _SectionFeedbackWrite extends ConsumerWidget {
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          CircleAvatar(
-            radius: 12,
-            backgroundColor: FColors.grey_2,
+          userProfile.maybeWhen(
+            success: (user) {
+              return CircleAvatar(
+                radius: 12,
+                backgroundImage: NetworkImage(user.photoURL),
+              );
+            },
+            orElse: () => const Center(child: CircularProgressIndicator()),
           ),
-          SizedBox(
+          const SizedBox(
             width: 8,
           ),
           Expanded(
