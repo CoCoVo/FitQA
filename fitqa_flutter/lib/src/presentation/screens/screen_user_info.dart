@@ -1,4 +1,6 @@
 import 'package:fitqa/src/application/user/user_info.dart';
+import 'package:fitqa/src/application/user/user_profile.dart';
+import 'package:fitqa/src/domain/entities/common/enum/workout_style.dart';
 import 'package:fitqa/src/presentation/home.dart';
 import 'package:fitqa/src/presentation/widgets/common/fitqa_appbar_sub.dart';
 import 'package:fitqa/src/presentation/widgets/common/form/fitqa_big_button.dart';
@@ -12,6 +14,7 @@ import 'package:fitqa/src/presentation/widgets/user_info/section_user_info_worko
 import 'package:fitqa/src/theme/color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:intl/intl.dart';
 
 class ScreenUserInfo extends ConsumerWidget {
   const ScreenUserInfo({Key? key}) : super(key: key);
@@ -24,9 +27,7 @@ class ScreenUserInfo extends ConsumerWidget {
           title: '운동정보 입력',
           centerTitle: true,
           onPressed: () {
-            Navigator.pushReplacement(
-                context, MaterialPageRoute(builder: (context) => const Home()));
-            // Navigator.pop(context);
+            _close(context);
           },
           foregroundColor: FColors.black,
         ),
@@ -68,6 +69,7 @@ class ScreenUserInfo extends ConsumerWidget {
                 filled: true,
                 onPressed: () {
                   _sendUserInfo(ref);
+                  _close(context);
                 },
               ),
               const SizedBox(
@@ -87,13 +89,24 @@ class ScreenUserInfo extends ConsumerWidget {
     final weight = ref.read(userInfoWeightProvider);
     final fat = ref.read(userInfoFatProvider);
     final muscle = ref.read(userInfoMuscleMassProvider);
-    print(userName);
-    print(userBirth);
-    print(workoutLevel);
-    print(workoutStyle);
-    print(height);
-    print(weight);
-    print(fat);
-    print(muscle);
+
+    if (workoutStyle != null) {
+      final userProfileController = ref.watch(userProfileProvider.notifier);
+      userProfileController.updateUserInfo(
+        userName,
+        DateFormat('yyyy-MM-dd').format(userBirth),
+        workoutLevel,
+        WorkOutStyleConverter.fromString(workoutStyle),
+        height,
+        weight,
+        fat,
+        muscle,
+      );
+    }
+  }
+
+  void _close(BuildContext context) {
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => const Home()));
   }
 }
