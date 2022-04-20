@@ -1,4 +1,4 @@
-import 'package:fitqa/src/domain/entities/common/enum/common_eunm.dart';
+import 'package:fitqa/src/domain/entities/common/enum/workout_area.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class FilterNotifier extends StateNotifier<List<WorkOutArea>> {

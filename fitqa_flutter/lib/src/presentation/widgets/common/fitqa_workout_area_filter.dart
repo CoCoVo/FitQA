@@ -1,4 +1,4 @@
-import 'package:fitqa/src/domain/entities/common/enum/common_eunm.dart';
+import 'package:fitqa/src/domain/entities/common/enum/workout_area.dart';
 import 'package:fitqa/src/presentation/widgets/common/multi_select_chip.dart';
 import 'package:fitqa/src/theme/dimen.dart';
 import 'package:flutter/material.dart';

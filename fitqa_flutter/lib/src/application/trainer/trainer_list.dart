@@ -1,5 +1,5 @@
 import 'package:fitqa/src/application/filtering/filter_notifier.dart';
-import 'package:fitqa/src/domain/entities/common/enum/common_eunm.dart';
+import 'package:fitqa/src/domain/entities/common/enum/workout_area.dart';
 import 'package:fitqa/src/domain/entities/trainer/trainer/trainer.dart';
 import 'package:fitqa/src/domain/services/trainer/trainer_service.dart';
 import 'package:fitqa/src/domain/services/trainer/trainer_service_impl.dart';

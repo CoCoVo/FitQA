@@ -1,7 +1,7 @@
 import 'package:fitqa/src/application/filtering/filter_notifier.dart';
 import 'package:fitqa/src/application/state/state.dart';
 import 'package:fitqa/src/domain/command/feedback/register_feedback/register_feedback.dart';
-import 'package:fitqa/src/domain/entities/common/enum/common_eunm.dart';
+import 'package:fitqa/src/domain/entities/common/enum/workout_area.dart';
 import 'package:fitqa/src/domain/entities/feedback/fitqa_feedback/fitqa_feedback.dart';
 import 'package:fitqa/src/domain/services/feedback/feedback_service.dart';
 import 'package:fitqa/src/domain/services/feedback/feedback_service_impl.dart';

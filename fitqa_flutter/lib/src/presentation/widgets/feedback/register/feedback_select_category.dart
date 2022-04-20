@@ -1,6 +1,6 @@
 import 'package:fitqa/src/application/feedback/feedback_selected_trainer.dart';
 import 'package:fitqa/src/common/number_utils.dart';
-import 'package:fitqa/src/domain/entities/common/enum/common_eunm.dart';
+import 'package:fitqa/src/domain/entities/common/enum/workout_area.dart';
 import 'package:fitqa/src/domain/entities/trainer/trainer_image/trainer_image.dart';
 import 'package:fitqa/src/presentation/widgets/common/form/fitqa_dropdown.dart';
 import 'package:fitqa/src/presentation/widgets/feedback/register/feedback_category_item.dart';

@@ -1,8 +1,7 @@
-import 'package:fitqa/src/domain/entities/common/enum/common_eunm.dart';
+import 'package:fitqa/src/domain/entities/common/enum/workout_area.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'trainer_interest.freezed.dart';
-
 part 'trainer_interest.g.dart';
 
 @freezed
