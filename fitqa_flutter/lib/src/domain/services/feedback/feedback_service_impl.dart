@@ -44,7 +44,8 @@ class FeedbackServiceImpl implements FeedbackService {
   @override
   Future<FitqaFeedback> registerFeedbackAnswer(
       String feedbackToken, RegisterFeedbackAnswer command) {
-    final response = repo.registerFeedbackAnswer(feedbackToken, command);
+    repo.registerFeedbackAnswer(feedbackToken, command);
+    final response = getFeedbackDetail(feedbackToken);
     return response;
   }
 }
