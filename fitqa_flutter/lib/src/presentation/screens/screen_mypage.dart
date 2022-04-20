@@ -17,11 +17,11 @@ class ScreenMyPage extends ConsumerWidget {
 
     if (ownerUserToken.isEmpty && ownerTrainerToken.isEmpty) {
       return _buildLoginPage();
-    } else if (ownerUserToken.isNotEmpty) {
+    } else if (ownerTrainerToken.isEmpty) {
       return _buildUserMyPage();
     } else {
-      return _buildTrainerMyPage(
-          trainerDetailTokenController, ownerTrainerToken);
+      trainerDetailTokenController.state = ownerTrainerToken;
+      return _buildTrainerMyPage();
     }
   }
 
@@ -29,10 +29,7 @@ class ScreenMyPage extends ConsumerWidget {
         child: Text('User MyPage Screen'),
       );
 
-  Widget _buildTrainerMyPage(
-      selectedTrainerTokenController, String trainerToken) {
-    selectedTrainerTokenController.state = trainerToken;
-
+  Widget _buildTrainerMyPage() {
     return const ScreenTrainerDetail();
   }
 

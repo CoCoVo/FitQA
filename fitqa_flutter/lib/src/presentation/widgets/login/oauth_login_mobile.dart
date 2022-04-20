@@ -1,3 +1,4 @@
+import 'package:fitqa/src/application/storage/trainer_token_facade.dart';
 import 'package:fitqa/src/application/storage/user_token_facade.dart';
 import 'package:fitqa/src/common/string_utils.dart';
 import 'package:fitqa/src/presentation/widgets/login/social_provider.dart';
@@ -16,6 +17,7 @@ class OAuthLoginMobile extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final userTokenController = ref.watch(userTokenProvider.notifier);
+    final trainerTokenController = ref.watch(trainerTokenProvider.notifier);
 
     return Scaffold(
       body: WebView(
@@ -31,7 +33,8 @@ class OAuthLoginMobile extends ConsumerWidget {
               print("User Token : $userToken");
               print("Trainer Token : $trainerToken");
 
-              userTokenController.state = userToken!;
+              userTokenController.setUserToken(userToken);
+              trainerTokenController.setTrainerToken(trainerToken);
               _closeScreen(context);
             } else if (attemptResult.startsWith("failed")) {
               print("User Login Failed");

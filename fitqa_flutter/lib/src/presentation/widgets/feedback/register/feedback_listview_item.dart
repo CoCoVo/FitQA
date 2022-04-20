@@ -1,3 +1,4 @@
+import 'package:fitqa/src/application/storage/trainer_token_facade.dart';
 import 'package:fitqa/src/application/storage/user_token_facade.dart';
 import 'package:fitqa/src/domain/entities/common/enum/workout_area.dart';
 import 'package:fitqa/src/domain/entities/feedback/fitqa_feedback/fitqa_feedback.dart';
@@ -24,9 +25,10 @@ class FeedbackListViewItem extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     String userToken = ref.watch(userTokenProvider);
+    String trainerToken = ref.watch(trainerTokenProvider);
 
     return InkWell(
-      onTap: _isLocked(userToken, feedback) ? null : onPressed,
+      onTap: _isLocked(userToken, trainerToken, feedback) ? null : onPressed,
       child: Container(
           padding: EdgeInsets.symmetric(horizontal: 16),
           height: 72,
@@ -43,7 +45,7 @@ class FeedbackListViewItem extends ConsumerWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Visibility(
-                        visible: !_isLocked(userToken, feedback),
+                        visible: !_isLocked(userToken, trainerToken, feedback),
                         child: Text(
                           feedback.title,
                           overflow: TextOverflow.ellipsis,
@@ -58,7 +60,8 @@ class FeedbackListViewItem extends ConsumerWidget {
                       Row(
                         children: [
                           Visibility(
-                            visible: !_isLocked(userToken, feedback),
+                            visible:
+                                !_isLocked(userToken, trainerToken, feedback),
                             child: AreaSmallWidget(
                                 feedback.interestArea.toStringType(),
                                 textColor: FColors.black,
@@ -66,13 +69,15 @@ class FeedbackListViewItem extends ConsumerWidget {
                                 borderColor: FColors.black),
                           ),
                           Visibility(
-                            visible: !_isLocked(userToken, feedback),
+                            visible:
+                                !_isLocked(userToken, trainerToken, feedback),
                             child: SizedBox(
                               width: 6,
                             ),
                           ),
                           Visibility(
-                            visible: !_isLocked(userToken, feedback),
+                            visible:
+                                !_isLocked(userToken, trainerToken, feedback),
                             child: Text(
                               feedback.owner.name,
                               style: TextStyle(
@@ -129,11 +134,15 @@ class FeedbackListViewItem extends ConsumerWidget {
     );
   }
 
-  bool _isLocked(String userToken, FitqaFeedback feedback) {
+  bool _isLocked(
+      String userToken, String trainerToken, FitqaFeedback feedback) {
     // 1. 현재 사용자랑 feedback owner 가 같으면 false.
     if (userToken == feedback.owner.userToken) return false;
 
-    // 2. feedback 이 locked 이면 true.
+    // 2. 현재 사용자가 feedback trainer 와 같으면 false.
+    if (trainerToken == feedback.trainer.trainerToken) return false;
+
+    // 3. feedback 이 locked 이면 true.
     if (feedback.locked) return true;
 
     return false;

@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:fitqa/src/application/storage/trainer_token_facade.dart';
 import 'package:fitqa/src/application/trainer/trainer_detail.dart';
 import 'package:fitqa/src/common/fitqa_icon.dart';
@@ -33,8 +31,9 @@ class ScreenTrainerDetail extends ConsumerWidget {
         controller: scrollController,
         slivers: trainerDetail.maybeWhen(
             orElse: () => [_buildLoading()],
-            success: (_) => [
-                  buildAppBar(context, ownerTrainerToken),
+            success: (chosenTrainer) => [
+                  buildAppBar(
+                      context, ownerTrainerToken, chosenTrainer.trainerToken),
                   buildContext(),
                   buildFeedbackListView()
                 ]),
@@ -42,7 +41,8 @@ class ScreenTrainerDetail extends ConsumerWidget {
     );
   }
 
-  Widget buildAppBar(BuildContext context, String trainerToken) {
+  Widget buildAppBar(
+      BuildContext context, String trainerToken, String chosenTrainerToken) {
     return SliverAppBar(
       backgroundColor: FColors.black,
       expandedHeight: FDimen.trainerDetailExpandedHeight,
@@ -57,7 +57,7 @@ class ScreenTrainerDetail extends ConsumerWidget {
       actions: [
         Padding(
             padding: const EdgeInsets.only(right: 10, top: 10),
-            child: trainerToken.isEmpty
+            child: trainerToken != chosenTrainerToken
                 ? _buildFavoriteAction()
                 : _buildModifyAction(context))
       ],

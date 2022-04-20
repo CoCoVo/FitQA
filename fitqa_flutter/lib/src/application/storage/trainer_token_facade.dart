@@ -19,8 +19,8 @@ class TrainerTokenNotifier extends StateNotifier<String> {
     state = await storageService.getTrainerToken() ?? "";
   }
 
-  void setUserToken(String trainerToken) {
-    storageService.storeTrainerToken(trainerToken);
+  void setTrainerToken(String? trainerToken) {
+    storageService.storeTrainerToken(trainerToken ?? "");
     getTrainerToken();
   }
 }
