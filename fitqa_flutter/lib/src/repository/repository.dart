@@ -5,8 +5,8 @@ import 'package:fitqa/src/repository/internal_storage_repository.dart';
 import 'package:fitqa/src/repository/user_repository.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final clientProvider =
-    Provider((ref) => Dio(BaseOptions(baseUrl: RemoteServerDomain.localFitQA)));
+final clientProvider = Provider(
+    (ref) => Dio(BaseOptions(baseUrl: RemoteServerDomain.fitqaApiUrl)));
 
 final feedbackRepositoryProvider =
     Provider<FeedbackRepository>((ref) => FeedbackRepositoryAPI(ref.read));
