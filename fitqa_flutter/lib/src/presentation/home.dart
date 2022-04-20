@@ -1,4 +1,4 @@
-import 'package:fitqa/src/application/storage/user_token_facade.dart';
+import 'package:fitqa/src/application/storage/trainer_token_facade.dart';
 import 'package:fitqa/src/common/fitqa_icon.dart';
 import 'package:fitqa/src/presentation/screens/screen_feedback_request.dart';
 import 'package:fitqa/src/presentation/screens/screen_home.dart';
@@ -17,7 +17,7 @@ class Home extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final PageModel navigation = ref.watch(navigationProvider);
-    final ownerUserToken = ref.watch(userTokenProvider);
+    final ownerTrainerToken = ref.watch(trainerTokenProvider);
 
     return Scaffold(
         body: currentScreen(navigation.index),
@@ -37,7 +37,7 @@ class Home extends ConsumerWidget {
             ref.read(navigationProvider.notifier).movePage(index);
           },
         ),
-        floatingActionButton: ownerUserToken.isNotEmpty
+        floatingActionButton: ownerTrainerToken.isEmpty
             ? currentFAB(context, navigation.index)
             : null);
   }
