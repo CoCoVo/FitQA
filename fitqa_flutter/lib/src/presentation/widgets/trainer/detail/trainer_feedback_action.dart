@@ -1,3 +1,4 @@
+import 'package:fitqa/src/application/feedback/feedback_selected_trainer.dart';
 import 'package:fitqa/src/application/trainer/trainer_detail.dart';
 import 'package:fitqa/src/common/fitqa_icon.dart';
 import 'package:fitqa/src/presentation/screens/screen_feedback_request.dart';
@@ -13,6 +14,9 @@ class TrainerFeedbackAction extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final trainerDetail = ref.watch(trainerDetailProvider).data!;
+
+    final selectedTrainerController =
+        ref.watch(selectedTrainerProvider.notifier);
     final scrollController = ref.watch(trainerDetailScrollController);
     // FIXME(in.heo)
     // - hard-coded value
@@ -42,10 +46,13 @@ class TrainerFeedbackAction extends ConsumerWidget {
                             color: FColors.blue))
                   ])),
               trailing: const Icon(FitQaIcon.enter),
-              onTap: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => ScreenFeedbackRequest())),
+              onTap: () {
+                selectedTrainerController.state = trainerDetail;
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => ScreenFeedbackRequest()));
+              },
             ),
           ),
           const Divider(
