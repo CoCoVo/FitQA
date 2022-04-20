@@ -9,7 +9,7 @@ enum WorkOutStyle {
   diet,
 }
 
-extension Converter on WorkOutStyle {
+extension WorkOutStyleConverter on WorkOutStyle {
   String toStringType() {
     switch (this) {
       case WorkOutStyle.none:
@@ -19,5 +19,15 @@ extension Converter on WorkOutStyle {
       case WorkOutStyle.diet:
         return '다이어트';
     }
+  }
+
+  static WorkOutStyle fromString(String value) {
+    switch (value) {
+      case "보디빌딩":
+        return WorkOutStyle.bodyBuilding;
+      case "다이어트":
+        return WorkOutStyle.diet;
+    }
+    return WorkOutStyle.none;
   }
 }
