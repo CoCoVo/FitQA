@@ -1,6 +1,7 @@
 import 'package:fitqa/src/application/storage/trainer_token_facade.dart';
 import 'package:fitqa/src/application/storage/user_token_facade.dart';
 import 'package:fitqa/src/application/trainer/trainer_detail.dart';
+import 'package:fitqa/src/presentation/screens/screen_login.dart';
 import 'package:fitqa/src/presentation/screens/screen_trainer_detail.dart';
 import 'package:fitqa/src/presentation/widgets/common/fitqa_appbar_mypage.dart';
 import 'package:fitqa/src/theme/color.dart';
@@ -10,8 +11,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class ScreenMyPage extends ConsumerWidget {
   const ScreenMyPage({Key? key}) : super(key: key);
 
-  final String _ProfileName = "강이록";
-
+  final String _ProfileName = "로그인하세요";
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final ownerTrainerToken = ref.watch(trainerTokenProvider);
@@ -42,6 +42,7 @@ class ScreenMyPage extends ConsumerWidget {
             height: 10.0,
           ),
           _ImageProfile(),
+          _Navigation()
         ],
       ),
     );
@@ -55,7 +56,9 @@ class ScreenMyPage extends ConsumerWidget {
     return const ScreenTrainerDetail();
   }
 
-  Widget _buildLoginPage() => const Center(child: Text('Login Screen'));
+  Widget _buildLoginPage() {
+    return ScreenLogin().loginList();
+  }
 
   Widget _ImageProfile() {
     return Center(
