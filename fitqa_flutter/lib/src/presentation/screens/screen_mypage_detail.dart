@@ -1,6 +1,7 @@
 import 'package:contained_tab_bar_view/contained_tab_bar_view.dart';
 import 'package:fitqa/src/presentation/screens/screen_mypage_feedback.dart';
 import 'package:fitqa/src/presentation/screens/screen_mypage_gallery.dart';
+import 'package:fitqa/src/presentation/screens/screen_mypage_history.dart';
 import 'package:fitqa/src/presentation/screens/screen_mypage_trainer.dart';
 import 'package:fitqa/src/theme/color.dart';
 import 'package:flutter/material.dart';
@@ -27,11 +28,11 @@ class ScreenMyPageDetail extends ConsumerWidget {
           labelStyle: TextStyle(fontWeight: FontWeight.bold),
           unselectedLabelStyle: TextStyle(fontWeight: FontWeight.normal),
         ),
-        views: [
-          const ScreenMyPageFeedback(),
-          const ScreenMyPageTrainer(),
-          const ScreenMyPageGalley(),
-          Container(color: Colors.blue),
+        views: const [
+          ScreenMyPageFeedback(),
+          ScreenMyPageTrainer(),
+          ScreenMyPageGalley(),
+          ScreenMyPageHistory(),
         ],
         onChange: (index) => print(index),
       ),
