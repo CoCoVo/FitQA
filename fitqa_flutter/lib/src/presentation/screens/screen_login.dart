@@ -23,28 +23,7 @@ class ScreenLogin extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                _buildLoginButton(SocialProvider.GOOGLE),
-                SizedBox(
-                  height: 16,
-                ),
-                _buildLoginButton(SocialProvider.KAKAO),
-                SizedBox(
-                  height: 16,
-                ),
-                _buildLoginButton(SocialProvider.NAVER)
-              ],
-            ),
-          ),
-        ),
-      ),
+      home: Scaffold(body: loginList()),
     );
   }
 
@@ -64,6 +43,29 @@ class ScreenLogin extends StatelessWidget {
             color: colors[socialProvider]!,
             icon: Icons.comment);
       },
+    );
+  }
+
+  Widget loginList() {
+    return Center(
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 16),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            _buildLoginButton(SocialProvider.GOOGLE),
+            SizedBox(
+              height: 16,
+            ),
+            _buildLoginButton(SocialProvider.KAKAO),
+            SizedBox(
+              height: 16,
+            ),
+            _buildLoginButton(SocialProvider.NAVER)
+          ],
+        ),
+      ),
     );
   }
 }

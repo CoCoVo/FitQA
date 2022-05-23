@@ -1,9 +1,8 @@
 import 'package:fitqa/src/application/storage/user_token_facade.dart';
+import 'package:fitqa/src/presentation/screens/screen_login.dart';
 import 'package:fitqa/src/presentation/screens/screen_user_info.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import 'src/presentation/screens/screen_login.dart';
 
 void main() {
   runApp(const ProviderScope(child: MyApp()));
@@ -25,8 +24,7 @@ class MyApp extends ConsumerWidget {
   }
 
   Widget _firstScreen(String userToken) {
-    if (userToken.isEmpty) return ScreenLogin();
-
+    //if (userToken.isEmpty) return ScreenLogin();
     return ScreenUserInfo();
     // 원래라면 처음 들어오는 사용자만 ScreenUserInfo 가 보여야 하지만
     // 지금은 디자인을 본다는 의미에서 무조건 ScreenUserInfo 로 가도록 함.
