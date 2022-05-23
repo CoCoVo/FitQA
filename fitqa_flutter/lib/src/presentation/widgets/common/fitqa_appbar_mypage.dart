@@ -14,13 +14,12 @@ class FitqaAppbarMyPage extends StatelessWidget {
         elevation: 0,
         title: RichText(
           text: const TextSpan(
-              text: "마이페이지",
-              style: TextStyle(
-                  fontWeight: FontWeight.w500,
-                  fontSize: 15,
-                  color: FColors.white),
-        ),
-      )
-    );
+            text: "마이페이지",
+            style: TextStyle(
+                fontWeight: FontWeight.w500,
+                fontSize: 15,
+                color: FColors.white),
+          ),
+        ));
   }
 }

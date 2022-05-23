@@ -1,13 +1,13 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 enum MyPageArea {
-  @JsonValue("LOWER")
+  @JsonValue("내가 쓴 글")
   myBoard,
-  @JsonValue("BACK")
+  @JsonValue("찜한 트레이너")
   myTrainer,
-  @JsonValue("CHEST")
+  @JsonValue("갤러리")
   gallery,
-  @JsonValue("SHOULDER")
+  @JsonValue("이용내역")
   myHistory,
 }
 

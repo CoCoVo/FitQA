@@ -18,7 +18,7 @@ class ScreenMyPage extends ConsumerWidget {
     final ownerUserToken = ref.watch(userTokenProvider);
     final trainerDetailTokenController =
         ref.watch(selectedTrainerTokenProvider.notifier);
-    int currentPageIndex=0;
+    int currentPageIndex = 0;
     Widget _navigation() {
       return _buildUserMyPage();
       if (ownerUserToken.isEmpty && ownerTrainerToken.isEmpty) {
@@ -33,8 +33,12 @@ class ScreenMyPage extends ConsumerWidget {
 
     return Column(mainAxisSize: MainAxisSize.min, children: [
       const FitqaAppbarMyPage(),
-      _imageProfile(), /// profile picture
-      _navigation(), /// Contents
+      _imageProfile(),
+
+      /// profile picture
+      _navigation(),
+
+      /// Contents
     ]);
   }
 

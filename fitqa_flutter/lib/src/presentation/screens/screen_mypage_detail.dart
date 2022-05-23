@@ -11,12 +11,12 @@ class ScreenMyPageDetail extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Expanded(
       child: ContainedTabBarView(
-          tabs: const [
-            Text('내가 쓴 글'),
-            Text('찜한 트레이너'),
-            Text('갤러리'),
-            Text('이용내역'),
-          ],
+        tabs: const [
+          Text('내가 쓴 글'),
+          Text('찜한 트레이너'),
+          Text('갤러리'),
+          Text('이용내역'),
+        ],
         tabBarProperties: const TabBarProperties(
           height: 50.0,
           indicatorColor: FColors.grey_0,
@@ -26,14 +26,14 @@ class ScreenMyPageDetail extends ConsumerWidget {
           labelStyle: TextStyle(fontWeight: FontWeight.bold),
           unselectedLabelStyle: TextStyle(fontWeight: FontWeight.normal),
         ),
-          views: [
-            const ScreenMyPageMyFeedback(),
-            const ScreenMyPageMyTrainer(),
-            Container(color: Colors.yellow),
-            Container(color: Colors.blue),
-          ],
-          onChange: (index) => print(index),
-        ),
+        views: [
+          const ScreenMyPageMyFeedback(),
+          const ScreenMyPageMyTrainer(),
+          Container(color: Colors.yellow),
+          Container(color: Colors.blue),
+        ],
+        onChange: (index) => print(index),
+      ),
     );
   }
 }
