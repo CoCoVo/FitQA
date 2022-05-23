@@ -8,20 +8,19 @@ import 'package:fitqa/src/theme/color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class ScreenMyPageMyFeedback extends ConsumerWidget {
-  const ScreenMyPageMyFeedback({Key? key}) : super(key: key);
+class ScreenMyPageFeedback extends ConsumerWidget {
+  const ScreenMyPageFeedback({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final feedbacks = ref.watch(feedbackListProvider);
     // final feedbackFilters = ref.watch(feedbackFilterProvider);
     final feedbackTokenController =
-    ref.watch(selectedFeedbackTokenProvider.notifier);
+        ref.watch(selectedFeedbackTokenProvider.notifier);
     // final feedbackFilterController = ref.watch(feedbackFilterProvider.notifier);
 
-    return Column(
-      children: [
-        const Divider(height: 1),
-        Expanded(
+    return Column(children: [
+      const Divider(height: 1),
+      Expanded(
         child: ContainedTabBarView(
           tabs: const [
             Text('전체보기'),
@@ -38,69 +37,53 @@ class ScreenMyPageMyFeedback extends ConsumerWidget {
             unselectedLabelStyle: TextStyle(fontWeight: FontWeight.normal),
           ),
           views: [
-            Column(
-              children : [
-                const Divider(height: 1),
-                  feedbacks.maybeWhen(
-                  success: (feedbacks) =>
-                  _buildFeedbackListView(context, feedbacks, feedbackTokenController),
-                  error: (err) =>
-                  Center(
-                  child: Text(err.toString()),
-                  ),
-                  orElse: () =>
-                  const Expanded(
-                  child: Center(
-                  child: CircularProgressIndicator(),
-                  ),
-                  )
-                  ),
-               ]
-            ),
-            Column(
-                children : [
-                  const Divider(height: 1),
-                  feedbacks.maybeWhen(
-                      success: (feedbacks) =>
-                          _buildFeedbackListView(context, feedbacks, feedbackTokenController),
-                      error: (err) =>
-                          Center(
-                            child: Text(err.toString()),
-                          ),
-                      orElse: () =>
-                      const Expanded(
+            Column(children: [
+              const Divider(height: 1),
+              feedbacks.maybeWhen(
+                  success: (feedbacks) => _buildFeedbackListView(
+                      context, feedbacks, feedbackTokenController),
+                  error: (err) => Center(
+                        child: Text(err.toString()),
+                      ),
+                  orElse: () => const Expanded(
                         child: Center(
                           child: CircularProgressIndicator(),
                         ),
-                      )
-                  ),
-                ]
-            ),
-            Column(
-                children : [
-                  const Divider(height: 1),
-                  feedbacks.maybeWhen(
-                      success: (feedbacks) =>
-                          _buildFeedbackListView(context, feedbacks, feedbackTokenController),
-                      error: (err) =>
-                          Center(
-                            child: Text(err.toString()),
-                          ),
-                      orElse: () =>
-                      const Expanded(
+                      )),
+            ]),
+            Column(children: [
+              const Divider(height: 1),
+              feedbacks.maybeWhen(
+                  success: (feedbacks) => _buildFeedbackListView(
+                      context, feedbacks, feedbackTokenController),
+                  error: (err) => Center(
+                        child: Text(err.toString()),
+                      ),
+                  orElse: () => const Expanded(
                         child: Center(
                           child: CircularProgressIndicator(),
                         ),
-                      )
-                  ),
-                ]
-            ),
+                      )),
+            ]),
+            Column(children: [
+              const Divider(height: 1),
+              feedbacks.maybeWhen(
+                  success: (feedbacks) => _buildFeedbackListView(
+                      context, feedbacks, feedbackTokenController),
+                  error: (err) => Center(
+                        child: Text(err.toString()),
+                      ),
+                  orElse: () => const Expanded(
+                        child: Center(
+                          child: CircularProgressIndicator(),
+                        ),
+                      )),
+            ]),
           ],
           onChange: (index) => print(index),
         ),
       ),
-    ]
-    );
+    ]);
   }
 
   Widget _buildFeedbackListView(

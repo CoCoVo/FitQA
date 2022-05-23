@@ -33,6 +33,8 @@ class ScreenMyPage extends ConsumerWidget {
 
     return Column(mainAxisSize: MainAxisSize.min, children: [
       const FitqaAppbarMyPage(),
+
+      /// Appbar
       _imageProfile(),
 
       /// profile picture

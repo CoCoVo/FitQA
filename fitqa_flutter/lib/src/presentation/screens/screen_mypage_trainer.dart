@@ -3,8 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class ScreenMyPageMyTrainer extends ConsumerWidget {
-  const ScreenMyPageMyTrainer({Key? key}) : super(key: key);
+class ScreenMyPageTrainer extends ConsumerWidget {
+  const ScreenMyPageTrainer({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Container(

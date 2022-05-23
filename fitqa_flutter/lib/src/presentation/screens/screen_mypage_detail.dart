@@ -1,6 +1,7 @@
 import 'package:contained_tab_bar_view/contained_tab_bar_view.dart';
-import 'package:fitqa/src/presentation/screens/screen_mypage_myfeedback.dart';
-import 'package:fitqa/src/presentation/screens/screen_mypage_mytrainer.dart';
+import 'package:fitqa/src/presentation/screens/screen_mypage_feedback.dart';
+import 'package:fitqa/src/presentation/screens/screen_mypage_gallery.dart';
+import 'package:fitqa/src/presentation/screens/screen_mypage_trainer.dart';
 import 'package:fitqa/src/theme/color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -27,9 +28,9 @@ class ScreenMyPageDetail extends ConsumerWidget {
           unselectedLabelStyle: TextStyle(fontWeight: FontWeight.normal),
         ),
         views: [
-          const ScreenMyPageMyFeedback(),
-          const ScreenMyPageMyTrainer(),
-          Container(color: Colors.yellow),
+          const ScreenMyPageFeedback(),
+          const ScreenMyPageTrainer(),
+          const ScreenMyPageGalley(),
           Container(color: Colors.blue),
         ],
         onChange: (index) => print(index),

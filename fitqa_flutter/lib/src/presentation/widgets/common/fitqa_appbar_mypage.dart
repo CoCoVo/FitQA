@@ -16,7 +16,7 @@ class FitqaAppbarMyPage extends StatelessWidget {
           text: const TextSpan(
             text: "마이페이지",
             style: TextStyle(
-                fontWeight: FontWeight.w500,
+                fontWeight: FontWeight.w700,
                 fontSize: 15,
                 color: FColors.white),
           ),
