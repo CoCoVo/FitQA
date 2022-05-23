@@ -18,7 +18,7 @@ class ScreenMyPage extends ConsumerWidget {
     final ownerUserToken = ref.watch(userTokenProvider);
     final trainerDetailTokenController =
         ref.watch(selectedTrainerTokenProvider.notifier);
-
+    int currentPageIndex=0;
     Widget _navigation() {
       return _buildUserMyPage();
       if (ownerUserToken.isEmpty && ownerTrainerToken.isEmpty) {
@@ -33,13 +33,8 @@ class ScreenMyPage extends ConsumerWidget {
 
     return Column(mainAxisSize: MainAxisSize.min, children: [
       const FitqaAppbarMyPage(),
-      Container(
-        color: FColors.blue,
-        width: double.infinity,
-        height: 10.0,
-      ),
-      _imageProfile(),
-      _navigation(),
+      _imageProfile(), /// profile picture
+      _navigation(), /// Contents
     ]);
   }
 
@@ -50,7 +45,6 @@ class ScreenMyPage extends ConsumerWidget {
 
 Widget _imageProfile() {
   const String _profileName = "로그인하세요";
-
   return Center(
     child: Column(
       children: [
@@ -59,11 +53,11 @@ Widget _imageProfile() {
             Container(
               color: FColors.blue,
               width: double.infinity,
-              height: 100.0,
+              height: 75.0,
             ),
             const Center(
               child: CircleAvatar(
-                  radius: 70,
+                  radius: 50,
                   backgroundImage: AssetImage('images/default_profile.jpg')),
             ),
           ],
@@ -71,9 +65,9 @@ Widget _imageProfile() {
         Container(
           child: const Text(
             _profileName,
-            style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.w700),
+            style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w700),
           ),
-          margin: const EdgeInsets.all(20.0),
+          margin: const EdgeInsets.all(10.0),
         ),
       ],
     ),
