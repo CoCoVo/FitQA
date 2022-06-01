@@ -1,8 +1,8 @@
 import 'package:fitqa/src/application/storage/trainer_token_facade.dart';
 import 'package:fitqa/src/application/storage/user_token_facade.dart';
 import 'package:fitqa/src/application/trainer/trainer_detail.dart';
-import 'package:fitqa/src/presentation/screens/screen_login.dart';
 import 'package:fitqa/src/presentation/screens/screen_mypage_detail.dart';
+import 'package:fitqa/src/presentation/screens/screen_mypage_login.dart';
 import 'package:fitqa/src/presentation/screens/screen_trainer_detail.dart';
 import 'package:fitqa/src/presentation/widgets/common/fitqa_appbar_mypage.dart';
 import 'package:fitqa/src/theme/color.dart';
@@ -18,9 +18,9 @@ class ScreenMyPage extends ConsumerWidget {
     final ownerUserToken = ref.watch(userTokenProvider);
     final trainerDetailTokenController =
         ref.watch(selectedTrainerTokenProvider.notifier);
-    int currentPageIndex = 0;
+    // int currentPageIndex = 0;
     Widget _navigation() {
-      return _buildUserMyPage();
+      // return _buildUserMyPage();
       if (ownerUserToken.isEmpty && ownerTrainerToken.isEmpty) {
         return _buildLoginPage();
       } else if (ownerTrainerToken.isEmpty) {
@@ -35,7 +35,7 @@ class ScreenMyPage extends ConsumerWidget {
       const FitqaAppbarMyPage(),
 
       /// Appbar
-      _imageProfile(),
+      _imageProfile(context),
 
       /// profile picture
       _navigation(),
@@ -46,11 +46,10 @@ class ScreenMyPage extends ConsumerWidget {
 
   Widget _buildUserMyPage() => const ScreenMyPageDetail();
   Widget _buildTrainerMyPage() => const ScreenTrainerDetail();
-  Widget _buildLoginPage() => ScreenLogin().loginList();
+  Widget _buildLoginPage() => const ScreenMyPageLogin();
 }
 
-Widget _imageProfile() {
-  const String _profileName = "로그인하세요";
+Widget _imageProfile(BuildContext context) {
   return Center(
     child: Column(
       children: [
@@ -68,14 +67,29 @@ Widget _imageProfile() {
             ),
           ],
         ),
-        Container(
-          child: const Text(
-            _profileName,
-            style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w700),
-          ),
-          margin: const EdgeInsets.all(10.0),
-        ),
+        LoginButton(context)
       ],
     ),
+  );
+}
+
+Widget LoginButton(BuildContext context) {
+  const String _profileName = "로그인하세요";
+  return TextButton(
+    child: RichText(
+      text: const TextSpan(
+          text: _profileName,
+          style: TextStyle(
+              fontSize: 20.0, fontWeight: FontWeight.w700, color: Colors.black),
+          children: [
+            TextSpan(
+              text: ' >',
+              style: TextStyle(color: FColors.blue),
+            ),
+          ]),
+    ),
+    onPressed: () {
+      Navigator.popAndPushNamed(context, '/Login');
+    },
   );
 }
