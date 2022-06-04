@@ -30,7 +30,7 @@ class _CarouselWithIndicatorState extends State<CarouselWithIndicator> {
           options: CarouselOptions(
               height: widget.height,
               autoPlay: false,
-              enlargeCenterPage: true,
+              enlargeCenterPage: false,
               enableInfiniteScroll: false,
               viewportFraction: 1, // full width
               onPageChanged: (index, reason) =>

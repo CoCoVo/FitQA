@@ -2,7 +2,7 @@ import 'package:fitqa/src/application/user/user_info.dart';
 import 'package:fitqa/src/application/user/user_profile.dart';
 import 'package:fitqa/src/domain/entities/common/enum/workout_style.dart';
 import 'package:fitqa/src/presentation/home.dart';
-import 'package:fitqa/src/presentation/widgets/common/fitqa_appbar_sub.dart';
+import 'package:fitqa/src/presentation/widgets/common/appbar/fitqa_appbar_sub.dart';
 import 'package:fitqa/src/presentation/widgets/common/form/fitqa_big_button.dart';
 import 'package:fitqa/src/presentation/widgets/user_info/section_user_info_birth.dart';
 import 'package:fitqa/src/presentation/widgets/user_info/section_user_info_name.dart';
