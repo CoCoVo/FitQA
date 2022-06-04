@@ -51,6 +51,7 @@ class ScreenFeedbackDetail extends ConsumerWidget {
       SliverAppBar(
         expandedHeight: 400,
         pinned: true,
+        titleSpacing: 0,
         leading: BackIcon(
           onPressed: () => Navigator.pop(context),
         ),
