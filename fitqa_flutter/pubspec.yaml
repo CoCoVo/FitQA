@@ -75,6 +75,7 @@ flutter:
   assets:
     - images/lock.svg
     - images/arrow_dropdown.svg
+    - images/arrow_back.svg
     - images/video_play.svg
     - images/like.svg
     - images/comment.svg

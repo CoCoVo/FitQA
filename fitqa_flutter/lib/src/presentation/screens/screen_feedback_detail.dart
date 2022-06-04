@@ -1,5 +1,6 @@
 import 'package:fitqa/src/application/feedback/feedback_detail.dart';
 import 'package:fitqa/src/presentation/widgets/common/ThinDivider.dart';
+import 'package:fitqa/src/presentation/widgets/common/appbar/back_icon.dart';
 import 'package:fitqa/src/presentation/widgets/common/carousel_with_indicator.dart';
 import 'package:fitqa/src/presentation/widgets/common/network_video_player.dart';
 import 'package:fitqa/src/presentation/widgets/feedback/detail/section_feedback_answer.dart';
@@ -38,18 +39,21 @@ class ScreenFeedbackDetail extends ConsumerWidget {
     return Scaffold(
       backgroundColor: FColors.white,
       body: feedbackDetail.maybeWhen(
-          success: (_) => _buildFeedbackDetail(),
+          success: (_) => _buildFeedbackDetail(context),
           orElse: () => const Center(
                 child: CircularProgressIndicator(),
               )),
     );
   }
 
-  Widget _buildFeedbackDetail() {
+  Widget _buildFeedbackDetail(BuildContext context) {
     return CustomScrollView(slivers: [
       SliverAppBar(
         expandedHeight: 400,
         pinned: true,
+        leading: BackIcon(
+          onPressed: () => Navigator.pop(context),
+        ),
         title: Text('목록'),
         flexibleSpace: FlexibleSpaceBar(
           background: CarouselWithIndicator(
