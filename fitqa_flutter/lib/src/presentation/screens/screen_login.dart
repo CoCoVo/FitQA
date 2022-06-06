@@ -24,27 +24,67 @@ class ScreenLogin extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        body: Center(
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                _buildLoginButton(SocialProvider.GOOGLE),
-                SizedBox(
-                  height: 16,
+          body: Center(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Expanded(
+                flex: 2,
+                child: SafeArea(
+                  child: Column(
+                    children: [
+                      const SizedBox(
+                        height: 30,
+                      ),
+                      RichText(
+                        text: const TextSpan(
+                            text: "Fit ",
+                            style: TextStyle(
+                                fontWeight: FontWeight.w700,
+                                fontSize: 48,
+                                color: FColors.blue),
+                            children: [
+                              TextSpan(
+                                  text: "QA",
+                                  style: TextStyle(color: FColors.black))
+                            ]),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      const Text(
+                        '로그인',
+                        style: TextStyle(
+                            fontSize: 36.0,
+                            fontWeight: FontWeight.w900,
+                            color: FColors.black),
+                      ),
+                    ],
+                  ),
                 ),
-                _buildLoginButton(SocialProvider.KAKAO),
-                SizedBox(
-                  height: 16,
+              ),
+              Expanded(
+                child: loginList(),
+                flex: 2,
+              ),
+              Expanded(
+                child: Container(
+                  child: TextButton(
+                    child: Text('건너뛰기'),
+                    onPressed: () {
+                      Navigator.popAndPushNamed(context, '/Home');
+                    },
+                  ),
                 ),
-                _buildLoginButton(SocialProvider.NAVER)
-              ],
-            ),
+                flex: 1,
+              )
+            ],
           ),
         ),
-      ),
+      )),
     );
   }
 
@@ -64,6 +104,22 @@ class ScreenLogin extends StatelessWidget {
             color: colors[socialProvider]!,
             icon: Icons.comment);
       },
+    );
+  }
+
+  Widget loginList() {
+    return Column(
+      children: [
+        _buildLoginButton(SocialProvider.GOOGLE),
+        const SizedBox(
+          height: 16,
+        ),
+        _buildLoginButton(SocialProvider.KAKAO),
+        const SizedBox(
+          height: 16,
+        ),
+        _buildLoginButton(SocialProvider.NAVER)
+      ],
     );
   }
 }
