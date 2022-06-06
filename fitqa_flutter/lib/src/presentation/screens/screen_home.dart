@@ -2,7 +2,7 @@ import 'package:fitqa/src/application/feedback/feedback_detail.dart';
 import 'package:fitqa/src/application/feedback/feedback_list.dart';
 import 'package:fitqa/src/domain/entities/feedback/fitqa_feedback/fitqa_feedback.dart';
 import 'package:fitqa/src/presentation/screens/screen_feedback_detail.dart';
-import 'package:fitqa/src/presentation/widgets/common/fitqa_appbar.dart';
+import 'package:fitqa/src/presentation/widgets/common/appbar/fitqa_appbar.dart';
 import 'package:fitqa/src/presentation/widgets/common/fitqa_workout_area_filter.dart';
 import 'package:fitqa/src/presentation/widgets/feedback/register/feedback_listview_item.dart';
 import 'package:fitqa/src/theme/color.dart';

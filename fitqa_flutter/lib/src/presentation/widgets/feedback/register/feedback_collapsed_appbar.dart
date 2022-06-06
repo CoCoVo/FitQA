@@ -1,5 +1,5 @@
 import 'package:fitqa/src/application/feedback/feedback_selected_trainer.dart';
-import 'package:fitqa/src/presentation/widgets/common/fitqa_appbar_sub.dart';
+import 'package:fitqa/src/presentation/widgets/common/appbar/fitqa_appbar_sub.dart';
 import 'package:fitqa/src/presentation/widgets/feedback/register/feedback_select_category.dart';
 import 'package:fitqa/src/presentation/widgets/feedback/register/feedback_select_trainer.dart';
 import 'package:fitqa/src/theme/color.dart';
