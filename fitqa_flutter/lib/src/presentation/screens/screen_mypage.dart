@@ -18,7 +18,6 @@ class ScreenMyPage extends ConsumerWidget {
     final ownerUserToken = ref.watch(userTokenProvider);
     final trainerDetailTokenController =
         ref.watch(selectedTrainerTokenProvider.notifier);
-    // int currentPageIndex = 0;
     Widget _navigation() {
       // return _buildUserMyPage();
       if (ownerUserToken.isEmpty && ownerTrainerToken.isEmpty) {

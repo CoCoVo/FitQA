@@ -2,6 +2,7 @@ import 'package:fitqa/src/application/feedback/feedback_list.dart';
 import 'package:fitqa/src/application/feedback/feedback_selected_trainer.dart';
 import 'package:fitqa/src/application/storage/user_token_facade.dart';
 import 'package:fitqa/src/domain/entities/common/enum/workout_area.dart';
+import 'package:fitqa/src/presentation/screens/screen_video_tips.dart';
 import 'package:fitqa/src/presentation/widgets/common/bullet_point_text.dart';
 import 'package:fitqa/src/presentation/widgets/common/fitqa_textfield.dart';
 import 'package:fitqa/src/presentation/widgets/common/labeled_checkbox.dart';
@@ -83,6 +84,21 @@ class ScreenFeedbackRequest extends ConsumerWidget {
                         onChanged: (val) => {lockedController.state = val},
                         value: lockedController.state,
                       ),
+                      Row(
+                        children: [
+                          const Text("영상 업로드"),
+                          IconButton(
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const ScreenVideoTips()));
+                            },
+                            icon: Icon(Icons.help),
+                          )
+                        ],
+                      )
                     ]),
               ),
               Align(
