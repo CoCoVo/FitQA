@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:fitqa/src/presentation/widgets/common/carousel_with_indicator.dart';
 import 'package:fitqa/src/presentation/widgets/common/fitqa_appbar_video_tips.dart';
 import 'package:fitqa/src/theme/color.dart';
 import 'package:flutter/material.dart';
@@ -12,11 +13,7 @@ class ScreenVideoTips extends StatefulWidget {
 
 class _ScreenVideoTipsState extends State<ScreenVideoTips> {
   List TipsList = [
-    [
-      '<데드리프트 & 스쿼트>',
-      'images/tips/tips_1_1.png',
-      'images/tips/tips_1_2.png',
-    ],
+    ['<데드리프트 & 스쿼트>','images/tips/tips_1_1.png','images/tips/tips_1_2.png'],
     ['<랫풀다운 & 숄더프레스>', 'images/tips/tips_2_1.png', 'images/tips/tips_2_2.png'],
     ['<로우>', 'images/tips/tips_3_1.png', 'images/tips/tips_3_2.png'],
     ['<벤치프레스>', 'images/tips/tips_4_1.png', 'images/tips/tips_4_2.png']
@@ -40,122 +37,121 @@ class _ScreenVideoTipsState extends State<ScreenVideoTips> {
     ]
   ];
 
+  CarouselController buttonCarouselController = CarouselController();
+
+  final CarouselController _controller = CarouselController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: DefaultTextStyle(
         style: const TextStyle(fontSize: 20.0, color: FColors.blue),
-        child: Container(
-          //color: FColors.grey_0,
-          child: ListView(
-            children: [
-              const FitqaAppbarVideoTips(),
-              CarouselSlider(
-                options: CarouselOptions(
-                  height: MediaQuery.of(context).size.height,
-                  scrollDirection: Axis.vertical,
+        child: ListView(
+          children: [
+            const FitqaAppbarVideoTips(),
+            CarouselSlider(
+              carouselController: _controller,
+              options: CarouselOptions(
+                  height: MediaQuery.of(context).size.height/2,
+                  scrollDirection: Axis.horizontal,
                   enlargeCenterPage: true,
-                ),
-                items: [0, 1, 2, 3].map((i) {
-                  return Builder(
-                    builder: (BuildContext context) {
-                      return Container(
-                          margin: const EdgeInsets.symmetric(
-                              horizontal: 10.0, vertical: 20),
-                          decoration: BoxDecoration(color: FColors.grey_0),
-                          child: Column(children: [
-                            Text(
-                              TipsList[i][0],
-                              style: const TextStyle(
-                                  fontSize: 15.0,
-                                  color: FColors.blue,
-                                  fontWeight: FontWeight.w800),
-                            ),
-                            SizedBox(height: 10.0),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Expanded(
-                                  child: Column(
-                                    children: [
-                                      const Chip(
-                                        label: Text(
-                                          ' 측면 ',
-                                          style: TextStyle(
-                                              color: FColors.white,
-                                              fontSize: 15.0),
-                                        ),
-                                        backgroundColor: FColors.blue,
-                                      ),
-                                      Image(
-                                          image: AssetImage(TipsList[i][1]),
-                                          width: 150.0),
-                                      const SizedBox(
-                                        height: 10.0,
-                                      ),
-                                      for (var item in TipsComents[i][0])
-                                        Row(children: [
-                                          const Text('ㆍ'),
-                                          Expanded(
-                                            child: Text(
-                                              item,
-                                              style: const TextStyle(
-                                                fontSize: 12.0,
-                                                color: FColors.black,
-                                                fontWeight: FontWeight.w600,
-                                              ),
-                                            ),
-                                          ),
-                                        ]),
-                                    ],
+                  viewportFraction: 1.0
+              ),
+              items: [0, 1, 2, 3].map((i) {
+                return Builder(
+                  builder: (BuildContext context) {
+                    return Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Text(
+                          TipsList[i][0],
+                          style: const TextStyle(
+                              fontSize: 15.0,
+                              color: FColors.blue,
+                              fontWeight: FontWeight.w800),
+                        ),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Expanded(
+                              child: Column(
+                                children: [
+                                  const Chip(
+                                    label: Text(' 측면 ',
+                                      style: TextStyle(
+                                          color: FColors.white,
+                                          fontSize: 15.0),
+                                    ),
+                                    backgroundColor: FColors.blue,
                                   ),
-                                ),
-                                const SizedBox(width: 5.0),
-                                Expanded(
-                                  child: Column(
-                                    children: [
-                                      const Chip(
-                                        label: Text(
-                                          ' 후면 ',
-                                          style: TextStyle(
-                                              color: FColors.white,
-                                              fontSize: 15.0),
-                                        ),
-                                        backgroundColor: FColors.blue,
-                                      ),
-                                      Image(
-                                          image: AssetImage(TipsList[i][2]),
-                                          width: 150.0),
-                                      const SizedBox(
-                                        height: 10.0,
-                                      ),
-                                      for (var item in TipsComents[i][1])
-                                        Row(children: [
-                                          const Text('ㆍ'),
-                                          Expanded(
-                                            child: Text(
-                                              item,
-                                              style: const TextStyle(
-                                                  fontSize: 12.0,
-                                                  color: FColors.black,
-                                                  fontWeight: FontWeight.w600,
-                                                  overflow:
-                                                      TextOverflow.visible),
-                                            ),
-                                          ),
-                                        ]),
-                                    ],
+                                  Image(
+                                      image: AssetImage(TipsList[i][1]),
+                                      width: 150.0),
+                                  const SizedBox(
+                                    height: 10.0,
                                   ),
-                                )
-                              ],
+                                  for (var item in TipsComents[i][0])
+                                    Row(children: [
+                                      const Text('ㆍ'),
+                                      Expanded(
+                                        child: Text(
+                                          item,
+                                          style: const TextStyle(
+                                            fontSize: 12.0,
+                                            color: FColors.black,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ),
+                                      ),
+                                    ]),
+                                ],
+                              ),
                             ),
-                          ]));
-                    },
-                  );
-                }).toList(),
-              )
-            ],
-          ),
+                            const SizedBox(width: 5.0),
+                            Expanded(
+                              child: Column(
+                                children: [
+                                  const Chip(
+                                    label: Text(
+                                      ' 후면 ',
+                                      style: TextStyle(
+                                          color: FColors.white,
+                                          fontSize: 15.0),
+                                    ),
+                                    backgroundColor: FColors.blue,
+                                  ),
+                                  Image(
+                                      image: AssetImage(TipsList[i][2]),
+                                      width: 150.0),
+                                  const SizedBox(
+                                    height: 10.0,
+                                  ),
+                                  for (var item in TipsComents[i][1])
+                                    Row(children: [
+                                      const Text('ㆍ'),
+                                      Expanded(
+                                        child: Text(
+                                          item,
+                                          style: const TextStyle(
+                                              fontSize: 12.0,
+                                              color: FColors.black,
+                                              fontWeight: FontWeight.w600,
+                                              overflow:
+                                              TextOverflow.visible),
+                                        ),
+                                      ),
+                                    ]),
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
+                      ],
+                    );
+                  },
+                );
+              }).toList(),
+            ),
+          ],
         ),
       ),
     );
