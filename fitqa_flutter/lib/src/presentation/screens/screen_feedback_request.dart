@@ -74,7 +74,7 @@ class ScreenFeedbackRequest extends ConsumerWidget {
                         labelText: "내용",
                         maxLines: 10,
                         hintText:
-                            "예시) 안녕하세요. 운동 n년차 바디빌딩 헬린이입니다. 중량이 올라가면서 팔꿈치가 많이 아픕니다.",
+                        "예시) 안녕하세요. 운동 n년차 바디빌딩 헬린이입니다. 중량이 올라가면서 팔꿈치가 많이 아픕니다.",
                       ),
                       const SizedBox(
                         height: 12,
@@ -89,11 +89,32 @@ class ScreenFeedbackRequest extends ConsumerWidget {
                           const Text("영상 업로드"),
                           IconButton(
                             onPressed: () {
+                              showDialog(
+                                  context: context,
+                                  barrierDismissible: true, // 바깥 영역 터치시 닫을지 여부
+                                  builder: (BuildContext context) {
+                                    return AlertDialog(
+                                      content: const ScreenVideoTips(),
+                                      insetPadding: const  EdgeInsets.fromLTRB(0,80,0, 80),
+                                      actions: [
+                                        TextButton(
+                                          child: const Text('확인'),
+                                          onPressed: () {
+                                            Navigator.of(context).pop();
+                                          },
+                                        ),
+                                      ],
+                                    );
+                                  }
+                              );
+
+                              /*
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
                                           const ScreenVideoTips()));
+                                          */
                             },
                             icon: Icon(Icons.help),
                           )
@@ -113,12 +134,12 @@ class ScreenFeedbackRequest extends ConsumerWidget {
                     color: FColors.blue,
                     child: const Center(
                         child: Text(
-                      "결제하기",
-                      style: TextStyle(
-                          fontSize: 18,
-                          color: FColors.white,
-                          fontWeight: FontWeight.bold),
-                    )),
+                          "결제하기",
+                          style: TextStyle(
+                              fontSize: 18,
+                              color: FColors.white,
+                              fontWeight: FontWeight.bold),
+                        )),
                   ),
                 ),
               )
@@ -134,7 +155,7 @@ class ScreenFeedbackRequest extends ConsumerWidget {
     final locked = ref.watch(_lockedProvider);
     final selectedTrainer = ref.watch(selectedTrainerProvider);
     final selectedFeedbackPrice =
-        ref.watch(selectedTrainerFeedbackPriceProvider);
+    ref.watch(selectedTrainerFeedbackPriceProvider);
 
     final feedbackController = ref.watch(feedbackListProvider.notifier);
 
