@@ -107,19 +107,61 @@ class ScreenFeedbackRequest extends ConsumerWidget {
                                     );
                                   }
                               );
-
-                              /*
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const ScreenVideoTips()));
-                                          */
                             },
                             icon: Icon(Icons.help),
                           )
                         ],
-                      )
+                      ),
+                      Stack(
+                        alignment: Alignment.center,
+                        children:  [
+                          const Image(image: AssetImage('images/tip_frame.png')),
+                          Row(
+                            children:  [
+                              const Padding(
+                                  padding: EdgeInsets.all(50.0),
+                                  child: Image(image: AssetImage('images/tip_front.png'))),
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children:  [
+                                  const Text('정면 운동 영상'),
+                                  TextButton(
+                                    onPressed: (){},
+                                    child: const Text('파일 선택하기',style: TextStyle(
+                                        color: FColors.blue,
+                                        fontSize: 15.0),),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
+                      Stack(
+                        alignment: Alignment.center,
+                        children:  [
+                          const Image(image: AssetImage('images/tip_frame.png')),
+                          Row(
+                            children:  [
+                              const Padding(
+                                  padding: EdgeInsets.all(70.0),
+                                  child: Image(image: AssetImage('images/tip_side.png'))),
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children:  [
+                                  const Text('측면 운동 영상'),
+                                  TextButton(
+                                    onPressed: (){},
+                                    child: const Text('파일 선택하기',style: TextStyle(
+                                        color: FColors.blue,
+                                        fontSize: 15.0),),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
                     ]),
               ),
               Align(

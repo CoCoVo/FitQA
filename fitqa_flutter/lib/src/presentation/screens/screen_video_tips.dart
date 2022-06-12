@@ -1,5 +1,4 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:fitqa/src/presentation/widgets/common/carousel_with_indicator.dart';
 import 'package:fitqa/src/presentation/widgets/common/fitqa_appbar_video_tips.dart';
 import 'package:fitqa/src/theme/color.dart';
 import 'package:flutter/material.dart';
@@ -36,8 +35,6 @@ class _ScreenVideoTipsState extends State<ScreenVideoTips> {
       ['머리부터 발 끝까지 다나오게', '바 끝이 동그랗게 정측면'],
     ]
   ];
-
-  CarouselController buttonCarouselController = CarouselController();
 
   final CarouselController _controller = CarouselController();
   @override
