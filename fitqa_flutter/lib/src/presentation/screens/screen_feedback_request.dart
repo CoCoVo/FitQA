@@ -10,6 +10,8 @@ import 'package:fitqa/src/presentation/widgets/feedback/register/feedback_collap
 import 'package:fitqa/src/theme/color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:file_picker/file_picker.dart';
+import 'dart:typed_data';
 
 class ScreenFeedbackRequest extends ConsumerWidget {
   ScreenFeedbackRequest({Key? key}) : super(key: key);
@@ -115,12 +117,12 @@ class ScreenFeedbackRequest extends ConsumerWidget {
                       Stack(
                         alignment: Alignment.center,
                         children:  [
-                          const Image(image: AssetImage('images/tip_frame.png')),
+                          const Image(image: AssetImage('images/tip_frame.png'),),
                           Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children:  [
                               const Padding(
-                                  padding: EdgeInsets.all(50.0),
+                                  padding: EdgeInsets.fromLTRB(20, 0, 70, 0),
                                   child: Image(image: AssetImage('images/tip_front.png'),width: 35.0,height: 111.0,)),
                               Column(
                                 children:  [
@@ -128,7 +130,15 @@ class ScreenFeedbackRequest extends ConsumerWidget {
                                   Padding(
                                     padding: const EdgeInsets.all(10.0),
                                     child: TextButton(
-                                        onPressed: (){},
+                                        onPressed: () async{
+                                          FilePickerResult? result = await FilePicker.platform.pickFiles();
+
+                                          if (result != null) {
+                                            String fileName = result.files.single.name;
+                                            Uint8List fileBytes = result.files.first.bytes!;
+                                            print(fileName);
+                                          }
+                                        },
                                         child: const Text('파일 선택하기',style: TextStyle(
                                             color: FColors.white,
                                             fontSize: 15.0),),
@@ -143,18 +153,19 @@ class ScreenFeedbackRequest extends ConsumerWidget {
                                 ],
                               ),
                             ],
-                          )
+                          ),
                         ],
                       ),
+                      const SizedBox(height: 20.0),
                       Stack(
                         alignment: Alignment.center,
                         children:  [
                           const Image(image: AssetImage('images/tip_frame.png')),
                           Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children:  [
                               const Padding(
-                                  padding: EdgeInsets.all(50.0),
+                                  padding: EdgeInsets.fromLTRB(20, 0, 70, 0),
                                   child: Image(image: AssetImage('images/tip_side.png'),width: 35.0,height: 111.0,)),
                               Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -163,7 +174,15 @@ class ScreenFeedbackRequest extends ConsumerWidget {
                                   Padding(
                                     padding: const EdgeInsets.all(10.0),
                                     child: TextButton(
-                                        onPressed: (){},
+                                        onPressed: () async{
+                                          FilePickerResult? result = await FilePicker.platform.pickFiles();
+
+                                          if (result != null) {
+                                            String fileName = result.files.single.name;
+                                            Uint8List fileBytes = result.files.first.bytes!;
+                                            print(fileName);
+                                          }
+                                        },
                                         child: const Text('파일 선택하기',style: TextStyle(
                                             color: FColors.white,
                                             fontSize: 15.0),),
@@ -177,9 +196,11 @@ class ScreenFeedbackRequest extends ConsumerWidget {
                                 ],
                               ),
                             ],
-                          )
+                          ),
+
                         ],
                       ),
+                      const SizedBox(height: 20.0),
                     ]),
               ),
               Align(
