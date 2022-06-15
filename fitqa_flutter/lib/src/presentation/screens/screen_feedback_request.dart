@@ -118,41 +118,54 @@ class ScreenFeedbackRequest extends ConsumerWidget {
                         alignment: Alignment.center,
                         children:  [
                           const Image(image: AssetImage('images/tip_frame.png'),),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children:  [
-                              const Padding(
-                                  padding: EdgeInsets.fromLTRB(20, 0, 70, 0),
-                                  child: Image(image: AssetImage('images/tip_front.png'),width: 35.0,height: 111.0,)),
-                              Column(
-                                children:  [
-                                  const Text('정면 운동 영상'),
-                                  Padding(
-                                    padding: const EdgeInsets.all(10.0),
-                                    child: TextButton(
-                                        onPressed: () async{
-                                          FilePickerResult? result = await FilePicker.platform.pickFiles();
+                          Column(
+                            children : [
+                              Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children:  [
+                                const Padding(
+                                    padding: EdgeInsets.fromLTRB(20, 0, 70, 0),
+                                    child: Image(image: AssetImage('images/tip_front.png'),width: 35.0,height: 111.0,)),
+                                Column(
+                                  children:  [
+                                    const Text('정면 운동 영상'),
+                                    Padding(
+                                      padding: const EdgeInsets.all(10.0),
+                                      child: TextButton(
+                                          onPressed: () async{
+                                            FilePickerResult? result = await FilePicker.platform.pickFiles();
 
-                                          if (result != null) {
-                                            String fileName = result.files.single.name;
-                                            Uint8List fileBytes = result.files.first.bytes!;
-                                            print(fileName);
-                                          }
-                                        },
-                                        child: const Text('파일 선택하기',style: TextStyle(
-                                            color: FColors.white,
-                                            fontSize: 15.0),),
-                                        style: ButtonStyle(
-                                          shape: MaterialStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(borderRadius: BorderRadius.circular(18.0))),
-                                          backgroundColor: MaterialStateProperty.all<Color>(FColors.blue),
-                                            padding: MaterialStateProperty.all<EdgeInsets>(EdgeInsets.all(10.0))
-                                        )
+                                            if (result != null) {
+                                              String fileName = result.files.single.name;
+                                              Uint8List fileBytes = result.files.first.bytes!;
+                                              print(fileName);
+                                            }
+                                          },
+                                          child: const Text('파일 선택하기',style: TextStyle(
+                                              color: FColors.white,
+                                              fontSize: 15.0),),
+                                          style: ButtonStyle(
+                                            shape: MaterialStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(borderRadius: BorderRadius.circular(18.0))),
+                                            backgroundColor: MaterialStateProperty.all<Color>(FColors.blue),
+                                              padding: MaterialStateProperty.all<EdgeInsets>(EdgeInsets.all(10.0))
+                                          )
 
+                                      ),
                                     ),
-                                  ),
-                                ],
-                              ),
-                            ],
+                                  ],
+                                ),
+                              ],
+                            ),
+                              const SizedBox(height: 20.0),
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width * 0.6,
+                                child: const LinearProgressIndicator(
+                                    value:0.7,
+                                    backgroundColor: FColors.grey_2,
+                                    color: FColors.blue,
+                                ),
+                              )
+                            ]
                           ),
                         ],
                       ),
