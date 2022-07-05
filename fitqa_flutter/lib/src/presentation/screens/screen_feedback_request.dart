@@ -10,6 +10,8 @@ import 'package:fitqa/src/presentation/widgets/feedback/register/feedback_collap
 import 'package:fitqa/src/theme/color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:file_picker/file_picker.dart';
+import 'dart:typed_data';
 
 class ScreenFeedbackRequest extends ConsumerWidget {
   ScreenFeedbackRequest({Key? key}) : super(key: key);
@@ -74,7 +76,7 @@ class ScreenFeedbackRequest extends ConsumerWidget {
                         labelText: "내용",
                         maxLines: 10,
                         hintText:
-                            "예시) 안녕하세요. 운동 n년차 바디빌딩 헬린이입니다. 중량이 올라가면서 팔꿈치가 많이 아픕니다.",
+                        "예시) 안녕하세요. 운동 n년차 바디빌딩 헬린이입니다. 중량이 올라가면서 팔꿈치가 많이 아픕니다.",
                       ),
                       const SizedBox(
                         height: 12,
@@ -107,19 +109,111 @@ class ScreenFeedbackRequest extends ConsumerWidget {
                                     );
                                   }
                               );
-
-                              /*
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const ScreenVideoTips()));
-                                          */
                             },
                             icon: Icon(Icons.help),
                           )
                         ],
-                      )
+                      ),
+                      Stack(
+                        alignment: Alignment.center,
+                        children:  [
+                          const Image(image: AssetImage('images/tip_frame.png'),),
+                          Column(
+                            children : [
+                              Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children:  [
+                                const Padding(
+                                    padding: EdgeInsets.fromLTRB(20, 0, 70, 0),
+                                    child: Image(image: AssetImage('images/tip_front.png'),width: 35.0,height: 111.0,)),
+                                Column(
+                                  children:  [
+                                    const Text('정면 운동 영상'),
+                                    Padding(
+                                      padding: const EdgeInsets.all(10.0),
+                                      child: TextButton(
+                                          onPressed: () async{
+                                            FilePickerResult? result = await FilePicker.platform.pickFiles();
+
+                                            if (result != null) {
+                                              String fileName = result.files.single.name;
+                                              Uint8List fileBytes = result.files.first.bytes!;
+                                              print(fileName);
+                                            }
+                                          },
+                                          child: const Text('파일 선택하기',style: TextStyle(
+                                              color: FColors.white,
+                                              fontSize: 15.0),),
+                                          style: ButtonStyle(
+                                            shape: MaterialStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(borderRadius: BorderRadius.circular(18.0))),
+                                            backgroundColor: MaterialStateProperty.all<Color>(FColors.blue),
+                                              padding: MaterialStateProperty.all<EdgeInsets>(EdgeInsets.all(10.0))
+                                          )
+
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                              const SizedBox(height: 20.0),
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width * 0.6,
+                                child: const LinearProgressIndicator(
+                                    value:0.7,
+                                    backgroundColor: FColors.grey_2,
+                                    color: FColors.blue,
+                                ),
+                              )
+                            ]
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 20.0),
+                      Stack(
+                        alignment: Alignment.center,
+                        children:  [
+                          const Image(image: AssetImage('images/tip_frame.png')),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children:  [
+                              const Padding(
+                                  padding: EdgeInsets.fromLTRB(20, 0, 70, 0),
+                                  child: Image(image: AssetImage('images/tip_side.png'),width: 35.0,height: 111.0,)),
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children:  [
+                                  const Text('측면 운동 영상'),
+                                  Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: TextButton(
+                                        onPressed: () async{
+                                          FilePickerResult? result = await FilePicker.platform.pickFiles();
+
+                                          if (result != null) {
+                                            String fileName = result.files.single.name;
+                                            Uint8List fileBytes = result.files.first.bytes!;
+                                            print(fileName);
+                                          }
+                                        },
+                                        child: const Text('파일 선택하기',style: TextStyle(
+                                            color: FColors.white,
+                                            fontSize: 15.0),),
+                                        style: ButtonStyle(
+                                          shape: MaterialStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(borderRadius: BorderRadius.circular(18.0))),
+                                          backgroundColor: MaterialStateProperty.all<Color>(FColors.blue),
+                                          padding: MaterialStateProperty.all<EdgeInsets>(EdgeInsets.all(10.0))
+                                        )
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+
+                        ],
+                      ),
+                      const SizedBox(height: 20.0),
                     ]),
               ),
               Align(
@@ -134,12 +228,12 @@ class ScreenFeedbackRequest extends ConsumerWidget {
                     color: FColors.blue,
                     child: const Center(
                         child: Text(
-                      "결제하기",
-                      style: TextStyle(
-                          fontSize: 18,
-                          color: FColors.white,
-                          fontWeight: FontWeight.bold),
-                    )),
+                          "결제하기",
+                          style: TextStyle(
+                              fontSize: 18,
+                              color: FColors.white,
+                              fontWeight: FontWeight.bold),
+                        )),
                   ),
                 ),
               )
@@ -155,7 +249,7 @@ class ScreenFeedbackRequest extends ConsumerWidget {
     final locked = ref.watch(_lockedProvider);
     final selectedTrainer = ref.watch(selectedTrainerProvider);
     final selectedFeedbackPrice =
-        ref.watch(selectedTrainerFeedbackPriceProvider);
+    ref.watch(selectedTrainerFeedbackPriceProvider);
 
     final feedbackController = ref.watch(feedbackListProvider.notifier);
 

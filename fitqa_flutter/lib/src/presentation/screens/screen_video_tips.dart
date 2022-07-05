@@ -37,8 +37,6 @@ class _ScreenVideoTipsState extends State<ScreenVideoTips> {
     ]
   ];
 
-  CarouselController buttonCarouselController = CarouselController();
-
   final CarouselController _controller = CarouselController();
   @override
   Widget build(BuildContext context) {
