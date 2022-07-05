@@ -1,3 +1,4 @@
+import 'package:fitqa/src/presentation/widgets/common/appbar/back_icon.dart';
 import 'package:fitqa/src/theme/color.dart';
 import 'package:fitqa/src/theme/dimen.dart';
 import 'package:flutter/material.dart';
@@ -24,13 +25,7 @@ class FitqaAppbarSub extends StatelessWidget with PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      leading: IconButton(
-        icon: Icon(
-          Icons.arrow_back_ios_rounded,
-          color: foregroundColor,
-        ),
-        onPressed: onPressed,
-      ),
+      leading: BackIcon(onPressed: onPressed, color: foregroundColor),
       title: Text(
         title,
         style: TextStyle(

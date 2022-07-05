@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:fitqa/src/presentation/widgets/common/carousel_with_indicator.dart';
 import 'package:fitqa/src/presentation/widgets/common/fitqa_appbar_video_tips.dart';
 import 'package:fitqa/src/theme/color.dart';
 import 'package:flutter/material.dart';
