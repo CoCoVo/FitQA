@@ -11,7 +11,6 @@ import 'package:fitqa/src/theme/color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:file_picker/file_picker.dart';
-import 'dart:typed_data';
 
 class ScreenFeedbackRequest extends ConsumerWidget {
   ScreenFeedbackRequest({Key? key}) : super(key: key);
@@ -137,7 +136,6 @@ class ScreenFeedbackRequest extends ConsumerWidget {
 
                                             if (result != null) {
                                               String fileName = result.files.single.name;
-                                              Uint8List fileBytes = result.files.first.bytes!;
                                               print(fileName);
                                             }
                                           },
@@ -156,11 +154,27 @@ class ScreenFeedbackRequest extends ConsumerWidget {
                                 ),
                               ],
                             ),
-                              const SizedBox(height: 20.0),
                               SizedBox(
-                                width: MediaQuery.of(context).size.width * 0.6,
+                                  width: MediaQuery.of(context).size.width * 0.8,
+                                  height: 30.0,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: [
+                                      const Text('video.mp4',style: TextStyle(color: FColors.grey_3),),
+                                      IconButton(
+                                        onPressed: () {},
+                                        icon: Icon(Icons.close_rounded),
+                                        iconSize: 20.0,
+                                        color:  FColors.grey_3
+                                      ),
+                                    ],
+                                  ),
+                              ),
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width * 0.7,
                                 child: const LinearProgressIndicator(
-                                    value:0.7,
+                                    value:0.9,
                                     backgroundColor: FColors.grey_2,
                                     color: FColors.blue,
                                 ),
@@ -192,7 +206,6 @@ class ScreenFeedbackRequest extends ConsumerWidget {
 
                                           if (result != null) {
                                             String fileName = result.files.single.name;
-                                            Uint8List fileBytes = result.files.first.bytes!;
                                             print(fileName);
                                           }
                                         },
