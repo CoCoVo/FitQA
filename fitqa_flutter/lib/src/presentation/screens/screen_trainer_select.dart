@@ -1,7 +1,7 @@
 import 'package:fitqa/src/application/feedback/feedback_selected_trainer.dart';
 import 'package:fitqa/src/application/trainer/trainer_detail.dart';
 import 'package:fitqa/src/presentation/screens/screen_trainer_detail.dart';
-import 'package:fitqa/src/presentation/widgets/common/fitqa_appbar_sub.dart';
+import 'package:fitqa/src/presentation/widgets/common/appbar/fitqa_appbar_sub.dart';
 import 'package:fitqa/src/presentation/widgets/trainer/list/trainer_list.dart';
 import 'package:fitqa/src/theme/color.dart';
 import 'package:flutter/material.dart';
