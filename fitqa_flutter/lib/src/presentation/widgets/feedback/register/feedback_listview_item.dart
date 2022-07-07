@@ -61,7 +61,23 @@ class FeedbackListViewItem extends ConsumerWidget {
                         children: [
                           Visibility(
                             visible:
-                                !_isLocked(userToken, trainerToken, feedback),
+                            !_isLocked(userToken, trainerToken, feedback),
+                            child: Text(
+                              "20대/보디빌딩/초보자",
+                              style: TextStyle(
+                                  color: FColors.blue,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            replacement: Text(" "),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Visibility(
+                            visible:
+                            !_isLocked(userToken, trainerToken, feedback),
                             child: AreaSmallWidget(
                                 feedback.interestArea.toStringType(),
                                 textColor: FColors.black,
@@ -70,14 +86,14 @@ class FeedbackListViewItem extends ConsumerWidget {
                           ),
                           Visibility(
                             visible:
-                                !_isLocked(userToken, trainerToken, feedback),
+                            !_isLocked(userToken, trainerToken, feedback),
                             child: SizedBox(
                               width: 6,
                             ),
                           ),
                           Visibility(
                             visible:
-                                !_isLocked(userToken, trainerToken, feedback),
+                            !_isLocked(userToken, trainerToken, feedback),
                             child: Text(
                               feedback.owner.name,
                               style: TextStyle(
@@ -99,7 +115,7 @@ class FeedbackListViewItem extends ConsumerWidget {
                           Text(
                             DateFormat("yyyy.MM.dd").format(feedback.createdAt),
                             style:
-                                TextStyle(color: FColors.grey_4, fontSize: 10),
+                            TextStyle(color: FColors.grey_4, fontSize: 10),
                           )
                         ],
                       )
