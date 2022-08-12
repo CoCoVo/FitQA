@@ -1,4 +1,4 @@
-##[<< README.md](./README.md)
+[<< README.md](./README.md)
 
 # 기존 문제상황
 - DDD 스타일의 `clean architecture` 를 플러터에서도 적용하려고 하는데 효율적으로 되지 않음.
