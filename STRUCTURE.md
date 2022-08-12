@@ -7,7 +7,7 @@
 
 # 변경 내용
 [참고링크](https://codewithandrea.com/articles/flutter-app-architecture-riverpod-introduction/)
-![comparison](https://user-images.githubusercontent.com/13013735/163112802-5083da45-03f2-45bf-9a9f-3225647cbfcd.png)
+![comparison](./images/comparison-with-clean-architecture.png)
 
 ## Repository Layer (위 그림에서의 Data Layer)
 - `data layer`라고 했을때 패키지 이름이 `data`라고 명명되어 혼돈이 생겨 `repository layer`라고 했음.
@@ -149,5 +149,5 @@ final _commentProvider = StateProvider<String>((ref) => "");
 
 | 참고 링크의 구조          | 새로만든 구조 |
 :-------------------------:|:-------------------------:
-![](https://user-images.githubusercontent.com/13013735/163122655-73fc84c8-ec5a-4746-b079-e225258bcf3e.png)  |  <img width="403" alt="Flutter Structure" src="https://user-images.githubusercontent.com/13013735/163124308-f428b889-8681-449c-9ea5-6491dfa72b10.png">
+![](./images/riverpod-structure.png)  |  <img width="403" alt="Flutter Structure" src="./images/new-structure.png">
 
